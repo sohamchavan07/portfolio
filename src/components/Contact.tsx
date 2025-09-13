@@ -5,8 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from '@emailjs/browser';
-import { EMAILJS_CONFIG, EmailTemplateParams } from "@/config/emailjs";
 import { 
   Mail, 
   Phone, 
@@ -68,34 +66,34 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Prepare template parameters
-      const templateParams: EmailTemplateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-        to_email: EMAILJS_CONFIG.toEmail
-      };
-
-      // Send email using EmailJS
-      await emailjs.send(
-        EMAILJS_CONFIG.serviceId,
-        EMAILJS_CONFIG.templateId,
-        templateParams as Record<string, unknown>,
-        EMAILJS_CONFIG.publicKey
-      );
-
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. I'll get back to you soon!",
+      // Submit form to Formspree
+      const response = await fetch('https://formspree.io/f/xvgbyldd', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
       });
 
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for your message. I'll get back to you soon!",
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        throw new Error('Failed to send message');
+      }
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('Error sending message:', error);
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again or contact me directly.",
+        description: "Failed to send message. Please try again or contact me directly at sohamchavan.sc07@gmail.com",
         variant: "destructive",
       });
     } finally {
@@ -210,7 +208,12 @@ const Contact = () => {
 
           {/* Contact Form */}
           <Card className="p-8 glass border-primary/10 hover:border-primary/20 transition-all duration-300 animate-fade-in">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form 
+              action="https://formspree.io/f/xvgbyldd" 
+              method="POST" 
+              onSubmit={handleSubmit} 
+              className="space-y-6"
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-sm font-medium">

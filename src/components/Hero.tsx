@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Download, ArrowDown } from "lucide-react";
+import { Github, Linkedin, Mail, Download, ArrowDown, Twitter } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
 
@@ -35,6 +35,7 @@ const Hero = () => {
   const socialLinks = [
     { icon: Github, href: "https://github.com/sohamchavan07", label: "GitHub" },
     { icon: Linkedin, href: "https://linkedin.com/in/soham-pramod-chavan", label: "LinkedIn" },
+    { icon: Twitter, href: "https://twitter.com/sohamchavan07", label: "X (Twitter)" },
     { icon: Mail, href: "mailto:sohamchavan.sc07@gmail.com", label: "Email" },
   ];
 

@@ -4,10 +4,10 @@ import { Calendar, MapPin, Coffee, Code2, Heart, Star } from "lucide-react";
 
 const About = () => {
   const stats = [
-    { number: "3+", label: "Years Experience", icon: Calendar },
-    { number: "50+", label: "Projects Completed", icon: Code2 },
-    { number: "30+", label: "Happy Clients", icon: Heart },
-    { number: "5", label: "Awards Won", icon: Star },
+    { number: "1+", label: "Years Experience", icon: Calendar },
+    { number: "5+", label: "Projects Completed", icon: Code2 },
+    //{ number: "30+", label: "Happy Clients", icon: Heart },//
+    //{ number: "5", label: "Awards Won", icon: Star },//
   ];
 
   const interests = [
@@ -83,18 +83,20 @@ const About = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {stats.map((stat, index) => (
-            <Card
-              key={stat.label}
-              className="p-6 text-center glass border-primary/10 hover:border-primary/20 transition-all duration-300 hover-lift glow-primary group"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <stat.icon className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
-              <div className="text-3xl font-bold gradient-text mb-2">{stat.number}</div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
-            </Card>
-          ))}
+        <div className="flex justify-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl">
+            {stats.map((stat, index) => (
+              <Card
+                key={stat.label}
+                className="p-6 text-center glass border-primary/10 hover:border-primary/20 transition-all duration-300 hover-lift glow-primary group"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <stat.icon className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+                <div className="text-3xl font-bold gradient-text mb-2">{stat.number}</div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
