@@ -26,6 +26,7 @@ const About = () => {
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                   Hey there! I'm 16 years old passionate FULLSTACK Developer 
+                  with a love for creating beautiful, functional, and user-friendly digital experiences. I love solving complex problems and creating elegant solutions that make a difference. , and I enjoy working on challenging projects that allow me to grow and learn new skills.
           </p>
         </div>
 
