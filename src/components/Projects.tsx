@@ -12,6 +12,9 @@ import {
 } from "lucide-react";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
+import carImage from "@/assets/car.png";
+import porscheImage from "@/assets/porsche.png";
+import tictactoeImage from "@/assets/tictactoe.png";
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -25,45 +28,45 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Dashboard",
+      title: "3D Portfolio",
       category: "web",
       description: "A comprehensive MERN stack e-commerce admin dashboard with real-time analytics, inventory management, and order tracking capabilities.",
-      image: project1,
+      image: carImage,
       technologies: ["React", "Node.js", "MongoDB", "Express", "Chart.js"],
       features: ["Real-time Analytics", "Inventory Management", "Order Tracking", "User Management"],
-      githubUrl: "https://github.com/sohamchavan07/ecommerce-dashboard",
-      liveUrl: "https://ecommerce-dashboard-soham.vercel.app",
-      demoUrl: "https://ecommerce-dashboard-soham.vercel.app/demo",
+      githubUrl: "https://github.com/sohamchavan07/portfolio3d",
+      liveUrl: "https://www.sohamchavan.site",
+      demoUrl: "https://www.sohamchavan.site",
       date: "2024",
-      client: "Six Digits"
+      client: "Personal",
     },
     {
       id: 2,
-      title: "Food Delivery App UI",
-      category: "",
+      title: "Porsche Case Study",
+      category: "web",
       description: "Modern food delivery mobile app with intuitive user experience, seamless ordering flow, and interactive prototypes.",
-      image: project2,
+      image: porscheImage,
       technologies: ["Figma", "Adobe XD", "Principle", "InVision"],
       features: ["User Research", "Wireframing", "Prototyping", "User Testing"],
-      githubUrl: "https://github.com/sohamchavan07/food-app-ui",
-      liveUrl: "https://www.figma.com/proto/fooddelivery",
-      demoUrl: "https://www.figma.com/proto/fooddeliveryapp",
+      githubUrl: "https://github.com/sohamchavan07/porsche",
+      liveUrl: "https://porsche-casestudy.vercel.app/",
+      demoUrl: "https://porsche-casestudy.vercel.app/",
       date: "2024",
-      client: "FoodieGo"
+      client: "Porsche",
     },
     {
       id: 3,
-      title: "Real Estate Platform",
+      title: "tic-tac-toe game",
       category: "web",
       description: "Full-stack real estate platform built with MERN stack featuring property listings, virtual tours, and advanced search filters.",
-      image: project1,
+      image: tictactoeImage,
       technologies: ["React", "Node.js", "MongoDB", "Express", "Socket.io"],
       features: ["Property Listings", "Virtual Tours", "Advanced Search", "Real-time Chat"],
-      githubUrl: "https://github.com/sohamchavan07/realestate-platform",
-      liveUrl: "https://realestate-soham.herokuapp.com",
-      demoUrl: "https://realestate-soham.herokuapp.com/demo",
+      githubUrl: "https://github.com/sohamchavan07/tic-tac-toe",
+      liveUrl: "https://tic-tac-toe-blond-tau-89.vercel.app/",
+      demoUrl: "https://tic-tac-toe-blond-tau-89.vercel.app/",
       date: "2023",
-      client: "PropTech Solutions"
+      client: "Personal",
     },
     {
       id: 4,
@@ -77,7 +80,7 @@ const Projects = () => {
       liveUrl: "https://social-dashboard-soham.netlify.app",
       demoUrl: "https://social-dashboard-soham.netlify.app/demo",
       date: "2023",
-      client: "MarketingPro"
+      client: "Personal",
     }
   ];
 
@@ -135,12 +138,24 @@ const Projects = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute top-4 right-4 space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                  <Button size="sm" className="bg-background/20 backdrop-blur-sm border-0 hover:bg-primary">
+                  <Button
+                    size="sm"
+                    className="bg-background/20 backdrop-blur-sm border-0 hover:bg-primary"
+                    onClick={() => {
+                      if (project.liveUrl) window.open(project.liveUrl, "_blank");
+                    }}
+                  >
                     <ExternalLink className="w-4 h-4" />
                   </Button>
-                  <Button size="sm" className="bg-background/20 backdrop-blur-sm border-0 hover:bg-primary">
-                    <Github className="w-4 h-4" />
-                  </Button>
+                  {project.githubUrl && (
+                    <Button
+                      size="sm"
+                      className="bg-background/20 backdrop-blur-sm border-0 hover:bg-primary"
+                      onClick={() => window.open(project.githubUrl!, "_blank")}
+                    >
+                      <Github className="w-4 h-4" />
+                    </Button>
+                  )}
                 </div>
               </div>
 
@@ -148,7 +163,7 @@ const Projects = () => {
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
                   <Badge variant="outline" className="border-primary/20">
-                    {project.category.charAt(0).toUpperCase() + project.category.slice(1)}
+                    {(project.category && (project.category.charAt(0).toUpperCase() + project.category.slice(1))) || "Project"}
                   </Badge>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
@@ -157,7 +172,7 @@ const Projects = () => {
                     </div>
                     <div className="flex items-center gap-1">
                       <User className="w-4 h-4" />
-                      {project.client}
+                      /*{project.client}*/
                     </div>
                   </div>
                 </div>
@@ -201,25 +216,34 @@ const Projects = () => {
                   <Button
                     size="sm"
                     className="bg-gradient-primary hover:bg-gradient-secondary border-0 flex-1"
+                    onClick={() => {
+                      if (project.liveUrl) window.open(project.liveUrl, "_blank");
+                    }}
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
                     Live Demo
                   </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-primary/20 hover:border-primary/40"
-                  >
-                    <Github className="w-4 h-4 mr-2" />
-                    Code
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-primary/20 hover:border-primary/40"
-                  >
-                    <Play className="w-4 h-4" />
-                  </Button>
+                  {project.githubUrl && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-primary/20 hover:border-primary/40"
+                      onClick={() => window.open(project.githubUrl!, "_blank")}
+                    >
+                      <Github className="w-4 h-4 mr-2" />
+                      Code
+                    </Button>
+                  )}
+                  {project.demoUrl && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-primary/20 hover:border-primary/40"
+                      onClick={() => window.open(project.demoUrl!, "_blank")}
+                    >
+                      <Play className="w-4 h-4" />
+                    </Button>
+                  )}
                 </div>
               </div>
             </Card>

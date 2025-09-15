@@ -25,7 +25,7 @@ const About = () => {
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Get to know more about my background, skills, and what drives my passion for development.
+                  Hey there! I'm 16 years old passionate FULLSTACK Developer 
           </p>
         </div>
 
