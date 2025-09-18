@@ -30,24 +30,23 @@ const Projects = () => {
       id: 1,
       title: "3D Portfolio",
       category: "web",
-      description: "A comprehensive MERN stack e-commerce admin dashboard with real-time analytics, inventory management, and order tracking capabilities.",
+      description: "Soham Chavan is a creative web developer with a passion for crafting immersive, interactive websites. Inspired by pioneers like Bruno Simon and skilled in tools like Three.js, Soham mixes technical expertise with playful design. Explore my portfolio to see how I build beyond the ordinary — or join me on the journey of learning how to make sites that move.",
       image: carImage,
       technologies: ["React", "Node.js", "MongoDB", "Express", "Chart.js"],
-      features: ["Real-time Analytics", "Inventory Management", "Order Tracking", "User Management"],
+      features: ["Creative Inspiration Shout-Out", "Portfolio Gateway", "Humor & Personality", "User Management"],
       githubUrl: "https://github.com/sohamchavan07/portfolio3d",
       liveUrl: "https://www.sohamchavan.site",
       demoUrl: "https://www.sohamchavan.site",
       date: "2024",
-      client: "Personal",
     },
     {
       id: 2,
       title: "Porsche Case Study",
       category: "web",
-      description: "Modern food delivery mobile app with intuitive user experience, seamless ordering flow, and interactive prototypes.",
+      description: "Porsche App Case Study — My Porsche App is a page that demonstrates the design & thinking behind a luxury automotive app for Porsche. It presents how one might optimize user experience, layout, customer interaction, and branding for a high-end app, illustrating both aesthetic and functional components. It’s built likely using Next.js & hosted on Vercel.",
       image: porscheImage,
       technologies: ["Figma", "Adobe XD", "Principle", "InVision"],
-      features: ["User Research", "Wireframing", "Prototyping", "User Testing"],
+      features: ["Luxury/Brand-Focused Design", "Modern Web Tech Stack", "Structured Case Study", "Aesthetic & Functional Components"],
       githubUrl: "https://github.com/sohamchavan07/porsche",
       liveUrl: "https://porsche-casestudy.vercel.app/",
       demoUrl: "https://porsche-casestudy.vercel.app/",
@@ -58,10 +57,10 @@ const Projects = () => {
       id: 3,
       title: "tic-tac-toe game",
       category: "web",
-      description: "Full-stack real estate platform built with MERN stack featuring property listings, virtual tours, and advanced search filters.",
+      description: "There are selectable difficulty levels (Easy / Medium / Hard) when playing against the computer. You can also set player names and there’s a display of the score (Player 1 vs Player 2 or vs Computer). Includes a restart button to reset the board/game. The site is hosted on Vercel, suggesting a simple, clean implementation intended for fun and demonstrating interactive UI logic.",
       image: tictactoeImage,
       technologies: ["React", "Node.js", "MongoDB", "Express", "Socket.io"],
-      features: ["Property Listings", "Virtual Tours", "Advanced Search", "Real-time Chat"],
+      features: ["Multiple Game Modes", "Difficulty Levels", "Customizable Player Names", "Score Tracking"],
       githubUrl: "https://github.com/sohamchavan07/tic-tac-toe",
       liveUrl: "https://tic-tac-toe-blond-tau-89.vercel.app/",
       demoUrl: "https://tic-tac-toe-blond-tau-89.vercel.app/",
@@ -172,7 +171,7 @@ const Projects = () => {
                     </div>
                     <div className="flex items-center gap-1">
                       <User className="w-4 h-4" />
-                      /*{project.client}*/
+                      {project.client}
                     </div>
                   </div>
                 </div>
