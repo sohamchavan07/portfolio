@@ -248,7 +248,7 @@ const Projects = () => {
             </Card>
           ))}
         </div>
-
+        
         {/* More Projects CTA */}
         <div className="text-center mt-16">
           <Card className="max-w-2xl mx-auto p-8 glass border-primary/10">
