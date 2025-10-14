@@ -97,14 +97,6 @@ const Services = () => {
                   </div>
                 ))}
               </div>
-
-              <Button
-                variant="outline"
-                className="w-full border-primary/20 hover:border-primary/40 hover:bg-primary/10 group-hover:bg-gradient-primary group-hover:text-background group-hover:border-transparent transition-all duration-300"
-              >
-                Learn More
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
             </Card>
           ))}
         </div>

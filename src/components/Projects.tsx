@@ -83,6 +83,23 @@ const Projects = () => {
     }
   ];
 
+  // Add Tawade Kitchen project (external repo provided by user)
+  projects.push({
+    id: 5,
+    title: "Tawade Kitchen",
+    category: "web",
+    description: "A small snack shop website (Tawade Kitchen) showcasing products and contact information.",
+    // Place the screenshot in public/ as tawade_kitchen.png so it's accessible at '/tawade_kitchen.png'
+  image: "/tawade_kitchen.png",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    features: ["Product Catalog", "Responsive Layout", "Contact Form"],
+    githubUrl: "https://github.com/sohamchavan07/tawade_kitchen.git",
+    liveUrl: "https://tawade-kitchen.vercel.app",
+    demoUrl: "https://tawade-kitchen.vercel.app",
+    date: "2025",
+    client: "Tawade Kitchen",
+  });
+
   const filteredProjects = activeFilter === "all" 
     ? projects 
     : projects.filter(project => project.category === activeFilter);
