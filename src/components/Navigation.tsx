@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,6 +56,17 @@ const Navigation = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
               </button>
             ))}
+            <button
+              onClick={toggleTheme}
+              className="w-10 h-10 inline-flex items-center justify-center rounded-md border border-border hover:bg-muted/50 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? (
+                <Moon className="w-5 h-5" />
+              ) : (
+                <Sun className="w-5 h-5" />
+              )}
+            </button>
             <Button
               onClick={() => scrollToSection("#contact")}
               className="bg-gradient-primary hover:bg-gradient-secondary border-0"
@@ -86,6 +99,20 @@ const Navigation = () => {
         }`}>
           <div className="mt-4 py-6 glass rounded-lg border border-primary/20 backdrop-blur-lg">
             <div className="flex flex-col space-y-2">
+              <div className="flex items-center justify-between px-4 pb-2">
+                <span className="text-sm text-muted-foreground">Theme</span>
+                <button
+                  onClick={toggleTheme}
+                  className="w-10 h-10 inline-flex items-center justify-center rounded-md border border-border hover:bg-muted/50 transition-colors"
+                  aria-label="Toggle theme"
+                >
+                  {theme === "light" ? (
+                    <Moon className="w-5 h-5" />
+                  ) : (
+                    <Sun className="w-5 h-5" />
+                  )}
+                </button>
+              </div>
               {navItems.map((item, index) => (
                 <button
                   key={item.href}

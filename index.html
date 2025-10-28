@@ -19,6 +19,25 @@
   </head>
 
   <body>
+    <script>
+      // Initialize theme ASAP to avoid flash; default is dark
+      (function() {
+        try {
+          var saved = localStorage.getItem('theme');
+          var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+          var useLight = saved ? saved === 'light' : false; // default dark
+          if (!saved && prefersLight) {
+            // Respect OS light only if user has no preference; comment out to force default dark always
+            useLight = false; // keep dark by default per request
+          }
+          if (useLight) {
+            document.documentElement.classList.add('light');
+          } else {
+            document.documentElement.classList.remove('light');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script src='https://www.noupe.com/embed/0199af5b73667d8d9c702d2fc3712d932de4.js'></script>
