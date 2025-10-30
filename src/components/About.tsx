@@ -41,8 +41,8 @@ const About = () => {
               </p>
               
               <p>
-                I specialize in modern web technologies including <span className="text-accent font-semibold"> Ruby on Rails, React</span>, 
-                 and 
+                I specialize in modern web technologies including <span className="text-accent font-semibold"> Ruby on Rails, React</span>,
+                <span className="text-accent font-semibold"> JavaScript</span>  and 
                 <span className="text-accent font-semibold"> TypeScript</span>. I love creating intuitive user interfaces 
                 and robust backend systems that scale.
               </p>
