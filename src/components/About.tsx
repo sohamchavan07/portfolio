@@ -42,7 +42,7 @@ const About = () => {
               
               <p>
                 I specialize in modern web technologies including <span className="text-accent font-semibold"> Ruby on Rails, React</span>, 
-                <span className="text-accent font-semibold"> Node.js</span>, and 
+                 and 
                 <span className="text-accent font-semibold"> TypeScript</span>. I love creating intuitive user interfaces 
                 and robust backend systems that scale.
               </p>
