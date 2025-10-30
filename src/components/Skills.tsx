@@ -26,12 +26,11 @@ const Skills = () => {
 
   const skillsData = {
     frontend: [
-      { name: "React/Next.js", level: 95, color: "bg-blue-500" },
+      { name: "React", level: 95, color: "bg-blue-500" },
       
       { name: "TypeScript", level: 90, color: "bg-blue-600" },
-      { name: "JavaScript (ES6+)", level: 95, color: "bg-yellow-500" },
+      { name: "JavaScript", level: 95, color: "bg-yellow-500" },
       { name: "Tailwind CSS", level: 90, color: "bg-cyan-500" },
-      { name: "Vue.js", level: 80, color: "bg-green-500" },
       { name: "HTML5/CSS3", level: 95, color: "bg-orange-500" },
     ],
     backend: [

@@ -43,7 +43,7 @@ const Projects = () => {
       id: 2,
       title: "Porsche Case Study",
       category: "web",
-      description: "Porsche App Case Study — My Porsche App is a page that demonstrates the design & thinking behind a luxury automotive app for Porsche. It presents how one might optimize user experience, layout, customer interaction, and branding for a high-end app, illustrating both aesthetic and functional components. It’s built likely using Next.js & hosted on Vercel.",
+      description: "Porsche App Case Study — My Porsche App is a page that demonstrates the design & thinking behind a luxury automotive app for Porsche. It presents how one might optimize user experience, layout, customer interaction, and branding for a high-end app, illustrating both aesthetic and functional components. It’s built likely using TypeScript & hosted on Vercel.",
       image: porscheImage,
       technologies: ["Figma", "Adobe XD", "Principle", "InVision"],
       features: ["Luxury/Brand-Focused Design", "Modern Web Tech Stack", "Structured Case Study", "Aesthetic & Functional Components"],
