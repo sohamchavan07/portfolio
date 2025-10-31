@@ -13,7 +13,6 @@ const About = () => {
   const interests = [
     "Web Development",
     "Mobile Apps", 
-    "Machine Learning",
     "Open Source",
   ];
 
@@ -41,7 +40,7 @@ const About = () => {
               </p>
               
               <p>
-                I specialize in modern web technologies including <span className="text-accent font-semibold"> Ruby on Rails, React</span>,
+                I specialize in modern web technologies including <span className="text-accent font-semibold"> Ruby on Rails</span>,
                 <span className="text-accent font-semibold"> JavaScript</span>  and 
                 <span className="text-accent font-semibold"> TypeScript</span>. I love creating intuitive user interfaces 
                 and robust backend systems that scale.

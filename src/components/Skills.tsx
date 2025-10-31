@@ -26,23 +26,21 @@ const Skills = () => {
 
   const skillsData = {
     frontend: [
-      { name: "React", level: 95, color: "bg-blue-500" },
-      
-      { name: "TypeScript", level: 90, color: "bg-blue-600" },
+      { name: "React", level: 50, color: "bg-blue-500" },
+      { name: "TypeScript", level: 80, color: "bg-blue-600" },
       { name: "JavaScript", level: 95, color: "bg-yellow-500" },
       { name: "Tailwind CSS", level: 90, color: "bg-cyan-500" },
       { name: "HTML5/CSS3", level: 95, color: "bg-orange-500" },
     ],
     backend: [
       { name: "Ruby On Rails", level: 95, color: "bg-green-600" },
-      { name: "Node.js", level: 80, color: "bg-green-600" },
       { name: "Python", level: 85, color: "bg-green-700" },
       { name: "REST APIs", level: 95, color: "bg-blue-500" },
       { name: "Microservices", level: 70, color: "bg-purple-500" },
     ],
     mobile: [
-      { name: "React Native", level: 80, color: "bg-blue-500" },
-      { name: "Flutter", level: 70, color: "bg-blue-400" },
+      { name: "React Native", level: 60, color: "bg-blue-500" },
+      { name: "Flutter", level: 80, color: "bg-blue-400" },
     ],
   
     database: [
@@ -60,8 +58,8 @@ const Skills = () => {
       { name: "Tailwind css", level: 85, color: "bg-yellow-600" },
       { name: "Vercel", level: 85, color: "bg-yellow-600" },
       { name: "DevOps", level: 85, color: "bg-yellow-600" },
-
-
+      { name: "APIs", level: 85, color: "bg-yellow-600" },
+      { name: "Jenkins", level: 85, color: "bg-yellow-600" },
     ],
   };
 
@@ -121,7 +119,7 @@ const Skills = () => {
               />
               
               <div className="mt-2 text-sm text-muted-foreground">
-                {skill.level >= 90 ? "Expert" : 
+                {skill.level >= 50 ? "Intermediate" : 
                  skill.level >= 80 ? "Advanced" : 
                  skill.level >= 70 ? "Intermediate" : "Beginner"}
               </div>

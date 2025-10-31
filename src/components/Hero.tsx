@@ -72,14 +72,14 @@ const Hero = () => {
 
             <p className="text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed">
               FULLSTACK Developer passionate about creating innovative web applications. 
-              I specialize in Ruby on Rails, Python, React, Node.js, and modern web technologies to build scalable digital solutions.
+              I specialize in Ruby on Rails, Python, React and modern web technologies to build scalable digital solutions.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Button
                 onClick={scrollToContact}
                 size="lg"
-                className="bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary"
+                className="bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary text-white"
               >
                 <Mail className="w-5 h-5 mr-2" />
                 Get In Touch
