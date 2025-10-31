@@ -11,7 +11,7 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      <main>
+      <main className="pt-20 md:pt-24">
         <Hero />
         <About />
         <Skills />
