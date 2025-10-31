@@ -69,8 +69,8 @@ const Navigation = () => {
             </button>
             <Button
               onClick={() => scrollToSection("#contact")}
-              className="bg-gradient-primary hover:bg-gradient-secondary border-0"
-            >
+              className="bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary text-white"
+              >
               Get In Touch
             </Button>
           </div>
