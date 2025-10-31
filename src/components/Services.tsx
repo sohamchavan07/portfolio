@@ -17,7 +17,7 @@ const Services = () => {
       icon: Code,
       title: "Full Stack Development",
       description: "End-to-end web application development using modern frameworks and best practices.",
-      features: ["React Frontend", "Ruby On Rails Backend", "Database Design", "API Development"],
+      features: [" Frontend", "Ruby On Rails Backend", "Database Design", "API Development"],
       color: "text-blue-500",
       gradient: "from-blue-500/20 to-cyan-500/20"
     },
