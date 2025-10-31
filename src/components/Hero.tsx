@@ -85,14 +85,7 @@ const Hero = () => {
                 Get In Touch
               </Button>
               
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-primary/20 hover:border-primary/40 hover-lift"
-              >
-                <Download className="w-5 h-5 mr-2" />
-                Download Resume
-              </Button>
+           
             </div>
 
             {/* Social Links */}

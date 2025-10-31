@@ -170,40 +170,10 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Book a Call */}
-            <Card className="p-6 glass border-primary/10 bg-gradient-to-r from-primary/5 to-accent/5">
-              <div className="flex items-center mb-4">
-                <MessageCircle className="w-6 h-6 text-primary mr-3" />
-                <h4 className="font-semibold">Book a Call</h4>
-              </div>
-              <p className="text-sm text-muted-foreground mb-4">
-                Ready to discuss your project? Schedule a free 30-minute consultation call with me.
-              </p>
-              <Button 
-                asChild
-                className="w-full bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary"
-              >
-                <a 
-                  href="https://calendly.com/sohamchavan-dev" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  Schedule a Call
-                </a>
-              </Button>
-            </Card>
+         
 
             {/* Quick Response */}
-            <Card className="p-6 glass border-primary/10 bg-gradient-to-r from-primary/5 to-accent/5">
-              <div className="flex items-center mb-3">
-                <MessageCircle className="w-6 h-6 text-primary mr-3" />
-                <h4 className="font-semibold">Quick Response Guaranteed</h4>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                I typically respond to all inquiries within 24 hours. For urgent projects, 
-                feel free to call or send a message on LinkedIn for faster communication.
-              </p>
-            </Card>
+          
           </div>
 
           {/* Contact Form */}

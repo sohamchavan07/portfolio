@@ -21,8 +21,6 @@ const Projects = () => {
 
   const filters = [
     { id: "all", label: "All Projects" },
-    { id: "web", label: "Web Apps" },
-    { id: "mobile", label: "Mobile" },
   ];
 
   const projects = [
@@ -285,17 +283,7 @@ const Projects = () => {
                 <Github className="w-5 h-5 mr-2" />
                 View All on GitHub
               </Button>
-              <Button 
-                variant="outline"
-                size="lg"
-                className="border-primary/20 hover:border-primary/40 hover-lift"
-                onClick={() => {
-                  const element = document.querySelector("#contact");
-                  if (element) element.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                Request Portfolio
-              </Button>
+             
             </div>
           </Card>
         </div>

@@ -19,28 +19,20 @@ const Skills = () => {
   const categories = [
     { id: "frontend", label: "Frontend", icon: Code },
     { id: "backend", label: "Backend", icon: Server },
-    { id: "mobile", label: "Mobile", icon: Smartphone },
     { id: "database", label: "Database", icon: Database },
     { id: "tools", label: "Tools", icon: Wrench },
   ];
 
   const skillsData = {
     frontend: [
-      { name: "React", level: 50, color: "bg-blue-500" },
-      { name: "TypeScript", level: 80, color: "bg-blue-600" },
       { name: "JavaScript", level: 95, color: "bg-yellow-500" },
-      { name: "Tailwind CSS", level: 90, color: "bg-cyan-500" },
-      { name: "HTML5/CSS3", level: 95, color: "bg-orange-500" },
+      { name: "HTML/CSS", level: 95, color: "bg-orange-500" },
     ],
     backend: [
       { name: "Ruby On Rails", level: 95, color: "bg-green-600" },
       { name: "Python", level: 85, color: "bg-green-700" },
       { name: "REST APIs", level: 95, color: "bg-blue-500" },
       { name: "Microservices", level: 70, color: "bg-purple-500" },
-    ],
-    mobile: [
-      { name: "React Native", level: 60, color: "bg-blue-500" },
-      { name: "Flutter", level: 80, color: "bg-blue-400" },
     ],
   
     database: [

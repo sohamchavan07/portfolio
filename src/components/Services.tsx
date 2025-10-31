@@ -22,14 +22,7 @@ const Services = () => {
       gradient: "from-blue-500/20 to-cyan-500/20"
     },
     
-    {
-      icon: Smartphone,
-      title: "Mobile App Development",
-      description: "Native and cross-platform mobile applications that work seamlessly across all devices.",
-      features: ["React Native", "iOS Development", "Android Development", "App Store Deployment"],
-      color: "text-green-500",
-      gradient: "from-green-500/20 to-emerald-500/20"
-    },
+  
     {
       icon: Globe,
       title: "Web Solutions",
@@ -46,14 +39,7 @@ const Services = () => {
       color: "text-red-500",
       gradient: "from-red-500/20 to-pink-500/20"
     },
-    {
-      icon: Zap,
-      title: "Consulting & Optimization",
-      description: "Technical consulting and performance optimization for existing applications.",
-      features: ["Code Review", "Performance Audit", "Architecture Planning", "Team Training"],
-      color: "text-indigo-500",
-      gradient: "from-indigo-500/20 to-blue-500/20"
-    }
+
   ];
 
   return (
@@ -123,13 +109,7 @@ const Services = () => {
                 Start a Project
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-              <Button 
-                variant="outline"
-                size="lg"
-                className="border-primary/20 hover:border-primary/40 hover-lift"
-              >
-                View Portfolio
-              </Button>
+            
             </div>
           </Card>
         </div>
