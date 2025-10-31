@@ -11,16 +11,7 @@ const About = () => {
   ];
 
   const interests = [
-    "Full‑stack",
-    "Open Source",
-    "Problem Solving",
-    "Learning New Technologies",
-    "Freelancing",
-    "Ruby on Rails",
-    "Performance",
-    "Accessibility",
-    "DevOps",
-    "Cloud & Deployments",
+
   ];
 
   const hasInterests = interests.length > 0;
