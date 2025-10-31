@@ -72,7 +72,7 @@ const Hero = () => {
 
             <p className="text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed">
               FULLSTACK Developer passionate about creating innovative web applications. 
-              I specialize in Ruby on Rails, Python, React and modern web technologies to build scalable digital solutions.
+              I specialize in Ruby on Rails, Python and modern web technologies to build scalable digital solutions.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">

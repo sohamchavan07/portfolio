@@ -11,10 +11,19 @@ const About = () => {
   ];
 
   const interests = [
-    "Web Development",
-    "Mobile Apps", 
+    "Full‑stack",
     "Open Source",
+    "Problem Solving",
+    "Learning New Technologies",
+    "Freelancing",
+    "Ruby on Rails",
+    "Performance",
+    "Accessibility",
+    "DevOps",
+    "Cloud & Deployments",
   ];
+
+  const hasInterests = interests.length > 0;
 
   return (
     <section id="about" className="section-padding">
@@ -23,39 +32,34 @@ const About = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             About <span className="gradient-text">Me</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                  Hey there! I'm 16 years old passionate FULLSTACK Developer 
-                  with a love for creating beautiful, functional, and user-friendly digital experiences. I love solving complex problems and creating elegant solutions that make a difference. , and I enjoy working on challenging projects that allow me to grow and learn new skills.
-          </p>
+          
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+        <div className={`grid gap-12 lg:gap-16 items-start mb-16 ${hasInterests ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1 place-items-center'}`}>
           {/* About Content */}
-          <div className="animate-slide-up">
-            <h3 className="text-2xl font-semibold mb-6">Hi! I'm Soham Chavan</h3>
+          <div className={`animate-slide-up ${hasInterests ? '' : 'max-w-2xl text-center'}`}>
+            <h3 className={`text-2xl font-semibold mb-6 ${hasInterests ? '' : 'text-center'}`}>Hi! I'm Soham Chavan</h3>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                I'm a passionate <span className="text-primary font-semibold">Full Stack Developer</span> with creating digital solutions that make a difference. My journey in 
-                tech started during college, and I've been fascinated by the power of code to solve real-world problems ever since.
+            <p className={`${hasInterests ? '' : 'text-center'}`}>
+                I'm a <span className="text-primary font-semibold">Full‑stack developer</span> focused on building reliable, performant, and
+                user‑centered web applications. I enjoy translating ideas into thoughtful interfaces and scalable systems
+                that deliver real value.
               </p>
-              
-              <p>
-                I specialize in modern web technologies including <span className="text-accent font-semibold"> Ruby on Rails</span>,
-                <span className="text-accent font-semibold"> JavaScript</span>  and 
-                <span className="text-accent font-semibold"> TypeScript</span>. I love creating intuitive user interfaces 
-                and robust backend systems that scale.
+              <p className={`${hasInterests ? '' : 'text-center'}`}>
+                My core stack includes <span className="text-accent font-semibold">Ruby On Rails</span>, <span className="text-accent font-semibold">JavaScript</span>, and
+                <span className="text-accent font-semibold"> TypeScript</span>. I care deeply about clean architecture, accessibility,
+                performance, and maintainable code—shipping features end‑to‑end from product thinking to deployment.
               </p>
-              
-              <p>
-                When I'm not coding, you can find me exploring new technologies, contributing to open source projects, 
-                or sharing knowledge through tech blogs and community meetups.
+              <p className={`${hasInterests ? '' : 'text-center'}`}>
+                Recently, I've delivered projects across dashboards, e‑commerce, and interactive apps, collaborating closely
+                with designers and stakeholders to iterate quickly and ship with confidence.
               </p>
             </div>
 
             <div className="flex items-center gap-6 mt-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-primary" />
-                INDIA
+                India
               </div>
               <div className="flex items-center gap-2">
                 <Coffee className="w-4 h-4 text-accent" />
@@ -65,21 +69,22 @@ const About = () => {
           </div>
 
           {/* Interests */}
-          <div className="space-y-6 animate-fade-in">
-            <h3 className="text-2xl font-semibold">What I Love</h3>
-            <div className="flex flex-wrap gap-3">
-              {interests.map((interest, index) => (
-                <Badge
-                  key={interest}
-                  variant="outline"
-                  className="px-4 py-2 text-sm border-primary/20 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 hover-lift"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {interest}
-                </Badge>
-              ))}
+          {hasInterests && (
+            <div className="space-y-6 animate-fade-in">
+              <div className="flex flex-wrap gap-3">
+                {interests.map((interest, index) => (
+                  <Badge
+                    key={interest}
+                    variant="outline"
+                    className="px-4 py-2 text-sm border-primary/20 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300 hover-lift"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    {interest}
+                  </Badge>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Stats */}
