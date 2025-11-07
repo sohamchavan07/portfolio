@@ -235,8 +235,7 @@ const Projects = () => {
                     }}
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Live Demo
-                  </Button>
+Open                  </Button>
                   {project.githubUrl && (
                     <Button
                       variant="outline"
