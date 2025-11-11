@@ -30,7 +30,7 @@ const Projects = () => {
       category: "web",
       description: "Soham Chavan is a creative web developer with a passion for crafting immersive, interactive websites. Inspired by pioneers like Bruno Simon and skilled in tools like Three.js, Soham mixes technical expertise with playful design. Explore my portfolio to see how I build beyond the ordinary — or join me on the journey of learning how to make sites that move.",
       image: carImage,
-      technologies: [ ],
+
       features: ["Creative Inspiration Shout-Out", "Portfolio Gateway", "Humor & Personality", "User Management"],
       githubUrl: "https://github.com/sohamchavan07/portfolio3d",
       liveUrl: "https://sohamchavan3d.vercel.app",
@@ -39,6 +39,34 @@ const Projects = () => {
     },
     {
       id: 2,
+      title: "Tawade Kitchen",
+      category: "web",
+      description: "A small snack shop website (Tawade Kitchen) showcasing products and contact information.",
+      image: "/tawade_kitchen.png",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      features: ["Product Catalog", "Responsive Layout", "Contact Form"],
+      githubUrl: "https://github.com/sohamchavan07/tawade_kitchen.git",
+      liveUrl: "https://tawade-kitchen.vercel.app",
+      demoUrl: "https://tawade-kitchen.vercel.app",
+      date: "2025",
+      client: "Tawade Kitchen",
+    },
+    {
+      id: 3,
+      title: "Ferrari Case Study",
+      category: "web",
+      description: "Racing Ahead with DevOps — How Ferrari accelerated innovation using Azure DevOps and real-time analytics. A visual case study showcasing branding, performance, and pipeline-driven delivery.",
+      image: "/ferrari.jpeg",
+      technologies: ["Azure DevOps","Analytics"],
+      features: ["Brand Case Study", "Pipeline Simulations", "Real-time Analytics", "Technical Overview"],
+      liveUrl: "https://ferrari-casestudy.vercel.app",
+      githubUrl: "https://github.com/sohamchavan07/Ferrari",
+      demoUrl: "https://ferrari-casestudy.vercel.app",
+      date: "2025",
+      client: "Ferrari",
+    },
+    {
+      id: 4,
       title: "Porsche Case Study",
       category: "web",
       description: "Porsche App Case Study — My Porsche App is a page that demonstrates the design & thinking behind a luxury automotive app for Porsche. It presents how one might optimize user experience, layout, customer interaction, and branding for a high-end app, illustrating both aesthetic and functional components. It’s built likely using TypeScript & hosted on Vercel.",
@@ -52,7 +80,7 @@ const Projects = () => {
       client: "Porsche",
     },
     {
-      id: 3,
+      id: 5,
       title: "tic-tac-toe game",
       category: "web",
       description: "There are selectable difficulty levels (Easy / Medium / Hard) when playing against the computer. You can also set player names and there’s a display of the score (Player 1 vs Player 2 or vs Computer). Includes a restart button to reset the board/game. The site is hosted on Vercel, suggesting a simple, clean implementation intended for fun and demonstrating interactive UI logic.",
@@ -64,39 +92,9 @@ const Projects = () => {
       demoUrl: "https://tic-tac-toe-blond-tau-89.vercel.app/",
       date: "2023",
       client: "Personal",
-    },
-    {
-      id: 4,
-      title: "CASE STUDY",
-      category: "web",
-      description: "REJECTION TO ROAR: HOW BEING DISMISSED BY ENZO FERRARI SPARKED FERRUCCIO LAMBORGHINI'S MISSION TO BUILD A SUPERIOR CAR. A CASE STUDY IN DISRUPTIVE PASSION AND UNYIELDING ITALIAN EXCELLENCE.",
-      image: project2,
-      technologies: [],
-      features: ["3D Models", "Brand-focused storytelling", "creative presentation", "Clean, minimal code structure"],
-      githubUrl: "https://github.com/sohamchavan07/lamborghini",
-      liveUrl: "https://lamborghini-case-study.vercel.app",
-      demoUrl: "https://lamborghini-case-study.vercel.app",
-      date: "2023",
-      client: "Personal",
+
     }
   ];
-
-  // Add Tawade Kitchen project (external repo provided by user)
-  projects.push({
-    id: 5,
-    title: "Tawade Kitchen",
-    category: "web",
-    description: "A small snack shop website (Tawade Kitchen) showcasing products and contact information.",
-    // Place the screenshot in public/ as tawade_kitchen.png so it's accessible at '/tawade_kitchen.png'
-  image: "/tawade_kitchen.png",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    features: ["Product Catalog", "Responsive Layout", "Contact Form"],
-    githubUrl: "https://github.com/sohamchavan07/tawade_kitchen.git",
-    liveUrl: "https://tawade-kitchen.vercel.app",
-    demoUrl: "https://tawade-kitchen.vercel.app",
-    date: "2025",
-    client: "Tawade Kitchen",
-  });
 
   const filteredProjects = activeFilter === "all" 
     ? projects 
