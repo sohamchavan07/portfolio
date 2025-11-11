@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, Coffee, Code2, Heart, Star } from "lucide-react";
+import { Calendar, MapPin, Car, Code2, Heart, Star } from "lucide-react";
 
 const About = () => {
   const stats = [
@@ -11,16 +11,7 @@ const About = () => {
   ];
 
   const interests = [
-    "Full‑stack",
-    "Open Source",
-    "Problem Solving",
-    "Learning New Technologies",
-    "Freelancing",
-    "Ruby on Rails",
-    "Performance",
-    "Accessibility",
-    "DevOps",
-    "Cloud & Deployments",
+
   ];
 
   const hasInterests = interests.length > 0;
@@ -51,8 +42,8 @@ const About = () => {
                 performance, and maintainable code—shipping features end‑to‑end from product thinking to deployment.
               </p>
               <p className={`${hasInterests ? '' : 'text-center'}`}>
-                Recently, I've delivered projects across dashboards, e‑commerce, and interactive apps, collaborating closely
-                with designers and stakeholders to iterate quickly and ship with confidence.
+                Recently, I've delivered projects across dashboards, e‑commerce, collaborating closely
+                with designers to iterate quickly and ship with confidence.
               </p>
             </div>
 
@@ -62,8 +53,8 @@ const About = () => {
                 India
               </div>
               <div className="flex items-center gap-2">
-                <Coffee className="w-4 h-4 text-accent" />
-                Coffee Enthusiast
+                <Car className="w-4 h-4 text-accent" />
+                Car Enthusiast
               </div>
             </div>
           </div>

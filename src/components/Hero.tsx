@@ -71,7 +71,7 @@ const Hero = () => {
             </div>
 
             <p className="text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed">
-              FULLSTACK Developer passionate about creating innovative web applications. 
+              FullStack Developer I Create websites and innovative web applications. 
               I specialize in Ruby on Rails, Python and modern web technologies to build scalable digital solutions.
             </p>
 
