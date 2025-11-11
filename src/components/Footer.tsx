@@ -115,18 +115,21 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="mt-16 pt-8 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center text-sm text-muted-foreground">
-            <span>© {currentYear} Soham Chavan. Made with</span>
-            <Heart className="w-4 h-4 text-red-500 mx-2 animate-pulse" />
-            <span>and lots of coffee ☕</span>
-          </div>
-
-          <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <button className="hover:text-primary transition-colors">
-              Privacy Policy
-            </button>
-            <button className="hover:text-primary transition-colors">
-              Terms of Service
-            </button>
+            <div className="w-full flex justify-center items-center text-sm text-muted-foreground">
+              <p className="text-center">
+                &copy; {currentYear} Soham Chavan. Made by{" "}
+                <a
+                  href="https://www.sohamchavan.site"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Soham Chavan website"
+                  className="underline text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600"
+                >
+                  SOHAM
+                </a>
+                .
+              </p>
+            </div>
           </div>
         </div>
       </div>

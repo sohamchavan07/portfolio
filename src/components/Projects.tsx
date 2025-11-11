@@ -30,11 +30,11 @@ const Projects = () => {
       category: "web",
       description: "Soham Chavan is a creative web developer with a passion for crafting immersive, interactive websites. Inspired by pioneers like Bruno Simon and skilled in tools like Three.js, Soham mixes technical expertise with playful design. Explore my portfolio to see how I build beyond the ordinary — or join me on the journey of learning how to make sites that move.",
       image: carImage,
-      technologies: [],
+
       features: ["Creative Inspiration Shout-Out", "Portfolio Gateway", "Humor & Personality", "User Management"],
       githubUrl: "https://github.com/sohamchavan07/portfolio3d",
-      liveUrl: "https://www.sohamchavan.site",
-      demoUrl: "https://www.sohamchavan.site",
+      liveUrl: "https://sohamchavan3d.vercel.app",
+      demoUrl: "https://sohamchavan3d.vercel.app",
       date: "2024",
     },
     {
@@ -92,6 +92,7 @@ const Projects = () => {
       demoUrl: "https://tic-tac-toe-blond-tau-89.vercel.app/",
       date: "2023",
       client: "Personal",
+
     }
   ];
 
@@ -232,8 +233,7 @@ const Projects = () => {
                     }}
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Live Demo
-                  </Button>
+Open                  </Button>
                   {project.githubUrl && (
                     <Button
                       variant="outline"
