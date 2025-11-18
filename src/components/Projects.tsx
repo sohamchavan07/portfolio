@@ -33,8 +33,8 @@ const Projects = () => {
       technologies: [],
       features: ["Creative Inspiration Shout-Out", "Portfolio Gateway", "Humor & Personality", "User Management"],
       githubUrl: "https://github.com/sohamchavan07/portfolio3d",
-      liveUrl: "https://sohamchavan3d.vercel.app",
-      demoUrl: "https://www.sohamchavan3d.vercel.app",
+      liveUrl: "https://portfolio.sohamchavan.site",
+      demoUrl: "https://portfolio.sohamchavan.site",
       date: "2024",
     },
     {
