@@ -150,28 +150,6 @@ const Contact = () => {
                 </Card>
               ))}
             </div>
-
-            {/* Social Links */}
-            <div>
-              <h4 className="font-semibold mb-4">Follow Me</h4>
-              <div className="flex gap-4">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-primary/20 transition-all duration-300 hover-lift glow-primary group ${social.color}`}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                  </a>
-                ))}
-              </div>
-            </div>
-
-         
-
             {/* Quick Response */}
           
           </div>

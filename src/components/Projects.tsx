@@ -16,6 +16,8 @@ import carImage from "@/assets/car.png";
 import porscheImage from "@/assets/porsche.png";
 import tictactoeImage from "@/assets/tictactoe.png";
 
+const highlightedTechnologies = new Set([]);
+
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
 
@@ -28,14 +30,14 @@ const Projects = () => {
       id: 1,
       title: "3D Portfolio",
       category: "web",
-      description: "Soham Chavan is a creative web developer with a passion for crafting immersive, interactive websites. Inspired by pioneers like Bruno Simon and skilled in tools like Three.js, Soham mixes technical expertise with playful design. Explore my portfolio to see how I build beyond the ordinary — or join me on the journey of learning how to make sites that move.",
+      description: "It's not just a portfolio, it's a playground of ideas. I'm excited to share my updated creative space, where I've put a lot of heart and late nights into showcasing projects that truly inspire me. I hope it inspires you, too.",
       image: carImage,
       technologies: [],
       features: ["Creative Inspiration Shout-Out", "Portfolio Gateway", "Humor & Personality", "User Management"],
       githubUrl: "https://github.com/sohamchavan07/portfolio3d",
       liveUrl: "https://portfolio.sohamchavan.site",
       demoUrl: "https://portfolio.sohamchavan.site",
-      date: "2024",
+      date: "2025",
     },
     {
       id: 2,
@@ -43,7 +45,7 @@ const Projects = () => {
       category: "web",
       description: "A small snack shop website (Tawade Kitchen) showcasing products and contact information.",
       image: "/tawade_kitchen.png",
-      technologies: ["HTML", "CSS", "JavaScript"],
+      technologies: [],
       features: ["Product Catalog", "Responsive Layout", "Contact Form"],
       githubUrl: "https://github.com/sohamchavan07/tawade_kitchen.git",
       liveUrl: "https://tawade-kitchen.vercel.app",
@@ -57,7 +59,7 @@ const Projects = () => {
       category: "web",
       description: "Racing Ahead with DevOps — How Ferrari accelerated innovation using Azure DevOps and real-time analytics. A visual case study showcasing branding, performance, and pipeline-driven delivery.",
       image: "/ferrari.jpeg",
-      technologies: ["Azure DevOps","Analytics"],
+      technologies: [],
       features: ["Brand Case Study", "Pipeline Simulations", "Real-time Analytics", "Technical Overview"],
       liveUrl: "https://ferrari-casestudy.vercel.app",
       githubUrl: "https://github.com/sohamchavan07/Ferrari/",
@@ -76,7 +78,7 @@ const Projects = () => {
       githubUrl: "https://github.com/sohamchavan07/porsche",
       liveUrl: "https://porsche-casestudy.vercel.app/",
       demoUrl: "https://porsche-casestudy.vercel.app/",
-      date: "2024",
+      date: "2025",
       client: "Porsche",
     },
     {
@@ -90,7 +92,7 @@ const Projects = () => {
       githubUrl: "https://github.com/sohamchavan07/tic-tac-toe",
       liveUrl: "https://tic-tac-toe-blond-tau-89.vercel.app/",
       demoUrl: "https://tic-tac-toe-blond-tau-89.vercel.app/",
-      date: "2023",
+      date: "2025",
       client: "Personal",
     }
   ];
@@ -198,15 +200,22 @@ const Projects = () => {
 
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech) => (
-                    <Badge
-                      key={tech}
-                      variant="secondary"
-                      className="text-xs bg-muted/50 hover:bg-primary/20 transition-colors"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
+                  {project.technologies.map((tech) => {
+                    const isHighlighted = highlightedTechnologies.has(tech);
+                    return (
+                      <Badge
+                        key={tech}
+                        variant={isHighlighted ? "default" : "secondary"}
+                        className={`text-xs transition-colors ${
+                          isHighlighted
+                            ? "bg-gradient-primary text-background shadow-glow-primary"
+                            : "bg-muted/50 hover:bg-primary/20"
+                        }`}
+                      >
+                        {tech}
+                      </Badge>
+                    );
+                  })}
                 </div>
 
                 {/* Features */}

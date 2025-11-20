@@ -123,15 +123,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      {/* Back to Top Button */}
-      <Button
-        onClick={scrollToTop}
-        size="sm"
-        className="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary z-50 opacity-80 hover:opacity-100 transition-opacity"
-      >
-        <ArrowUp className="w-5 h-5" />
-      </Button>
     </footer>
   );
 };
