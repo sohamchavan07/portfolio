@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download, ArrowDown, Twitter } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
-import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
@@ -44,7 +43,6 @@ const Hero = () => {
       {/* Background */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
-        style={{ backgroundImage: `url(${heroBg})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/95 to-background/90" />
       
