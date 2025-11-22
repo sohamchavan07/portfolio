@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download, ArrowDown, Twitter } from "lucide-react";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
@@ -84,7 +85,7 @@ const Hero = () => {
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-secondary text-white border-0 hover:bg-gradient-primary hover-lift glow-primary"
+                className="bg-gradient-secondary text-black border-0 hover:bg-gradient-primary hover-lift glow-primary"
               >
                 <a href="/assets/Profile.pdf" download>
                   <Download className="w-5 h-5 mr-2" />
@@ -116,7 +117,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-primary rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
               <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-strong hover-lift">
                 <img
-                  src="/assets/profile-photo.jpg"
+                  src={profilePhoto}
                   alt="Soham Chavan"
                   className="w-full h-full object-cover"
                 />
