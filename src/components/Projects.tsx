@@ -10,11 +10,6 @@ import {
   Calendar,
   User
 } from "lucide-react";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import carImage from "@/assets/car.png";
-import porscheImage from "@/assets/porsche.png";
-import tictactoeImage from "@/assets/tictactoe.png";
 
 const highlightedTechnologies = new Set([]);
 
@@ -31,7 +26,7 @@ const Projects = () => {
       title: "3D Portfolio",
       category: "web",
       description: "It's not just a portfolio, it's a playground of ideas. I'm excited to share my updated creative space, where I've put a lot of heart and late nights into showcasing projects that truly inspire me. I hope it inspires you, too.",
-      image: carImage,
+      image: "/assets/car.png",
       technologies: [],
       features: ["Creative Inspiration Shout-Out", "Portfolio Gateway", "Humor & Personality", "User Management"],
       githubUrl: "https://github.com/sohamchavan07/portfolio3d",
@@ -44,7 +39,7 @@ const Projects = () => {
       title: "Tawade Kitchen",
       category: "web",
       description: "A small snack shop website (Tawade Kitchen) showcasing products and contact information.",
-      image: "/tawade_kitchen.png",
+      image: "/assets/tawade_kitchen.png",
       technologies: [],
       features: ["Product Catalog", "Responsive Layout", "Contact Form"],
       githubUrl: "https://github.com/sohamchavan07/tawade_kitchen.git",
@@ -58,7 +53,7 @@ const Projects = () => {
       title: "Ferrari Case Study",
       category: "web",
       description: "Racing Ahead with DevOps — How Ferrari accelerated innovation using Azure DevOps and real-time analytics. A visual case study showcasing branding, performance, and pipeline-driven delivery.",
-      image: "/ferrari.jpeg",
+      image: "/assets/ferrari.jpeg",
       technologies: [],
       features: ["Brand Case Study", "Pipeline Simulations", "Real-time Analytics", "Technical Overview"],
       liveUrl: "https://ferrari-casestudy.vercel.app",
@@ -71,8 +66,8 @@ const Projects = () => {
       id: 4,
       title: "Porsche Case Study",
       category: "web",
-      description: "Porsche App Case Study — My Porsche App is a page that demonstrates the design & thinking behind a luxury automotive app for Porsche. It presents how one might optimize user experience, layout, customer interaction, and branding for a high-end app, illustrating both aesthetic and functional components. It’s built likely using TypeScript & hosted on Vercel.",
-      image: porscheImage,
+      description: "Porsche App Case Study — My Porsche App is a page that demonstrates the design & thinking behind a luxury automotive app for Porsche. It presents how one might optimize user experience, layout, customer interaction, and branding for a high-end app, illustrating both aesthetic and functional components. It's built likely using TypeScript & hosted on Vercel.",
+      image: "/assets/porsche.png",
       technologies: [],
       features: ["Luxury/Brand-Focused Design", "Modern Web Tech Stack", "Structured Case Study", "Aesthetic & Functional Components"],
       githubUrl: "https://github.com/sohamchavan07/porsche",
@@ -85,8 +80,8 @@ const Projects = () => {
       id: 5,
       title: "tic-tac-toe game",
       category: "web",
-      description: "There are selectable difficulty levels (Easy / Medium / Hard) when playing against the computer. You can also set player names and there’s a display of the score (Player 1 vs Player 2 or vs Computer). Includes a restart button to reset the board/game. The site is hosted on Vercel, suggesting a simple, clean implementation intended for fun and demonstrating interactive UI logic.",
-      image: tictactoeImage,
+      description: "There are selectable difficulty levels (Easy / Medium / Hard) when playing against the computer. You can also set player names and there's a display of the score (Player 1 vs Player 2 or vs Computer). Includes a restart button to reset the board/game. The site is hosted on Vercel, suggesting a simple, clean implementation intended for fun and demonstrating interactive UI logic.",
+      image: "/assets/tictactoe.png",
       technologies: [],
       features: ["Multiple Game Modes", "Difficulty Levels", "Customizable Player Names", "Score Tracking"],
       githubUrl: "https://github.com/sohamchavan07/tic-tac-toe",
