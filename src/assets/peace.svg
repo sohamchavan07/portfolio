@@ -1,0 +1,45 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 120 120"
+  role="img"
+  aria-labelledby="title"
+>
+  <title>Peace symbol</title>
+  <circle
+    cx="60"
+    cy="60"
+    r="54"
+    fill="none"
+    stroke="#e9eef3"
+    stroke-width="12"
+    stroke-linecap="round"
+  />
+  <line
+    x1="60"
+    y1="12"
+    x2="60"
+    y2="108"
+    stroke="#e9eef3"
+    stroke-width="12"
+    stroke-linecap="round"
+  />
+  <line
+    x1="60"
+    y1="60"
+    x2="16"
+    y2="104"
+    stroke="#e9eef3"
+    stroke-width="12"
+    stroke-linecap="round"
+  />
+  <line
+    x1="60"
+    y1="60"
+    x2="104"
+    y2="104"
+    stroke="#e9eef3"
+    stroke-width="12"
+    stroke-linecap="round"
+  />
+</svg>
+

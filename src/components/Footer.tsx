@@ -67,7 +67,8 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-primary/20 transition-all duration-300 hover-lift glow-primary group"
+                  aria-label={social.label}
+                  className="touch-target w-11 h-11 rounded-full glass flex items-center justify-center hover:bg-primary/20 transition-all duration-300 hover-lift glow-primary group"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <social.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
@@ -84,7 +85,7 @@ const Footer = () => {
                 <button
                   key={link.label}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-left text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
+                  className="touch-target text-left text-muted-foreground hover:text-primary transition-colors duration-300 text-sm px-1"
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
                   {link.label}
@@ -103,6 +104,7 @@ const Footer = () => {
             </div>
             
             <Button
+              size="lg"
               onClick={() => scrollToSection("#contact")}
               className="bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift"
             >

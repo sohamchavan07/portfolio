@@ -174,6 +174,8 @@ const Contact = () => {
                     onChange={handleInputChange}
                     placeholder="Your name"
                     required
+                    autoComplete="name"
+                    inputMode="text"
                     className="bg-muted/50 border-primary/20 focus:border-primary/40"
                   />
                 </div>
@@ -190,6 +192,8 @@ const Contact = () => {
                     onChange={handleInputChange}
                     placeholder="your@email.com"
                     required
+                    autoComplete="email"
+                    inputMode="email"
                     className="bg-muted/50 border-primary/20 focus:border-primary/40"
                   />
                 </div>
@@ -206,6 +210,8 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="Project inquiry, collaboration, etc."
                   required
+                  autoComplete="off"
+                  inputMode="text"
                   className="bg-muted/50 border-primary/20 focus:border-primary/40"
                 />
               </div>
@@ -222,6 +228,7 @@ const Contact = () => {
                   placeholder="Tell me about your project, timeline, budget, and any specific requirements..."
                   rows={6}
                   required
+                  autoComplete="off"
                   className="bg-muted/50 border-primary/20 focus:border-primary/40 resize-none"
                 />
               </div>

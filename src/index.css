@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Professional Portfolio Design System - Dark theme with vibrant accents */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @layer base {
   :root {
@@ -52,7 +52,7 @@
 
     /* Custom Portfolio Variables */
     --nav-height: 4rem;
-    --section-padding: 5rem;
+    --section-padding: clamp(3rem, 6vw + 1rem, 5rem);
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
@@ -209,6 +209,11 @@
 
   .hover-glow {
     @apply transition-shadow duration-300 hover:shadow-2xl;
+  }
+
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
   }
 
   /* Section styling */

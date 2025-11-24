@@ -47,7 +47,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className="flex items-center gap-6 mt-6 text-sm text-muted-foreground">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-primary" />
                 India
@@ -80,7 +80,7 @@ const About = () => {
 
         {/* Stats */}
         <div className="flex justify-center">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-4xl w-full">
             {stats.map((stat, index) => (
               <Card
                 key={stat.label}

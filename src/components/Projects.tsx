@@ -143,6 +143,9 @@ const Projects = () => {
                   src={project.image}
                   alt={project.title}
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(min-width: 1024px) calc(50vw - 3rem), 100vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute top-4 right-4 space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
@@ -216,7 +219,7 @@ const Projects = () => {
                 {/* Features */}
                 <div className="space-y-2 mb-6">
                   <h4 className="font-medium text-sm">Key Features:</h4>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {project.features.map((feature) => (
                       <div key={feature} className="text-sm text-muted-foreground flex items-center">
                         <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2" />
@@ -230,7 +233,7 @@ const Projects = () => {
                 <div className="flex gap-3">
                   <Button
                     size="sm"
-                    className="bg-gradient-primary hover:bg-gradient-secondary border-0 flex-1"
+                    className="touch-target bg-gradient-primary hover:bg-gradient-secondary border-0 flex-1"
                     onClick={() => {
                       if (project.liveUrl) window.open(project.liveUrl, "_blank");
                     }}
@@ -242,7 +245,7 @@ const Projects = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-primary/20 hover:border-primary/40"
+                      className="touch-target border-primary/20 hover:border-primary/40"
                       onClick={() => window.open(project.githubUrl!, "_blank")}
                     >
                       <Github className="w-4 h-4 mr-2" />
@@ -253,7 +256,7 @@ const Projects = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-primary/20 hover:border-primary/40"
+                      className="touch-target border-primary/20 hover:border-primary/40"
                       onClick={() => window.open(project.demoUrl!, "_blank")}
                     >
                       <Play className="w-4 h-4" />
