@@ -6,6 +6,9 @@ const About = () => {
   const stats = [
     { number: "1+", label: "Years Experience", icon: Calendar },
     { number: "5+", label: "Projects Completed", icon: Code2 },
+    // Use an image path for the Technologies icon. Place your image at public/assets/connection.png
+    { number: "30+", label: "Technologies", icon: "/assets/connection.png" },
+
     //{ number: "30+", label: "Happy Clients", icon: Heart },//
     //{ number: "5", label: "Awards Won", icon: Star },//
   ];
@@ -87,14 +90,35 @@ const About = () => {
                 className="p-6 text-center glass border-primary/10 hover:border-primary/20 transition-all duration-300 hover-lift glow-primary group"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <stat.icon className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+                {/* Render either a React icon component or an image path */}
+                {typeof stat.icon === "string" ? (
+                  // Render the image as a colored mask so it matches the theme color (uses currentColor)
+                  <div
+                    aria-hidden
+                    className="w-8 h-8 mx-auto mb-3 text-primary group-hover:scale-110 transition-transform duration-300"
+                    style={{
+                      WebkitMaskImage: `url(${stat.icon})`,
+                      maskImage: `url(${stat.icon})`,
+                      WebkitMaskSize: 'contain',
+                      maskSize: 'contain',
+                      WebkitMaskRepeat: 'no-repeat',
+                      maskRepeat: 'no-repeat',
+                      WebkitMaskPosition: 'center',
+                      maskPosition: 'center',
+                      // Use currentColor so the mask is filled with the CSS text color (set by text-primary)
+                      backgroundColor: 'currentColor',
+                    }}
+                  />
+                ) : (
+                  <stat.icon className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+                )}
                 <div className="text-3xl font-bold gradient-text mb-2">{stat.number}</div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
               </Card>
             ))}
           </div>
         </div>
-      </div>
+        </div>
     </section>
   );
 };
