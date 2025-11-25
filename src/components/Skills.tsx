@@ -21,18 +21,23 @@ const Skills = () => {
     { id: "backend", label: "Backend", icon: Server },
     { id: "database", label: "Database", icon: Database },
     { id: "tools", label: "Tools", icon: Wrench },
+  { id: "devops", label: "DevOps", icon: Wrench },
   ];
 
   const skillsData = {
     frontend: [
       { name: "JavaScript", level: 95, color: "bg-yellow-500" },
       { name: "HTML/CSS", level: 95, color: "bg-orange-500" },
+      { name: "Tailwind", level: 70, color: "bg-orange-500" },
+
     ],
     backend: [
       { name: "Ruby On Rails", level: 95, color: "bg-green-600" },
-      { name: "Python", level: 85, color: "bg-green-700" },
+      { name: "Python", level: 70, color: "bg-green-700" },
       { name: "REST APIs", level: 95, color: "bg-blue-500" },
       { name: "Microservices", level: 70, color: "bg-purple-500" },
+      { name: "Nginx", level: 70, color: "bg-purple-500" },
+
     ],
   
     database: [
@@ -43,17 +48,31 @@ const Skills = () => {
     ],
     tools: [
       { name: "Git/GitHub", level: 95, color: "bg-gray-700" },
-      { name: "Docker", level: 80, color: "bg-blue-500" },
-      { name: "AWS", level: 75, color: "bg-orange-500" },
-      { name: "CI/CD", level: 80, color: "bg-green-500" },
+      { name: "Chatbots", level: 80, color: "bg-green-500" },
       { name: "Linux", level: 85, color: "bg-yellow-600" },
+      { name: "Monitoring", level: 85, color: "bg-yellow-600" },
+      { name: "Automation", level: 85, color: "bg-yellow-600" },
+      { name: "VS Code", level: 95, color: "bg-gray-700" },
+      { name: "Postman", level: 80, color: "bg-green-500" },
+      { name: "Slack", level: 80, color: "bg-green-500"},
+      { name: "VirtualBox", level: 80, color: "bg-green-500" },
+
+    ],
+
+    devops: [
+      { name: "GitHub", level: 95, color: "bg-gray-700" },
+      { name: "Docker", level: 80, color: "bg-blue-500" },
+      { name: "Amazon Web Services (AWS)", level: 75, color: "bg-orange-500" },
+      { name: "CI/CD", level: 80, color: "bg-green-500" },
+      { name: "GCP", level: 85, color: "bg-yellow-600" },
       { name: "Tailwind css", level: 85, color: "bg-yellow-600" },
       { name: "Vercel", level: 85, color: "bg-yellow-600" },
       { name: "DevOps", level: 85, color: "bg-yellow-600" },
-      { name: "APIs", level: 85, color: "bg-yellow-600" },
+      { name: "Azure", level: 85, color: "bg-yellow-600" },
       { name: "Jenkins", level: 85, color: "bg-yellow-600" },
     ],
   };
+
 
   const currentSkills = skillsData[activeCategory as keyof typeof skillsData];
 
@@ -83,7 +102,12 @@ const Skills = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <category.icon className="w-4 h-4" />
-              {category.label}
+              <span className="uppercase flex items-center gap-1">
+                {category.label.toUpperCase()}
+                {category.id === "devops" && (
+                  <span aria-hidden className="ml-1">Cloude</span>
+                )}
+              </span>
             </button>
           ))}
         </div>
@@ -111,9 +135,7 @@ const Skills = () => {
               />
               
               <div className="mt-2 text-sm text-muted-foreground">
-                {skill.level >= 50 ? "Intermediate" : 
-                 skill.level >= 80 ? "Advanced" : 
-                 skill.level >= 70 ? "Intermediate" : "Beginner"}
+                {skill.level >= 80 ? "Advanced" : skill.level >= 60 ? "Intermediate" : "Beginner"}
               </div>
             </Card>
           ))}

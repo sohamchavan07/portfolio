@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
-import peaceSymbol from "@/assets/peace.svg";
+import peaceSymbol from "@/assets/symbol.png";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -75,7 +75,7 @@ const Navigation = () => {
             <img
               src={peaceSymbol}
               alt="Peace symbol"
-              className={`h-9 w-9 drop-shadow ${
+              className={`h-12 w-16 drop-shadow ${
                 theme === "light" ? "invert" : ""
               }`}
               loading="lazy"
@@ -105,13 +105,7 @@ const Navigation = () => {
                 <Sun className="w-5 h-5" />
               )}
             </button>
-            <Button
-              size="lg"
-              onClick={() => scrollToSection("#contact")}
-              className="bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary text-white"
-              >
-              Get In Touch
-            </Button>
+            
           </div>
 
           {/* Mobile Hamburger Menu Button */}
