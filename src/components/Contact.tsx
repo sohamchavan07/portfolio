@@ -32,7 +32,7 @@ const Contact = () => {
       title: "Email",
       value: "sohamchavan.sc07@gmail.com",
       href: "mailto:sohamchavan.sc07@gmail.com",
-      color: "text-blue-500"
+      color: "text-whte-500"
     },
     {
       icon: Phone,
@@ -46,7 +46,7 @@ const Contact = () => {
       title: "Location",
       value: "Maharashtra, India",
       href: "https://maps.google.com",
-      color: "text-red-500"
+      color: "text-white-500"
     },
   ];
 

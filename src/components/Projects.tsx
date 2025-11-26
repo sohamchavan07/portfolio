@@ -48,8 +48,24 @@ const Projects = () => {
       date: "2025",
       client: "Tawade Kitchen",
     },
+
     {
       id: 3,
+      title: "FREELANCING PROJECT",
+      category: "web",
+      description: "AS A DEDICATED WEB DEVELOPER, I BUILT THIS PERSONAL PORTFOLIO WEBSITE TO SHOWCASE MY TECHNICAL SKILLS,  DESIGN AESTHETIC, AND PROFESSIONAL VISION. THIS.                             PROJECT IS A REFLECTION OF WHO I AM AS A DEVELOPER         BOTH IN MY CODING ABILITY AND MY APPROACH TO                       USEREXPERIENCE..",
+      image: "/assets/shreyash.png",
+      technologies: [],
+      features: ["Freelance", "Responsive Layout", "Contact Form"],
+      githubUrl: "https://github.com/sohamchavan07/tawade_kitchen.git",
+      liveUrl: "https://shreyash-lavhate.vercel.app",
+      demoUrl: "https://shreyash-lavhate.vercel.app",
+      date: "2025",
+      client: "Tawade Kitchen",
+    },
+
+    {
+      id: 4,
       title: "Ferrari Case Study",
       category: "web",
       description: "Racing Ahead with DevOps — How Ferrari accelerated innovation using Azure DevOps and real-time analytics. A visual case study showcasing branding, performance, and pipeline-driven delivery.",
@@ -63,7 +79,7 @@ const Projects = () => {
       client: "Ferrari",
     },
     {
-      id: 4,
+      id: 5,
       title: "Porsche Case Study",
       category: "web",
       description: "Porsche App Case Study — My Porsche App is a page that demonstrates the design & thinking behind a luxury automotive app for Porsche. It presents how one might optimize user experience, layout, customer interaction, and branding for a high-end app, illustrating both aesthetic and functional components. It's built likely using TypeScript & hosted on Vercel.",
@@ -77,7 +93,7 @@ const Projects = () => {
       client: "Porsche",
     },
     {
-      id: 5,
+      id: 6,
       title: "tic-tac-toe game",
       category: "web",
       description: "There are selectable difficulty levels (Easy / Medium / Hard) when playing against the computer. You can also set player names and there's a display of the score (Player 1 vs Player 2 or vs Computer). Includes a restart button to reset the board/game. The site is hosted on Vercel, suggesting a simple, clean implementation intended for fun and demonstrating interactive UI logic.",
@@ -149,24 +165,6 @@ const Projects = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute top-4 right-4 space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                  <Button
-                    size="sm"
-                    className="bg-background/20 backdrop-blur-sm border-0 hover:bg-primary"
-                    onClick={() => {
-                      if (project.liveUrl) window.open(project.liveUrl, "_blank");
-                    }}
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </Button>
-                  {project.githubUrl && (
-                    <Button
-                      size="sm"
-                      className="bg-background/20 backdrop-blur-sm border-0 hover:bg-primary"
-                      onClick={() => window.open(project.githubUrl!, "_blank")}
-                    >
-                      <Github className="w-4 h-4" />
-                    </Button>
-                  )}
                 </div>
               </div>
 
