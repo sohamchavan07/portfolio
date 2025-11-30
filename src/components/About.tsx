@@ -7,7 +7,7 @@ const About = () => {
     { number: "1+", label: "Years Experience", icon: Calendar },
     { number: "5+", label: "Projects Completed", icon: Code2 },
     // Use an image path for the Technologies icon. Place your image at public/assets/connection.png
-    { number: "30+", label: "Technologies", icon: "/assets/connection.png" },
+    { number: "20+", label: "Technologies", icon: "/assets/connection.png" },
 
     //{ number: "30+", label: "Happy Clients", icon: Heart },//
     //{ number: "5", label: "Awards Won", icon: Star },//

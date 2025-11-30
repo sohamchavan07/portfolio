@@ -48,7 +48,7 @@ const Skills = () => {
     ],
     tools: [
       { name: "Git/GitHub", level: 95, color: "bg-gray-700" },
-      { name: "Chatbots", level: 80, color: "bg-green-500" },
+      { name: "Chatbots", level: 85, color: "bg-green-500" },
       { name: "Linux", level: 85, color: "bg-yellow-600" },
       { name: "Monitoring", level: 85, color: "bg-yellow-600" },
       { name: "Automation", level: 85, color: "bg-yellow-600" },
@@ -63,13 +63,12 @@ const Skills = () => {
       { name: "GitHub", level: 95, color: "bg-gray-700" },
       { name: "Docker", level: 80, color: "bg-blue-500" },
       { name: "Amazon Web Services (AWS)", level: 75, color: "bg-orange-500" },
-      { name: "CI/CD", level: 80, color: "bg-green-500" },
-      { name: "GCP", level: 85, color: "bg-yellow-600" },
-      { name: "Tailwind css", level: 85, color: "bg-yellow-600" },
+      { name: "CI/CD", level: 85, color: "bg-green-500" },
+      { name: "GCP", level: 75, color: "bg-yellow-600" },
       { name: "Vercel", level: 85, color: "bg-yellow-600" },
       { name: "DevOps", level: 85, color: "bg-yellow-600" },
-      { name: "Azure", level: 85, color: "bg-yellow-600" },
-      { name: "Jenkins", level: 85, color: "bg-yellow-600" },
+      { name: "Azure", level: 75, color: "bg-yellow-600" },
+      { name: "Jenkins", level: 75, color: "bg-yellow-600" },
     ],
   };
 
