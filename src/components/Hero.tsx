@@ -6,7 +6,7 @@ import profilePhoto from "@/assets/profile-photo.jpg";
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const titles = ["Full Stack Developer", "Problem Solver", "Tech Enthusiast"];
+  const titles = ["Full Stack Developer", "Problem Solver", "Freelancer", "Tech Enthusiast"];
 
   useEffect(() => {
     const currentTitle = titles[currentIndex];
