@@ -65,7 +65,22 @@ const Projects = () => {
     },
 
     {
-      id: 4,
+      "id": 4,
+      "title": "SHIVKUMAR REALTORS",
+      "category": "web",
+      "description": "DEVELOPED A MODERN REAL ESTATE WEBSITE USING FRAMER FOR SHIVKUMAR REALTORS, A PUNE-BASED PROPERTY FIRM. THIS PROJECT FEATURES RESPONSIVE DESIGN, PROFESSIONAL LAYOUT, AND MARKETING-FOCUSED SECTIONS TO PROMOTE HIGH-VALUE PROPERTIES LIKE RESORT DEVELOPMENTS AND STUDIO APARTMENTS.",
+      "image": "/assets/shivkumarrealtors.png",
+      "technologies": [],
+      "features": ["Client Project", "Real Estate Marketing", "Professional Landing Page"],
+      "githubUrl": "",
+      "liveUrl": "https://shivkumarrealtors.framer.website",
+      "demoUrl": "https://shivkumarrealtors.framer.website",
+      "date": "2025",
+      "client": "ShivkumarRealtors"
+    },
+    
+    {
+      id: 5,
       title: "Ferrari Case Study",
       category: "web",
       description: "Racing Ahead with DevOps — How Ferrari accelerated innovation using Azure DevOps and real-time analytics. A visual case study showcasing branding, performance, and pipeline-driven delivery.",
@@ -78,8 +93,9 @@ const Projects = () => {
       date: "2025",
       client: "Ferrari",
     },
+
     {
-      id: 5,
+      id: 6,
       title: "Porsche Case Study",
       category: "web",
       description: "Porsche App Case Study — My Porsche App is a page that demonstrates the design & thinking behind a luxury automotive app for Porsche. It presents how one might optimize user experience, layout, customer interaction, and branding for a high-end app, illustrating both aesthetic and functional components. It's built likely using TypeScript & hosted on Vercel.",
@@ -93,7 +109,7 @@ const Projects = () => {
       client: "Porsche",
     },
     {
-      id: 6,
+      id: 7,
       title: "tic-tac-toe game",
       category: "web",
       description: "There are selectable difficulty levels (Easy / Medium / Hard) when playing against the computer. You can also set player names and there's a display of the score (Player 1 vs Player 2 or vs Computer). Includes a restart button to reset the board/game. The site is hosted on Vercel, suggesting a simple, clean implementation intended for fun and demonstrating interactive UI logic.",
