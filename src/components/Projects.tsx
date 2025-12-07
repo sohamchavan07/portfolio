@@ -23,7 +23,7 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "3D Portfolio",
+      title: "3D PORTFOLIO",
       category: "web",
       description: "It's not just a portfolio, it's a playground of ideas. I'm excited to share my updated creative space, where I've put a lot of heart and late nights into showcasing projects that truly inspire me. I hope it inspires you, too.",
       image: "/assets/car.png",
@@ -36,12 +36,12 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "Tawade Kitchen",
+      title: "TAWADE KITCHEN",
       category: "web",
       description: "A small snack shop website (Tawade Kitchen) showcasing products and contact information.",
       image: "/assets/tawade_kitchen.png",
       technologies: [],
-      features: ["Product Catalog", "Responsive Layout", "Contact Form"],
+      features: ["Product Catalog", "Responsive Layout", "Contact Form", "Branding"],
       githubUrl: "https://github.com/sohamchavan07/tawade_kitchen.git",
       liveUrl: "https://tawade-kitchen.vercel.app",
       demoUrl: "https://tawade-kitchen.vercel.app",
@@ -57,11 +57,11 @@ const Projects = () => {
       image: "/assets/shreyash.png",
       technologies: [],
       features: ["Freelance", "Responsive Layout", "Contact Form"],
-      githubUrl: "https://github.com/sohamchavan07/tawade_kitchen.git",
+      githubUrl: "",
       liveUrl: "https://shreyash-lavhate.vercel.app",
       demoUrl: "https://shreyash-lavhate.vercel.app",
       date: "2025",
-      client: "Tawade Kitchen",
+      client: "UI/UX Designer",
     },
 
     {
@@ -78,10 +78,26 @@ const Projects = () => {
       "date": "2025",
       "client": "ShivkumarRealtors"
     },
-    
+
+
     {
-      id: 5,
-      title: "Ferrari Case Study",
+      "id": 6,
+     title: "HOTEL NYALA",
+      category: "web",
+      description: "Hotel Nyala is a conceptual hotel website created to showcase visual storytelling, clean structure, and modern web aesthetics. The site presents an imaginary luxury hotel brand, allowing you to demonstrate your creativity, design sense, and ability to build polished digital experiences.",
+      image: "/assets/hotelnyala.png",
+      technologies: [],
+      features: ["Freelance", "Responsive Layout", "Contact Form", "Branding"],
+      githubUrl: "https://github.com/sohamchavan07/hotel-nyala",
+      liveUrl: "https://hotel-nyala.vercel.app",
+      demoUrl: "https://hotel-nyala.vercel.app",
+      date: "2025",
+      client: "Personal",
+    },
+
+    {
+      id: 7,
+      title: "FERRARI CASE STUDY WITH DevOps",
       category: "web",
       description: "Racing Ahead with DevOps — How Ferrari accelerated innovation using Azure DevOps and real-time analytics. A visual case study showcasing branding, performance, and pipeline-driven delivery.",
       image: "/assets/ferrari.jpeg",
@@ -91,12 +107,12 @@ const Projects = () => {
       githubUrl: "https://github.com/sohamchavan07/Ferrari/",
       demoUrl: "https://ferrari-casestudy.vercel.app/",
       date: "2025",
-      client: "Ferrari",
+      client: "Personal",
     },
 
     {
-      id: 6,
-      title: "Porsche Case Study",
+      id: 8,
+      title: "PORSCHE CASE STYDY",
       category: "web",
       description: "Porsche App Case Study — My Porsche App is a page that demonstrates the design & thinking behind a luxury automotive app for Porsche. It presents how one might optimize user experience, layout, customer interaction, and branding for a high-end app, illustrating both aesthetic and functional components. It's built likely using TypeScript & hosted on Vercel.",
       image: "/assets/porsche.png",
@@ -106,11 +122,11 @@ const Projects = () => {
       liveUrl: "https://porsche-casestudy.vercel.app/",
       demoUrl: "https://porsche-casestudy.vercel.app/",
       date: "2025",
-      client: "Porsche",
+      client: "Personal",
     },
     {
-      id: 7,
-      title: "tic-tac-toe game",
+      id: 9,
+      title: "TIC-TAC-TOE GAME",
       category: "web",
       description: "There are selectable difficulty levels (Easy / Medium / Hard) when playing against the computer. You can also set player names and there's a display of the score (Player 1 vs Player 2 or vs Computer). Includes a restart button to reset the board/game. The site is hosted on Vercel, suggesting a simple, clean implementation intended for fun and demonstrating interactive UI logic.",
       image: "/assets/tictactoe.png",
