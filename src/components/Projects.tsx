@@ -81,7 +81,7 @@ const Projects = () => {
 
 
     {
-      "id": 6,
+      "id": 5,
      title: "HOTEL NYALA",
       category: "web",
       description: "Hotel Nyala is a conceptual hotel website created to showcase visual storytelling, clean structure, and modern web aesthetics. The site presents an imaginary luxury hotel brand, allowing you to demonstrate your creativity, design sense, and ability to build polished digital experiences.",
@@ -93,6 +93,21 @@ const Projects = () => {
       demoUrl: "https://hotel-nyala.vercel.app",
       date: "2025",
       client: "Personal",
+    },
+
+    {
+      id: 6,
+      title: "RAILS PAYMENT GATEWAY",
+      category: "web",
+      description: "A robust and secure payment gateway built using Ruby on Rails, designed to integrate seamless payment processing capabilities into web applications. This project demonstrates backend proficiency in Rails, API integrations, and secure transaction handling.",
+      image: "/assets/payment.png",
+      technologies: [],
+      features: ["Secure Transactions", "API-based Payment Flow", "Modular Architecture"],
+      githubUrl: "https://github.com/sohamchavan07/Payment-Gateway",
+      liveUrl: "",
+      demoUrl: "",
+      date: "2025",
+      client: "Payment Integration"
     },
 
     {
