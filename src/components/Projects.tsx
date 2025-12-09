@@ -122,7 +122,7 @@ const Projects = () => {
       features: ["Ruby", "Rails", "APIs", "Backend Development"],
       githubUrl: "https://github.com/sohamchavan07/book-store.git",
       liveUrl: "https://github.com/sohamchavan07/book-store.git",
-      demoUrl: "https://github.com/sohamchavan07/book-store.git",
+      demoUrl: "",
       date: "2025",
       client: "Assignment Project",
     },
