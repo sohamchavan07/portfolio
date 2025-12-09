@@ -49,7 +49,7 @@ const Projects = () => {
       client: "Tawade Kitchen",
     },
 
-    {
+    /*{
       id: 3,
       title: "FREELANCING PROJECT",
       category: "web",
@@ -62,7 +62,7 @@ const Projects = () => {
       demoUrl: "https://shreyash-lavhate.vercel.app",
       date: "2025",
       client: "UI/UX Designer",
-    },
+    },*/
 
     {
       "id": 4,
