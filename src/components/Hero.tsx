@@ -94,7 +94,7 @@ const Hero = () => {
                 size="lg"
                 className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-3 sm:px-6 sm:py-3 bg-gradient-secondary text-black border-0 hover:bg-gradient-primary hover-lift glow-primary"
               >
-                <a href="/assets/Profile.pdf" download aria-label="Download Resume" className="flex items-center justify-center gap-2 w-full">
+                <a href="/assets/Resume.pdf" download aria-label="Download Resume" className="flex items-center justify-center gap-2 w-full">
                   <Download className="w-5 h-5 mr-2" />
                   <span className="truncate">Download Resume</span>
                 </a>
