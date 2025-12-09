@@ -5,7 +5,7 @@ import { Calendar, MapPin, Car, Code2, Heart, Star } from "lucide-react";
 const About = () => {
   const stats = [
     { number: "1+", label: "Years Experience", icon: Calendar },
-    { number: "5+", label: "Projects Completed", icon: Code2 },
+    { number: "7+", label: "Projects Completed", icon: Code2 },
     // Use an image path for the Technologies icon. Place your image at public/assets/connection.png
     { number: "20+", label: "Technologies", icon: "/assets/connection.png" },
 
