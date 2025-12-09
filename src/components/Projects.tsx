@@ -106,7 +106,7 @@ const Projects = () => {
       technologies: [],
       features: ["Secure Transactions", "API-based Payment Flow", "Modular Architecture"],
       githubUrl: "https://github.com/sohamchavan07/Payment-Gateway",
-      liveUrl: "",
+      liveUrl: "https://github.com/sohamchavan07/Payment-Gateway",
       demoUrl: "",
       date: "2025",
       client: "Payment Integration"
