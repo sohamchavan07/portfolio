@@ -49,6 +49,8 @@ const Projects = () => {
       client: "Tawade Kitchen",
     },
 
+     
+
     /*{
       id: 3,
       title: "FREELANCING PROJECT",
@@ -108,6 +110,21 @@ const Projects = () => {
       demoUrl: "",
       date: "2025",
       client: "Payment Integration"
+    },
+
+    {
+      id: 3,
+      title: "BOOK STORE",
+      category: "web",
+      description: "THIS PROJECT IS MY ASSIGNMENT WHERE USER CAN SIGN IN AND SIGN UP. ADD THE BOOKS CREATE, READ, UPDATE, DELETE   IT. I USE RUBY AND RAILS IN THIS PROJECT. ASSOCIATE IN SUPERHERO DESIGN + CODE SCHOOL .",
+      image: "/assets/book.png",
+      technologies: [],
+      features: ["Ruby", "Rails", "APIs", "Backend Development"],
+      githubUrl: "https://github.com/sohamchavan07/book-store.git",
+      liveUrl: "https://github.com/sohamchavan07/book-store.git",
+      demoUrl: "https://github.com/sohamchavan07/book-store.git",
+      date: "2025",
+      client: "Assignment Project",
     },
 
     {
