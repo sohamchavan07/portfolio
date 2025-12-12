@@ -14,69 +14,22 @@
     <meta name="description" content="Professional full stack developer specializing in Ruby on Rails, JavaScript, TypeScript, React, and modern web technologies. Creating innovative digital solutions with beautiful user experiences. Expert in PostgreSQL, MongoDB, Docker, AWS, and DevOps." />
     <meta name="author" content="Soham Chavan" />
     <meta name="keywords" content="full stack developer, web developer, portfolio, ruby on rails, javascript, typescript, react, node.js, postgresql, mongodb, docker, aws, devops, frontend developer, backend developer, web development, software engineer, python, rest api, microservices, tailwind css, three.js, vercel, ci/cd, jenkins, e-commerce development, responsive design, seo optimization, performance tuning, progressive web apps, database design, api development, git, github, linux, redis, mysql, full stack web development, modern web technologies, interactive websites, 3D web development, case study, portfolio website, soham chavan" />
-  <!-- Prefer SVG for crisp scaling; keep PNG/ICO fallbacks for older browsers -->
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" sizes="any" />
-  <link rel="icon" href="/assets/favicon-512.png" type="image/png" sizes="512x512" />
-  <link rel="icon" href="/assets/favicon-192.png" type="image/png" sizes="192x192" />
-  <!-- Prefer root-level fallbacks where available. Use existing public assets if root files aren't present. -->
-  <link rel="icon" href="/assets/favicon.png" type="image/png" sizes="32x32" />
-  <link rel="icon" href="/assets/favicon.png" type="image/png" sizes="16x16" />
-  <link rel="shortcut icon" href="/assets/favicon.png" type="image/png" />
-  <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    
+    <!-- Favicons - Prefer SVG for crisp scaling; keep PNG/ICO fallbacks for older browsers -->
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" sizes="any" />
+    <link rel="icon" href="/assets/favicon-512.png" type="image/png" sizes="512x512" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180" />
     <link rel="author" href="https://www.linkedin.com/in/sohamchavan07" />
-    <link rel="me" href="https://www.linkedin.com/in/sohamchavan07" />
+    
+    <!-- Critical CSS - Loaded early for theme initialization -->
+    <link rel="stylesheet" href="/critical.css" />
 
-    <style>
-      /* Professional Portfolio Design System - Dark theme with vibrant accents */
-      :root{
-        --bg: #0b0f12;
-        --surface: #0f1620;
-        --muted: #9aa6b2;
-        --text: #e6eef3;
-        --accent: #7c5cff;       /* primary vibrant purple */
-        --accent-2: #00d1b2;     /* secondary teal */
-        --glass: rgba(255,255,255,0.04);
-        --radius: 12px;
-        --shadow: 0 6px 18px rgba(2,6,23,0.6);
-        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Helvetica Neue", monospace;
-      }
-
-      /* Light theme overrides (toggled by document.documentElement.classList.add('light')) */
-      .light{
-        --bg: #f7f8fb;
-        --surface: #ffffff;
-        --muted: #55606a;
-        --text: #0b1720;
-        --glass: rgba(2,6,23,0.04);
-        --shadow: 0 6px 18px rgba(8,15,25,0.06);
-      }
-
-      /* Base */
-      html,body{height:100%}
-      html{background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;}
-      body{margin:0;min-height:100vh;display:flex;flex-direction:column;transition:background-color .2s linear,color .2s linear;}
-
-      /* Utilities */
-      .surface{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
-      .muted{color:var(--muted)}
-      .accent{color:var(--accent)}
-      .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border:none;padding:10px 16px;border-radius:10px;cursor:pointer;box-shadow:0 6px 20px rgba(124,92,255,0.18)}
-      .glass{background:var(--glass);backdrop-filter:blur(6px);border-radius:var(--radius)}
-
-      /* Accessibility & preferences */
-      @media (prefers-reduced-motion: reduce){
-        *{transition:none!important}
-      }
-    </style>
-
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2S62WJH8X"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-B2S62WJH8X');
     </script>
     
@@ -94,7 +47,7 @@
     <meta property="og:see_also" content="https://www.linkedin.com/in/sohamchavan07" />
     <meta property="profile:username" content="sohamchavan07" />
     
-    <!-- Twitter -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://www.sohamchavan.site/" />
     <meta name="twitter:title" content="Soham Chavan - Full Stack Developer Portfolio" />
@@ -122,6 +75,8 @@
     <!-- Category -->
     <meta name="category" content="Technology, Web Development, Software Development, Portfolio" />
     <link rel="alternate" type="application/rss+xml" title="Soham Chavan Updates" href="https://www.sohamchavan.site/rss.xml" />
+    
+    <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -143,12 +98,14 @@
         ]
       }
     </script>
+    
+    <!-- Noupe Embed Script -->
     <script src='https://www.noupe.com/embed/0199af5b73667d8d9c702d2fc3712d932de4.js'></script>
   </head>
 
   <body>
+    <!-- Theme initialization script - runs immediately to prevent flash -->
     <script>
-      // Initialize theme ASAP to avoid flash; default is dark
       (function() {
         try {
           var saved = localStorage.getItem('theme');
@@ -166,7 +123,11 @@
         } catch (e) {}
       })();
     </script>
+    
+    <!-- React root -->
     <div id="root"></div>
+    
+    <!-- Vite will inject the module script here in development, or replace with production assets during build -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
