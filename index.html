@@ -21,17 +21,17 @@
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180" />
     <link rel="author" href="https://www.linkedin.com/in/sohamchavan07" />
     
+    <!-- Resource Hints - Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.noupe.com" />
+    
+    <!-- Preload critical CSS for faster rendering -->
+    <link rel="preload" href="/critical.css" as="style" />
     <!-- Critical CSS - Loaded early for theme initialization -->
     <link rel="stylesheet" href="/critical.css" />
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2S62WJH8X"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-B2S62WJH8X');
-    </script>
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -99,8 +99,6 @@
       }
     </script>
     
-    <!-- Noupe Embed Script -->
-    <script src='https://www.noupe.com/embed/0199af5b73667d8d9c702d2fc3712d932de4.js'></script>
   </head>
 
   <body>
@@ -129,5 +127,15 @@
     
     <!-- Vite will inject the module script here in development, or replace with production assets during build -->
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Deferred non-critical scripts - Load after page content -->
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-B2S62WJH8X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B2S62WJH8X');
+    </script>
+    <script defer src='https://www.noupe.com/embed/0199af5b73667d8d9c702d2fc3712d932de4.js'></script>
   </body>
 </html>

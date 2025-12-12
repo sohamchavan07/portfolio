@@ -129,6 +129,7 @@ const Hero = () => {
                   alt="Soham Chavan"
                   className="w-full h-full object-cover"
                   loading="eager"
+                  fetchPriority="high"
                   decoding="async"
                   width={512}
                   height={512}
