@@ -13,7 +13,8 @@ import {
   Github,
   Linkedin,
   Twitter,
-  MessageCircle
+  MessageCircle,
+  Calendar
 } from "lucide-react";
 
 const Contact = () => {
@@ -250,6 +251,32 @@ const Contact = () => {
                     Send Message
                   </>
                 )}
+              </Button>
+
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t border-border" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-background px-2 text-muted-foreground">Or</span>
+                </div>
+              </div>
+
+              <Button
+                asChild
+                type="button"
+                size="lg"
+                variant="outline"
+                className="w-full border-primary/20 hover:bg-primary/10 hover-lift"
+              >
+                <a
+                  href="https://calendly.com/soham777chavan777/new-meeting"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Schedule a Call
+                </a>
               </Button>
 
               <p className="text-xs text-muted-foreground text-center">
