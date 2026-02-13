@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Download, ArrowDown, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, Download, ArrowDown, Twitter, Calendar } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Hero = () => {
@@ -92,7 +92,22 @@ const Hero = () => {
               <Button
                 asChild
                 size="lg"
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-3 sm:px-6 sm:py-3 bg-gradient-secondary text-black border-0 hover:bg-gradient-primary hover-lift glow-primary"
+                className="bg-gradient-secondary text-black border-0 hover:bg-gradient-primary hover-lift glow-primary"
+              >
+                <a
+                  href="https://calendly.com/soham777chavan777/new-meeting"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Schedule a Call
+                </a>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-primary/20 hover:bg-primary/10 hover-lift"
               >
                 <a href="/assets/Resume.pdf" download aria-label="Download Resume" className="flex items-center justify-center gap-2 w-full">
                   <Download className="w-5 h-5 mr-2" />
