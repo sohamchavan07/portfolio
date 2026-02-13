@@ -14,9 +14,9 @@ const Portfolio = () => {
       <main className="pt-20 md:pt-24">
         <Hero />
         <About />
+        <Projects />
         <Skills />
         <Services />
-        <Projects />
         <Contact />
       </main>
       <Footer />
