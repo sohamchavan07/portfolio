@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { 
-  ExternalLink, 
-  Github, 
+import {
+  ExternalLink,
+  Github,
   Play,
   Filter,
   Calendar,
@@ -15,6 +15,27 @@ const highlightedTechnologies = new Set([]);
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const handleToggleProjects = (expand) => {
+    setShowAllProjects(expand);
+    // Scroll to projects section when showing featured projects
+    if (!expand) {
+      setTimeout(() => {
+        const projectsSection = document.getElementById("projects");
+        if (projectsSection) {
+          projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 0);
+    }
+  };
+
+  useEffect(() => {
+    // Scroll to top of projects section after toggling projects
+    const projectsSection = document.getElementById("projects");
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [showAllProjects]);
 
   const filters = [
     { id: "all", label: "All Projects" },
@@ -49,7 +70,7 @@ const Projects = () => {
       client: "Tawade Kitchen",
     },
 
-     
+
 
     /*{
       id: 3,
@@ -84,7 +105,7 @@ const Projects = () => {
 
     {
       "id": 5,
-     title: "HOTEL NYALA",
+      title: "HOTEL NYALA",
       category: "web",
       description: "Hotel Nyala is a conceptual hotel website created to showcase visual storytelling, clean structure, and modern web aesthetics. The site presents an imaginary luxury hotel brand, allowing you to demonstrate your creativity, design sense, and ability to build polished digital experiences.",
       image: "/assets/hotelnyala.png",
@@ -172,8 +193,11 @@ const Projects = () => {
     }
   ];
 
-  const filteredProjects = activeFilter === "all" 
-    ? projects 
+  // Featured projects to show initially
+  const featuredProjectIds = new Set([1, 2, 4, 5, 6, 3]);
+
+  const filteredProjects = activeFilter === "all"
+    ? (showAllProjects ? projects : projects.filter(p => featuredProjectIds.has(p.id)))
     : projects.filter(project => project.category === activeFilter);
 
   return (
@@ -195,11 +219,10 @@ const Projects = () => {
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`flex items-center gap-2 px-6 py-2 rounded-full transition-all duration-300 ${
-                  activeFilter === filter.id
+                className={`flex items-center gap-2 px-6 py-2 rounded-full transition-all duration-300 ${activeFilter === filter.id
                     ? "bg-gradient-primary text-background shadow-glow-primary"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/20"
-                }`}
+                  }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <Filter className="w-4 h-4" />
@@ -253,7 +276,7 @@ const Projects = () => {
                 <h3 className="text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                
+
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   {project.description}
                 </p>
@@ -266,11 +289,10 @@ const Projects = () => {
                       <Badge
                         key={tech}
                         variant={isHighlighted ? "default" : "secondary"}
-                        className={`text-xs transition-colors ${
-                          isHighlighted
+                        className={`text-xs transition-colors ${isHighlighted
                             ? "bg-gradient-primary text-background shadow-glow-primary"
                             : "bg-muted/50 hover:bg-primary/20"
-                        }`}
+                          }`}
                       >
                         {tech}
                       </Badge>
@@ -329,30 +351,48 @@ const Projects = () => {
             </Card>
           ))}
         </div>
-        
+
         {/* More Projects CTA */}
-        <div className="text-center mt-16">
-          <Card className="max-w-2xl mx-auto p-8 glass border-primary/10">
-            <h3 className="text-2xl font-semibold mb-4">
-              Interested in More Projects?
-            </h3>
-            <p className="text-muted-foreground mb-6">
-              These are just a few highlights from my portfolio. I've worked on many more projects across 
-              various industries and technologies. Feel free to reach out to see more work samples.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg"
-                className="bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary"
-                onClick={() => window.open("https://github.com/sohamchavan07", "_blank")}
-              >
-                <Github className="w-5 h-5 mr-2" />
-                View All on GitHub
-              </Button>
-             
-            </div>
-          </Card>
-        </div>
+        {!showAllProjects ? (
+          <div className="text-center mt-16">
+            <Card className="max-w-2xl mx-auto p-8 glass border-primary/10">
+              <h3 className="text-2xl font-semibold mb-4">
+                Interested in More Projects?
+              </h3>
+              <p className="text-muted-foreground mb-6">
+                These are just a few highlights from my portfolio. I've worked on many more projects across
+                various industries and technologies. Feel free to reach out to see more work samples.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  size="lg"
+                  className="bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary"
+                  onClick={() => handleToggleProjects(true)}
+                >
+                  View All Projects
+                </Button>
+                <Button
+                  size="lg"
+                  className="bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary"
+                  onClick={() => window.open("https://github.com/sohamchavan07", "_blank")}
+                >
+                  <Github className="w-5 h-5 mr-2" />
+                  View All on GitHub
+                </Button>
+              </div>
+            </Card>
+          </div>
+        ) : (
+          <div className="text-center mt-16">
+            <Button
+              size="lg"
+              className="bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary mx-auto"
+              onClick={() => handleToggleProjects(false)}
+            >
+              Show Featured Projects
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
