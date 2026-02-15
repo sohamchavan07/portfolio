@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -18,24 +18,16 @@ const Projects = () => {
   const [showAllProjects, setShowAllProjects] = useState(false);
   const handleToggleProjects = (expand) => {
     setShowAllProjects(expand);
-    // Scroll to projects section when showing featured projects
-    if (!expand) {
-      setTimeout(() => {
-        const projectsSection = document.getElementById("projects");
-        if (projectsSection) {
-          projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 0);
-    }
+    // Scroll to projects section when showing featured projects or all projects
+    setTimeout(() => {
+      const projectsSection = document.getElementById("projects");
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
   };
 
-  useEffect(() => {
-    // Scroll to top of projects section after toggling projects
-    const projectsSection = document.getElementById("projects");
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }, [showAllProjects]);
+
 
   const filters = [
     { id: "all", label: "All Projects" },
@@ -220,8 +212,8 @@ const Projects = () => {
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
                 className={`flex items-center gap-2 px-6 py-2 rounded-full transition-all duration-300 ${activeFilter === filter.id
-                    ? "bg-gradient-primary text-background shadow-glow-primary"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted/20"
+                  ? "bg-gradient-primary text-background shadow-glow-primary"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/20"
                   }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -290,8 +282,8 @@ const Projects = () => {
                         key={tech}
                         variant={isHighlighted ? "default" : "secondary"}
                         className={`text-xs transition-colors ${isHighlighted
-                            ? "bg-gradient-primary text-background shadow-glow-primary"
-                            : "bg-muted/50 hover:bg-primary/20"
+                          ? "bg-gradient-primary text-background shadow-glow-primary"
+                          : "bg-muted/50 hover:bg-primary/20"
                           }`}
                       >
                         {tech}
