@@ -7,78 +7,8 @@
 /* Professional Portfolio Design System - Dark theme with vibrant accents */
 
 @layer base {
+  /* Default Light Mode Variables */
   :root {
-    /* Dark Portfolio Color Scheme */
-    --background: 220 25% 6%;
-    --foreground: 220 20% 95%;
-
-    --card: 220 20% 8%;
-    --card-foreground: 220 20% 95%;
-
-    --popover: 220 20% 8%;
-    --popover-foreground: 220 20% 95%;
-
-    /* Vibrant Primary - Electric Blue */
-    --primary: 217 91% 60%;
-    --primary-foreground: 220 25% 6%;
-
-    /* Accent - Coral/Red from reference */
-    --accent: 0 84% 60%;
-    --accent-foreground: 220 25% 6%;
-
-    /* Secondary - Purple gradient support */
-    --secondary: 260 100% 70%;
-    --secondary-foreground: 220 25% 6%;
-
-    /* Success - Emerald */
-    --success: 142 76% 36%;
-    --success-foreground: 220 20% 95%;
-
-    /* Warning - Amber */
-    --warning: 38 92% 50%;
-    --warning-foreground: 220 25% 6%;
-
-    --muted: 220 15% 15%;
-    --muted-foreground: 220 10% 60%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 220 20% 95%;
-
-    --border: 220 15% 15%;
-    --input: 220 15% 12%;
-    --ring: 217 91% 60%;
-
-    --radius: 0.75rem;
-
-    /* Custom Portfolio Variables */
-    --nav-height: 4rem;
-    --section-padding: clamp(3rem, 6vw + 1rem, 5rem);
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
-    --gradient-secondary: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--secondary)));
-    --gradient-bg: linear-gradient(180deg, hsl(var(--background)), hsl(220 25% 4%));
-    --gradient-card: linear-gradient(145deg, hsl(220 20% 8% / 0.8), hsl(220 15% 10% / 0.6));
-    
-    /* Shadows & Glows */
-    --shadow-soft: 0 8px 32px hsl(220 25% 2% / 0.4);
-    --shadow-medium: 0 16px 64px hsl(220 25% 2% / 0.6);
-    --shadow-strong: 0 24px 96px hsl(220 25% 2% / 0.8);
-    --glow-primary: 0 0 40px hsl(var(--primary) / 0.3);
-    --glow-accent: 0 0 40px hsl(var(--accent) / 0.3);
-    
-    /* Glass Effect */
-    --glass-bg: hsl(220 20% 8% / 0.1);
-    --glass-border: hsl(220 20% 20% / 0.2);
-    --glass-blur: blur(16px);
-    
-    /* Animations */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --animation-duration: 0.6s;
-  }
-  /* Light mode overrides */
-  .light {
     --background: 0 0% 100%;
     --foreground: 222 47% 11%;
 
@@ -113,15 +43,120 @@
     --input: 214 32% 91%;
     --ring: 217 91% 60%;
 
+    --radius: 0.75rem;
+
+    /* Custom Portfolio Variables */
+    --nav-height: 4rem;
+    --section-padding: clamp(3rem, 6vw + 1rem, 5rem);
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--secondary)));
     --gradient-bg: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 20% 98%));
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.9), hsl(210 20% 98% / 0.8));
-
+    
+    /* Shadows & Glows */
     --shadow-soft: 0 8px 24px hsl(0 0% 0% / 0.06);
     --shadow-medium: 0 16px 48px hsl(0 0% 0% / 0.08);
     --shadow-strong: 0 24px 72px hsl(0 0% 0% / 0.12);
     --glow-primary: 0 0 32px hsl(var(--primary) / 0.25);
     --glow-accent: 0 0 32px hsl(var(--accent) / 0.25);
+    
+    /* Glass Effect */
+    --glass-bg: hsl(0 0% 100% / 0.6);
+    --glass-border: hsl(214 32% 91% / 1);
+    --glass-blur: blur(16px);
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --animation-duration: 0.6s;
+  }
 
+  /* Automatic Dark Mode Detection */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* Dark Portfolio Color Scheme */
+      --background: 220 25% 6%;
+      --foreground: 220 20% 95%;
+
+      --card: 220 20% 8%;
+      --card-foreground: 220 20% 95%;
+
+      --popover: 220 20% 8%;
+      --popover-foreground: 220 20% 95%;
+
+      --primary: 217 91% 60%;
+      --primary-foreground: 220 25% 6%;
+
+      --accent: 0 84% 60%;
+      --accent-foreground: 220 25% 6%;
+
+      --secondary: 260 100% 70%;
+      --secondary-foreground: 220 25% 6%;
+
+      --success: 142 76% 36%;
+      --success-foreground: 220 20% 95%;
+
+      --warning: 38 92% 50%;
+      --warning-foreground: 220 25% 6%;
+
+      --muted: 220 15% 15%;
+      --muted-foreground: 220 10% 60%;
+
+      --destructive: 0 84% 60%;
+      --destructive-foreground: 220 20% 95%;
+
+      --border: 220 15% 15%;
+      --input: 220 15% 12%;
+      --ring: 217 91% 60%;
+
+      --gradient-bg: linear-gradient(180deg, hsl(var(--background)), hsl(220 25% 4%));
+      --gradient-card: linear-gradient(145deg, hsl(220 20% 8% / 0.8), hsl(220 15% 10% / 0.6));
+
+      --shadow-soft: 0 8px 32px hsl(220 25% 2% / 0.4);
+      --shadow-medium: 0 16px 64px hsl(220 25% 2% / 0.6);
+      --shadow-strong: 0 24px 96px hsl(220 25% 2% / 0.8);
+      --glow-primary: 0 0 40px hsl(var(--primary) / 0.3);
+      --glow-accent: 0 0 40px hsl(var(--accent) / 0.3);
+
+      --glass-bg: hsl(220 20% 8% / 0.1);
+      --glass-border: hsl(220 20% 20% / 0.2);
+    }
+  }
+
+  /* Keep legacy variables for fallback / manual toggles */
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 0 84% 60%;
+    --accent-foreground: 0 0% 100%;
+    --secondary: 260 100% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 11%;
+    --muted: 210 16% 96%;
+    --muted-foreground: 215 16% 27%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
+    --gradient-bg: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 20% 98%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.9), hsl(210 20% 98% / 0.8));
+    --shadow-soft: 0 8px 24px hsl(0 0% 0% / 0.06);
+    --shadow-medium: 0 16px 48px hsl(0 0% 0% / 0.08);
+    --shadow-strong: 0 24px 72px hsl(0 0% 0% / 0.12);
+    --glow-primary: 0 0 32px hsl(var(--primary) / 0.25);
+    --glow-accent: 0 0 32px hsl(var(--accent) / 0.25);
     --glass-bg: hsl(0 0% 100% / 0.6);
     --glass-border: hsl(214 32% 91% / 1);
   }
@@ -136,9 +171,11 @@
     scroll-behavior: smooth;
   }
 
+  /* Apply variables to your body */
   body {
     @apply bg-background text-foreground font-inter antialiased overflow-x-hidden;
     background: var(--gradient-bg);
+    transition: background 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   }
 
   /* Custom scrollbar */
@@ -258,4 +295,17 @@
   50% {
     background-position: 100% 50%;
   }
+}
+  
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-primary/20 rounded-full;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/40;
 }

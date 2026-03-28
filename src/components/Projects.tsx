@@ -10,12 +10,20 @@ import {
   Calendar,
   User
 } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 const highlightedTechnologies = new Set([]);
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [showAllProjects, setShowAllProjects] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
   const handleToggleProjects = (expand) => {
     setShowAllProjects(expand);
     // Scroll to projects section when showing featured projects or all projects
@@ -225,124 +233,131 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
           {filteredProjects.map((project, index) => (
-            <Card
+            <div
               key={project.id}
-              className="overflow-hidden glass border-primary/10 hover:border-primary/20 transition-all duration-500 hover-lift group animate-slide-up"
+              className="group flex flex-col cursor-pointer animate-slide-up"
               style={{ animationDelay: `${index * 0.2}s` }}
+              onClick={() => setSelectedProject(project)}
             >
               {/* Project Image */}
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden mb-5 rounded-sm">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full aspect-[1.6/1] object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
-                  sizes="(min-width: 1024px) calc(50vw - 3rem), 100vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute top-4 right-4 space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="bg-background/90 text-foreground px-4 py-2 rounded-full text-sm font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
+                    View Details
+                  </div>
                 </div>
               </div>
 
               {/* Project Content */}
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <Badge variant="outline" className="border-primary/20">
-                    {(project.category && (project.category.charAt(0).toUpperCase() + project.category.slice(1))) || "Project"}
-                  </Badge>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
-                      {project.date}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <User className="w-4 h-4" />
-                      {project.client}
-                    </div>
-                  </div>
-                </div>
-
-                <h3 className="text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
+              <div className="flex flex-col">
+                <h3 className="text-xl font-semibold text-foreground tracking-tight mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
 
-                <p className="text-muted-foreground leading-relaxed mb-4">
+                <p className="text-muted-foreground text-[15px] leading-relaxed mb-4 line-clamp-3">
                   {project.description}
                 </p>
 
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech) => {
-                    const isHighlighted = highlightedTechnologies.has(tech);
-                    return (
-                      <Badge
-                        key={tech}
-                        variant={isHighlighted ? "default" : "secondary"}
-                        className={`text-xs transition-colors ${isHighlighted
-                          ? "bg-gradient-primary text-background shadow-glow-primary"
-                          : "bg-muted/50 hover:bg-primary/20"
-                          }`}
-                      >
-                        {tech}
-                      </Badge>
-                    );
-                  })}
-                </div>
-
-                {/* Features */}
-                <div className="space-y-2 mb-6">
-                  <h4 className="font-medium text-sm">Key Features:</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {project.features.map((feature) => (
-                      <div key={feature} className="text-sm text-muted-foreground flex items-center">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2" />
-                        {feature}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex gap-3">
-                  <Button
-                    size="sm"
-                    className="touch-target bg-gradient-primary hover:bg-gradient-secondary border-0 flex-1"
-                    onClick={() => {
-                      if (project.liveUrl) window.open(project.liveUrl, "_blank");
-                    }}
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Open
-                  </Button>
-                  {project.githubUrl && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="touch-target border-primary/20 hover:border-primary/40"
-                      onClick={() => window.open(project.githubUrl!, "_blank")}
-                    >
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
-                    </Button>
-                  )}
-                  {project.demoUrl && (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="touch-target border-primary/20 hover:border-primary/40"
-                      onClick={() => window.open(project.demoUrl!, "_blank")}
-                    >
-                      <Play className="w-4 h-4" />
-                    </Button>
-                  )}
-                </div>
+                <p className="text-sm font-medium text-muted-foreground/60">
+                  {project.date}
+                </p>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
+
+        {/* Project Detail Modal */}
+        <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
+          <DialogContent className="max-w-3xl p-0 overflow-hidden glass border-primary/20 bg-background/95 backdrop-blur-xl max-h-[90vh] flex flex-col">
+            {selectedProject && (
+              <div className="h-full overflow-y-auto custom-scrollbar pb-10">
+                {/* Header Image */}
+                <div className="relative w-full aspect-video overflow-hidden">
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+                </div>
+
+                <div className="p-8 md:p-12 space-y-6">
+                  <DialogHeader>
+                    <div className="space-y-1">
+                      <DialogTitle className="text-4xl font-bold tracking-tight">
+                        {selectedProject.title}
+                      </DialogTitle>
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground pt-2">
+                        {selectedProject.category && (
+                          <Badge variant="outline" className="border-primary/20 text-xs py-0.5">
+                            {selectedProject.category.toUpperCase()}
+                          </Badge>
+                        )}
+                        <div className="flex items-center gap-1.5">
+                          <Calendar className="w-3.5 h-3.5" />
+                          {selectedProject.date}
+                        </div>
+                      </div>
+                    </div>
+                  </DialogHeader>
+
+                  <div className="space-y-6">
+                    <DialogDescription className="text-lg leading-relaxed text-muted-foreground/90">
+                      {selectedProject.description}
+                    </DialogDescription>
+
+                    {selectedProject.features && selectedProject.features.length > 0 && (
+                      <div className="space-y-4">
+                        <h4 className="text-sm font-semibold uppercase tracking-wider text-primary/80">Key Features</h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {selectedProject.features.map((feature) => (
+                            <div key={feature} className="flex items-center text-sm text-muted-foreground/80">
+                              <div className="w-1.5 h-1.5 rounded-full bg-primary/60 mr-2.5" />
+                              {feature}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="pt-8 flex flex-wrap gap-4 items-center border-t border-primary/10 pb-4">
+                      {selectedProject.liveUrl && (
+                        <Button
+                          size="lg"
+                          className="flex-1 sm:flex-none bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary text-white font-semibold flex items-center justify-center gap-2"
+                          onClick={() => window.open(selectedProject.liveUrl, "_blank")}
+                        >
+                          <ExternalLink className="w-5 h-5" />
+                          Visit Site
+                        </Button>
+                      )}
+                      
+                      {selectedProject.githubUrl && (
+                        <Button
+                          size="lg"
+                          className="flex-1 sm:flex-none bg-gradient-secondary hover:bg-gradient-primary border-0 hover-lift glow-primary text-black font-semibold flex items-center justify-center gap-2"
+                          onClick={() => window.open(selectedProject.githubUrl, "_blank")}
+                        >
+                          <Github className="w-5 h-5" />
+                          Code
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
 
         {/* More Projects CTA */}
         {!showAllProjects ? (
