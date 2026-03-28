@@ -190,11 +190,25 @@ const Projects = () => {
       demoUrl: "https://tic-tac-toe-blond-tau-89.vercel.app/",
       date: "2025",
       client: "Personal",
+    },
+    {
+      id: 10,
+      title: "COLLEGEMATCH",
+      category: "web",
+      description: "A smart college recommendation platform that helps students find their ideal match based on academic profiles. It leverages AI to provide personalized reasoning for each recommendation, ensuring students understand why a college fits their goals.",
+      image: "/assets/college-portal.png",
+      technologies: ["Next.js", "React", "Groq AI", "Supabase", "Tailwind CSS"],
+      features: ["AI-Powered Personalization", "Supabase Backend Integration", "Interactive Student Profiling", "Real-time Recommendations"],
+      githubUrl: "https://github.com/sohamchavan07/Students-college-portal",
+      liveUrl: "https://students-college-portal.vercel.app/",
+      demoUrl: "https://students-college-portal.vercel.app/",
+      date: "2025",
+      client: "Personal"
     }
   ];
 
   // Featured projects to show initially
-  const featuredProjectIds = new Set([1, 2, 4, 5, 6, 3]);
+  const featuredProjectIds = new Set([1, 2, 4, 5, 6, 10]);
 
   const filteredProjects = activeFilter === "all"
     ? (showAllProjects ? projects : projects.filter(p => featuredProjectIds.has(p.id)))
