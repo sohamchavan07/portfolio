@@ -44,6 +44,20 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      title: "COLLEGEMATCH",
+      category: "web",
+      description: "A smart college recommendation platform that helps students find their ideal match based on academic profiles. It leverages AI to provide personalized reasoning for each recommendation, ensuring students understand why a college fits their goals.",
+      image: "/assets/college-portal.png",
+      technologies: ["Next.js", "React", "Groq AI", "Supabase", "Tailwind CSS"],
+      features: ["AI-Powered Personalization", "Supabase Backend Integration", "Interactive Student Profiling", "Real-time Recommendations"],
+      githubUrl: "https://github.com/sohamchavan07/Students-college-portal",
+      liveUrl: "https://students-college-portal.vercel.app/",
+      demoUrl: "https://students-college-portal.vercel.app/",
+      date: "2025",
+      client: "Personal"
+    },
+    {
+      id: 10,
       title: "3D PORTFOLIO",
       category: "web",
       description: "It's not just a portfolio, it's a playground of ideas. I'm excited to share my updated creative space, where I've put a lot of heart and late nights into showcasing projects that truly inspire me. I hope it inspires you, too.",
@@ -190,21 +204,8 @@ const Projects = () => {
       demoUrl: "https://tic-tac-toe-blond-tau-89.vercel.app/",
       date: "2025",
       client: "Personal",
-    },
-    {
-      id: 10,
-      title: "COLLEGEMATCH",
-      category: "web",
-      description: "A smart college recommendation platform that helps students find their ideal match based on academic profiles. It leverages AI to provide personalized reasoning for each recommendation, ensuring students understand why a college fits their goals.",
-      image: "/assets/college-portal.png",
-      technologies: ["Next.js", "React", "Groq AI", "Supabase", "Tailwind CSS"],
-      features: ["AI-Powered Personalization", "Supabase Backend Integration", "Interactive Student Profiling", "Real-time Recommendations"],
-      githubUrl: "https://github.com/sohamchavan07/Students-college-portal",
-      liveUrl: "https://students-college-portal.vercel.app/",
-      demoUrl: "https://students-college-portal.vercel.app/",
-      date: "2025",
-      client: "Personal"
     }
+
   ];
 
   // Featured projects to show initially
@@ -354,7 +355,7 @@ const Projects = () => {
                           Visit Site
                         </Button>
                       )}
-                      
+
                       {selectedProject.githubUrl && (
                         <Button
                           size="lg"
