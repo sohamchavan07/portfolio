@@ -42,6 +42,7 @@ const Projects = () => {
   ];
 
   const projects = [
+
     {
       id: 1,
       title: "COLLEGEMATCH",
@@ -148,7 +149,7 @@ const Projects = () => {
     },
 
     {
-      id: 3,
+      id: 12,
       title: "BOOK STORE",
       category: "web",
       description: "THIS PROJECT IS MY ASSIGNMENT WHERE USER CAN SIGN IN AND SIGN UP. ADD THE BOOKS CREATE, READ, UPDATE, DELETE   IT. I USE RUBY AND RAILS IN THIS PROJECT. ASSOCIATE IN SUPERHERO DESIGN + CODE SCHOOL .",
@@ -160,6 +161,21 @@ const Projects = () => {
       demoUrl: "",
       date: "2025",
       client: "Assignment Project",
+    },
+
+    {
+      id: 11,
+      title: "SRI RAM MANDIR",
+      category: "web",
+      description: "A digital portal for Shri Ram Mandir, Shahupuri, Kolhapur. Features multilingual support (Marathi/English), event calendars, donation management, and interactive gallery, serving as a spiritual bridge for devotees.",
+      image: "/assets/ram-mandir.jpg",
+      technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Shadcn UI", "Lucide React"],
+      features: ["Multilingual Support", "Donation Management", "Event Calendar", "Interactive Gallery", "Location Integration"],
+      githubUrl: "https://github.com/sohamchavan07/sri-ram-mandir",
+      liveUrl: "https://sri-ram-mandir1922.vercel.app/",
+      demoUrl: "https://sri-ram-mandir1922.vercel.app/",
+      date: "2025",
+      client: "Shri Ram Mandir",
     },
 
     {
@@ -209,7 +225,7 @@ const Projects = () => {
   ];
 
   // Featured projects to show initially
-  const featuredProjectIds = new Set([1, 2, 4, 5, 6, 10]);
+  const featuredProjectIds = new Set([1, 2, 4, 5, 6, 10,]);
 
   const filteredProjects = activeFilter === "all"
     ? (showAllProjects ? projects : projects.filter(p => featuredProjectIds.has(p.id)))
