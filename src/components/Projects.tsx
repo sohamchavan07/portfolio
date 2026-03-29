@@ -106,15 +106,15 @@ const Projects = () => {
       "id": 4,
       "title": "SHIVKUMAR REALTORS",
       "category": "web",
-      "description": "DEVELOPED A MODERN REAL ESTATE WEBSITE USING FRAMER FOR SHIVKUMAR REALTORS, A PUNE-BASED PROPERTY FIRM. THIS PROJECT FEATURES RESPONSIVE DESIGN, PROFESSIONAL LAYOUT, AND MARKETING-FOCUSED SECTIONS TO PROMOTE HIGH-VALUE PROPERTIES LIKE RESORT DEVELOPMENTS AND STUDIO APARTMENTS.",
+      "description": "A COMPREHENSIVE REAL ESTATE PLATFORM FOR SHIVKUMAR REALTORS, A PUNE-BASED PROPERTY FIRM. FEATURES INCLUDE PROPERTY LISTINGS, DETAILED PROPERTY VIEWS, SERVICE SHOWCASES, AND A CONTACT SYSTEM. BUILT WITH MODERN WEB TECHNOLOGIES FOR OPTIMAL PERFORMANCE AND USER EXPERIENCE.",
       "image": "/assets/shivkumarrealtors.png",
-      "technologies": [],
-      "features": ["Client Project", "Real Estate Marketing", "Professional Landing Page"],
-      "githubUrl": "",
-      "liveUrl": "https://shivkumarrealtors.framer.website",
-      "demoUrl": "https://shivkumarrealtors.framer.website",
+      "technologies": ["React", "TypeScript", "Vite", "Tailwind CSS", "Shadcn UI", "React Router", "React Query"],
+      "features": ["Property Listings", "Detailed Property Views", "Service Showcases", "Contact System", "Responsive Design"],
+      "githubUrl": "https://github.com/sohamchavan07/shivkumarrealtors",
+      "liveUrl": "https://shivkumarrealtors.vercel.app/",
+      "demoUrl": "https://shivkumarrealtors.vercel.app/",
       "date": "2025",
-      "client": "ShivkumarRealtors"
+      "client": "Shivkumar Realtors"
     },
 
 
