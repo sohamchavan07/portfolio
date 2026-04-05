@@ -105,7 +105,6 @@ const Navigation = () => {
                 <Sun className="w-5 h-5" />
               )}
             </button>
-            
           </div>
 
           {/* Mobile Hamburger Menu Button */}
