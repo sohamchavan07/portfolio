@@ -45,7 +45,7 @@ const Projects = () => {
 
     {
       id: 1,
-      title: "COLLEGEMATCH",
+      title: "CollegeMatch",
       category: "web",
       description: "A smart college recommendation platform that helps students find their ideal match based on academic profiles. It leverages AI to provide personalized reasoning for each recommendation, ensuring students understand why a college fits their goals.",
       image: "/assets/college-portal.png",
@@ -59,7 +59,7 @@ const Projects = () => {
     },
     {
       id: 10,
-      title: "3D PORTFOLIO",
+      title: "3D Portfolio",
       category: "web",
       description: "It's not just a portfolio, it's a playground of ideas. I'm excited to share my updated creative space, where I've put a lot of heart and late nights into showcasing projects that truly inspire me. I hope it inspires you, too.",
       image: "/assets/car.png",
@@ -72,7 +72,7 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "TAWADE KITCHEN",
+      title: "Tawade Kitchen",
       category: "web",
       description: "A small snack shop website (Tawade Kitchen) showcasing products and contact information.",
       image: "/assets/tawade_kitchen.png",
@@ -104,9 +104,9 @@ const Projects = () => {
 
     {
       "id": 4,
-      "title": "SHIVKUMAR REALTORS",
+      "title": "Shivkumar Realtors",
       "category": "web",
-      "description": "A COMPREHENSIVE REAL ESTATE PLATFORM FOR SHIVKUMAR REALTORS, A PUNE-BASED PROPERTY FIRM. FEATURES INCLUDE PROPERTY LISTINGS, DETAILED PROPERTY VIEWS, SERVICE SHOWCASES, AND A CONTACT SYSTEM. BUILT WITH MODERN WEB TECHNOLOGIES FOR OPTIMAL PERFORMANCE AND USER EXPERIENCE.",
+      "description": "A comprehensive real estate platform for Shivkumar Realtors, a Pune-based property firm. Features include property listings, detailed property views, service showcases, and a contact system. Built with modern web technologies for optimal performance and user experience.",
       "image": "/assets/shivkumarrealtors.png",
       "technologies": ["React", "TypeScript", "Vite", "Tailwind CSS", "Shadcn UI", "React Router", "React Query"],
       "features": ["Property Listings", "Detailed Property Views", "Service Showcases", "Contact System", "Responsive Design"],
@@ -120,7 +120,7 @@ const Projects = () => {
 
     {
       "id": 5,
-      title: "HOTEL NYALA",
+      title: "Hotel Nyala",
       category: "web",
       description: "Hotel Nyala is a conceptual hotel website created to showcase visual storytelling, clean structure, and modern web aesthetics. The site presents an imaginary luxury hotel brand, allowing you to demonstrate your creativity, design sense, and ability to build polished digital experiences.",
       image: "/assets/hotelnyala.png",
@@ -135,7 +135,7 @@ const Projects = () => {
 
     {
       id: 6,
-      title: "RAILS PAYMENT GATEWAY",
+      title: "Rails Payment Gateway",
       category: "web",
       description: "A robust and secure payment gateway built using Ruby on Rails, designed to integrate seamless payment processing capabilities into web applications. This project demonstrates backend proficiency in Rails, API integrations, and secure transaction handling.",
       image: "/assets/payment.png",
@@ -150,9 +150,9 @@ const Projects = () => {
 
     {
       id: 12,
-      title: "BOOK STORE",
+      title: "Book Store",
       category: "web",
-      description: "THIS PROJECT IS MY ASSIGNMENT WHERE USER CAN SIGN IN AND SIGN UP. ADD THE BOOKS CREATE, READ, UPDATE, DELETE   IT. I USE RUBY AND RAILS IN THIS PROJECT. ASSOCIATE IN SUPERHERO DESIGN + CODE SCHOOL .",
+      description: "This project is an assignment where users can sign in and sign up, then create, read, update, and delete books. Built using Ruby on Rails as part of the Superhero Design + Code school curriculum.",
       image: "/assets/book.png",
       technologies: [],
       features: ["Ruby", "Rails", "APIs", "Backend Development"],
@@ -165,7 +165,7 @@ const Projects = () => {
 
     {
       id: 11,
-      title: "SRI RAM MANDIR",
+      title: "Sri Ram Mandir",
       category: "web",
       description: "A digital portal for Shri Ram Mandir, Shahupuri, Kolhapur. Features multilingual support (Marathi/English), event calendars, donation management, and interactive gallery, serving as a spiritual bridge for devotees.",
       image: "/assets/ram-mandir.jpg",
@@ -180,7 +180,7 @@ const Projects = () => {
 
     {
       id: 7,
-      title: "FERRARI CASE STUDY WITH DevOps",
+      title: "Ferrari Case Study with DevOps",
       category: "web",
       description: "Racing Ahead with DevOps — How Ferrari accelerated innovation using Azure DevOps and real-time analytics. A visual case study showcasing branding, performance, and pipeline-driven delivery.",
       image: "/assets/ferrari.jpeg",
@@ -195,7 +195,7 @@ const Projects = () => {
 
     {
       id: 8,
-      title: "PORSCHE CASE STYDY",
+      title: "PORSCHE CASE STUDY",
       category: "web",
       description: "Porsche App Case Study — My Porsche App is a page that demonstrates the design & thinking behind a luxury automotive app for Porsche. It presents how one might optimize user experience, layout, customer interaction, and branding for a high-end app, illustrating both aesthetic and functional components. It's built likely using TypeScript & hosted on Vercel.",
       image: "/assets/porsche.png",
@@ -209,7 +209,7 @@ const Projects = () => {
     },
     {
       id: 9,
-      title: "TIC-TAC-TOE GAME",
+      title: "Tic-Tac-Toe Game",
       category: "web",
       description: "There are selectable difficulty levels (Easy / Medium / Hard) when playing against the computer. You can also set player names and there's a display of the score (Player 1 vs Player 2 or vs Computer). Includes a restart button to reset the board/game. The site is hosted on Vercel, suggesting a simple, clean implementation intended for fun and demonstrating interactive UI logic.",
       image: "/assets/tictactoe.png",

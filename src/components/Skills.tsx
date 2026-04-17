@@ -104,7 +104,7 @@ const Skills = () => {
               <span className="uppercase flex items-center gap-1">
                 {category.label.toUpperCase()}
                 {category.id === "devops" && (
-                  <span aria-hidden className="ml-1">Cloude</span>
+                  <span aria-hidden className="ml-1">Cloud</span>
                 )}
               </span>
             </button>
