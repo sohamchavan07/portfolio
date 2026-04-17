@@ -23,7 +23,7 @@ const About = () => {
             <h3 className="text-2xl font-semibold mb-6">Hi! I&apos;m Soham Chavan</h3>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                I&apos;m a <span className="text-primary font-semibold">Full-stack developer</span> focused on building reliable, performant,
+                I&apos;m a <span className="text-primary font-semibold">Full-stack developer</span> based in <span className="text-primary font-semibold">Maharashtra, India</span>, focused on building reliable, performant,
                 and user-centered web applications. I enjoy translating ideas into thoughtful interfaces and scalable
                 systems that deliver real value.
               </p>
@@ -46,7 +46,7 @@ const About = () => {
             <div className="space-y-3 text-muted-foreground">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-primary" />
-                India
+                Maharashtra, India
               </div>
               <div className="flex items-center gap-2">
                 <Car className="w-4 h-4 text-accent" />
