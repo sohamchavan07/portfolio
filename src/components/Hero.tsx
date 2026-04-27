@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download, ArrowDown, Twitter, Calendar } from "lucide-react";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import profileWhatsApp592 from "@/assets/profile-whatsapp-2026-04-25-592.jpg";
+import profileWhatsApp300 from "@/assets/profile-whatsapp-2026-04-25-300.jpg";
+import profileWhatsApp150 from "@/assets/profile-whatsapp-2026-04-25-150.jpg";
+import profileWhatsApp592Webp from "@/assets/profile-whatsapp-2026-04-25-592.webp";
+import profileWhatsApp300Webp from "@/assets/profile-whatsapp-2026-04-25-300.webp";
+import profileWhatsApp150Webp from "@/assets/profile-whatsapp-2026-04-25-150.webp";
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
@@ -146,17 +151,28 @@ const Hero = () => {
             <div className="relative group w-full max-w-xs sm:max-w-sm md:max-w-md">
               <div className="absolute inset-0 bg-gradient-primary rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
               <div className="relative w-full aspect-square rounded-full overflow-hidden border-4 border-primary/20 shadow-strong hover-lift">
-                <img
-                  src={profilePhoto}
-                  alt="Soham Chavan"
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                  fetchPriority="high"
-                  decoding="async"
-                  width={512}
-                  height={512}
-                  sizes="(min-width: 1024px) 24rem, (min-width: 640px) 20rem, 70vw"
-                />
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcSet={`${profileWhatsApp150Webp} 150w, ${profileWhatsApp300Webp} 300w, ${profileWhatsApp592Webp} 592w`}
+                    sizes="(min-width: 1024px) 24rem, (min-width: 640px) 20rem, 70vw"
+                  />
+                  <source
+                    type="image/jpeg"
+                    srcSet={`${profileWhatsApp150} 150w, ${profileWhatsApp300} 300w, ${profileWhatsApp592} 592w`}
+                    sizes="(min-width: 1024px) 24rem, (min-width: 640px) 20rem, 70vw"
+                  />
+                  <img
+                    src={profileWhatsApp592}
+                    alt="Soham Chavan"
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    width={592}
+                    height={592}
+                  />
+                </picture>
               </div>
               <div className="absolute -bottom-4 -right-1 sm:-right-4 w-20 h-20 sm:w-24 sm:h-24 bg-accent rounded-full flex items-center justify-center glass animate-float">
                 <span className="text-2xl">👋</span>
