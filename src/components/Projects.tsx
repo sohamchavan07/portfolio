@@ -1,29 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  ExternalLink,
-  Github,
-  Play,
-  Filter,
-  Calendar,
-  User
-} from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
-
-const highlightedTechnologies = new Set([]);
+import { Github, Filter } from "lucide-react";
+import { projects } from "@/data/projects";
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [showAllProjects, setShowAllProjects] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const navigate = useNavigate();
+
   const handleToggleProjects = (expand) => {
     setShowAllProjects(expand);
     // Scroll to projects section when showing featured projects or all projects
@@ -35,197 +21,12 @@ const Projects = () => {
     }, 100);
   };
 
-
-
   const filters = [
     { id: "all", label: "All Projects" },
   ];
 
-  const projects = [
-
-    {
-      id: 1,
-      title: "CollegeMatch",
-      category: "web",
-      description: "A smart college recommendation platform that helps students find their ideal match based on academic profiles. It leverages AI to provide personalized reasoning for each recommendation, ensuring students understand why a college fits their goals.",
-      image: "/assets/college-portal.png",
-      technologies: ["Next.js", "React", "Groq AI", "Supabase", "Tailwind CSS"],
-      features: ["AI-Powered Personalization", "Supabase Backend Integration", "Interactive Student Profiling", "Real-time Recommendations"],
-      githubUrl: "https://github.com/sohamchavan07/Students-college-portal",
-      liveUrl: "https://students-college-portal.vercel.app/",
-      demoUrl: "https://students-college-portal.vercel.app/",
-      date: "2025",
-      client: "Personal"
-    },
-    {
-      id: 10,
-      title: "3D Portfolio",
-      category: "web",
-      description: "It's not just a portfolio, it's a playground of ideas. I'm excited to share my updated creative space, where I've put a lot of heart and late nights into showcasing projects that truly inspire me. I hope it inspires you, too.",
-      image: "/assets/car.png",
-      technologies: [],
-      features: ["Creative Inspiration Shout-Out", "Portfolio Gateway", "Humor & Personality", "User Management"],
-      githubUrl: "https://github.com/sohamchavan07/portfolio3d",
-      liveUrl: "https://portfolio.sohamchavan.site",
-      demoUrl: "https://portfolio.sohamchavan.site",
-      date: "2025",
-    },
-    {
-      id: 2,
-      title: "Tawade Kitchen",
-      category: "web",
-      description: "A small snack shop website (Tawade Kitchen) showcasing products and contact information.",
-      image: "/assets/tawade_kitchen.png",
-      technologies: [],
-      features: ["Product Catalog", "Responsive Layout", "Contact Form", "Branding"],
-      githubUrl: "https://github.com/sohamchavan07/tawade_kitchen.git",
-      liveUrl: "https://tawade-kitchen.vercel.app",
-      demoUrl: "https://tawade-kitchen.vercel.app",
-      date: "2025",
-      client: "Tawade Kitchen",
-    },
-
-
-
-    /*{
-      id: 3,
-      title: "FREELANCING PROJECT",
-      category: "web",
-      description: "AS A DEDICATED WEB DEVELOPER, I BUILT THIS PERSONAL PORTFOLIO WEBSITE TO SHOWCASE MY TECHNICAL SKILLS,  DESIGN AESTHETIC, AND PROFESSIONAL VISION. THIS.                             PROJECT IS A REFLECTION OF WHO I AM AS A DEVELOPER         BOTH IN MY CODING ABILITY AND MY APPROACH TO                       USEREXPERIENCE..",
-      image: "/assets/shreyash.png",
-      technologies: [],
-      features: ["Freelance", "Responsive Layout", "Contact Form"],
-      githubUrl: "",
-      liveUrl: "https://shreyash-lavhate.vercel.app",
-      demoUrl: "https://shreyash-lavhate.vercel.app",
-      date: "2025",
-      client: "UI/UX Designer",
-    },*/
-
-    {
-      "id": 4,
-      "title": "Shivkumar Realtors",
-      "category": "web",
-      "description": "A comprehensive real estate platform for Shivkumar Realtors, a Pune-based property firm. Features include property listings, detailed property views, service showcases, and a contact system. Built with modern web technologies for optimal performance and user experience.",
-      "image": "/assets/shivkumarrealtors.png",
-      "technologies": ["React", "TypeScript", "Vite", "Tailwind CSS", "Shadcn UI", "React Router", "React Query"],
-      "features": ["Property Listings", "Detailed Property Views", "Service Showcases", "Contact System", "Responsive Design"],
-      "githubUrl": "https://github.com/sohamchavan07/shivkumarrealtors",
-      "liveUrl": "https://shivkumarrealtors.vercel.app/",
-      "demoUrl": "https://shivkumarrealtors.vercel.app/",
-      "date": "2025",
-      "client": "Shivkumar Realtors"
-    },
-
-
-    {
-      "id": 5,
-      title: "Hotel Nyala",
-      category: "web",
-      description: "Hotel Nyala is a conceptual hotel website created to showcase visual storytelling, clean structure, and modern web aesthetics. The site presents an imaginary luxury hotel brand, allowing you to demonstrate your creativity, design sense, and ability to build polished digital experiences.",
-      image: "/assets/hotelnyala.png",
-      technologies: [],
-      features: ["Freelance", "Responsive Layout", "Contact Form", "Branding"],
-      githubUrl: "https://github.com/sohamchavan07/hotel-nyala",
-      liveUrl: "https://hotel-nyala.vercel.app",
-      demoUrl: "https://hotel-nyala.vercel.app",
-      date: "2025",
-      client: "Personal",
-    },
-
-    {
-      id: 6,
-      title: "Rails Payment Gateway",
-      category: "web",
-      description: "A robust and secure payment gateway built using Ruby on Rails, designed to integrate seamless payment processing capabilities into web applications. This project demonstrates backend proficiency in Rails, API integrations, and secure transaction handling.",
-      image: "/assets/payment.png",
-      technologies: [],
-      features: ["Secure Transactions", "API-based Payment Flow", "Modular Architecture"],
-      githubUrl: "https://github.com/sohamchavan07/Payment-Gateway",
-      liveUrl: "https://github.com/sohamchavan07/Payment-Gateway",
-      demoUrl: "",
-      date: "2025",
-      client: "Payment Integration"
-    },
-
-    {
-      id: 12,
-      title: "Book Store",
-      category: "web",
-      description: "This project is an assignment where users can sign in and sign up, then create, read, update, and delete books. Built using Ruby on Rails as part of the Superhero Design + Code school curriculum.",
-      image: "/assets/book.png",
-      technologies: [],
-      features: ["Ruby", "Rails", "APIs", "Backend Development"],
-      githubUrl: "https://github.com/sohamchavan07/book-store.git",
-      liveUrl: "https://github.com/sohamchavan07/book-store.git",
-      demoUrl: "",
-      date: "2025",
-      client: "Assignment Project",
-    },
-
-    {
-      id: 11,
-      title: "Sri Ram Mandir",
-      category: "web",
-      description: "A digital portal for Shri Ram Mandir, Shahupuri, Kolhapur. Features multilingual support (Marathi/English), event calendars, donation management, and interactive gallery, serving as a spiritual bridge for devotees.",
-      image: "/assets/ram-mandir.jpg",
-      technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Shadcn UI", "Lucide React"],
-      features: ["Multilingual Support", "Donation Management", "Event Calendar", "Interactive Gallery", "Location Integration"],
-      githubUrl: "https://github.com/sohamchavan07/sri-ram-mandir",
-      liveUrl: "https://sri-ram-mandir1922.vercel.app/",
-      demoUrl: "https://sri-ram-mandir1922.vercel.app/",
-      date: "2025",
-      client: "Shri Ram Mandir",
-    },
-
-    {
-      id: 7,
-      title: "Ferrari Case Study with DevOps",
-      category: "web",
-      description: "Racing Ahead with DevOps — How Ferrari accelerated innovation using Azure DevOps and real-time analytics. A visual case study showcasing branding, performance, and pipeline-driven delivery.",
-      image: "/assets/ferrari.jpeg",
-      technologies: [],
-      features: ["Brand Case Study", "Pipeline Simulations", "Real-time Analytics", "Technical Overview"],
-      liveUrl: "https://ferrari-casestudy.vercel.app",
-      githubUrl: "https://github.com/sohamchavan07/Ferrari/",
-      demoUrl: "https://ferrari-casestudy.vercel.app/",
-      date: "2025",
-      client: "Personal",
-    },
-
-    {
-      id: 8,
-      title: "PORSCHE CASE STUDY",
-      category: "web",
-      description: "Porsche App Case Study — My Porsche App is a page that demonstrates the design & thinking behind a luxury automotive app for Porsche. It presents how one might optimize user experience, layout, customer interaction, and branding for a high-end app, illustrating both aesthetic and functional components. It's built likely using TypeScript & hosted on Vercel.",
-      image: "/assets/porsche.png",
-      technologies: [],
-      features: ["Luxury/Brand-Focused Design", "Modern Web Tech Stack", "Structured Case Study", "Aesthetic & Functional Components"],
-      githubUrl: "https://github.com/sohamchavan07/porsche",
-      liveUrl: "https://porsche-casestudy.vercel.app/",
-      demoUrl: "https://porsche-casestudy.vercel.app/",
-      date: "2025",
-      client: "Personal",
-    },
-    {
-      id: 9,
-      title: "Tic-Tac-Toe Game",
-      category: "web",
-      description: "There are selectable difficulty levels (Easy / Medium / Hard) when playing against the computer. You can also set player names and there's a display of the score (Player 1 vs Player 2 or vs Computer). Includes a restart button to reset the board/game. The site is hosted on Vercel, suggesting a simple, clean implementation intended for fun and demonstrating interactive UI logic.",
-      image: "/assets/tictactoe.png",
-      technologies: [],
-      features: ["Multiple Game Modes", "Difficulty Levels", "Customizable Player Names", "Score Tracking"],
-      githubUrl: "https://github.com/sohamchavan07/tic-tac-toe",
-      liveUrl: "https://tic-tac-toe-blond-tau-89.vercel.app/",
-      demoUrl: "https://tic-tac-toe-blond-tau-89.vercel.app/",
-      date: "2025",
-      client: "Personal",
-    }
-
-  ];
-
   // Featured projects to show initially
-  const featuredProjectIds = new Set([1, 2, 4, 5, 6, 10,]);
+  const featuredProjectIds = new Set([1, 2, 4, 5, 6, 10]);
 
   const filteredProjects = activeFilter === "all"
     ? (showAllProjects ? projects : projects.filter(p => featuredProjectIds.has(p.id)))
@@ -270,7 +71,7 @@ const Projects = () => {
               key={project.id}
               className="group flex flex-col cursor-pointer animate-slide-up"
               style={{ animationDelay: `${index * 0.2}s` }}
-              onClick={() => setSelectedProject(project)}
+              onClick={() => navigate(`/project/${project.id}`)}
             >
               {/* Project Image */}
               <div className="relative overflow-hidden mb-5 rounded-sm">
@@ -305,90 +106,6 @@ const Projects = () => {
             </div>
           ))}
         </div>
-
-        {/* Project Detail Modal */}
-        <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
-          <DialogContent className="max-w-3xl p-0 overflow-hidden glass border-primary/20 bg-background/95 backdrop-blur-xl max-h-[90vh] flex flex-col">
-            {selectedProject && (
-              <div className="h-full overflow-y-auto custom-scrollbar pb-10">
-                {/* Header Image */}
-                <div className="relative w-full aspect-video overflow-hidden">
-                  <img
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
-                </div>
-
-                <div className="p-8 md:p-12 space-y-6">
-                  <DialogHeader>
-                    <div className="space-y-1">
-                      <DialogTitle className="text-4xl font-bold tracking-tight">
-                        {selectedProject.title}
-                      </DialogTitle>
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground pt-2">
-                        {selectedProject.category && (
-                          <Badge variant="outline" className="border-primary/20 text-xs py-0.5">
-                            {selectedProject.category.toUpperCase()}
-                          </Badge>
-                        )}
-                        <div className="flex items-center gap-1.5">
-                          <Calendar className="w-3.5 h-3.5" />
-                          {selectedProject.date}
-                        </div>
-                      </div>
-                    </div>
-                  </DialogHeader>
-
-                  <div className="space-y-6">
-                    <DialogDescription className="text-lg leading-relaxed text-muted-foreground/90">
-                      {selectedProject.description}
-                    </DialogDescription>
-
-                    {selectedProject.features && selectedProject.features.length > 0 && (
-                      <div className="space-y-4">
-                        <h4 className="text-sm font-semibold uppercase tracking-wider text-primary/80">Key Features</h4>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          {selectedProject.features.map((feature) => (
-                            <div key={feature} className="flex items-center text-sm text-muted-foreground/80">
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary/60 mr-2.5" />
-                              {feature}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="pt-8 flex flex-wrap gap-4 items-center border-t border-primary/10 pb-4">
-                      {selectedProject.liveUrl && (
-                        <Button
-                          size="lg"
-                          className="flex-1 sm:flex-none bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary text-white font-semibold flex items-center justify-center gap-2"
-                          onClick={() => window.open(selectedProject.liveUrl, "_blank")}
-                        >
-                          <ExternalLink className="w-5 h-5" />
-                          Visit Site
-                        </Button>
-                      )}
-
-                      {selectedProject.githubUrl && (
-                        <Button
-                          size="lg"
-                          className="flex-1 sm:flex-none bg-gradient-secondary hover:bg-gradient-primary border-0 hover-lift glow-primary text-black font-semibold flex items-center justify-center gap-2"
-                          onClick={() => window.open(selectedProject.githubUrl, "_blank")}
-                        >
-                          <Github className="w-5 h-5" />
-                          Code
-                        </Button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </DialogContent>
-        </Dialog>
 
         {/* More Projects CTA */}
         {!showAllProjects ? (

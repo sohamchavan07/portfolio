@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
@@ -8,6 +9,8 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +50,6 @@ const Navigation = () => {
     { href: "#home", label: "Home" },
     { href: "#projects", label: "Projects" },
     { href: "#skills", label: "Skills" },
-    { href: "#testimonials", label: "Testimonials" },
     { href: "#services", label: "Services" },
     { href: "#about", label: "About" },
     { href: "#contact", label: "Contact" },
@@ -58,10 +60,14 @@ const Navigation = () => {
     { href: "mailto:sohamchavan.sc07@gmail.com", label: "Email", value: "sohamchavan.sc07@gmail.com" },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const handleNavClick = (href: string) => {
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: href } });
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
     setIsMobileMenuOpen(false);
   };
@@ -72,7 +78,7 @@ const Navigation = () => {
     }`}>
       <div className="section-container">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3 text-2xl font-bold gradient-text">
+          <div className="flex items-center gap-3 text-2xl font-bold gradient-text cursor-pointer" onClick={() => navigate("/")}>
             <img
               src={peaceSymbol}
               alt="Peace symbol"
@@ -88,7 +94,7 @@ const Navigation = () => {
             {navItems.map((item) => (
               <button
                 key={item.href}
-                onClick={() => scrollToSection(item.href)}
+                onClick={() => handleNavClick(item.href)}
                 className="touch-target px-2 text-base text-muted-foreground hover:text-foreground transition-colors duration-300 relative group"
               >
                 {item.label}
@@ -154,7 +160,7 @@ const Navigation = () => {
               {navItems.map((item, index) => (
                 <button
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNavClick(item.href)}
                   className="text-left text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-300 px-6 py-3 mx-2 rounded-lg relative group"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
@@ -186,7 +192,7 @@ const Navigation = () => {
                 </div>
                 <Button
                   size="lg"
-                  onClick={() => scrollToSection("#contact")}
+                  onClick={() => handleNavClick("#contact")}
                   className="w-full bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary"
                 >
                   Get In Touch
