@@ -26,7 +26,7 @@ const Projects = () => {
   ];
 
   // Featured projects to show initially
-  const featuredProjectIds = new Set([1, 2, 4, 5, 6, 10]);
+  const featuredProjectIds = new Set([1, 2, 4, 5, 6, 10, 13]);
 
   const filteredProjects = activeFilter === "all"
     ? (showAllProjects ? projects : projects.filter(p => featuredProjectIds.has(p.id)))

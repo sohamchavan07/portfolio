@@ -178,5 +178,19 @@ export const projects: Project[] = [
     demoUrl: "https://tic-tac-toe-blond-tau-89.vercel.app/",
     date: "2025",
     client: "Personal",
+  },
+  {
+    id: 13,
+    title: "Hemraj Products",
+    category: "web",
+    description: "An elegant e-commerce landing page for Hemraj Products, showcasing authentic handcrafted 'Karalechy Wafers' and traditional organic snacks.",
+    longDescription: "Hemraj Products is a premium landing page developed for a local food producer specializing in traditional Indian snacks. The project focuses on bridging the gap between traditional family recipes and a modern, health-conscious audience.\n\nThe site features a clean, organic aesthetic that mirrors the quality of the products. Key technical implementations include a responsive layout optimized for mobile ordering, smooth scroll animations, and a structured product showcase that highlights the nutritional benefits of the Karale (Niger seeds). Built with React and Tailwind CSS, it offers a high-performance experience that emphasizes brand trust and product authenticity.",
+    image: "/assets/hemraj-products.png",
+    technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Shadcn UI", "Framer Motion"],
+    features: ["Organic Brand Identity", "Mobile-First Ordering Flow", "Nutritional Highlights", "Responsive Product Showcase", "Traditional Recipe Storytelling"],
+    githubUrl: "https://github.com/sohamchavan07/hemraj-products",
+    liveUrl: "https://hemraj-products.vercel.app/",
+    date: "2025",
+    client: "Hemraj Products",
   }
 ];
