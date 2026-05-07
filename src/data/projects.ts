@@ -192,5 +192,19 @@ export const projects: Project[] = [
     liveUrl: "https://hemraj-products.vercel.app/",
     date: "2025",
     client: "Hemraj Products",
+  },
+  {
+    id: 14,
+    title: "Premium Bookstore",
+    category: "web",
+    description: "A high-performance Ruby on Rails bookstore application featuring a curated collection, advanced search, and professional book management.",
+    longDescription: "The Premium Bookstore is a sophisticated web application designed for bibliophiles and book retailers. Built with a focus on speed and reliability, it utilizes Ruby on Rails for a robust backend and PostgreSQL for efficient data management.\n\nThe application features a modern, clean interface powered by Tailwind CSS, providing a seamless browsing experience. Key technical highlights include advanced search capabilities, a secure management system for adding and updating titles, and a responsive design that ensures the library is accessible from any device. This project demonstrates my ability to build full-stack applications that combine complex backend logic with elegant, user-centric frontend design.",
+    image: "/assets/premium-bookstore.png",
+    technologies: ["Ruby on Rails", "PostgreSQL", "Tailwind CSS", "Hotwire", "Render"],
+    features: ["Curated Book Collection", "Advanced Search & Filtering", "Secure Admin Dashboard", "Responsive UI/UX", "High-Performance Data Handling"],
+    githubUrl: "https://github.com/sohamchavan07/bookstore",
+    liveUrl: "https://bookstore.sohamchavan.site/",
+    date: "2025",
+    client: "Personal",
   }
 ];

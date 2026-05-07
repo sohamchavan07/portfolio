@@ -10,12 +10,17 @@ import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
+interface LocationState {
+  scrollTo?: string;
+}
+
 const Portfolio = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.state && (location.state as any).scrollTo) {
-      const targetId = (location.state as any).scrollTo;
+    const state = location.state as LocationState;
+    if (state && state.scrollTo) {
+      const targetId = state.scrollTo;
       setTimeout(() => {
         const element = document.querySelector(targetId);
         if (element) {

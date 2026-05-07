@@ -8,10 +8,11 @@ import profileWhatsApp592Webp from "@/assets/profile-whatsapp-2026-04-25-592.web
 import profileWhatsApp300Webp from "@/assets/profile-whatsapp-2026-04-25-300.webp";
 import profileWhatsApp150Webp from "@/assets/profile-whatsapp-2026-04-25-150.webp";
 
+const titles = ["Full Stack Developer", "Freelancer", "Problem Solver", "Tech Enthusiast"];
+
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const titles = ["Full Stack Developer", "Freelancer", "Problem Solver", "Tech Enthusiast"];
 
   useEffect(() => {
     const currentTitle = titles[currentIndex];
