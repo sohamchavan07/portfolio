@@ -105,21 +105,6 @@ export const projects: Project[] = [
     client: "Payment Integration"
   },
   {
-    id: 12,
-    title: "Book Store",
-    category: "web",
-    description: "This project is an assignment where users can sign in and sign up, then create, read, update, and delete books. Built using Ruby on Rails as part of the Superhero Design + Code school curriculum.",
-    longDescription: "This Book Store application is a full-stack CRUD application developed as part of an intensive coding curriculum. It features a complete user authentication system, allowing users to manage their own personal libraries of books.\n\nThe project emphasizes the fundamental principles of web development, including MVC architecture, database relations, and secure user sessions. It served as a practical exercise in building a complete, user-driven application from the ground up using Ruby on Rails.",
-    image: "/assets/book.png",
-    technologies: ["Ruby on Rails", "SQLite", "Bootstrap"],
-    features: ["Ruby", "Rails", "APIs", "Backend Development"],
-    githubUrl: "https://github.com/sohamchavan07/book-store.git",
-    liveUrl: "https://github.com/sohamchavan07/book-store.git",
-    demoUrl: "",
-    date: "2025",
-    client: "Assignment Project",
-  },
-  {
     id: 11,
     title: "Sri Ram Mandir",
     category: "web",
