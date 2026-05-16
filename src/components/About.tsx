@@ -1,12 +1,13 @@
 import { Card } from "@/components/ui/card";
-import { Calendar, MapPin, Car, Code2 } from "lucide-react";
+import { Calendar, MapPin, Heart, Car, Code2 } from "lucide-react";
 
 const About = () => {
   const stats = [
     { number: "1+", label: "Years Experience", icon: Calendar },
-    { number: "7+", label: "Projects Completed", icon: Code2 },
+    { number: "10+", label: "Projects Completed", icon: Code2 },
+    { number: "7+", label: "Happy Clients", icon: Heart },
     { number: "20+", label: "Technologies", icon: "/assets/connection.png" },
-    { number: "End-to-End", label: "Delivery Focus", icon: Code2 },
+    //{ number: "End-to-End", label: "Delivery Focus", icon: Code2 },
   ];
 
   return (
