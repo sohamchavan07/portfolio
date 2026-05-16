@@ -124,14 +124,12 @@
         try {
           var saved = localStorage.getItem('theme');
           var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-          var useLight = saved ? saved === 'light' : false; // default dark
-          if (!saved && prefersLight) {
-            // Respect OS light only if user has no preference; comment out to force default dark always
-            useLight = false; // keep dark by default per request
-          }
+          var useLight = saved ? saved === 'light' : prefersLight;
           if (useLight) {
             document.documentElement.classList.add('light');
+            document.documentElement.classList.remove('dark');
           } else {
+            document.documentElement.classList.add('dark');
             document.documentElement.classList.remove('light');
           }
         } catch (e) {}

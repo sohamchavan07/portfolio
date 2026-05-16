@@ -1,0 +1,57 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 120 120"
+  role="img"
+  aria-labelledby="title"
+>
+  <title>Peace symbol</title>
+  <style>
+    /* Default is black for light mode Chrome settings so it is visible on light tabs */
+    .icon-stroke {
+      stroke: black;
+    }
+    
+    /* When user's Chrome setting is dark mode, the stroke is white to be visible on dark tabs */
+    @media (prefers-color-scheme: dark) {
+      .icon-stroke {
+        stroke: white;
+      }
+    }
+  </style>
+  <circle
+    cx="60"
+    cy="60"
+    r="54"
+    fill="none"
+    class="icon-stroke"
+    stroke-width="12"
+    stroke-linecap="round"
+  />
+  <line
+    x1="60"
+    y1="12"
+    x2="60"
+    y2="108"
+    class="icon-stroke"
+    stroke-width="12"
+    stroke-linecap="round"
+  />
+  <line
+    x1="60"
+    y1="60"
+    x2="16"
+    y2="104"
+    class="icon-stroke"
+    stroke-width="12"
+    stroke-linecap="round"
+  />
+  <line
+    x1="60"
+    y1="60"
+    x2="104"
+    y2="104"
+    class="icon-stroke"
+    stroke-width="12"
+    stroke-linecap="round"
+  />
+</svg>
