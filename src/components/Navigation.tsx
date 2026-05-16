@@ -50,6 +50,7 @@ const Navigation = () => {
     { href: "#home", label: "Home" },
     { href: "#projects", label: "Projects" },
     { href: "#skills", label: "Skills" },
+    { href: "#testimonials", label: "Testimonials" },
     { href: "#services", label: "Services" },
     { href: "#about", label: "About" },
     { href: "#contact", label: "Contact" },
@@ -73,18 +74,16 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? "glass py-2" : "py-4"
-    }`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "glass py-2" : "py-4"
+      }`}>
       <div className="section-container">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3 text-2xl font-bold gradient-text cursor-pointer" onClick={() => navigate("/")}>
             <img
               src={peaceSymbol}
               alt="Peace symbol"
-              className={`h-12 w-16 drop-shadow ${
-                theme === "light" ? "invert" : ""
-              }`}
+              className={`h-12 w-16 drop-shadow ${theme === "light" ? "invert" : ""
+                }`}
               loading="lazy"
             />
           </div>
@@ -122,24 +121,20 @@ const Navigation = () => {
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-nav"
           >
-            <div className={`w-6 h-0.5 bg-foreground transition-all duration-300 ${
-              isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
-            }`} />
-            <div className={`w-6 h-0.5 bg-foreground transition-all duration-300 ${
-              isMobileMenuOpen ? 'opacity-0' : ''
-            }`} />
-            <div className={`w-6 h-0.5 bg-foreground transition-all duration-300 ${
-              isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
-            }`} />
+            <div className={`w-6 h-0.5 bg-foreground transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
+              }`} />
+            <div className={`w-6 h-0.5 bg-foreground transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''
+              }`} />
+            <div className={`w-6 h-0.5 bg-foreground transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
+              }`} />
           </button>
         </div>
 
         {/* Mobile Navigation Menu */}
         <div
           id="mobile-nav"
-          className={`md:hidden transition-all duration-500 ease-in-out overflow-hidden ${
-          isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
+          className={`md:hidden transition-all duration-500 ease-in-out overflow-hidden ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+            }`}
         >
           <div className="mt-4 py-6 glass rounded-lg border border-primary/20 backdrop-blur-lg">
             <div className="flex flex-col space-y-2">
