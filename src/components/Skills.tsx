@@ -1,11 +1,11 @@
 import { Card } from "@/components/ui/card";
-import { Globe, Database, Server, Share2, MousePointer2, Rocket } from "lucide-react";
+import { Globe, Database, Server, Share2, MousePointer2, Rocket, Sparkles } from "lucide-react";
 import {
   SiRubyonrails, SiRuby, SiGit, SiGithub,
   SiMongodb, SiPostgresql, SiMysql, SiRedis,
   SiDocker, SiSidekiq, SiJenkins, SiNginx, SiPostman,
   SiHtml5, SiCss, SiJavascript, SiReact, SiTailwindcss, SiBootstrap, SiPhp,
-  SiClaude, SiNotion, SiGooglegemini
+  SiClaude, SiNotion, SiGooglegemini, SiOpenai
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
 import { TbBrandVscode } from "react-icons/tb";
@@ -20,7 +20,6 @@ const Skills = () => {
         { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
         { name: "React", icon: SiReact, color: "#61DAFB" },
         { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
-        { name: "Bootstrap", icon: SiBootstrap, color: "#7952B3" },
       ],
     },
     {
@@ -56,6 +55,7 @@ const Skills = () => {
       skills: [
         { name: "Claude Code", icon: SiClaude, color: "#D97757" },
         { name: "Gemini CLI", icon: SiGooglegemini, color: "#8E75FF" },
+        { name: "OpenAI", icon: SiOpenai, color: "#74aa9c" },
         { name: "Antigravity", icon: Rocket, color: "#FFB000" },
         { name: "Cursor", icon: MousePointer2, color: "#FFFFFF" },
       ],
