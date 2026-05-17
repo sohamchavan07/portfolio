@@ -28,6 +28,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.noupe.com" />
     
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    
     <!-- Preload critical CSS for faster rendering -->
     <link rel="preload" href="/critical.css" as="style" />
     <!-- Critical CSS - Loaded early for theme initialization -->
@@ -77,11 +80,27 @@
     <link rel="alternate" type="application/rss+xml" title="Soham Chavan Updates" href="https://www.sohamchavan.site/rss.xml" />
     
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-W9Z72WS3');</script>
+    <script>
+      window.addEventListener('load', function() {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(function() {
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-W9Z72WS3');
+          });
+        } else {
+          setTimeout(function() {
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-W9Z72WS3');
+          }, 3000);
+        }
+      });
+    </script>
     <!-- End Google Tag Manager -->
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -110,7 +129,6 @@
         }
       }
     </script>
-    <script src='https://www.noupe.com/embed/0199af5b73667d8d9c702d2fc3712d932de4.js'></script>
   </head>
 
   <body>
@@ -143,13 +161,31 @@
     <script type="module" src="/src/main.tsx"></script>
     
     <!-- Deferred non-critical scripts - Load after page content -->
-    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-B2S62WJH8X"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-B2S62WJH8X');
+      window.addEventListener('load', function() {
+        const loadDeferred = () => {
+          const gtagScript = document.createElement('script');
+          gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-B2S62WJH8X";
+          gtagScript.async = true;
+          document.body.appendChild(gtagScript);
+
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-B2S62WJH8X');
+
+          const noupeScript = document.createElement('script');
+          noupeScript.src = "https://www.noupe.com/embed/0199af5b73667d8d9c702d2fc3712d932de4.js";
+          noupeScript.async = true;
+          document.body.appendChild(noupeScript);
+        };
+
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadDeferred);
+        } else {
+          setTimeout(loadDeferred, 4000);
+        }
+      });
     </script>
-    <script defer src='https://www.noupe.com/embed/0199af5b73667d8d9c702d2fc3712d932de4.js'></script>
   </body>
 </html>

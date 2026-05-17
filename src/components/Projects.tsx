@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -28,9 +28,11 @@ const Projects = () => {
   // Featured projects to show initially
   const featuredProjectIds = new Set([1, 2, 4, 5, 6, 10, 13, 14]);
 
-  const filteredProjects = activeFilter === "all"
-    ? (showAllProjects ? projects : projects.filter(p => featuredProjectIds.has(p.id)))
-    : projects.filter(project => project.category === activeFilter);
+  const filteredProjects = useMemo(() => {
+    return activeFilter === "all"
+      ? (showAllProjects ? projects : projects.filter(p => featuredProjectIds.has(p.id)))
+      : projects.filter(project => project.category === activeFilter);
+  }, [activeFilter, showAllProjects]);
 
   return (
     <section id="projects" className="section-padding bg-muted/10">

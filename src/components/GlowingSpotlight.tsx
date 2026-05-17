@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 const GLOW_SIZE = 300; // Diameter in px
 
 const GlowingSpotlight: React.FC = () => {
-  const [pos, setPos] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+  const glowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const move = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
+    const handleMouseMove = (e: MouseEvent) => {
+      if (glowRef.current) {
+        const x = e.clientX - GLOW_SIZE / 2;
+        const y = e.clientY - GLOW_SIZE / 2;
+        glowRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
@@ -18,27 +25,26 @@ const GlowingSpotlight: React.FC = () => {
         pointerEvents: "none",
         left: 0,
         top: 0,
-        width: "100vw",
-        height: "100vh",
+        width: "100%",
+        height: "100%",
         zIndex: 50,
       }}
     >
       <div
+        ref={glowRef}
         style={{
           position: "absolute",
-          // ...existing code...
-          // changed to use GPU-accelerated transform for smooth animation
           left: 0,
           top: 0,
           width: GLOW_SIZE,
           height: GLOW_SIZE,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,0,128,0.38) 0%, rgba(0,0,0,0) 70%)",
+          background: "radial-gradient(circle, rgba(235, 34, 131, 0.45) 0%, rgba(235, 34, 131, 0) 70%)",
           filter: "blur(32px)",
           pointerEvents: "none",
-          transform: `translate3d(${pos.x - GLOW_SIZE / 2}px, ${pos.y - GLOW_SIZE / 2}px, 0)`,
-          transition: "transform 120ms cubic-bezier(.2,1,.35,1)",
           willChange: "transform",
+          transform: `translate3d(${window.innerWidth / 2 - GLOW_SIZE / 2}px, ${window.innerHeight / 2 - GLOW_SIZE / 2}px, 0)`,
+          transition: "transform 150ms cubic-bezier(.2,1,.35,1)",
         }}
       />
     </div>
