@@ -60,12 +60,12 @@ const About = () => {
 
           <Card className="xl:col-span-5 p-6 sm:p-8 glass border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 group overflow-hidden relative flex flex-col justify-center">
             <div className="absolute -right-6 -top-6 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors duration-500" />
-            
+
             <h4 className="text-xl font-bold mb-6 flex items-center gap-2 relative z-10">
               <Sparkles className="w-5 h-5 text-primary animate-pulse" />
               Quick Facts
             </h4>
-            
+
             <div className="flex flex-col gap-4 relative z-10">
               <div className="flex items-center gap-4 p-4 rounded-2xl bg-secondary/30 hover:bg-secondary/60 transition-colors border border-border/40 group/item">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover/item:scale-110 transition-transform">
@@ -126,6 +126,85 @@ const About = () => {
               <div className="text-sm text-muted-foreground">{stat.label}</div>
             </Card>
           ))}
+
+          {/* Clean Code & Performance Cards */}
+          <Card className="col-span-1 md:col-span-2 xl:col-span-6 p-6 sm:p-8 border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 flex flex-col justify-center bg-[#0a0a0a] text-white overflow-hidden group relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <h4 className="text-xl font-bold mb-6 flex items-center gap-2 relative z-10">
+              Clean Code
+            </h4>
+
+            <div className="font-mono text-sm sm:text-base p-5 rounded-2xl bg-black/60 border border-white/10 shadow-inner overflow-hidden relative z-10">
+              <div className="flex gap-2 mb-4">
+                <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+              </div>
+              <div className="text-red-400 mt-2">&lt;ul&gt;</div>
+              <div className="pl-4 sm:pl-8 py-2 flex flex-col gap-2">
+                <div>
+                  <span className="text-red-400">&lt;li&gt;</span>
+                  <span className="text-gray-200">Multi-Agent Orchestration.</span>
+                  <span className="text-red-400">&lt;/li&gt;</span>
+                </div>
+                <div>
+                  <span className="text-red-400">&lt;li&gt;</span>
+                  <span className="text-gray-200">Performance Optimization.</span>
+                  <span className="text-red-400">&lt;/li&gt;</span>
+                </div>
+                <div>
+                  <span className="text-red-400">&lt;li&gt;</span>
+                  <span className="text-gray-200">End-to-End Delivery.</span>
+                  <span className="text-red-400">&lt;/li&gt;</span>
+                </div>
+              </div>
+              <div className="text-red-400">&lt;/ul&gt;</div>
+            </div>
+          </Card>
+
+          <Card className="col-span-1 md:col-span-2 xl:col-span-6 p-6 sm:p-8 border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 flex flex-col items-center justify-center bg-[#0a0a0a] text-white overflow-hidden group relative">
+            <div className="absolute inset-0 bg-gradient-to-bl from-[#0ecc67]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="w-full text-left mb-8 relative z-10">
+              <h4 className="text-xl font-bold text-white mb-1">Performance Optimization</h4>
+              <p className="text-sm text-gray-400">via Google Lighthouse</p>
+            </div>
+
+            <div className="flex flex-wrap justify-between w-full gap-4 sm:gap-2 relative z-10">
+              {[
+                { label: "Performance", score: 100 },
+                { label: "Accessibility", score: 97 },
+                { label: "Best Practices", score: 100 },
+                { label: "SEO", score: 100 },
+              ].map((item, i) => (
+                <div key={item.label} className="flex flex-col items-center gap-4 flex-1 min-w-[70px]">
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center group-hover:scale-105 transition-transform duration-500 hover:rotate-3">
+                    <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                      <path
+                        className="text-white/10"
+                        strokeWidth="3"
+                        stroke="currentColor"
+                        fill="none"
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      />
+                      <path
+                        className="text-[#0ecc67] drop-shadow-[0_0_8px_rgba(14,204,103,0.5)]"
+                        strokeDasharray={`${item.score}, 100`}
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        stroke="currentColor"
+                        fill="none"
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      />
+                    </svg>
+                    <span className="absolute text-[#0ecc67] font-bold text-lg sm:text-xl">{item.score}</span>
+                  </div>
+                  <span className="text-xs sm:text-sm text-gray-300 font-medium text-center">{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </Card>
         </div>
       </div>
     </section>
