@@ -77,13 +77,21 @@ const Projects = () => {
             >
               {/* Project Image */}
               <div className="relative overflow-hidden mb-5 rounded-sm">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full aspect-[1.6/1] object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
+                <picture>
+                  <source
+                    srcSet={project.image.replace(/\.(png|jpg|jpeg)$/, '.webp')}
+                    type="image/webp"
+                  />
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full aspect-[1.6/1] object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                    width={800}
+                    height={500}
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
 
                 </div>

@@ -75,11 +75,19 @@ const ProjectDetail = () => {
 
               {/* Project Image */}
               <div className="relative aspect-video rounded-2xl overflow-hidden border border-primary/10 shadow-2xl">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
+                <picture>
+                  <source
+                    srcSet={project.image.replace(/\.(png|jpg|jpeg)$/, '.webp')}
+                    type="image/webp"
+                  />
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                    fetchPriority="high"
+                  />
+                </picture>
               </div>
 
               {/* Description */}
