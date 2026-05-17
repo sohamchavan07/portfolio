@@ -89,17 +89,9 @@ const Projects = () => {
 
               {/* Project Content */}
               <div className="flex flex-col">
-                <h3 className="text-xl font-semibold text-foreground tracking-tight mb-2 group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-semibold text-foreground tracking-tight group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-
-                <p className="text-muted-foreground text-[15px] leading-relaxed mb-4 line-clamp-3">
-                  {project.description}
-                </p>
-
-                <p className="text-sm font-medium text-muted-foreground/60">
-                  {project.date}
-                </p>
               </div>
             </div>
           ))}

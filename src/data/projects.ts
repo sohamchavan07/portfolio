@@ -27,8 +27,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/sohamchavan07/Students-college-portal",
     liveUrl: "https://students-college-portal.vercel.app/",
     demoUrl: "https://students-college-portal.vercel.app/",
-    date: "2025",
-    client: "Personal"
+    date: "2026",
   },
   {
     id: 10,
@@ -57,7 +56,7 @@ export const projects: Project[] = [
     liveUrl: "https://tawade-kitchen.vercel.app",
     demoUrl: "https://tawade-kitchen.vercel.app",
     date: "2025",
-    client: "Tawade Kitchen",
+    client: "Freelancer ",
   },
   {
     id: 4,
@@ -72,7 +71,7 @@ export const projects: Project[] = [
     liveUrl: "https://shivkumarrealtors.vercel.app/",
     demoUrl: "https://shivkumarrealtors.vercel.app/",
     date: "2025",
-    client: "Shivkumar Realtors"
+    client: "Personal"
   },
   {
     id: 5,
@@ -87,7 +86,7 @@ export const projects: Project[] = [
     liveUrl: "https://hotel-nyala.vercel.app",
     demoUrl: "https://hotel-nyala.vercel.app",
     date: "2025",
-    client: "Personal",
+    client: "Freelancer ",
   },
   {
     id: 6,
@@ -102,7 +101,6 @@ export const projects: Project[] = [
     liveUrl: "https://github.com/sohamchavan07/Payment-Gateway",
     demoUrl: "",
     date: "2025",
-    client: "Payment Integration"
   },
   {
     id: 11,
@@ -116,8 +114,8 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/sohamchavan07/sri-ram-mandir",
     liveUrl: "https://sri-ram-mandir1922.vercel.app/",
     demoUrl: "https://sri-ram-mandir1922.vercel.app/",
-    date: "2025",
-    client: "Shri Ram Mandir",
+    date: "2026",
+    client: "Personal",
   },
   {
     id: 7,
@@ -132,7 +130,6 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/sohamchavan07/Ferrari/",
     demoUrl: "https://ferrari-casestudy.vercel.app/",
     date: "2025",
-    client: "Personal",
   },
   {
     id: 8,
@@ -147,7 +144,6 @@ export const projects: Project[] = [
     liveUrl: "https://porsche-casestudy.vercel.app/",
     demoUrl: "https://porsche-casestudy.vercel.app/",
     date: "2025",
-    client: "Personal",
   },
   {
     id: 9,
@@ -176,7 +172,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/sohamchavan07/hemraj-products",
     liveUrl: "https://hemraj-products.vercel.app/",
     date: "2025",
-    client: "Hemraj Products",
+    client: "Freelancer",
   },
   {
     id: 14,
@@ -190,6 +186,5 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/sohamchavan07/bookstore",
     liveUrl: "https://bookstore.sohamchavan.site/",
     date: "2025",
-    client: "Personal",
   }
 ];
