@@ -15,6 +15,16 @@ const ClickMenu = () => {
       setIsOpen(true);
     };
 
+    document.addEventListener('contextmenu', handleContextMenu);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
     const handleClick = (e: MouseEvent) => {
       if (menuRef.current && menuRef.current.contains(e.target as Node)) {
         return;
@@ -26,16 +36,14 @@ const ClickMenu = () => {
       if (e.key === 'Escape') setIsOpen(false);
     };
 
-    document.addEventListener('contextmenu', handleContextMenu);
     document.addEventListener('click', handleClick);
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.removeEventListener('contextmenu', handleContextMenu);
       document.removeEventListener('click', handleClick);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
