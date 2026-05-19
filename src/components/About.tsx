@@ -22,7 +22,7 @@ const About = () => {
     { number: "1+", label: "Years Experience", icon: Calendar },
     { number: "10+", label: "Projects Completed", icon: Code2 },
     { number: "7+", label: "Happy Clients", icon: Heart },
-    { number: "20+", label: "Technologies", icon: "/assets/connection.png" },
+    { number: "20+", label: "Technologies", icon: "/assets/icons/connection.png" },
     //{ number: "End-to-End", label: "Delivery Focus", icon: Code2 },
   ];
 

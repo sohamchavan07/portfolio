@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
-import peaceSymbol from "@/assets/symbol.png";
+import peaceSymbol from "@/assets/brand/symbol.png";
 
 const navItems = [
   { href: "#home", label: "Home" },
