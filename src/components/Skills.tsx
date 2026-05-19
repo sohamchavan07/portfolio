@@ -10,67 +10,68 @@ import {
 import { FaAws } from "react-icons/fa";
 import { TbBrandVscode } from "react-icons/tb";
 
+const skillCategories = [
+  {
+    title: "Frontend Development",
+    skills: [
+      { name: "HTML", icon: SiHtml5, color: "#E34F26" },
+      { name: "CSS", icon: SiCss, color: "#1572B6" },
+      { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+      { name: "React", icon: SiReact, color: "#61DAFB" },
+      { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
+    ],
+  },
+  {
+    title: "Backend Development",
+    skills: [
+      { name: "Ruby on Rails", icon: SiRubyonrails, color: "#CC0000" },
+      { name: "Ruby", icon: SiRuby, color: "#CC342D" },
+      { name: "PHP", icon: SiPhp, color: "#777BB4" },
+      { name: "Sidekiq", icon: SiSidekiq, color: "#ef4444" },
+    ],
+  },
+  {
+    title: "Database Systems",
+    skills: [
+      { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+      { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+      { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+      { name: "Redis", icon: SiRedis, color: "#DC382D" },
+      { name: "RDBMS", icon: Database, color: "#6366f1" },
+    ],
+  },
+  {
+    title: "DevOps & Cloud",
+    skills: [
+      { name: "Docker", icon: SiDocker, color: "#2496ED" },
+      { name: "AWS", icon: FaAws, color: "#FF9900" },
+      { name: "Jenkins", icon: SiJenkins, color: "#D24939" },
+      { name: "Nginx", icon: SiNginx, color: "#009639" },
+    ],
+  },
+  {
+    title: "AI Development",
+    skills: [
+      { name: "Claude Code", icon: SiClaude, color: "#D97757" },
+      { name: "Gemini CLI", icon: SiGooglegemini, color: "#8E75FF" },
+      { name: "OpenAI", icon: SiOpenai, color: "#74aa9c" },
+      { name: "Antigravity", icon: Rocket, color: "#FFB000" },
+      { name: "Cursor", icon: MousePointer2, color: "#FFFFFF" },
+    ],
+  },
+  {
+    title: "Tools & Workflow",
+    skills: [
+      { name: "Git", icon: SiGit, color: "#F05032" },
+      { name: "GitHub", icon: SiGithub, color: "#ffffff" },
+      { name: "VS Code", icon: TbBrandVscode, color: "#007ACC" },
+      { name: "Postman", icon: SiPostman, color: "#FF6C37" },
+      { name: "Notion", icon: SiNotion, color: "#FFFFFF" },
+    ],
+  }
+];
+
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Frontend Development",
-      skills: [
-        { name: "HTML", icon: SiHtml5, color: "#E34F26" },
-        { name: "CSS", icon: SiCss, color: "#1572B6" },
-        { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-        { name: "React", icon: SiReact, color: "#61DAFB" },
-        { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
-      ],
-    },
-    {
-      title: "Backend Development",
-      skills: [
-        { name: "Ruby on Rails", icon: SiRubyonrails, color: "#CC0000" },
-        { name: "Ruby", icon: SiRuby, color: "#CC342D" },
-        { name: "PHP", icon: SiPhp, color: "#777BB4" },
-        { name: "Sidekiq", icon: SiSidekiq, color: "#ef4444" },
-      ],
-    },
-    {
-      title: "Database Systems",
-      skills: [
-        { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
-        { name: "MySQL", icon: SiMysql, color: "#4479A1" },
-        { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-        { name: "Redis", icon: SiRedis, color: "#DC382D" },
-        { name: "RDBMS", icon: Database, color: "#6366f1" },
-      ],
-    },
-    {
-      title: "DevOps & Cloud",
-      skills: [
-        { name: "Docker", icon: SiDocker, color: "#2496ED" },
-        { name: "AWS", icon: FaAws, color: "#FF9900" },
-        { name: "Jenkins", icon: SiJenkins, color: "#D24939" },
-        { name: "Nginx", icon: SiNginx, color: "#009639" },
-      ],
-    },
-    {
-      title: "AI Development",
-      skills: [
-        { name: "Claude Code", icon: SiClaude, color: "#D97757" },
-        { name: "Gemini CLI", icon: SiGooglegemini, color: "#8E75FF" },
-        { name: "OpenAI", icon: SiOpenai, color: "#74aa9c" },
-        { name: "Antigravity", icon: Rocket, color: "#FFB000" },
-        { name: "Cursor", icon: MousePointer2, color: "#FFFFFF" },
-      ],
-    },
-    {
-      title: "Tools & Workflow",
-      skills: [
-        { name: "Git", icon: SiGit, color: "#F05032" },
-        { name: "GitHub", icon: SiGithub, color: "#ffffff" },
-        { name: "VS Code", icon: TbBrandVscode, color: "#007ACC" },
-        { name: "Postman", icon: SiPostman, color: "#FF6C37" },
-        { name: "Notion", icon: SiNotion, color: "#FFFFFF" },
-      ],
-    }
-  ];
 
   return (
     <section id="skills" className="section-padding bg-muted/10">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download, ArrowDown, Twitter, Calendar } from "lucide-react";
 import profileWhatsApp592 from "@/assets/profile-whatsapp-2026-04-25-592.jpg";
@@ -10,7 +10,7 @@ import profileWhatsApp150Webp from "@/assets/profile-whatsapp-2026-04-25-150.web
 
 const titles = ["Full Stack Developer", "Freelancer", "Problem Solver", "Tech Enthusiast"];
 
-const Hero = () => {
+const TypingTitle = () => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -30,26 +30,35 @@ const Hero = () => {
     return () => clearTimeout(timer);
   }, [displayText, currentIndex]);
 
-  const scrollToContact = () => {
+  return (
+    <div className="text-2xl sm:text-3xl md:text-4xl font-semibold text-muted-foreground min-h-[3rem] flex items-center flex-wrap gap-x-2">
+      I'm a <span className="ml-2 gradient-text">{displayText}</span>
+      <span className="animate-pulse ml-1">|</span>
+    </div>
+  );
+};
+
+const Hero = () => {
+  const scrollToContact = useCallback(() => {
     const element = document.querySelector("#contact");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-  };
+  }, []);
 
-  const scrollToAbout = () => {
+  const scrollToAbout = useCallback(() => {
     const element = document.querySelector("#about");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-  };
+  }, []);
 
-  const socialLinks = [
+  const socialLinks = useMemo(() => [
     { icon: Github, href: "https://github.com/sohamchavan07", label: "GitHub" },
     { icon: Linkedin, href: "https://linkedin.com/in/sohamchavan07", label: "LinkedIn" },
     { icon: Twitter, href: "https://twitter.com/soham_chavan07", label: "X (Twitter)" },
     { icon: Mail, href: "mailto:sohamchavan.sc07@gmail.com", label: "Email" },
-  ];
+  ], []);
 
   return (
     <section id="home" className="relative overflow-hidden flex items-center pt-24 pb-16 md:pb-24 min-h-[calc(100vh-4rem)]">
@@ -82,10 +91,7 @@ const Hero = () => {
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight">
                 <span className="gradient-text">Soham Chavan</span>
               </h1>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-semibold text-muted-foreground min-h-[3rem] flex items-center flex-wrap gap-x-2">
-                I'm a <span className="ml-2 gradient-text">{displayText}</span>
-                <span className="animate-pulse ml-1">|</span>
-              </div>
+              <TypingTitle />
             </div>
 
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed">

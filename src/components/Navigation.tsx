@@ -1,9 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
 import peaceSymbol from "@/assets/symbol.png";
+
+const navItems = [
+  { href: "#home", label: "Home" },
+  { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills" },
+  { href: "#testimonials", label: "Testimonials" },
+  { href: "#services", label: "Services" },
+  { href: "#about", label: "About" },
+  { href: "#contact", label: "Contact" },
+];
+
+const contactLinks = [
+  { href: "tel:+917058933361", label: "Call", value: "+91 7058933361" },
+  { href: "mailto:sohamchavan.sc07@gmail.com", label: "Email", value: "sohamchavan.sc07@gmail.com" },
+];
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,7 +31,7 @@ const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -31,7 +46,7 @@ const Navigation = () => {
         setIsMobileMenuOpen(false);
       }
     };
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize, { passive: true });
     window.addEventListener("keydown", handleEscape);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -46,22 +61,7 @@ const Navigation = () => {
     };
   }, [isMobileMenuOpen]);
 
-  const navItems = [
-    { href: "#home", label: "Home" },
-    { href: "#projects", label: "Projects" },
-    { href: "#skills", label: "Skills" },
-    { href: "#testimonials", label: "Testimonials" },
-    { href: "#services", label: "Services" },
-    { href: "#about", label: "About" },
-    { href: "#contact", label: "Contact" },
-  ];
-
-  const contactLinks = [
-    { href: "tel:+917058933361", label: "Call", value: "+91 7058933361" },
-    { href: "mailto:sohamchavan.sc07@gmail.com", label: "Email", value: "sohamchavan.sc07@gmail.com" },
-  ];
-
-  const handleNavClick = (href: string) => {
+  const handleNavClick = useCallback((href: string) => {
     if (location.pathname !== "/") {
       navigate("/", { state: { scrollTo: href } });
     } else {
@@ -71,7 +71,7 @@ const Navigation = () => {
       }
     }
     setIsMobileMenuOpen(false);
-  };
+  }, [location.pathname, navigate]);
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "glass py-2" : "py-4"

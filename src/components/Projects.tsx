@@ -1,9 +1,16 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Github, Filter } from "lucide-react";
 import { projects } from "@/data/projects";
+
+const filters = [
+  { id: "all", label: "All Projects" },
+];
+
+// Featured projects to show initially
+const featuredProjectIds = new Set([1, 2, 4, 5, 6, 10, 13, 14]);
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -13,26 +20,23 @@ const Projects = () => {
   const handleToggleProjects = (expand) => {
     setShowAllProjects(expand);
     // Scroll to projects section when showing featured projects or all projects
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       const projectsSection = document.getElementById("projects");
       if (projectsSection) {
         projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-    }, 100);
+    });
   };
-
-  const filters = [
-    { id: "all", label: "All Projects" },
-  ];
-
-  // Featured projects to show initially
-  const featuredProjectIds = new Set([1, 2, 4, 5, 6, 10, 13, 14]);
 
   const filteredProjects = useMemo(() => {
     return activeFilter === "all"
       ? (showAllProjects ? projects : projects.filter(p => featuredProjectIds.has(p.id)))
       : projects.filter(project => project.category === activeFilter);
   }, [activeFilter, showAllProjects]);
+
+  const handleProjectClick = useCallback((id) => {
+    navigate(`/project/${id}`);
+  }, [navigate]);
 
   return (
     <section id="projects" className="section-padding bg-muted/10">
@@ -73,7 +77,7 @@ const Projects = () => {
               key={project.id}
               className="group flex flex-col cursor-pointer animate-slide-up"
               style={{ animationDelay: `${index * 0.2}s` }}
-              onClick={() => navigate(`/project/${project.id}`)}
+              onClick={() => handleProjectClick(project.id)}
             >
               {/* Project Image */}
               <div className="relative overflow-hidden mb-5 rounded-sm">
