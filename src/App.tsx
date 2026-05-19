@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlowingSpotlight from "@/components/GlowingSpotlight";
+import ClickMenu from "@/components/ClickMenu";
 
 // Lazy load route components for code splitting
 const Index = lazy(() => import("./pages/Index"));
@@ -23,6 +24,7 @@ const LoadingFallback = () => (
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <GlowingSpotlight />
+    <ClickMenu />
     <TooltipProvider>
       <Toaster />
       <Sonner />
