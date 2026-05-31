@@ -10,7 +10,7 @@ const filters = [
 ];
 
 // Featured projects to show initially
-const featuredProjectIds = new Set([14, 2, 15, 4, 5, 1]);
+const featuredProjectIds = new Set([14, 2, 15, 4, 1, 10]);
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
