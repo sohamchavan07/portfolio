@@ -16,6 +16,26 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 16,
+    title: "Goalz Calculator",
+    category: "web",
+    description: "A high-performance, single-page utility tool built to convert ambiguous project deadlines into actionable daily velocities and structured weekly breakthroughs.",
+    longDescription: "Most productivity and goal-tracking platforms are cluttered with complex onboarding processes, mandatory user authentication, and heavy database constraints. When founders or developers need to map out a sprint quickly, they want instant calculations without the friction of a multi-page setup.\n\nA streamlined, client-side dashboard that instantly processes target completion dates and total estimated workloads. It removes all cognitive friction by dynamically calculating daily task/hour quotas and projecting milestone targets entirely in real-time within the browser.\n\nBuilt as a zero-auth utility, it empowers users with features like risk buffering and automated milestone presets, ensuring project timelines remain realistic and actionable.",
+    image: "/assets/projects/goalz-calculator.webp",
+    technologies: ["React", "Next.js", "Tailwind CSS", "Vercel", "Framer Motion"],
+    features: [
+      "One-Click Milestone Presets",
+      "Founder's Risk Buffer (15%)",
+      "Dynamic Timeline Projection",
+      "Hustle Blueprint Export",
+      "Adaptive Urgency Badges"
+    ],
+    githubUrl: "https://github.com/sohamchavan07/Digital-Heroes-task",
+    liveUrl: "https://goalz-calculator.vercel.app/",
+    demoUrl: "https://goalz-calculator.vercel.app/",
+    date: "2026",
+  },
+  {
     id: 14,
     title: "Bookstore",
     category: "web",
