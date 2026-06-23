@@ -31,8 +31,8 @@ export const projects: Project[] = [
       "Adaptive Urgency Badges"
     ],
     githubUrl: "https://github.com/sohamchavan07/Digital-Heroes-task",
-    liveUrl: "https://goalz-calculator.vercel.app/",
-    demoUrl: "https://goalz-calculator.vercel.app/",
+    liveUrl: "https://digital-heroes-task-sooty.vercel.app/",
+    demoUrl: "https://digital-heroes-task-sooty.vercel.app/",
     date: "2026",
   },
   {
