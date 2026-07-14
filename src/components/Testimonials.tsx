@@ -1,9 +1,6 @@
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Quote } from "lucide-react";
-import useEmblaCarousel from "embla-carousel-react";
-import { useEffect, useCallback, useState } from "react";
-import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
@@ -38,30 +35,32 @@ const testimonials = [
   }
 ];
 
+const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
+  <Card className="w-[350px] md:w-[450px] h-full p-8 glass border-primary/10 hover:border-primary/20 transition-all duration-300 flex flex-col justify-between hover-lift mx-4">
+    <div>
+      <Quote className="w-10 h-10 text-primary/20 mb-6" />
+      <p className="text-muted-foreground leading-relaxed italic mb-8">
+        "{testimonial.quote}"
+      </p>
+    </div>
+    
+    <div className="flex items-center gap-4">
+      <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center text-white font-bold shrink-0 shadow-lg">
+        {testimonial.avatar}
+      </div>
+      <div>
+        <h4 className="font-semibold text-foreground">{testimonial.author}</h4>
+        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+      </div>
+    </div>
+  </Card>
+);
+
 const Testimonials = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: true,
-    align: "start",
-    skipSnaps: false 
-  });
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("select", onSelect);
-    emblaApi.on("reInit", onSelect);
-  }, [emblaApi, onSelect]);
-
   return (
-    <section id="testimonials" className="section-padding">
-      <div className="section-container">
-        <div className="text-center mb-16">
+    <section id="testimonials" className="section-padding overflow-hidden">
+      <div className="section-container mb-12">
+        <div className="text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Client <span className="gradient-text">Feedback</span>
           </h2>
@@ -69,51 +68,17 @@ const Testimonials = () => {
             Kind words from clients and collaborators I've had the pleasure of working with.
           </p>
         </div>
+      </div>
 
-        <div className="relative overflow-hidden" ref={emblaRef}>
-          <div className="flex">
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={index} 
-                className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.333%] px-4"
-              >
-                <Card className="h-full p-8 glass border-primary/10 hover:border-primary/20 transition-all duration-300 flex flex-col justify-between hover-lift">
-                  <div>
-                    <Quote className="w-10 h-10 text-primary/20 mb-6" />
-                    <p className="text-muted-foreground leading-relaxed italic mb-8">
-                      "{testimonial.quote}"
-                    </p>
-                  </div>
-                  
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center text-white font-bold shrink-0">
-                      {testimonial.avatar}
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">{testimonial.author}</h4>
-                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </div>
+      <div className="relative group pause-on-hover">
+        {/* Gradient Masks for smooth fading */}
+        <div className="absolute inset-y-0 left-0 w-20 md:w-60 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-20 md:w-60 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-        {/* Carousel Dots */}
-        <div className="flex justify-center gap-2 mt-8">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => emblaApi?.scrollTo(index)}
-              className={cn(
-                "w-2 h-2 rounded-full transition-all duration-300",
-                selectedIndex === index 
-                  ? "w-8 bg-primary" 
-                  : "bg-primary/20 hover:bg-primary/40"
-              )}
-              aria-label={`Go to slide ${index + 1}`}
-            />
+        <div className="flex animate-marquee py-4 w-fit">
+          {/* Duplicate the array multi-times to ensure continuous scroll even on huge screens */}
+          {[...testimonials, ...testimonials, ...testimonials, ...testimonials].map((testimonial, index) => (
+            <TestimonialCard key={index} testimonial={testimonial} />
           ))}
         </div>
       </div>
