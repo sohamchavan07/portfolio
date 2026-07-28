@@ -45,7 +45,7 @@ export const projects: Project[] = [
     technologies: ["Ruby on Rails", "PostgreSQL", "Tailwind CSS", "Hotwire", "Render"],
     features: ["Curated Book Collection", "Advanced Search & Filtering", "Secure Admin Dashboard", "Responsive UI/UX", "High-Performance Data Handling"],
     githubUrl: "https://github.com/sohamchavan07/bookstore",
-    liveUrl: "https://bookstore.sohamchavan.site/",
+    liveUrl: "",
     date: "2025",
   },
   {
@@ -73,8 +73,7 @@ export const projects: Project[] = [
     technologies: ["React", "TypeScript", "Tailwind CSS"],
     features: ["Content Management", "Responsive Interface", "SEO Optimized", "Rich Text Support"],
     githubUrl: "https://github.com/sohamchavan07/blog-app",
-    liveUrl: "https://blog.sohamchavan.site/",
-    demoUrl: "https://blog.sohamchavan.site/",
+    liveUrl: "",
     date: "2026",
     client: "Personal",
   },

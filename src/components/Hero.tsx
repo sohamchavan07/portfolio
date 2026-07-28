@@ -63,27 +63,24 @@ const Hero = () => {
   return (
     <section id="home" className="relative overflow-hidden flex items-center pt-24 pb-16 md:pb-24 min-h-[calc(100vh-4rem)]">
       {/* Background */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
       />
       <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/95 to-background/90" />
-      
-      {/* Animated background elements */}
+
+      {/* Soft circular background accents */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 left-4 w-32 h-32 sm:top-16 sm:left-12 sm:w-48 lg:top-20 lg:left-20 lg:w-72 bg-primary/5 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-10 right-4 w-40 h-40 sm:bottom-16 sm:right-12 sm:w-64 lg:bottom-20 lg:right-20 lg:w-96 bg-accent/5 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "1s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-40 sm:h-40 lg:w-48 lg:h-48 bg-secondary/5 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-10 left-4 w-32 h-32 sm:top-16 sm:left-12 sm:w-48 lg:top-20 lg:left-20 lg:w-72 bg-primary/10 rounded-full blur-2xl" />
+        <div className="absolute bottom-10 right-4 w-40 h-40 sm:bottom-16 sm:right-12 sm:w-64 lg:bottom-20 lg:right-20 lg:w-96 bg-accent/10 rounded-full blur-2xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-40 sm:h-40 lg:w-48 lg:h-48 bg-secondary/15 rounded-full blur-2xl" />
       </div>
 
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="animate-slide-up">
+          <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-500 text-sm font-medium mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
-              </span>
+              <span className="inline-flex rounded-full h-2.5 w-2.5 bg-green-500 shadow-lg shadow-green-500/20" />
               Hire Me
             </div>
             <div className="mb-6">
@@ -95,7 +92,7 @@ const Hero = () => {
             </div>
 
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed">
-              FullStack Developer I Create websites and innovative web applications. 
+              FullStack Developer I Create websites and innovative web applications.
               I specialize in Ruby on Rails, Python and modern web technologies to build scalable digital solutions.
             </p>
 
@@ -103,7 +100,7 @@ const Hero = () => {
               <Button
                 onClick={scrollToContact}
                 size="lg"
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-3 sm:px-6 sm:py-3 bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary text-white text-sm sm:text-base"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-3 sm:px-6 sm:py-3 bg-[#4f46e5] hover:bg-[#4338ca] border-0 hover-lift text-white text-sm sm:text-base transition-colors duration-200"
               >
                 <Mail className="w-5 h-5" />
                 <span className="truncate">Get In Touch</span>
@@ -111,7 +108,7 @@ const Hero = () => {
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-secondary text-black border-0 hover:bg-gradient-primary hover-lift glow-primary"
+                className="bg-white text-black border-0 hover:bg-gray-100 hover-lift transition-colors duration-200"
               >
                 <a
                   href="https://calendly.com/soham777chavan777/new-meeting"
@@ -154,7 +151,7 @@ const Hero = () => {
           </div>
 
           {/* Profile Image */}
-          <div className="relative flex justify-center lg:justify-end animate-fade-in">
+          <div className="relative flex justify-center lg:justify-end">
             <div className="relative group w-full max-w-xs sm:max-w-sm md:max-w-md">
               <div className="absolute inset-0 bg-gradient-primary rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
               <div className="relative w-full aspect-square rounded-full overflow-hidden border-4 border-primary/20 shadow-strong hover-lift">
@@ -193,7 +190,7 @@ const Hero = () => {
           <button
             onClick={scrollToAbout}
             aria-label="Scroll to about"
-            className="animate-bounce p-2 rounded-full hover:bg-primary/10 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+            className="p-2 rounded-full hover:bg-primary/10 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <ArrowDown className="w-6 h-6 text-muted-foreground" />
           </button>
