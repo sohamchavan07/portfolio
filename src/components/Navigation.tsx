@@ -188,7 +188,7 @@ const Navigation = () => {
                 <Button
                   size="lg"
                   onClick={() => handleNavClick("#contact")}
-                  className="w-full bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary"
+                  className="w-full bg-[#4f46e5] hover:bg-[#4338ca] border-0 hover-lift text-white"
                 >
                   Get In Touch
                 </Button>

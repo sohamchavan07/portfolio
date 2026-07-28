@@ -36,7 +36,7 @@ const testimonials = [
 ];
 
 const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
-  <Card className="w-[350px] md:w-[450px] h-full p-8 glass border-primary/10 hover:border-primary/20 transition-all duration-300 flex flex-col justify-between hover-lift mx-4">
+  <Card className="w-[350px] md:w-[450px] h-[350px] flex-shrink-0 p-8 glass border-primary/10 hover:border-primary/20 transition-all duration-300 flex flex-col justify-between hover-lift mx-4">
     <div>
       <Quote className="w-10 h-10 text-primary/20 mb-6" />
       <p className="text-muted-foreground leading-relaxed italic mb-8">

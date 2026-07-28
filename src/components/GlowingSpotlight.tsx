@@ -1,11 +1,15 @@
 import React, { useEffect, useRef } from "react";
 
-const GLOW_SIZE = 300; // Diameter in px
+const GLOW_SIZE = 320; // Diameter in px
 
 const GlowingSpotlight: React.FC = () => {
   const glowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Only attach on non-touch / desktop devices
+    const isTouchDevice = window.matchMedia("(hover: none)").matches;
+    if (isTouchDevice) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       if (glowRef.current) {
         const x = e.clientX - GLOW_SIZE / 2;
@@ -19,7 +23,9 @@ const GlowingSpotlight: React.FC = () => {
   }, []);
 
   return (
+    // hidden on mobile (< md), visible only on md+ screens
     <div
+      className="hidden md:block"
       style={{
         position: "fixed",
         pointerEvents: "none",
@@ -39,12 +45,13 @@ const GlowingSpotlight: React.FC = () => {
           width: GLOW_SIZE,
           height: GLOW_SIZE,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(235, 34, 131, 0.45) 0%, rgba(235, 34, 131, 0) 70%)",
-          filter: "blur(32px)",
+          background:
+            "radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(59, 130, 246, 0.18) 45%, rgba(59, 130, 246, 0) 70%)",
+          filter: "blur(28px)",
           pointerEvents: "none",
           willChange: "transform",
           transform: `translate3d(${window.innerWidth / 2 - GLOW_SIZE / 2}px, ${window.innerHeight / 2 - GLOW_SIZE / 2}px, 0)`,
-          transition: "transform 150ms cubic-bezier(.2,1,.35,1)",
+          transition: "transform 120ms cubic-bezier(.2,1,.35,1)",
         }}
       />
     </div>

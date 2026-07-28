@@ -201,12 +201,13 @@
     border: 1px solid var(--glass-border);
   }
 
-  /* Gradient text */
+  /* Gradient text — single solid blue */
   .gradient-text {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #3b82f6;
+    -webkit-text-fill-color: #3b82f6;
+    background: none;
+    background-clip: unset;
+    -webkit-background-clip: unset;
   }
 
   /* Glow effects */

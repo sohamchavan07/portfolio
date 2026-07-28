@@ -62,7 +62,7 @@ const Services = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="mb-6">
-                <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 rounded-full bg-[#3b82f6] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                   <service.icon className="w-8 h-8 text-white" />
                 </div>
                 
@@ -100,7 +100,7 @@ const Services = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg"
-                className="bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary"
+                className="bg-[#3b82f6] hover:bg-[#2563eb] border-0 hover-lift text-white"
                 onClick={() => {
                   const element = document.querySelector("#contact");
                   if (element) element.scrollIntoView({ behavior: "smooth" });

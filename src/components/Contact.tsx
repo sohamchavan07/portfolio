@@ -140,8 +140,8 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="flex items-center space-x-4 group-hover:text-primary transition-colors"
                   >
-                    <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center">
-                      <info.icon className={`w-5 h-5 ${info.color}`} />
+                    <div className="w-12 h-12 rounded-full bg-[#3b82f6] flex items-center justify-center shrink-0">
+                      <info.icon className="w-5 h-5 text-white" />
                     </div>
                     <div>
                       <h4 className="font-semibold">{info.title}</h4>
@@ -177,7 +177,7 @@ const Contact = () => {
                     required
                     autoComplete="name"
                     inputMode="text"
-                    className="bg-muted/50 border-primary/20 focus:border-primary/40"
+                    className="bg-background border border-blue-500/30 focus:border-blue-400 placeholder:text-muted-foreground/50"
                   />
                 </div>
                 
@@ -195,7 +195,7 @@ const Contact = () => {
                     required
                     autoComplete="email"
                     inputMode="email"
-                    className="bg-muted/50 border-primary/20 focus:border-primary/40"
+                    className="bg-background border border-blue-500/30 focus:border-blue-400 placeholder:text-muted-foreground/50"
                   />
                 </div>
               </div>
@@ -213,7 +213,7 @@ const Contact = () => {
                   required
                   autoComplete="off"
                   inputMode="text"
-                  className="bg-muted/50 border-primary/20 focus:border-primary/40"
+                  className="bg-background border border-blue-500/30 focus:border-blue-400 placeholder:text-muted-foreground/50"
                 />
               </div>
 
@@ -230,7 +230,7 @@ const Contact = () => {
                   rows={6}
                   required
                   autoComplete="off"
-                  className="bg-muted/50 border-primary/20 focus:border-primary/40 resize-none"
+                  className="bg-background border border-blue-500/30 focus:border-blue-400 placeholder:text-muted-foreground/50 resize-none"
                 />
               </div>
 
@@ -238,7 +238,7 @@ const Contact = () => {
                 type="submit"
                 size="lg"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-primary hover:bg-gradient-secondary border-0 hover-lift glow-primary disabled:opacity-50"
+                className="w-full bg-[#3b82f6] hover:bg-[#2563eb] border-0 hover-lift text-white disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>

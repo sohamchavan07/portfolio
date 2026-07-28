@@ -54,10 +54,10 @@ const Hero = () => {
   }, []);
 
   const socialLinks = useMemo(() => [
-    { icon: Github, href: "https://github.com/sohamchavan07", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com/in/sohamchavan07", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com/soham_chavan07", label: "X (Twitter)" },
-    { icon: Mail, href: "mailto:sohamchavan.sc07@gmail.com", label: "Email" },
+    { icon: Github,   href: "https://github.com/sohamchavan07",         label: "GitHub",     color: "#6e7681", hoverBg: "rgba(110,118,129,0.15)" },
+    { icon: Linkedin, href: "https://linkedin.com/in/sohamchavan07",    label: "LinkedIn",   color: "#0A66C2", hoverBg: "rgba(10,102,194,0.15)"  },
+    { icon: Twitter,  href: "https://twitter.com/soham_chavan07",       label: "X (Twitter)",color: "#38bdf8", hoverBg: "rgba(56,189,248,0.15)"  },
+    { icon: Mail,     href: "mailto:sohamchavan.sc07@gmail.com",        label: "Email",      color: "#f87171", hoverBg: "rgba(248,113,113,0.15)" },
   ], []);
 
   return (
@@ -108,7 +108,7 @@ const Hero = () => {
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-black border-0 hover:bg-gray-100 hover-lift transition-colors duration-200"
+                className="bg-slate-800 dark:bg-white text-white dark:text-black border border-slate-700 dark:border-0 hover:bg-slate-700 dark:hover:bg-gray-100 hover-lift transition-colors duration-200"
               >
                 <a
                   href="https://calendly.com/soham777chavan777/new-meeting"
@@ -141,10 +141,18 @@ const Hero = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.label}
-                  className="touch-target w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-primary/20 transition-all duration-300 hover-lift glow-primary group"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="touch-target w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-all duration-300 hover-lift hover:scale-110"
+                  style={{
+                    animationDelay: `${index * 0.1}s`,
+                    background: "rgba(255,255,255,0.05)",
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.background = link.hoverBg)}
+                  onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.05)")}
                 >
-                  <link.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <link.icon
+                    className="w-5 h-5 transition-transform duration-300 group-hover:scale-110"
+                    style={{ color: link.color }}
+                  />
                 </a>
               ))}
             </div>
@@ -178,7 +186,7 @@ const Hero = () => {
                   />
                 </picture>
               </div>
-              <div className="absolute -bottom-4 -right-1 sm:-right-4 w-20 h-20 sm:w-24 sm:h-24 bg-accent rounded-full flex items-center justify-center glass animate-float">
+              <div className="absolute -bottom-4 -right-1 sm:-right-4 w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center animate-float" style={{ background: "linear-gradient(135deg, #6366f1, #3b82f6)" }}>
                 <span className="text-2xl">👋</span>
               </div>
             </div>
