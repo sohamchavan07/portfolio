@@ -58,7 +58,26 @@ const About = () => {
             </div>
           </Card>
 
-          <Card className="xl:col-span-5 p-6 sm:p-8 glass border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 group overflow-hidden relative flex flex-col justify-center">
+          <Card className="xl:col-span-5 p-6 sm:p-8 glass border-primary/10 hover:border-primary/20 transition-all duration-300 hover-lift flex flex-col">
+            <h4 className="text-xl font-bold mb-4">What I&apos;m Listening To While Coding</h4>
+            <p className="text-sm text-muted-foreground mb-6">A playlist that helps me stay focused and creative while building products.</p>
+            <div className="rounded-3xl overflow-hidden shadow-xl flex-1">
+              <iframe
+                data-testid="embed-iframe"
+                className="w-full h-[352px]"
+                style={{ borderRadius: 12 }}
+                src="https://open.spotify.com/embed/playlist/35bYAmbfDqpmvT3zHFln0t?utm_source=generator&theme=0&si=ec56476c7cf24334"
+                width="100%"
+                height="352"
+                frameBorder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          </Card>
+
+          <Card className="xl:col-span-12 p-6 sm:p-8 glass border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 group overflow-hidden relative flex flex-col justify-center">
             <div className="absolute -right-6 -top-6 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors duration-500" />
 
             <h4 className="text-xl font-bold mb-6 flex items-center gap-2 relative z-10">
