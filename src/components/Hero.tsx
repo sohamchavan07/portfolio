@@ -43,6 +43,17 @@ const Hero = () => {
     const element = document.querySelector("#contact");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // Contact section is lazy-loaded via IntersectionObserver,
+      // so scroll down to trigger its loading, then scroll to it
+      const scrollHeight = document.documentElement.scrollHeight;
+      window.scrollTo({ top: scrollHeight, behavior: "smooth" });
+      setTimeout(() => {
+        const contactElement = document.querySelector("#contact");
+        if (contactElement) {
+          contactElement.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 800);
     }
   }, []);
 
@@ -54,10 +65,10 @@ const Hero = () => {
   }, []);
 
   const socialLinks = useMemo(() => [
-    { icon: Github,   href: "https://github.com/sohamchavan07",         label: "GitHub",     color: "#6e7681", hoverBg: "rgba(110,118,129,0.15)" },
-    { icon: Linkedin, href: "https://linkedin.com/in/sohamchavan07",    label: "LinkedIn",   color: "#0A66C2", hoverBg: "rgba(10,102,194,0.15)"  },
-    { icon: Twitter,  href: "https://twitter.com/soham_chavan07",       label: "X (Twitter)",color: "#38bdf8", hoverBg: "rgba(56,189,248,0.15)"  },
-    { icon: Mail,     href: "mailto:sohamchavan.sc07@gmail.com",        label: "Email",      color: "#f87171", hoverBg: "rgba(248,113,113,0.15)" },
+    { icon: Github, href: "https://github.com/sohamchavan07", label: "GitHub", color: "#6e7681", hoverBg: "rgba(110,118,129,0.15)" },
+    { icon: Linkedin, href: "https://linkedin.com/in/sohamchavan07", label: "LinkedIn", color: "#0A66C2", hoverBg: "rgba(10,102,194,0.15)" },
+    { icon: Twitter, href: "https://twitter.com/soham_chavan07", label: "X (Twitter)", color: "#38bdf8", hoverBg: "rgba(56,189,248,0.15)" },
+    { icon: Mail, href: "mailto:soham07.dev@gmail.com", label: "Email", color: "#f87171", hoverBg: "rgba(248,113,113,0.15)" },
   ], []);
 
   return (

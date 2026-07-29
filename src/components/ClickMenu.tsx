@@ -67,7 +67,7 @@ const ClickMenu = () => {
       icon: <Mail className="w-5 h-5 mr-3" />,
       label: "Copy E-Mail",
       action: () => {
-        navigator.clipboard.writeText("sohamchavan.sc07@gmail.com");
+        navigator.clipboard.writeText("soham07.dev@gmail.com");
         toast({
           title: "Copied!",
           description: "Email address copied to clipboard.",

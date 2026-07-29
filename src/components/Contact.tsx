@@ -5,10 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
+import {
+  Mail,
+  Phone,
+  MapPin,
   Send,
   Github,
   Linkedin,
@@ -31,8 +31,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "sohamchavan.sc07@gmail.com",
-      href: "mailto:sohamchavan.sc07@gmail.com",
+      value: "soham07.dev@gmail.com",
+      href: "mailto:soham07.dev@gmail.com",
       color: "text-whte-500"
     },
     {
@@ -94,7 +94,7 @@ const Contact = () => {
       console.error('Error sending message:', error);
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again or contact me directly at sohamchavan.sc07@gmail.com",
+        description: "Failed to send message. Please try again or contact me directly at soham07.dev@gmail.com",
         variant: "destructive",
       });
     } finally {
@@ -120,8 +120,8 @@ const Contact = () => {
             <div>
               <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                I'm always interested in hearing about new projects and opportunities. 
-                Whether you're a startup looking to build your first product or an 
+                I'm always interested in hearing about new projects and opportunities.
+                Whether you're a startup looking to build your first product or an
                 established company seeking to innovate, I'd love to help bring your vision to life.
               </p>
             </div>
@@ -152,15 +152,15 @@ const Contact = () => {
               ))}
             </div>
             {/* Quick Response */}
-          
+
           </div>
 
           {/* Contact Form */}
           <Card className="p-8 glass border-primary/10 hover:border-primary/20 transition-all duration-300 animate-fade-in">
-            <form 
-              action="https://formspree.io/f/xvgbyldd" 
-              method="POST" 
-              onSubmit={handleSubmit} 
+            <form
+              action="https://formspree.io/f/xvgbyldd"
+              method="POST"
+              onSubmit={handleSubmit}
               className="space-y-6"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -180,7 +180,7 @@ const Contact = () => {
                     className="bg-background border border-blue-500/30 focus:border-blue-400 placeholder:text-muted-foreground/50"
                   />
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-sm font-medium">
                     Email Address *

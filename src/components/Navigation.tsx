@@ -17,7 +17,7 @@ const navItems = [
 
 const contactLinks = [
   { href: "tel:+917058933361", label: "Call", value: "+91 7058933361" },
-  { href: "mailto:sohamchavan.sc07@gmail.com", label: "Email", value: "sohamchavan.sc07@gmail.com" },
+  { href: "mailto:soham07.dev@gmail.com", label: "Email", value: "soham07.dev@gmail.com" },
 ];
 
 const Navigation = () => {
