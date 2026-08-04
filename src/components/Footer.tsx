@@ -5,7 +5,8 @@ import {
   Twitter,
   Mail,
   Heart,
-  ArrowUp
+  ArrowUp,
+  Coffee
 } from "lucide-react";
 
 const Footer = () => {
@@ -127,6 +128,16 @@ const Footer = () => {
                 &copy; {currentYear} Soham Chavan.
               </p>
             </div>
+          </div>
+          <div className="flex items-center text-sm">
+            <Button
+              size="sm"
+              onClick={() => window.location.href = "https://buymeacoffee.com/soham_chavan"}
+              className="bg-[#FF813F] hover:bg-[#FFC179] border-0 hover-lift text-white"
+            >
+              <Coffee className="w-5 h-5 mr-2" />
+              Support My Work
+            </Button>
           </div>
         </div>
       </div>
