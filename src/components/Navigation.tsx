@@ -68,6 +68,8 @@ const Navigation = () => {
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
+      } else {
+        navigate("/", { state: { scrollTo: href } });
       }
     }
     setIsMobileMenuOpen(false);

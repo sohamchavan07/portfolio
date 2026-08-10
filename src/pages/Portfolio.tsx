@@ -17,11 +17,24 @@ interface LocationState {
 }
 
 // Wrapper to load components only when they are near the viewport
-const LazySection = ({ children, fallback }: { children: React.ReactNode; fallback?: React.ReactNode }) => {
-  const [isVisible, setIsVisible] = useState(false);
+const LazySection = ({
+  children,
+  fallback,
+  forceLoad = false,
+}: {
+  children: React.ReactNode;
+  fallback?: React.ReactNode;
+  forceLoad?: boolean;
+}) => {
+  const [isVisible, setIsVisible] = useState(forceLoad);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (forceLoad) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -29,7 +42,7 @@ const LazySection = ({ children, fallback }: { children: React.ReactNode; fallba
           observer.disconnect();
         }
       },
-      { rootMargin: "200px" } // Start loading 200px before it enters the viewport
+      { rootMargin: "200px" }
     );
 
     if (sectionRef.current) {
@@ -37,11 +50,11 @@ const LazySection = ({ children, fallback }: { children: React.ReactNode; fallba
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [forceLoad]);
 
   return (
     <div ref={sectionRef} className="min-h-[100px]">
-      {isVisible ? (
+      {isVisible || forceLoad ? (
         <Suspense fallback={fallback || <div className="h-20" />}>
           {children}
         </Suspense>
@@ -54,19 +67,27 @@ const LazySection = ({ children, fallback }: { children: React.ReactNode; fallba
 
 const Portfolio = () => {
   const location = useLocation();
+  const [forceLoadSections, setForceLoadSections] = useState(false);
 
   useEffect(() => {
     const state = location.state as LocationState;
-    if (state && state.scrollTo) {
+    if (state?.scrollTo) {
+      setForceLoadSections(true);
       const targetId = state.scrollTo;
-      setTimeout(() => {
+      let attempts = 0;
+
+      const scrollToElement = () => {
         const element = document.querySelector(targetId);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
+        } else if (attempts < 30) {
+          attempts += 1;
+          setTimeout(scrollToElement, 100);
         }
-      }, 100);
-      // Clear state to avoid scrolling on refresh
-      window.history.replaceState({}, document.title);
+      };
+
+      scrollToElement();
+      window.history.replaceState({}, document.title, window.location.pathname);
     }
   }, [location]);
 
@@ -75,26 +96,26 @@ const Portfolio = () => {
       <Navigation />
       <main className="pt-20 md:pt-24">
         <Hero />
-        <LazySection>
+        <LazySection forceLoad={forceLoadSections}>
           <Projects />
         </LazySection>
-        <LazySection>
+        <LazySection forceLoad={forceLoadSections}>
           <Skills />
         </LazySection>
-        <LazySection>
+        <LazySection forceLoad={forceLoadSections}>
           <Testimonials />
         </LazySection>
-        <LazySection>
+        <LazySection forceLoad={forceLoadSections}>
           <Services />
         </LazySection>
-        <LazySection>
+        <LazySection forceLoad={forceLoadSections}>
           <About />
         </LazySection>
-        <LazySection>
+        <LazySection forceLoad={forceLoadSections}>
           <Contact />
         </LazySection>
       </main>
-      <LazySection>
+      <LazySection forceLoad={forceLoadSections}>
         <Footer />
       </LazySection>
     </div>
