@@ -125,7 +125,7 @@ const Hero = () => {
                 variant="outline"
                 className="border-primary/20 hover:bg-primary/10 hover-lift"
               >
-                <a href="/assets/docs/Resume.pdf" download aria-label="Download Resume" className="flex items-center justify-center gap-2 w-full">
+                <a href="/assets/docs/Soham_Chavan_FullStack_Developer.pdf" download aria-label="Download Resume" className="flex items-center justify-center gap-2 w-full">
                   <Download className="w-5 h-5 mr-2" />
                   <span className="truncate">Download Resume</span>
                 </a>
