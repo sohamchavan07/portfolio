@@ -5,6 +5,23 @@
   text-align: center;
 }
 
+/* Ensure consistent section spacing */
+.section-padding {
+  padding: 4rem 0;
+}
+
+/* Constrain containers to maintain proper aspect ratios */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Adjust grid gutters for better spacing */
+.grid {
+  gap: 1.5rem;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

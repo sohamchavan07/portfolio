@@ -76,7 +76,7 @@ const Navigation = () => {
   }, [location.pathname, navigate]);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "glass py-2" : "py-4"
+    <nav className={`fixed top-16 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "glass py-2" : "py-4"
       }`}>
       <div className="section-container">
         <div className="flex items-center justify-between">
