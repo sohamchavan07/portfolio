@@ -9,8 +9,25 @@ const filters = [
   { id: "all", label: "All Projects" },
 ];
 
-// Featured projects to show initially
-const featuredProjectIds = new Set([14, 15, 4, 1, 10, 13,]);
+// Featured projects to show initially (replace CollegeMatch with Tawade Kitchen)
+const featuredProjectIds = new Set([14, 15, 4, 2, 10, 13]);
+
+// Custom ordering to use when showing "All Projects" (preferred sequence)
+const allProjectsOrder = [
+  15, // Blog App
+  14, // Bookstore
+  10, // 3D Portfolio
+  2,  // Tawade Kitchen
+  13, // Hemraj Products
+  4,  // Shivkumar Realtors
+  5,  // Hotel Nyala
+  1,  // CollegeMatch
+  6,  // Rails Payment Gateway
+  8,  // PORSCHE CASE STUDY
+  7,  // Ferrari Case Study
+  11, // Sri Ram Mandir
+  9,  // Tic-Tac-Toe
+];
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -29,9 +46,19 @@ const Projects = () => {
   };
 
   const filteredProjects = useMemo(() => {
-    return activeFilter === "all"
-      ? (showAllProjects ? projects : projects.filter(p => featuredProjectIds.has(p.id)))
-      : projects.filter(project => project.category === activeFilter);
+    if (activeFilter !== "all") return projects.filter(project => project.category === activeFilter);
+
+    // When showing all projects, apply the custom ordering; otherwise show featured
+    if (showAllProjects) {
+      const orderMap = new Map(allProjectsOrder.map((id, idx) => [id, idx]));
+      return [...projects].sort((a, b) => {
+        const ia = orderMap.has(a.id) ? orderMap.get(a.id) : Number.MAX_SAFE_INTEGER;
+        const ib = orderMap.has(b.id) ? orderMap.get(b.id) : Number.MAX_SAFE_INTEGER;
+        return ia - ib;
+      });
+    }
+
+    return projects.filter(p => featuredProjectIds.has(p.id));
   }, [activeFilter, showAllProjects]);
 
   const handleProjectClick = useCallback((id) => {
