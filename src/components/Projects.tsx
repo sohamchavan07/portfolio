@@ -31,12 +31,14 @@ const allProjectsOrder = [
   16, // Goalz Calculator
 ];
 
+const orderMap = new Map(allProjectsOrder.map((id, idx) => [id, idx]));
+
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [showAllProjects, setShowAllProjects] = useState(false);
   const navigate = useNavigate();
 
-  const handleToggleProjects = (expand) => {
+  const handleToggleProjects = useCallback((expand: boolean) => {
     setShowAllProjects(expand);
     // Scroll to projects section when showing featured projects or all projects
     requestAnimationFrame(() => {
@@ -45,17 +47,16 @@ const Projects = () => {
         projectsSection.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
-  };
+  }, []);
 
   const filteredProjects = useMemo(() => {
     if (activeFilter !== "all") return projects.filter(project => project.category === activeFilter);
 
     // When showing all projects, apply the custom ordering; otherwise show featured
     if (showAllProjects) {
-      const orderMap = new Map(allProjectsOrder.map((id, idx) => [id, idx]));
       return [...projects].sort((a, b) => {
-        const ia = orderMap.has(a.id) ? orderMap.get(a.id) : Number.MAX_SAFE_INTEGER;
-        const ib = orderMap.has(b.id) ? orderMap.get(b.id) : Number.MAX_SAFE_INTEGER;
+        const ia = orderMap.has(a.id) ? orderMap.get(a.id)! : Number.MAX_SAFE_INTEGER;
+        const ib = orderMap.has(b.id) ? orderMap.get(b.id)! : Number.MAX_SAFE_INTEGER;
         return ia - ib;
       });
     }
@@ -63,7 +64,7 @@ const Projects = () => {
     return projects.filter(p => featuredProjectIds.has(p.id));
   }, [activeFilter, showAllProjects]);
 
-  const handleProjectClick = useCallback((id) => {
+  const handleProjectClick = useCallback((id: number) => {
     navigate(`/project/${id}`);
   }, [navigate]);
 

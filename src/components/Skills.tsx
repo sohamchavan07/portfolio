@@ -1,10 +1,10 @@
 import { Card } from "@/components/ui/card";
-import { Globe, Database, Server, Share2, MousePointer2, Rocket, Sparkles } from "lucide-react";
+import { Globe, Database, MousePointer2, Rocket } from "lucide-react";
 import {
   SiRubyonrails, SiRuby, SiGit, SiGithub,
   SiMongodb, SiPostgresql, SiMysql, SiRedis,
   SiDocker, SiSidekiq, SiJenkins, SiNginx, SiPostman,
-  SiHtml5, SiCss, SiJavascript, SiReact, SiTailwindcss, SiBootstrap, SiPhp,
+  SiHtml5, SiCss, SiJavascript, SiReact, SiTailwindcss, SiPhp,
   SiClaude, SiNotion, SiGooglegemini, SiOpenai
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";

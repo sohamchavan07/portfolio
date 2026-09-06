@@ -3,22 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
+import { navItems, contactLinks } from "@/config/site";
 import peaceSymbol from "@/assets/brand/symbol.png";
-
-const navItems = [
-  { href: "#home", label: "Home" },
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
-  { href: "#testimonials", label: "Testimonials" },
-  { href: "#services", label: "Services" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
-];
-
-const contactLinks = [
-  { href: "tel:+917058933361", label: "Call", value: "+91 7058933361" },
-  { href: "mailto:soham07.dev@gmail.com", label: "Email", value: "soham07.dev@gmail.com" },
-];
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -86,7 +72,9 @@ const Navigation = () => {
               alt="Peace symbol"
               className={`h-12 w-16 drop-shadow ${theme === "light" ? "invert" : ""
                 }`}
-              loading="lazy"
+              loading="eager"
+              width={64}
+              height={48}
             />
           </div>
 

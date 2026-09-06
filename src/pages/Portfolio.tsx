@@ -75,6 +75,7 @@ const Portfolio = () => {
       setForceLoadSections(true);
       const targetId = state.scrollTo;
       let attempts = 0;
+      let scrollTimer: ReturnType<typeof setTimeout> | undefined;
 
       const scrollToElement = () => {
         const element = document.querySelector(targetId);
@@ -82,12 +83,16 @@ const Portfolio = () => {
           element.scrollIntoView({ behavior: "smooth" });
         } else if (attempts < 30) {
           attempts += 1;
-          setTimeout(scrollToElement, 100);
+          scrollTimer = setTimeout(scrollToElement, 100);
         }
       };
 
       scrollToElement();
       window.history.replaceState({}, document.title, window.location.pathname);
+
+      return () => {
+        if (scrollTimer) clearTimeout(scrollTimer);
+      };
     }
   }, [location]);
 

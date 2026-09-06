@@ -5,21 +5,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-  Github,
-  Linkedin,
-  Twitter,
-  MessageCircle,
-  Calendar
-} from "lucide-react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { siteConfig } from "@/config/site";
+import type { ContactFormData } from "@/types";
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
     subject: "",
@@ -31,30 +23,21 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "soham07.dev@gmail.com",
-      href: "mailto:soham07.dev@gmail.com",
-      color: "text-whte-500"
+      value: siteConfig.email,
+      href: `mailto:${siteConfig.email}`,
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+91 7058933361",
-      href: "tel:+917058933361",
-      color: "text-green-500"
+      value: siteConfig.phone,
+      href: `tel:${siteConfig.phone.replace(/\s+/g, "")}`,
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "Maharashtra, India",
+      value: siteConfig.location,
       href: "https://maps.google.com",
-      color: "text-white-500"
     },
-  ];
-
-  const socialLinks = [
-    { icon: Github, href: "https://github.com/sohamchavan07", label: "GitHub", color: "hover:text-gray-600" },
-    { icon: Linkedin, href: "https://www.linkedin.com/in/sohamchavan07/", label: "LinkedIn", color: "hover:text-blue-600" },
-    { icon: Twitter, href: "https://x.com/soham_chavan07", label: "Twitter", color: "hover:text-blue-400" },
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -68,17 +51,12 @@ const Contact = () => {
 
     try {
       // Submit form to Formspree
-      const response = await fetch('https://formspree.io/f/xvgbyldd', {
+      const response = await fetch(siteConfig.formspreeEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        }),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
@@ -94,7 +72,7 @@ const Contact = () => {
       console.error('Error sending message:', error);
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again or contact me directly at soham07.dev@gmail.com",
+        description: `Failed to send message. Please try again or contact me directly at ${siteConfig.email}`,
         variant: "destructive",
       });
     } finally {
@@ -158,7 +136,7 @@ const Contact = () => {
           {/* Contact Form */}
           <Card className="p-8 glass border-primary/10 hover:border-primary/20 transition-all duration-300 animate-fade-in">
             <form
-              action="https://formspree.io/f/xvgbyldd"
+              action={siteConfig.formspreeEndpoint}
               method="POST"
               onSubmit={handleSubmit}
               className="space-y-6"

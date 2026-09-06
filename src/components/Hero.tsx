@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download, ArrowDown, Twitter, Calendar } from "lucide-react";
+import { siteConfig } from "@/config/site";
 import profileWhatsApp592 from "@/assets/profile/profile-whatsapp-2026-04-25-592.jpg";
 import profileWhatsApp300 from "@/assets/profile/profile-whatsapp-2026-04-25-300.jpg";
 import profileWhatsApp150 from "@/assets/profile/profile-whatsapp-2026-04-25-150.jpg";
@@ -16,18 +17,23 @@ const TypingTitle = () => {
 
   useEffect(() => {
     const currentTitle = titles[currentIndex];
+    let pauseTimer: ReturnType<typeof setTimeout> | undefined;
+
     const timer = setTimeout(() => {
       if (displayText.length < currentTitle.length) {
         setDisplayText(currentTitle.slice(0, displayText.length + 1));
       } else {
-        setTimeout(() => {
+        pauseTimer = setTimeout(() => {
           setDisplayText("");
           setCurrentIndex((prev) => (prev + 1) % titles.length);
         }, 2000);
       }
     }, 100);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      if (pauseTimer) clearTimeout(pauseTimer);
+    };
   }, [displayText, currentIndex]);
 
   return (
@@ -54,10 +60,10 @@ const Hero = () => {
   }, []);
 
   const socialLinks = useMemo(() => [
-    { icon: Github,   href: "https://github.com/sohamchavan07",         label: "GitHub",     color: "#6e7681", hoverBg: "rgba(110,118,129,0.15)" },
-    { icon: Linkedin, href: "https://linkedin.com/in/sohamchavan07",    label: "LinkedIn",   color: "#0A66C2", hoverBg: "rgba(10,102,194,0.15)"  },
-    { icon: Twitter,  href: "https://twitter.com/soham_chavan07",       label: "X (Twitter)",color: "#38bdf8", hoverBg: "rgba(56,189,248,0.15)"  },
-    { icon: Mail,     href: "mailto:sohamchavan.sc07@gmail.com",        label: "Email",      color: "#f87171", hoverBg: "rgba(248,113,113,0.15)" },
+    { icon: Github,   href: siteConfig.social.github,    label: "GitHub",     color: "#6e7681", hoverBg: "rgba(110,118,129,0.15)" },
+    { icon: Linkedin, href: siteConfig.social.linkedin,  label: "LinkedIn",   color: "#0A66C2", hoverBg: "rgba(10,102,194,0.15)"  },
+    { icon: Twitter,  href: siteConfig.social.twitter,   label: "X (Twitter)",color: "#38bdf8", hoverBg: "rgba(56,189,248,0.15)"  },
+    { icon: Mail,     href: siteConfig.social.email,     label: "Email",      color: "#f87171", hoverBg: "rgba(248,113,113,0.15)" },
   ], []);
 
   return (
@@ -111,7 +117,7 @@ const Hero = () => {
                 className="bg-slate-800 dark:bg-white text-white dark:text-black border border-slate-700 dark:border-0 hover:bg-slate-700 dark:hover:bg-gray-100 hover-lift transition-colors duration-200"
               >
                 <a
-                  href="https://calendly.com/soham777chavan777/new-meeting"
+                  href={siteConfig.calendlyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -125,7 +131,7 @@ const Hero = () => {
                 variant="outline"
                 className="border-primary/20 hover:bg-primary/10 hover-lift"
               >
-                <a href="/assets/docs/Soham_Chavan_FullStack_Developer.pdf" download aria-label="Download Resume" className="flex items-center justify-center gap-2 w-full">
+                <a href={siteConfig.resumeUrl} download aria-label="Download Resume" className="flex items-center justify-center gap-2 w-full">
                   <Download className="w-5 h-5 mr-2" />
                   <span className="truncate">Download Resume</span>
                 </a>

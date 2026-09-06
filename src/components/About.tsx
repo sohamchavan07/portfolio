@@ -1,33 +1,16 @@
-import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
-import { Calendar, MapPin, Heart, Car, Code2, Sparkles } from "lucide-react";
+import { Calendar, Heart, Code2 } from "lucide-react";
+
+const stats = [
+  { number: "1+", label: "Years Experience", icon: Calendar },
+  { number: "10+", label: "Projects Completed", icon: Code2 },
+  { number: "7+", label: "Happy Clients", icon: Heart },
+  { number: "20+", label: "Technologies", icon: "/assets/icons/connection.png" },
+];
 
 const About = () => {
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof document !== 'undefined') {
-      return document.documentElement.classList.contains('dark');
-    }
-    return false;
-  });
-
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      setIsDark(document.documentElement.classList.contains('dark'));
-    });
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    return () => observer.disconnect();
-  }, []);
-
-  const stats = [
-    { number: "1+", label: "Years Experience", icon: Calendar },
-    { number: "10+", label: "Projects Completed", icon: Code2 },
-    { number: "7+", label: "Happy Clients", icon: Heart },
-    { number: "20+", label: "Technologies", icon: "/assets/icons/connection.png" },
-    //{ number: "End-to-End", label: "Delivery Focus", icon: Code2 },
-  ];
-
   return (
-    <section id="about" className={`section-padding left-intro big-card ${isDark ? 'dark-card' : 'light-card'}`}>
+    <section id="about" className="section-padding left-intro big-card">
       <div className="section-container">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">

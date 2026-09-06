@@ -2,45 +2,40 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
   Code, 
-  Palette, 
-  Smartphone, 
   Globe, 
   ShoppingCart, 
-  Zap,
   ArrowRight,
   CheckCircle
 } from "lucide-react";
 
-const Services = () => {
-  const services = [
-    {
-      icon: Code,
-      title: "Full Stack Development",
-      description: "End-to-end web application development using modern frameworks and best practices.",
-      features: [" Frontend", "Ruby On Rails Backend", "Database Design", "API Development"],
-      color: "text-blue-500",
-      gradient: "from-blue-500/20 to-cyan-500/20"
-    },
-    
-  
-    {
-      icon: Globe,
-      title: "Web Solutions",
-      description: "Custom web solutions tailored to your business needs and goals.",
-      features: ["Responsive Design", "SEO Optimization", "Performance Tuning", "Progressive Web Apps"],
-      color: "text-orange-500",
-      gradient: "from-orange-500/20 to-yellow-500/20"
-    },
-    {
-      icon: ShoppingCart,
-      title: "E-commerce Development",
-      description: "Complete e-commerce solutions with payment integration and inventory management.",
-      features: ["Online Store Setup", "Payment Gateway", "Inventory System", "Analytics Dashboard"],
-      color: "text-red-500",
-      gradient: "from-red-500/20 to-pink-500/20"
-    },
+const services = [
+  {
+    icon: Code,
+    title: "Full Stack Development",
+    description: "End-to-end web application development using modern frameworks and best practices.",
+    features: ["Frontend", "Ruby On Rails Backend", "Database Design", "API Development"],
+    color: "text-blue-500",
+    gradient: "from-blue-500/20 to-cyan-500/20"
+  },
+  {
+    icon: Globe,
+    title: "Web Solutions",
+    description: "Custom web solutions tailored to your business needs and goals.",
+    features: ["Responsive Design", "SEO Optimization", "Performance Tuning", "Progressive Web Apps"],
+    color: "text-orange-500",
+    gradient: "from-orange-500/20 to-yellow-500/20"
+  },
+  {
+    icon: ShoppingCart,
+    title: "E-commerce Development",
+    description: "Complete e-commerce solutions with payment integration and inventory management.",
+    features: ["Online Store Setup", "Payment Gateway", "Inventory System", "Analytics Dashboard"],
+    color: "text-red-500",
+    gradient: "from-red-500/20 to-pink-500/20"
+  },
+];
 
-  ];
+const Services = () => {
 
   return (
     <section id="services" className="section-padding">

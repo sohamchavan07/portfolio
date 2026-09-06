@@ -4,29 +4,21 @@ import {
   Linkedin,
   Twitter,
   Mail,
-  Heart,
-  ArrowUp,
   Coffee
 } from "lucide-react";
+import { siteConfig, navItems } from "@/config/site";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com/sohamchavan07", label: "GitHub", color: "#6e7681", hoverBg: "rgba(110,118,129,0.15)" },
-    { icon: Linkedin, href: "https://linkedin.com/in/sohamchavan07", label: "LinkedIn", color: "#0A66C2", hoverBg: "rgba(10,102,194,0.15)" },
-    { icon: Twitter, href: "https://twitter.com/soham_chavan07", label: "Twitter", color: "#38bdf8", hoverBg: "rgba(56,189,248,0.15)" },
-    { icon: Mail, href: "mailto:soham07.dev@gmail.com", label: "Email", color: "#f87171", hoverBg: "rgba(248,113,113,0.15)" },
+    { icon: Github, href: siteConfig.social.github, label: "GitHub", color: "#6e7681", hoverBg: "rgba(110,118,129,0.15)" },
+    { icon: Linkedin, href: siteConfig.social.linkedin, label: "LinkedIn", color: "#0A66C2", hoverBg: "rgba(10,102,194,0.15)" },
+    { icon: Twitter, href: siteConfig.social.twitter, label: "Twitter", color: "#38bdf8", hoverBg: "rgba(56,189,248,0.15)" },
+    { icon: Mail, href: siteConfig.social.email, label: "Email", color: "#f87171", hoverBg: "rgba(248,113,113,0.15)" },
   ];
 
-  const quickLinks = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Services", href: "#services" },
-    { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
-  ];
+  const quickLinks = navItems;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -104,9 +96,9 @@ const Footer = () => {
           <div className="space-y-6">
             <h4 className="text-lg font-semibold">Get In Touch</h4>
             <div className="space-y-3 text-sm text-muted-foreground">
-              <p>Maharashtra, India</p>
-              <p>soham07.dev@gmail.com</p>
-              <p>+91 7058933361</p>
+              <p>{siteConfig.location}</p>
+              <p>{siteConfig.email}</p>
+              <p>{siteConfig.phone}</p>
             </div>
 
             <Button
@@ -125,14 +117,14 @@ const Footer = () => {
           <div className="flex items-center text-sm text-muted-foreground">
             <div className="w-full flex justify-center items-center text-sm text-muted-foreground">
               <p className="text-center">
-                &copy; {currentYear} Soham Chavan.
+                &copy; {currentYear} {siteConfig.name}.
               </p>
             </div>
           </div>
           <div className="flex items-center text-sm">
             <Button
               size="sm"
-              onClick={() => window.location.href = "https://buymeacoffee.com/soham_chavan"}
+              onClick={() => window.open(siteConfig.buyMeACoffeeUrl, "_blank", "noopener,noreferrer")}
               className="bg-[#FF813F] hover:bg-[#FFC179] border-0 hover-lift text-white"
             >
               <Coffee className="w-5 h-5 mr-2" />

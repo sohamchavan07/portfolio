@@ -33,7 +33,6 @@ export default defineConfig(({ mode }) => ({
             "@radix-ui/react-tooltip",
             "@radix-ui/react-toast",
           ],
-          "motion-vendor": ["framer-motion"],
           "query-vendor": ["@tanstack/react-query"],
         },
       },

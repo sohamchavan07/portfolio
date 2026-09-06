@@ -78,7 +78,7 @@ const Testimonials = () => {
         <div className="flex animate-marquee py-4 w-fit">
           {/* Duplicate the array multi-times to ensure continuous scroll even on huge screens */}
           {[...testimonials, ...testimonials, ...testimonials, ...testimonials].map((testimonial, index) => (
-            <TestimonialCard key={index} testimonial={testimonial} />
+            <TestimonialCard key={`${testimonial.author}-${index}`} testimonial={testimonial} />
           ))}
         </div>
       </div>
