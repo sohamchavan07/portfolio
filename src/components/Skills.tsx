@@ -1,129 +1,145 @@
-import { Card } from "@/components/ui/card";
-import { Globe, Database, Server, Share2, MousePointer2, Rocket, Sparkles } from "lucide-react";
 import {
-  SiRubyonrails, SiRuby, SiGit, SiGithub,
-  SiMongodb, SiPostgresql, SiMysql, SiRedis,
-  SiDocker, SiSidekiq, SiJenkins, SiNginx, SiPostman,
-  SiHtml5, SiCss, SiJavascript, SiReact, SiTailwindcss, SiBootstrap, SiPhp,
-  SiClaude, SiNotion, SiGooglegemini, SiOpenai
+  SiHtml5,
+  SiCss,
+  SiJavascript,
+  SiReact,
+  SiTailwindcss,
+  SiRubyonrails,
+  SiRuby,
+  SiPhp,
+  SiSidekiq,
+  SiPostgresql,
+  SiMysql,
+  SiMongodb,
+  SiRedis,
+  SiDocker,
+  SiJenkins,
+  SiNginx,
+  SiClaude,
+  SiGooglegemini,
+  SiOpenai,
+  SiGit,
+  SiGithub,
+  SiPostman,
+  SiNotion,
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
 import { TbBrandVscode } from "react-icons/tb";
+import { Database, Zap, Globe, Wrench, Cpu, Sparkles } from "lucide-react";
 
-const skillCategories = [
-  {
-    title: "Frontend Development",
-    skills: [
-      { name: "HTML", icon: SiHtml5, color: "#E34F26" },
-      { name: "CSS", icon: SiCss, color: "#1572B6" },
-      { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-      { name: "React", icon: SiReact, color: "#61DAFB" },
-      { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
-    ],
-  },
-  {
-    title: "Backend Development",
-    skills: [
-      { name: "Ruby on Rails", icon: SiRubyonrails, color: "#CC0000" },
-      { name: "Ruby", icon: SiRuby, color: "#CC342D" },
-      { name: "PHP", icon: SiPhp, color: "#777BB4" },
-      { name: "Sidekiq", icon: SiSidekiq, color: "#ef4444" },
-    ],
-  },
-  {
-    title: "Database Systems",
-    skills: [
-      { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
-      { name: "MySQL", icon: SiMysql, color: "#4479A1" },
-      { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-      { name: "Redis", icon: SiRedis, color: "#DC382D" },
-      { name: "RDBMS", icon: Database, color: "#6366f1" },
-    ],
-  },
-  {
-    title: "DevOps & Cloud",
-    skills: [
-      { name: "Docker", icon: SiDocker, color: "#2496ED" },
-      { name: "AWS", icon: FaAws, color: "#FF9900" },
-      { name: "Jenkins", icon: SiJenkins, color: "#D24939" },
-      { name: "Nginx", icon: SiNginx, color: "#009639" },
-    ],
-  },
-  {
-    title: "AI Development",
-    skills: [
-      { name: "Claude Code", icon: SiClaude, color: "#D97757" },
-      { name: "Gemini CLI", icon: SiGooglegemini, color: "#8E75FF" },
-      { name: "OpenAI", icon: SiOpenai, color: "#74aa9c" },
-      { name: "Antigravity", icon: Rocket, color: "#FFB000" },
-      { name: "Cursor", icon: MousePointer2, color: "#FFFFFF" },
-    ],
-  },
-  {
-    title: "Tools & Workflow",
-    skills: [
-      { name: "Git", icon: SiGit, color: "#F05032" },
-      { name: "GitHub", icon: SiGithub, color: "#ffffff" },
-      { name: "VS Code", icon: TbBrandVscode, color: "#007ACC" },
-      { name: "Postman", icon: SiPostman, color: "#FF6C37" },
-      { name: "Notion", icon: SiNotion, color: "#FFFFFF" },
-    ],
-  }
+const skills = [
+  // Frontend
+  { name: "HTML", icon: SiHtml5, color: "#E34F26", cat: "frontend" },
+  { name: "CSS", icon: SiCss, color: "#1572B6", cat: "frontend" },
+  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E", cat: "frontend" },
+  { name: "React", icon: SiReact, color: "#61DAFB", cat: "frontend" },
+  { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4", cat: "frontend" },
+  // Backend
+  { name: "Ruby on Rails", icon: SiRubyonrails, color: "#CC0000", cat: "backend" },
+  { name: "Ruby", icon: SiRuby, color: "#CC342D", cat: "backend" },
+  { name: "PHP", icon: SiPhp, color: "#777BB4", cat: "backend" },
+  { name: "Sidekiq", icon: SiSidekiq, color: "#EF4444", cat: "backend" },
+  // Database
+  { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1", cat: "database" },
+  { name: "MySQL", icon: SiMysql, color: "#4479A1", cat: "database" },
+  { name: "MongoDB", icon: SiMongodb, color: "#47A248", cat: "database" },
+  { name: "Redis", icon: SiRedis, color: "#DC382D", cat: "database" },
+  // DevOps
+  { name: "Docker", icon: SiDocker, color: "#2496ED", cat: "devops" },
+  { name: "AWS", icon: FaAws, color: "#FF9900", cat: "devops" },
+  { name: "Jenkins", icon: SiJenkins, color: "#D33833", cat: "devops" },
+  { name: "Nginx", icon: SiNginx, color: "#009639", cat: "devops" },
+  // AI
+  { name: "Claude Code", icon: SiClaude, color: "#D97757", cat: "ai" },
+  { name: "Gemini CLI", icon: SiGooglegemini, color: "#8E75FF", cat: "ai" },
+  { name: "OpenAI", icon: SiOpenai, color: "#74AA9C", cat: "ai" },
+  // Tools
+  { name: "Git", icon: SiGit, color: "#F05032", cat: "tools" },
+  { name: "GitHub", icon: SiGithub, color: "#FFFFFF", cat: "tools" },
+  { name: "VS Code", icon: TbBrandVscode, color: "#007ACC", cat: "tools" },
+  { name: "Postman", icon: SiPostman, color: "#FF6C37", cat: "tools" },
+  { name: "Notion", icon: SiNotion, color: "#FFFFFF", cat: "tools" },
 ];
 
-const Skills = () => {
+const categories = [
+  { id: "frontend", label: "Frontend", icon: Cpu, accent: "#61DAFB" },
+  { id: "backend", label: "Backend", icon: Zap, accent: "#CC0000" },
+  { id: "database", label: "Database", icon: Database, accent: "#4169E1" },
+  { id: "devops", label: "DevOps", icon: Globe, accent: "#2496ED" },
+  { id: "ai", label: "AI & GenAI", icon: Sparkles, accent: "#D97757" },
+  { id: "tools", label: "Tools", icon: Wrench, accent: "#F05032" },
+];
 
+const SkillBadge = ({ skill }: { skill: (typeof skills)[0] }) => {
+  const Icon = skill.icon;
   return (
-    <section id="skills" className="section-padding bg-muted/10">
-      <div className="section-container">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Skills & <span className="gradient-text">Technologies</span>
+    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-800 transition-all duration-200 group">
+      <Icon
+        className="w-5 h-5 flex-shrink-0"
+        style={{ color: skill.color }}
+      />
+      <span className="text-sm text-zinc-300 group-hover:text-white transition-colors whitespace-nowrap">
+        {skill.name}
+      </span>
+    </div>
+  );
+};
+
+const Skills = () => {
+  return (
+    <section id="skills" className="py-20 px-4 md:px-8">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="font-mono text-xs text-zinc-500 tracking-widest uppercase">03 / 06</span>
+            <span className="h-px w-8 bg-zinc-700" />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+            Skills & <span className="text-lime-400">Technologies</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise and the tools I use to bring ideas to life.
+          <p className="mt-3 text-zinc-400 text-base max-w-xl">
+            Stack I work with daily — from full-stack Rails to modern AI tooling.
           </p>
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {skillCategories.map((category, index) => (
-            <Card
-              key={category.title}
-              className="p-6 sm:p-8 bg-[#151515] rounded-3xl border-transparent shadow-xl hover:shadow-primary/5 transition-all duration-300"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <h3 className="text-xl font-bold text-white mb-8">{category.title}</h3>
-              <div className="flex flex-wrap gap-x-6 gap-y-8 sm:gap-x-10 sm:gap-y-10">
-                {category.skills.map((skill) => (
-                  <div key={skill.name} className="flex flex-col items-center gap-3 w-[72px]">
-                    <skill.icon
-                      className="w-12 h-12 transition-transform duration-300 hover:scale-110"
-                      style={skill.color ? { color: skill.color } : {}}
-                    />
-                    <span className="text-[13px] text-gray-400 text-center font-medium leading-tight">
-                      {skill.name}
-                    </span>
+        <div className="space-y-8">
+          {categories.map((cat) => {
+            const catSkills = skills.filter((s) => s.cat === cat.id);
+            const catIcon = cat.icon;
+            return (
+              <div key={cat.id} className="relative">
+                {/* Category Header */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-8 h-8 rounded-lg flex items-center justify-center"
+                    style={{ backgroundColor: `${cat.accent}15`, border: `1px solid ${cat.accent}30` }}
+                  >
+                    <catIcon className="w-4 h-4" style={{ color: cat.accent }} />
                   </div>
-                ))}
+                  <h3 className="text-sm font-semibold text-zinc-300 tracking-wide uppercase text-xs">
+                    {cat.label}
+                  </h3>
+                  <span className="h-px flex-1 bg-zinc-800" />
+                  <span className="text-xs text-zinc-600 font-mono">{catSkills.length}</span>
+                </div>
+
+                {/* Skill Badges */}
+                <div className="flex flex-wrap gap-2">
+                  {catSkills.map((skill) => (
+                    <SkillBadge key={skill.name} skill={skill} />
+                  ))}
+                </div>
               </div>
-            </Card>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Additional Info */}
-        <div className="mt-16 text-center">
-          <Card className="max-w-4xl mx-auto p-8 glass border-primary/10">
-            <div className="flex items-center justify-center mb-4">
-              <Globe className="w-8 h-8 text-primary mr-3" />
-              <h3 className="text-2xl font-semibold">Always Learning</h3>
-            </div>
-            <p className="text-muted-foreground leading-relaxed">
-              Technology evolves rapidly, and I'm committed to staying current with the latest trends and best practices.
-              I regularly invest time in learning new frameworks, attending tech conferences, and contributing to open-source projects
-              to expand my skill set and deliver cutting-edge solutions.
-            </p>
-          </Card>
+        {/* Bottom tagline */}
+        <div className="mt-16 flex items-center gap-3 text-zinc-500 text-sm">
+          <Zap className="w-4 h-4 text-lime-400" />
+          <span>Always learning, always shipping.</span>
         </div>
       </div>
     </section>

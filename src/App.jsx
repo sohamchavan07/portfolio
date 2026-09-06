@@ -6,6 +6,7 @@ import Capabilities from "./components/Capabilities";
 import Projects from "./components/Projects";
 import DevConfig from "./components/DevConfig";
 import Approach from "./components/Approach";
+import Skills from "./components/Skills.tsx";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -39,6 +40,9 @@ export default function App() {
 
         {/* Engineering Approach {03} */}
         <Approach />
+
+        {/* Skills & Technologies */}
+        <Skills />
 
         {/* Secondary Marquee (Inverted) */}
         <Marquee

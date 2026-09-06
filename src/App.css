@@ -57,3 +57,79 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Design system utilities */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent, #7c5cff), var(--accent-2, #00d1b2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-primary {
+  background: linear-gradient(135deg, #7c5cff, #00d1b2);
+}
+
+.glass {
+  background: var(--glass, rgba(255, 255, 255, 0.04));
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius, 12px);
+}
+
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124, 92, 255, 0.15);
+}
+
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Pause marquee on hover */
+.pause-on-hover:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* Responsive improvements */
+@media (max-width: 640px) {
+  .section-padding {
+    padding: 2.5rem 0;
+  }
+  .section-container {
+    padding: 0 0.75rem;
+  }
+}
+
+/* Focus visible styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent, #7c5cff);
+  outline-offset: 2px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(124, 92, 255, 0.3);
+  color: #fff;
+}
