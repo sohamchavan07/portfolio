@@ -11,6 +11,7 @@ export interface Project {
   demoUrl?: string;
   date: string;
   client?: string;
+  role?: string;
   longDescription?: string; // For adding more detailed info later
 }
 
@@ -85,6 +86,29 @@ export const projects: Project[] = [
     demoUrl: "https://shivkumarrealtors.vercel.app/",
     date: "2025",
     client: "Personal"
+  },
+  {
+    id: 17,
+    title: "Interactive Studio & Agency Web Canvas",
+    category: "web",
+    description: "A high-performance, interactive design agency web template featuring fluid typography, custom animation sequences, and component-driven architecture. Built to demonstrate clean UI implementation and desktop performance optimization.",
+    longDescription: "Interactive Studio & Agency Web Canvas is a high-performance, interactive design agency web template built to demonstrate modern creative studio web aesthetics, fluid typography, and component-driven architecture.\n\nDesigned for creative studios, digital agencies, and portfolio showcases, the site features responsive fluid layouts, custom micro-interactions, dark/light theme toggle, interactive audio playground, and smooth reveal animations. Developed with React, TypeScript, and Tailwind CSS, the project emphasizes clean frontend implementation, desktop performance optimization, and accessible component design.",
+    image: "/assets/projects/interactive-canvas.webp",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+    features: [
+      "Fluid Typography & Layouts",
+      "Custom Animation & Reveal Sequences",
+      "Component-Driven Architecture",
+      "Dark / Light Mode Switcher",
+      "Interactive Audio & Playground Showcase",
+      "Desktop Performance Optimization"
+    ],
+    githubUrl: "https://github.com/sohamchavan07",
+    liveUrl: "https://soham-s-interactive-canvas.vercel.app",
+    demoUrl: "https://soham-s-interactive-canvas.vercel.app",
+    date: "2026",
+    role: "Lead Frontend Developer",
+    client: "Template / Agency Concept",
   },
   {
     id: 13,
