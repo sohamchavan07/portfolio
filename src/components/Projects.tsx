@@ -9,8 +9,8 @@ const filters = [
   { id: "all", label: "All Projects" },
 ];
 
-// Featured projects to show initially
-const featuredProjectIds = new Set([14, 15, 4, 2, 10, 17]);
+// Featured projects to show initially (replace CollegeMatch with Tawade Kitchen)
+const featuredProjectIds = new Set([14, 15, 4, 2, 10, 13]);
 
 // Custom ordering to use when showing "All Projects" (preferred sequence)
 const allProjectsOrder = [
@@ -18,9 +18,8 @@ const allProjectsOrder = [
   14, // Bookstore
   10, // 3D Portfolio
   2,  // Tawade Kitchen
+  13, // Hemraj Products
   4,  // Shivkumar Realtors
-  17, // Interactive Studio & Agency Web Canvas
-  13, // Hemraj Products (moved to All Projects)
   5,  // Hotel Nyala
   1,  // CollegeMatch
   6,  // Rails Payment Gateway
@@ -28,7 +27,6 @@ const allProjectsOrder = [
   7,  // Ferrari Case Study
   11, // Sri Ram Mandir
   9,  // Tic-Tac-Toe
-  16, // Goalz Calculator
 ];
 
 const orderMap = new Map(allProjectsOrder.map((id, idx) => [id, idx]));
