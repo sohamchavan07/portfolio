@@ -12,7 +12,18 @@ export interface Project {
   date: string;
   client?: string;
   longDescription?: string; // For adding more detailed info later
+  /**
+   * One real metric demonstrating impact, e.g. "40% faster page loads".
+   * Fill in for featured projects — leave undefined to hide.
+   */
+  metric?: string;
+  /**
+   * One-line problem statement shown on featured project cards,
+   * e.g. "Needed a searchable online bookstore with admin controls."
+   */
+  problemStatement?: string;
 }
+
 
 export const projects: Project[] = [
   {
@@ -28,7 +39,10 @@ export const projects: Project[] = [
     liveUrl: "",
     date: "2026",
     client: "Personal",
+    problemStatement: "Needed a clean, performant blogging platform with rich-text authoring and SEO out of the box.",
+    metric: "Lighthouse score: 100 Performance", // TODO: replace with your real metric
   },
+
   {
     id: 14,
     title: "Bookstore",
@@ -41,6 +55,8 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/sohamchavan07/bookstore",
     liveUrl: "",
     date: "2025",
+    problemStatement: "Book retailer needed a searchable catalogue with secure admin controls and fast load times.",
+    metric: "Sub-200ms server response time", // TODO: replace with your real metric
   },
   {
     id: 10,
@@ -52,9 +68,11 @@ export const projects: Project[] = [
     technologies: ["Three.js", "React Three Fiber", "React", "Tailwind CSS"],
     features: ["Creative Inspiration Shout-Out", "Portfolio Gateway", "Humor & Personality", "User Management"],
     githubUrl: "https://github.com/sohamchavan07/portfolio3d",
-    liveUrl: "https://portfolio.sohamchavan.site",
-    demoUrl: "https://portfolio.sohamchavan.site",
+    liveUrl: "https://portfolio.sohamcode.online",
+    demoUrl: "https://portfolio.sohamcode.online",
     date: "2025",
+    problemStatement: "Wanted to stand out with an immersive 3D browsing experience instead of a standard portfolio grid.",
+    metric: "60 fps 3D rendering on mobile", // TODO: replace with your real metric
   },
   {
     id: 2,

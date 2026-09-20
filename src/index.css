@@ -6,6 +6,8 @@
 
 @layer base {
   :root {
+    --font-display: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
     --background: 240 10% 4%; /* #09090b Ink Dark */
     --foreground: 0 0% 98%;
     --card: 240 8% 7%;
@@ -27,6 +29,8 @@
   }
 
   .dark {
+    --font-display: 'Instrument Serif', Georgia, serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
     --background: 240 10% 4%;
     --foreground: 0 0% 98%;
     --card: 240 8% 7%;
@@ -56,9 +60,16 @@
   }
 
   body {
-    @apply bg-zinc-950 text-zinc-100 font-sans antialiased selection:bg-lime-400 selection:text-black;
+    @apply bg-zinc-950 text-zinc-100 antialiased selection:bg-lime-400 selection:text-black;
+    font-family: var(--font-body);
     background-color: #09090b;
     color: #f4f4f5;
+  }
+
+  h1, h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
 
   /* Custom scrollbar */
@@ -80,12 +91,11 @@
   }
 }
 
-@layer utilities {
-  .display-font {
-    font-family: 'JetBrains Mono', 'Inter', monospace, sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 0.9;
-    text-transform: uppercase;
+@media (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor [role="button"] {
+    cursor: none !important;
   }
 }

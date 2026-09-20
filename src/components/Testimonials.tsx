@@ -1,84 +1,83 @@
-import React from "react";
 import { Card } from "@/components/ui/card";
 import { Quote } from "lucide-react";
+import { testimonials, type Testimonial } from "@/data/testimonials";
 
-const testimonials = [
-  {
-    quote: "Soham is an exceptional developer who brings both technical expertise and creative problem-solving to the table. His work on our real estate platform was top-notch.",
-    author: "Shivkumar Realtors",
-    role: "Client",
-    avatar: "SR"
-  },
-  {
-    quote: "The Sri Ram Mandir portal was delivered with great attention to detail. The multilingual support and donation management features work flawlessly.",
-    author: "Mandir Committee",
-    role: "Organization",
-    avatar: "RM"
-  },
-  {
-    quote: "A highly dedicated professional. His ability to translate complex requirements into clean, maintainable code is impressive.",
-    author: "Tech Lead",
-    role: "Collaborator",
-    avatar: "TL"
-  },
-  {
-    quote: "Working with Soham was a breeze. He's communicative, efficient, and delivers exactly what he promises.",
-    author: "Tawade Kitchen",
-    role: "Local Business",
-    avatar: "TK"
-  },
-  {
-    quote: "The AI-driven recommendations in CollegeMatch were a game-changer for our students. Soham's ability to integrate complex AI logic into a user-friendly interface is remarkable.",
-    author: "Education Consultant",
-    role: "Client",
-    avatar: "EC"
-  }
-];
+// ─── Sub-component ────────────────────────────────────────────────────────────
 
-const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
-  <Card className="w-[350px] md:w-[450px] h-[350px] flex-shrink-0 p-8 glass border-primary/10 hover:border-primary/20 transition-all duration-300 flex flex-col justify-between hover-lift mx-4">
+const TestimonialCard = ({
+  testimonial,
+  index,
+}: {
+  testimonial: Testimonial;
+  index: number;
+}) => (
+  <Card
+    className="p-8 md:p-10 glass border-border/60 hover:border-primary/20 bg-card/40 backdrop-blur-sm rounded-xl transition-all duration-300 flex flex-col justify-between hover-lift hover:shadow-xl hover:shadow-black/20 group"
+    style={{ animationDelay: `${index * 0.1}s` }}
+  >
     <div>
-      <Quote className="w-10 h-10 text-primary/20 mb-6" />
-      <p className="text-muted-foreground leading-relaxed italic mb-8">
+      <Quote className="w-8 h-8 text-primary/30 mb-6 group-hover:text-primary/50 transition-colors" />
+      <p className="text-lg md:text-xl font-light text-foreground/90 leading-relaxed">
         "{testimonial.quote}"
       </p>
     </div>
-    
-    <div className="flex items-center gap-4">
-      <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center text-white font-bold shrink-0 shadow-lg">
-        {testimonial.avatar}
-      </div>
-      <div>
-        <h4 className="font-semibold text-foreground">{testimonial.author}</h4>
-        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+
+    <div>
+      <div className="my-6 border-t border-border/40" />
+      <div className="flex items-center gap-4">
+        {testimonial.photo ? (
+          <img
+            src={testimonial.photo}
+            alt={testimonial.name}
+            className="w-11 h-11 rounded-full object-cover shrink-0 border border-primary/20"
+            loading="lazy"
+            width={44}
+            height={44}
+          />
+        ) : (
+          <div className="w-11 h-11 rounded-full bg-gradient-primary flex items-center justify-center text-white font-semibold text-sm shrink-0 shadow-md">
+            {testimonial.avatar}
+          </div>
+        )}
+        <div className="min-w-0">
+          <h4 className="font-medium text-foreground text-base truncate">
+            {testimonial.name}
+          </h4>
+          <p className="text-xs text-muted-foreground truncate">
+            {testimonial.role}
+            {testimonial.company &&
+              testimonial.company !== testimonial.name &&
+              ` · ${testimonial.company}`}
+          </p>
+        </div>
       </div>
     </div>
   </Card>
 );
 
+// ─── Section ──────────────────────────────────────────────────────────────────
+
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="section-padding overflow-hidden">
-      <div className="section-container mb-12">
-        <div className="text-center">
+    <section id="testimonials" className="section-padding">
+      <div className="section-container">
+        <div className="text-center mb-14 md:mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Client <span className="gradient-text">Feedback</span>
+            Client <span className="gradient-text">Testimonials</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Kind words from clients and collaborators I've had the pleasure of working with.
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            Kind words from clients and collaborators I've had the pleasure of
+            working with.
           </p>
         </div>
-      </div>
 
-      <div className="relative group pause-on-hover">
-        {/* Gradient Masks for smooth fading */}
-        <div className="absolute inset-y-0 left-0 w-20 md:w-60 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-20 md:w-60 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-
-        <div className="flex animate-marquee py-4 w-fit">
-          {/* Duplicate the array multi-times to ensure continuous scroll even on huge screens */}
-          {[...testimonials, ...testimonials, ...testimonials, ...testimonials].map((testimonial, index) => (
-            <TestimonialCard key={index} testimonial={testimonial} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard
+              key={`${testimonial.name}-${index}`}
+              testimonial={testimonial}
+              index={index}
+            />
           ))}
         </div>
       </div>

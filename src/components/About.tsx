@@ -8,11 +8,11 @@ import {
   Code,
   Palette,
   Sparkles,
-  CheckCircle,
   Database,
   Lightbulb,
   Rocket,
 } from "lucide-react";
+import { HERO_STATS } from "@/data/heroStats";
 
 const About = () => {
   const [isDark, setIsDark] = useState(() => {
@@ -33,10 +33,11 @@ const About = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Stats from shared constant, plus the extra "Technologies" one unique to this section
   const stats = [
-    { number: "1+", label: "Years Experience", icon: Calendar },
-    { number: "10+", label: "Projects Completed", icon: Code2 },
-    { number: "7+", label: "Happy Clients", icon: Heart },
+    { number: HERO_STATS[0].value, label: HERO_STATS[0].label, icon: Calendar },
+    { number: HERO_STATS[1].value, label: HERO_STATS[1].label, icon: Code2 },
+    { number: HERO_STATS[2].value, label: HERO_STATS[2].label, icon: Heart },
     { number: "20+", label: "Technologies", icon: Database },
   ];
 
@@ -73,8 +74,34 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-4 sm:gap-6">
+          {/* ── Bio Card ──────────────────────────────────────────────────── */}
           <Card className="xl:col-span-7 p-6 sm:p-8 glass border-primary/10 hover:border-primary/20 transition-all duration-300 hover-lift">
-            <h3 className="text-2xl font-semibold mb-6">Hi! I'm Soham Chavan</h3>
+            {/* Photo + name */}
+            <div className="flex items-center gap-5 mb-6">
+              <div className="relative shrink-0">
+                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/20">
+                  <img
+                    src="/assets/icons/profile-photo-new.jpg"
+                    alt="Soham Chavan"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    width={80}
+                    height={80}
+                  />
+                </div>
+                {/* Online indicator */}
+                <span className="absolute bottom-0.5 right-0.5 w-4 h-4 rounded-full bg-green-500 border-2 border-background" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold">Hi! I'm Soham Chavan</h3>
+                <div className="flex items-center gap-1.5 text-sm text-muted-foreground mt-1">
+                  <MapPin className="w-3.5 h-3.5" />
+                  Maharashtra, India
+                </div>
+              </div>
+            </div>
+
+            {/* Narrative */}
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 I'm a{" "}
@@ -94,19 +121,41 @@ const About = () => {
                 <span className="text-accent font-semibold">TypeScript</span>,{" "}
                 <span className="text-accent font-semibold">Tailwind CSS</span>,
                 and{" "}
-                <span className="text-accent font-semibold">Ruby on Rails</span>.
-                I obsess over typography, spacing, motion, and micro-interactions
-                — the details that turn a working app into a product people enjoy
-                using.
+                <span className="text-accent font-semibold">Ruby on Rails</span>
+                . I obsess over typography, spacing, motion, and
+                micro-interactions — the details that turn a working app into a
+                product people enjoy using.
               </p>
               <p>
                 Recently I've shipped dashboards, e-commerce stores, and
                 multilingual community portals — always with a designer's eye on
                 every commit.
               </p>
+
+              {/* Current focus */}
+              <div className="mt-4 p-4 rounded-lg border border-primary/15 bg-primary/5">
+                <p className="text-sm font-semibold text-foreground mb-1">
+                  Currently focused on
+                </p>
+                <p className="text-sm">
+                  Building production-grade SaaS products with Ruby on Rails +
+                  React, integrating AI tooling into developer workflows, and
+                  taking on freelance projects that solve real problems.
+                </p>
+              </div>
             </div>
+
+            {/* TODO: Spotify widget placeholder */}
+            {/*
+             * ─── SPOTIFY WIDGET ───────────────────────────────────────────
+             * Replace this comment block with the Spotify Now Playing widget
+             * when ready. Suggested implementation:
+             *   <SpotifyNowPlaying />  ← lazy-loaded, polling /api/spotify
+             * ──────────────────────────────────────────────────────────────
+             */}
           </Card>
 
+          {/* ── Design Process Card ───────────────────────────────────────── */}
           <Card className="xl:col-span-5 p-6 sm:p-8 glass border-primary/10 hover:border-primary/20 transition-all duration-300 hover-lift flex flex-col">
             <h4 className="text-xl font-bold mb-2">My Design Process</h4>
             <p className="text-sm text-muted-foreground mb-6">
@@ -137,31 +186,14 @@ const About = () => {
             </div>
           </Card>
 
+          {/* ── Stat Cards ────────────────────────────────────────────────── */}
           {stats.map((stat, index) => (
             <Card
               key={stat.label}
               className="md:col-span-1 xl:col-span-3 p-6 text-center glass border-primary/10 hover:border-primary/20 transition-all duration-300 hover-lift group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {typeof stat.icon === "string" ? (
-                <div
-                  aria-hidden
-                  className="w-8 h-8 mx-auto mb-3 text-primary group-hover:scale-110 transition-transform duration-300"
-                  style={{
-                    WebkitMaskImage: `url(${stat.icon})`,
-                    maskImage: `url(${stat.icon})`,
-                    WebkitMaskSize: "contain",
-                    maskSize: "contain",
-                    WebkitMaskRepeat: "no-repeat",
-                    maskRepeat: "no-repeat",
-                    WebkitMaskPosition: "center",
-                    maskPosition: "center",
-                    backgroundColor: "currentColor",
-                  }}
-                />
-              ) : (
-                <stat.icon className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
-              )}
+              <stat.icon className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
               <div className="text-3xl font-bold gradient-text mb-2">
                 {stat.number}
               </div>
@@ -169,7 +201,7 @@ const About = () => {
             </Card>
           ))}
 
-          {/* Clean Code Card */}
+          {/* ── Design Principles Card ────────────────────────────────────── */}
           <Card className="col-span-1 md:col-span-2 xl:col-span-6 p-6 sm:p-8 border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 flex flex-col justify-center bg-[#0a0a0a] text-white overflow-hidden group relative">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -180,38 +212,30 @@ const About = () => {
 
             <div className="font-mono text-sm sm:text-base p-5 rounded-2xl bg-black/60 border border-white/10 shadow-inner overflow-hidden relative z-10">
               <div className="flex gap-2 mb-4">
-                <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                <div className="w-3 h-3 rounded-full bg-green-500/80" />
               </div>
-              <div className="text-red-400 mt-2">&lt;principles&gt;</div>
+              <div className="text-red-400 mt-2">{"<principles>"}</div>
               <div className="pl-4 sm:pl-8 py-2 flex flex-col gap-2">
-                <div>
-                  <span className="text-red-400">{"<li>"}</span>
-                  <span className="text-gray-200">Mobile-first responsive layouts.</span>
-                  <span className="text-red-400">{"</li>"}</span>
-                </div>
-                <div>
-                  <span className="text-red-400">{"<li>"}</span>
-                  <span className="text-gray-200">Accessible color & contrast.</span>
-                  <span className="text-red-400">{"</li>"}</span>
-                </div>
-                <div>
-                  <span className="text-red-400">{"<li>"}</span>
-                  <span className="text-gray-200">Motion that guides, not distracts.</span>
-                  <span className="text-red-400">{"</li>"}</span>
-                </div>
-                <div>
-                  <span className="text-red-400">{"<li>"}</span>
-                  <span className="text-gray-200">Performance as a feature.</span>
-                  <span className="text-red-400">{"</li>"}</span>
-                </div>
+                {[
+                  "Mobile-first responsive layouts.",
+                  "Accessible color & contrast.",
+                  "Motion that guides, not distracts.",
+                  "Performance as a feature.",
+                ].map((principle) => (
+                  <div key={principle}>
+                    <span className="text-red-400">{"<li>"}</span>
+                    <span className="text-gray-200">{principle}</span>
+                    <span className="text-red-400">{"</li>"}</span>
+                  </div>
+                ))}
               </div>
-              <div className="text-red-400">&lt;/principles&gt;</div>
+              <div className="text-red-400">{"</principles>"}</div>
             </div>
           </Card>
 
-          {/* Performance Card */}
+          {/* ── Performance Card ──────────────────────────────────────────── */}
           <Card className="col-span-1 md:col-span-2 xl:col-span-6 p-6 sm:p-8 border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 flex flex-col items-center justify-center bg-[#0a0a0a] text-white overflow-hidden group relative">
             <div className="absolute inset-0 bg-gradient-to-bl from-[#0ecc67]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 

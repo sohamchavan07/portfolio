@@ -97,16 +97,16 @@ const Portfolio = () => {
       <main className="pt-20 md:pt-24">
         <Hero />
         <LazySection forceLoad={forceLoadSections}>
-          <Projects />
-        </LazySection>
-        <LazySection forceLoad={forceLoadSections}>
           <Skills />
         </LazySection>
         <LazySection forceLoad={forceLoadSections}>
-          <Testimonials />
+          <Services />
         </LazySection>
         <LazySection forceLoad={forceLoadSections}>
-          <Services />
+          <Projects />
+        </LazySection>
+        <LazySection forceLoad={forceLoadSections}>
+          <Testimonials />
         </LazySection>
         <LazySection forceLoad={forceLoadSections}>
           <About />

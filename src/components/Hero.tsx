@@ -1,8 +1,25 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Download, ArrowDown, Twitter, Calendar } from "lucide-react";
+import { Download, ArrowDown, Calendar } from "lucide-react";
+import {
+  SiReact,
+  SiRubyonrails,
+  SiTypescript,
+  SiTailwindcss,
+  SiPostgresql,
+  SiDocker,
+} from "react-icons/si";
+import SocialLinks from "@/components/SocialLinks";
+import { HERO_STATS } from "@/data/heroStats";
 
-const titles = ["Full Stack Developer", "Freelancer", "Problem Solver", "Tech Enthusiast"];
+// ─── Typing animation ─────────────────────────────────────────────────────────
+
+const titles = [
+  "Full Stack Developer",
+  "Freelancer",
+  "Problem Solver",
+  "Tech Enthusiast",
+];
 
 const TypingTitle = () => {
   const [displayText, setDisplayText] = useState("");
@@ -32,6 +49,23 @@ const TypingTitle = () => {
   );
 };
 
+// ─── Tech Stack icons ─────────────────────────────────────────────────────────
+
+const techStack = [
+  { icon: SiReact, label: "React", color: "#61DAFB" },
+  { icon: SiRubyonrails, label: "Rails", color: "#CC0000" },
+  { icon: SiTypescript, label: "TypeScript", color: "#3178C6" },
+  { icon: SiTailwindcss, label: "Tailwind", color: "#06B6D4" },
+  { icon: SiPostgresql, label: "PostgreSQL", color: "#4169E1" },
+  { icon: SiDocker, label: "Docker", color: "#2496ED" },
+] as const;
+
+// ─── Constants ────────────────────────────────────────────────────────────────
+
+const RESUME_PATH = "/assets/docs/Soham_Chavan_FullStack_Developer.pdf";
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
 const Hero = () => {
   const scrollToContact = useCallback(() => {
     const element = document.querySelector("#contact");
@@ -47,15 +81,11 @@ const Hero = () => {
     }
   }, []);
 
-  const socialLinks = useMemo(() => [
-    { icon: Github,   href: "https://github.com/sohamchavan07",         label: "GitHub",     color: "#6e7681", hoverBg: "rgba(110,118,129,0.15)" },
-    { icon: Linkedin, href: "https://linkedin.com/in/sohamchavan07",    label: "LinkedIn",   color: "#0A66C2", hoverBg: "rgba(10,102,194,0.15)"  },
-    { icon: Twitter,  href: "https://twitter.com/soham_chavan07",       label: "X (Twitter)",color: "#38bdf8", hoverBg: "rgba(56,189,248,0.15)"  },
-    { icon: Mail,     href: "mailto:sohamchavan.sc07@gmail.com",        label: "Email",      color: "#f87171", hoverBg: "rgba(248,113,113,0.15)" },
-  ], []);
-
   return (
-    <section id="home" className="relative overflow-hidden flex items-center pt-24 pb-16 md:pb-24 min-h-[calc(100vh-4rem)]">
+    <section
+      id="home"
+      className="relative overflow-hidden flex items-center pt-24 pb-16 md:pb-24 min-h-[calc(100vh-4rem)]"
+    >
       {/* Background */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10" />
       <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/95 to-background/90" />
@@ -75,8 +105,11 @@ const Hero = () => {
               <span className="inline-flex rounded-full h-2.5 w-2.5 bg-green-500 shadow-lg shadow-green-500/20" />
               Hire Me
             </div>
+
             <div className="mb-6">
-              <p className="text-muted-foreground text-base sm:text-lg mb-2">Hello, my name is</p>
+              <p className="text-muted-foreground text-base sm:text-lg mb-2">
+                Hello, my name is
+              </p>
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight">
                 <span className="gradient-text">Soham Chavan</span>
               </h1>
@@ -84,18 +117,19 @@ const Hero = () => {
             </div>
 
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed">
-              FullStack Developer I Create websites and innovative web applications.
-              I specialize in Ruby on Rails, Python and modern web technologies to build scalable digital solutions.
+              FullStack Developer I Create websites and innovative web
+              applications. I specialize in Ruby on Rails, Python and modern web
+              technologies to build scalable digital solutions.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <Button
                 onClick={scrollToContact}
                 size="lg"
                 className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-3 sm:px-6 sm:py-3 bg-[#4f46e5] hover:bg-[#4338ca] border-0 hover-lift text-white text-sm sm:text-base transition-colors duration-200"
               >
-                <Mail className="w-5 h-5" />
-                <span className="truncate">Get In Touch</span>
+                Start a Project
               </Button>
               <Button
                 asChild
@@ -117,36 +151,52 @@ const Hero = () => {
                 variant="outline"
                 className="border-primary/20 hover:bg-primary/10 hover-lift"
               >
-                <a href="/assets/docs/Soham_Chavan_FullStack_Developer.pdf" download aria-label="Download Resume" className="flex items-center justify-center gap-2 w-full">
+                <a
+                  href={RESUME_PATH}
+                  download
+                  aria-label="Download Resume"
+                  className="flex items-center justify-center gap-2 w-full"
+                >
                   <Download className="w-5 h-5 mr-2" />
                   <span className="truncate">Download Resume</span>
                 </a>
               </Button>
             </div>
 
-            {/* Social Links */}
-            <div className="flex gap-4 sm:gap-6 flex-wrap">
-              {socialLinks.map((link, index) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.label}
-                  className="touch-target w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-all duration-300 hover-lift hover:scale-110"
-                  style={{
-                    animationDelay: `${index * 0.1}s`,
-                    background: "rgba(255,255,255,0.05)",
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.background = link.hoverBg)}
-                  onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.05)")}
-                >
-                  <link.icon
-                    className="w-5 h-5 transition-transform duration-300 group-hover:scale-110"
-                    style={{ color: link.color }}
-                  />
-                </a>
+            {/* ── Stats Row ──────────────────────────────────────── */}
+            <div className="flex flex-wrap gap-6 mb-8 py-5 border-y border-white/10">
+              {HERO_STATS.map((stat) => (
+                <div key={stat.label} className="flex flex-col">
+                  <span className="text-2xl font-bold gradient-text">
+                    {stat.value}
+                  </span>
+                  <span className="text-xs text-muted-foreground mt-0.5">
+                    {stat.label}
+                  </span>
+                </div>
               ))}
+            </div>
+
+            {/* Social Links — reuses shared component */}
+            <SocialLinks />
+
+            {/* ── Tech Stack Icons ───────────────────────────────── */}
+            <div className="mt-6">
+              <p className="text-xs text-muted-foreground uppercase tracking-widest mb-3">
+                Tech Stack
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {techStack.map(({ icon: Icon, label, color }) => (
+                  <div
+                    key={label}
+                    className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-white/10 bg-white/5 text-xs text-muted-foreground hover:border-white/20 hover:text-foreground transition-colors"
+                    title={label}
+                  >
+                    <Icon className="w-4 h-4 flex-shrink-0" style={{ color }} />
+                    <span>{label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -166,8 +216,14 @@ const Hero = () => {
                   height={592}
                 />
               </div>
-              <div className="absolute -bottom-4 -right-1 sm:-right-4 w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center animate-float" style={{ background: "linear-gradient(135deg, #6366f1, #3b82f6)" }}>
-                <span className="text-2xl">👋</span>
+              <div className="absolute -bottom-3 right-2 sm:right-6 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-700/60 backdrop-blur-md shadow-xl flex items-center gap-2.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span className="text-[11px] font-mono tracking-wider text-zinc-300 uppercase font-medium">
+                  Available for Hire
+                </span>
               </div>
             </div>
           </div>

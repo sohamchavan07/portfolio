@@ -8,8 +8,8 @@ Modern personal portfolio built with React, TypeScript, Vite, Tailwind CSS, and 
 • [Tailwind CSS](https://tailwindcss.com/)
 • [shadcn/ui](https://ui.shadcn.com/)
 • [Framer Motion](https://www.framer.com/motion/)
-• [Live Demo](https://www.sohamchavan.site/)
-• [Portfolio](https://www.sohamchavan.site/)
+• [Live Demo](https://www.sohamcode.online/)
+• [Portfolio](https://www.sohamcode.online/)
 
 ---
 
@@ -207,7 +207,7 @@ Please ensure your PR includes:
 
 **Soham Chavan**
 
-• [Portfolio](https://www.sohamchavan.site/)
+• [Portfolio](https://www.sohamcode.online/)
 • [LinkedIn](https://www.linkedin.com/in/sohamchavan07/)
 • [Twitter/X](https://x.com/soham_chavan07)
 • [GitHub](https://github.com/sohamchavan07)
