@@ -28,8 +28,8 @@ const testimonials = [
     avatar: "TK"
   },
   {
-    quote: "The AI-driven recommendations in CollegeMatch were a game-changer for our students. Soham's ability to integrate complex AI logic into a user-friendly interface is remarkable.",
-    author: "Education Consultant",
+    quote: "Soham delivered our platform seamlessly on time. His technical execution and attention to detail made the entire process smooth and professional.",
+    author: "Raayna Enterprises",
     role: "Client",
     avatar: "EC"
   }
