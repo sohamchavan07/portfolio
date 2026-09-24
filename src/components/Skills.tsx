@@ -5,7 +5,7 @@ import {
   SiMongodb, SiPostgresql, SiMysql, SiRedis,
   SiDocker, SiSidekiq, SiJenkins, SiNginx, SiPostman,
   SiHtml5, SiCss, SiJavascript, SiReact, SiTailwindcss, SiPhp,
-  SiClaude, SiNotion, SiGooglegemini, SiOpenai
+  SiClaude, SiNotion, SiGooglegemini, SiOpenai, SiNodedotjs
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
 import { TbBrandVscode } from "react-icons/tb";
@@ -26,7 +26,7 @@ const skillCategories = [
     skills: [
       { name: "Ruby on Rails", icon: SiRubyonrails, color: "#CC0000" },
       { name: "Ruby", icon: SiRuby, color: "#CC342D" },
-      { name: "PHP", icon: SiPhp, color: "#777BB4" },
+      { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
       { name: "Sidekiq", icon: SiSidekiq, color: "#ef4444" },
     ],
   },
@@ -34,10 +34,8 @@ const skillCategories = [
     title: "Database Systems",
     skills: [
       { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
-      { name: "MySQL", icon: SiMysql, color: "#4479A1" },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       { name: "Redis", icon: SiRedis, color: "#DC382D" },
-      { name: "RDBMS", icon: Database, color: "#6366f1" },
     ],
   },
   {
@@ -55,7 +53,6 @@ const skillCategories = [
       { name: "Claude Code", icon: SiClaude, color: "#D97757" },
       { name: "Gemini CLI", icon: SiGooglegemini, color: "#8E75FF" },
       { name: "OpenAI", icon: SiOpenai, color: "#74aa9c" },
-      { name: "Antigravity", icon: Rocket, color: "#FFB000" },
       { name: "Cursor", icon: MousePointer2, color: "#FFFFFF" },
     ],
   },
