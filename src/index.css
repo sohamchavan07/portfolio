@@ -307,6 +307,160 @@
   .hero-tech-card__inner {
     transform-style: preserve-3d;
   }
+
+  /* About 3D Card Styles */
+  .about-3d-scene {
+    --tilt-x: 0deg;
+    --tilt-y: 0deg;
+    position: relative;
+    width: 220px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    perspective: 1500px;
+    cursor: pointer;
+    filter: drop-shadow(0 30px 28px rgba(15, 23, 42, 0.45));
+    animation: aboutSceneDrift 4.2s ease-in-out infinite alternate;
+  }
+
+  .about-cube {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) rotateZ(-18deg);
+    animation: aboutCubeSpin 8s linear infinite;
+    transition: transform 0.16s ease-out;
+  }
+
+  .about-cube::after {
+    content: "";
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: -24px;
+    height: 24px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.52), transparent 70%);
+    transform: translateZ(-30px) scale(1.25);
+    filter: blur(10px);
+  }
+
+  .about-cube-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    box-shadow: 0 18px 36px rgba(14, 116, 144, 0.25), 0 0 22px rgba(59, 130, 246, 0.2);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    will-change: transform;
+  }
+
+  .about-cube-face::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255,255,255,0.42), transparent 32%, transparent 68%, rgba(255,255,255,0.18));
+  }
+
+  .about-cube-front {
+    transform: translateZ(70px);
+    background: linear-gradient(135deg, rgba(251, 113, 133, 0.92), rgba(190, 24, 93, 0.28));
+    color: #fff1f2;
+  }
+
+  .about-cube-back {
+    transform: rotateY(180deg) translateZ(70px);
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.78), rgba(109, 40, 217, 0.22));
+    color: #f5f3ff;
+  }
+
+  .about-cube-right {
+    transform: rotateY(90deg) translateZ(70px);
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.9), rgba(37, 99, 235, 0.18));
+    color: #eff6ff;
+  }
+
+  .about-cube-left {
+    transform: rotateY(-90deg) translateZ(70px);
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.86), rgba(6, 182, 212, 0.18));
+    color: #ecfeff;
+  }
+
+  .about-cube-top {
+    transform: rotateX(90deg) translateZ(70px);
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.86), rgba(59, 130, 246, 0.18));
+    color: #eff6ff;
+  }
+
+  .about-cube-bottom {
+    transform: rotateX(-90deg) translateZ(70px);
+    background: linear-gradient(135deg, rgba(45, 212, 191, 0.76), rgba(13, 148, 136, 0.18));
+    color: #ecfeff;
+  }
+
+  .about-orbit {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 9999px;
+    border: 1px dashed rgba(148, 163, 184, 0.42);
+    transform: rotateX(72deg) rotateY(18deg) rotateZ(0deg);
+    box-shadow: inset 0 0 18px rgba(59, 130, 246, 0.18), 0 0 24px rgba(34, 211, 238, 0.12);
+    animation: aboutOrbit 5.8s linear infinite;
+  }
+
+  @keyframes aboutSceneDrift {
+    0% {
+      transform: rotateX(12deg) rotateY(-12deg) translateY(0px);
+    }
+    50% {
+      transform: rotateX(-8deg) rotateY(12deg) translateY(-8px);
+    }
+    100% {
+      transform: rotateX(14deg) rotateY(-10deg) translateY(4px);
+    }
+  }
+
+  @keyframes aboutCubeSpin {
+    0% {
+      transform: rotateX(-18deg) rotateY(0deg) rotateZ(-18deg) scale(1);
+    }
+    25% {
+      transform: rotateX(12deg) rotateY(90deg) rotateZ(-10deg) scale(1.04);
+    }
+    50% {
+      transform: rotateX(20deg) rotateY(180deg) rotateZ(8deg) scale(1.08);
+    }
+    75% {
+      transform: rotateX(-12deg) rotateY(270deg) rotateZ(-10deg) scale(1.04);
+    }
+    100% {
+      transform: rotateX(-18deg) rotateY(360deg) rotateZ(-18deg) scale(1);
+    }
+  }
+
+  @keyframes aboutOrbit {
+    0% {
+      transform: rotateX(72deg) rotateY(18deg) rotateZ(0deg) scale(0.96);
+    }
+    50% {
+      transform: rotateX(72deg) rotateY(18deg) rotateZ(180deg) scale(1.05);
+    }
+    100% {
+      transform: rotateX(72deg) rotateY(18deg) rotateZ(360deg) scale(0.96);
+    }
+  }
 }
 
 @keyframes float {
