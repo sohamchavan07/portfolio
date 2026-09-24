@@ -262,6 +262,51 @@
   .section-padding {
     padding: var(--section-padding) 0;
   }
+
+  /* Hero tech stack cards */
+  .hero-tech-card {
+    position: absolute;
+    z-index: 20;
+    perspective: 1000px;
+    animation: techFloat 4.5s ease-in-out infinite;
+  }
+
+  .hero-tech-card__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 7.5rem;
+    padding: 0.65rem 0.9rem;
+    border-radius: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 18px 35px rgba(15, 23, 42, 0.35);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transform: rotateX(12deg) rotateY(-12deg);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-tech-card__inner::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .hero-tech-card__inner {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-tech-card__inner {
+    transform-style: preserve-3d;
+  }
 }
 
 @keyframes float {
@@ -332,4 +377,14 @@
 .pause-on-hover:hover .animate-marquee,
 .pause-on-hover:hover .animate-marquee-reverse {
   animation-play-state: paused;
+}
+
+@keyframes techFloat {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.02);
+  }
 }

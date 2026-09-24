@@ -157,6 +157,13 @@ const Projects = () => {
                 <Button
                   size="lg"
                   className="bg-[#24292e] hover:bg-[#1a1e23] border-0 hover-lift text-white"
+                  onClick={() => window.open("https://drive.google.com/drive/u/4/folders/1sfeAwjfH6hpV-Jo0a_PsIj91CyNfJgwT", "_blank")}
+                >
+                  View Best Projects
+                </Button>
+                <Button
+                  size="lg"
+                  className="bg-[#24292e] hover:bg-[#1a1e23] border-0 hover-lift text-white"
                   onClick={() => window.open("https://github.com/sohamchavan07", "_blank")}
                 >
                   <Github className="w-5 h-5 mr-2" />
