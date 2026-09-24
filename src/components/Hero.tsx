@@ -201,13 +201,7 @@ const Hero = () => {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
-          <button
-            onClick={scrollToAbout}
-            aria-label="Scroll to about"
-            className="p-2 rounded-full hover:bg-primary/10 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
-          >
-            <ArrowDown className="w-6 h-6 text-muted-foreground" />
-          </button>
+          
         </div>
       </div>
     </section>
