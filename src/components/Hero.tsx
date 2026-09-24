@@ -192,9 +192,6 @@ const Hero = () => {
                   />
                 </picture>
               </div>
-              <div className="absolute -bottom-4 -right-1 sm:-right-4 w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center animate-float" style={{ background: "linear-gradient(135deg, #6366f1, #3b82f6)" }}>
-                <span className="text-2xl">👋</span>
-              </div>
             </div>
           </div>
         </div>
