@@ -167,6 +167,10 @@
     scroll-behavior: smooth;
   }
 
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+
   /* Apply variables to your body */
   body {
     @apply bg-background text-foreground font-inter antialiased overflow-x-hidden;

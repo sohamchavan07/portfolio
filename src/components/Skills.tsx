@@ -77,8 +77,8 @@ const Skills = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Skills & <span className="gradient-text">Technologies</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise and the tools I use to bring ideas to life.
+          <p className="mt-4 text-lg md:text-xl font-medium italic text-foreground/90 max-w-2xl mx-auto border-l-2 border-primary pl-4">
+            "I prefer writing code over talking about it."
           </p>
         </div>
 

@@ -42,7 +42,10 @@ const LazySection = ({
           observer.disconnect();
         }
       },
-      { rootMargin: "200px" }
+      {
+        rootMargin: "500px 0px",
+        threshold: 0.01,
+      }
     );
 
     if (sectionRef.current) {
