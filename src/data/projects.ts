@@ -39,8 +39,8 @@ export const projects: Project[] = [
     technologies: ["Three.js", "React Three Fiber", "React", "Tailwind CSS"],
     features: ["Creative Inspiration Shout-Out", "Portfolio Gateway", "Humor & Personality", "User Management"],
     githubUrl: "https://github.com/sohamchavan07/portfolio3d",
-    liveUrl: "https://portfolio.sohamchavan.site",
-    demoUrl: "https://portfolio.sohamchavan.site",
+    liveUrl: "https://3dportfolio.sohamcode.online",
+    demoUrl: "https://3dportfolio.sohamcode.online",
     date: "2025",
   },
   {
