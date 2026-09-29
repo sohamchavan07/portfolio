@@ -5,7 +5,7 @@ export const siteConfig = {
   title: "Soham Chavan - Full Stack Developer",
   description:
     "Professional full stack developer based in Maharashtra, India, specializing in Ruby on Rails, React, and modern web technologies.",
-  url: "https://www.sohamchavan.site",
+  url: "https://sohamcode.online",
   email: "soham07.dev@gmail.com",
   phone: "+91 7058933361",
   location: "Maharashtra, India",
