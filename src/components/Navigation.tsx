@@ -95,44 +95,49 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-16 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glass py-2" : "py-4"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-background/85 backdrop-blur-md border-b border-border/80 shadow-sm py-3"
+          : "bg-background/50 backdrop-blur-sm border-b border-transparent py-4"
       }`}
     >
       <div className="section-container">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo & Brand */}
           <div
-            className="flex items-center gap-3 text-2xl font-bold gradient-text cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer group select-none"
             onClick={() => navigate("/")}
           >
             <img
               src={peaceSymbol}
-              alt="Peace symbol"
-              className={`h-12 w-16 drop-shadow ${
+              alt="Brand symbol"
+              className={`h-9 w-12 object-contain transition-transform duration-300 group-hover:scale-105 ${
                 theme === "light" ? "invert" : ""
               }`}
               loading="lazy"
             />
+            <span className="font-bold text-lg tracking-tight text-foreground hidden sm:inline-block">
+              Soham<span className="gradient-text ml-0.5">.dev</span>
+            </span>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
             {navItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className="touch-target px-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 relative group"
+                className="touch-target px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 relative group rounded-md hover:bg-secondary/50"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left rounded-full" />
               </button>
             ))}
 
             {/* Theme toggle */}
             <button
               onClick={toggleTheme}
-              className="touch-target w-10 h-10 inline-flex items-center justify-center rounded-full border border-border hover:bg-muted/50 transition-colors"
+              className="touch-target w-9 h-9 inline-flex items-center justify-center rounded-lg border border-border/70 hover:bg-secondary/70 transition-colors ml-1 text-muted-foreground hover:text-foreground"
               aria-label="Toggle theme"
             >
               {theme === "light" ? (
@@ -146,112 +151,103 @@ const Navigation = () => {
             <Button
               onClick={handleStartProject}
               size="sm"
-              className="bg-[#4f46e5] hover:bg-[#4338ca] border-0 hover-lift text-white text-sm px-4"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground border-0 hover-lift text-sm font-medium px-4 shadow-sm shadow-primary/20 ml-2"
             >
               Start a Project
             </Button>
           </div>
 
-          {/* Mobile Hamburger */}
-          <button
-            className="md:hidden touch-target relative w-12 h-12 flex flex-col justify-center items-center space-y-1.5 group rounded-full border border-border"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-nav"
-          >
-            <div
-              className={`w-6 h-0.5 bg-foreground transition-all duration-300 ${
-                isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""
-              }`}
-            />
-            <div
-              className={`w-6 h-0.5 bg-foreground transition-all duration-300 ${
-                isMobileMenuOpen ? "opacity-0" : ""
-              }`}
-            />
-            <div
-              className={`w-6 h-0.5 bg-foreground transition-all duration-300 ${
-                isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
-              }`}
-            />
-          </button>
+          {/* Mobile Hamburger & Theme Toggle */}
+          <div className="flex items-center gap-2 md:hidden">
+            <button
+              onClick={toggleTheme}
+              className="touch-target w-10 h-10 inline-flex items-center justify-center rounded-full border border-border/70 text-muted-foreground hover:text-foreground"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? (
+                <Moon className="w-4 h-4" />
+              ) : (
+                <Sun className="w-4 h-4" />
+              )}
+            </button>
+            <button
+              className="touch-target relative w-10 h-10 flex flex-col justify-center items-center space-y-1.5 group rounded-full border border-border/70"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-nav"
+            >
+              <div
+                className={`w-5 h-0.5 bg-foreground transition-all duration-300 ${
+                  isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
+                }`}
+              />
+              <div
+                className={`w-5 h-0.5 bg-foreground transition-all duration-300 ${
+                  isMobileMenuOpen ? "opacity-0" : ""
+                }`}
+              />
+              <div
+                className={`w-5 h-0.5 bg-foreground transition-all duration-300 ${
+                  isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                }`}
+              />
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation Menu */}
         <div
           id="mobile-nav"
-          className={`md:hidden transition-all duration-500 ease-in-out overflow-hidden ${
-            isMobileMenuOpen ? "max-h-[36rem] opacity-100" : "max-h-0 opacity-0"
+          className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
+            isMobileMenuOpen ? "max-h-[38rem] opacity-100 pt-3" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="mt-4 py-6 glass rounded-lg border border-primary/20 backdrop-blur-lg">
-            <div className="flex flex-col space-y-2">
-              {/* Theme row */}
-              <div className="flex items-center justify-between px-4 pb-2">
-                <span className="text-sm text-muted-foreground">Theme</span>
-                <button
-                  onClick={toggleTheme}
-                  className="touch-target w-10 h-10 inline-flex items-center justify-center rounded-full border border-border hover:bg-muted/50 transition-colors"
-                  aria-label="Toggle theme"
-                >
-                  {theme === "light" ? (
-                    <Moon className="w-4 h-4" />
-                  ) : (
-                    <Sun className="w-4 h-4" />
-                  )}
-                </button>
-              </div>
-
+          <div className="py-4 bg-card/95 rounded-xl border border-border/80 backdrop-blur-xl shadow-2xl">
+            <div className="flex flex-col space-y-1 px-2">
               {/* Nav links */}
               {navItems.map((item, index) => (
                 <button
                   key={item.href}
                   onClick={() => handleNavClick(item.href)}
-                  className="text-left text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-300 px-6 py-3 mx-2 rounded-lg relative group"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="text-left text-foreground/90 hover:text-primary hover:bg-secondary/70 transition-all duration-200 px-4 py-2.5 rounded-lg font-medium text-sm flex items-center justify-between"
+                  style={{ animationDelay: `${index * 0.05}s` }}
                 >
-                  <span className="relative z-10">{item.label}</span>
-                  <div className="absolute left-0 top-0 w-1 h-full bg-gradient-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-r" />
+                  <span>{item.label}</span>
+                  <span className="text-xs font-mono text-muted-foreground">0{index + 1}</span>
                 </button>
               ))}
 
-              {/* Mobile footer: contact info + CTAs + social */}
-              <div className="px-4 pt-4 border-t border-primary/10 mt-2 space-y-4">
-                <div className="space-y-2 text-sm text-muted-foreground">
-                  <span className="text-xs uppercase tracking-wide text-muted-foreground/80">
-                    Contact
-                  </span>
-                  <p className="text-xs text-muted-foreground">
-                    Maharashtra, India
-                  </p>
-                  <div className="space-y-2">
-                    {contactLinks.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex flex-col rounded-lg border border-primary/10 px-4 py-3 hover:border-primary/40 hover:bg-primary/5 transition-colors touch-target"
-                      >
-                        <span className="text-xs text-muted-foreground">
-                          {link.label}
-                        </span>
-                        <span className="text-sm text-foreground">
-                          {link.value}
-                        </span>
-                      </a>
-                    ))}
-                  </div>
+              {/* Mobile footer: contact info + CTAs */}
+              <div className="pt-4 border-t border-border/60 mt-3 px-2 space-y-3">
+                <div className="grid grid-cols-2 gap-2">
+                  {contactLinks.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex flex-col rounded-lg border border-border/60 px-3 py-2 bg-secondary/30 hover:border-primary/40 hover:bg-secondary/60 transition-colors"
+                    >
+                      <span className="text-[11px] font-mono uppercase text-muted-foreground">
+                        {link.label}
+                      </span>
+                      <span className="text-xs font-medium text-foreground truncate mt-0.5">
+                        {link.value}
+                      </span>
+                    </a>
+                  ))}
                 </div>
 
                 {/* Social icons */}
-                <SocialLinks size="sm" />
+                <div className="py-1">
+                  <SocialLinks size="sm" />
+                </div>
 
                 {/* Start a Project CTA */}
                 <Button
-                  size="lg"
+                  size="default"
                   onClick={handleStartProject}
-                  className="w-full bg-[#4f46e5] hover:bg-[#4338ca] border-0 hover-lift text-white"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground border-0 hover-lift font-medium shadow-sm shadow-primary/20"
                 >
                   Start a Project
                 </Button>
@@ -260,11 +256,11 @@ const Navigation = () => {
                 <a
                   href={RESUME_PATH}
                   download
-                  className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-md border border-border text-sm text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-2 rounded-md border border-border text-xs font-medium text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-secondary/40 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Download className="w-4 h-4" />
-                  Download Resume
+                  <Download className="w-3.5 h-3.5" />
+                  Download Resume (PDF)
                 </a>
               </div>
             </div>

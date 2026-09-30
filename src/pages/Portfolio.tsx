@@ -94,7 +94,7 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      <main className="pt-20 md:pt-24">
+      <main>
         <Hero />
         <LazySection forceLoad={forceLoadSections}>
           <Skills />

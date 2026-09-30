@@ -27,7 +27,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="border-t border-border/40 py-8 bg-background/60 backdrop-blur-sm">
+    <footer className="border-t border-border/80 py-8 bg-card/50 backdrop-blur-md">
       <div className="section-container flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Quick Links */}
         <nav
@@ -38,7 +38,7 @@ const Footer = () => {
             <button
               key={link.label}
               onClick={() => scrollToSection(link.href)}
-              className="hover:text-primary transition-colors duration-200"
+              className="hover:text-foreground transition-colors duration-200 font-medium"
             >
               {link.label}
             </button>

@@ -66,16 +66,16 @@ const SocialLinks = ({ className = "", size = "md" }: SocialLinksProps) => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={link.label}
-            className={`touch-target ${btnSize} rounded-full border border-white/10 flex items-center justify-center transition-all duration-300 hover-lift hover:scale-110`}
+            title={link.label}
+            className={`touch-target ${btnSize} rounded-full border border-border/80 bg-secondary/40 hover:border-primary/40 flex items-center justify-center transition-all duration-300 hover-lift hover:scale-110 shadow-sm`}
             style={{
               animationDelay: `${index * 0.1}s`,
-              background: "rgba(255,255,255,0.05)",
             }}
             onMouseEnter={(e) =>
-              (e.currentTarget.style.background = link.hoverBg)
+              (e.currentTarget.style.backgroundColor = link.hoverBg)
             }
             onMouseLeave={(e) =>
-              (e.currentTarget.style.background = "rgba(255,255,255,0.05)")
+              (e.currentTarget.style.backgroundColor = "")
             }
           >
             <Icon className={iconSize} style={{ color: link.color }} />

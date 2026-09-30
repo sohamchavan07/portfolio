@@ -131,19 +131,25 @@ const Contact = () => {
       <div className="section-container">
         {/* Large headline + one-line subtext */}
         <div className="text-center mb-14 md:mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <div className="inline-flex items-center gap-3 mb-3">
+            <span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">
+              06 / 06
+            </span>
+            <span className="h-px w-8 bg-border" />
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-foreground">
             Get In <span className="gradient-text">Touch</span>
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Ready to start your next project? Let's discuss your ideas and create something amazing together.
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Ready to build your next project or scale your team? Let's discuss your vision and ship something great together.
           </p>
         </div>
 
         {/* Two-column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* LEFT: Stacked list of contact links with dividers */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="divide-y divide-border/40 border-y border-border/40">
+          <div className="lg:col-span-5 space-y-3">
+            <div className="divide-y divide-border/60 border-y border-border/60">
               {contactMethods.map((method) => {
                 const Icon = method.icon;
                 return (
@@ -153,22 +159,22 @@ const Contact = () => {
                     {...(method.isExternal
                       ? { target: "_blank", rel: "noopener noreferrer" }
                       : {})}
-                    className="group flex items-center justify-between py-4 px-2 hover:bg-white/[0.03] transition-colors rounded-sm"
+                    className="group flex items-center justify-between py-3.5 px-3 hover:bg-secondary/60 transition-colors rounded-xl"
                   >
                     <div className="flex items-center gap-4 min-w-0">
-                      <div className="w-10 h-10 rounded-full bg-secondary/80 border border-border/50 flex items-center justify-center shrink-0 group-hover:border-primary/30 transition-colors">
-                        <Icon className="w-4 h-4 text-foreground/80 group-hover:text-primary transition-colors" />
+                      <div className="w-10 h-10 rounded-xl bg-secondary/80 border border-border/80 flex items-center justify-center shrink-0 group-hover:border-primary/40 group-hover:bg-secondary transition-all">
+                        <Icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                       </div>
                       <div className="min-w-0">
-                        <div className="text-xs uppercase tracking-wider text-muted-foreground font-mono">
+                        <div className="text-[11px] uppercase tracking-wider text-muted-foreground font-mono">
                           {method.label}
                         </div>
-                        <div className="text-sm md:text-base font-medium text-foreground group-hover:text-primary transition-colors truncate">
+                        <div className="text-sm md:text-base font-semibold text-foreground group-hover:text-primary transition-colors truncate mt-0.5">
                           {method.handle}
                         </div>
                       </div>
                     </div>
-                    <ArrowUpRight className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 ml-2" />
+                    <ArrowUpRight className="w-4 h-4 text-muted-foreground/60 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 ml-2" />
                   </a>
                 );
               })}
@@ -177,7 +183,7 @@ const Contact = () => {
 
           {/* RIGHT: Contact form */}
           <div className="lg:col-span-7">
-            <Card className="p-6 md:p-8 glass border-border/60 bg-card/40 backdrop-blur-sm rounded-xl">
+            <Card className="p-6 md:p-8 bg-card/80 border border-border/80 shadow-xl backdrop-blur-md rounded-2xl">
               <form
                 action="https://formspree.io/f/xvgbyldd"
                 method="POST"
@@ -186,7 +192,7 @@ const Contact = () => {
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name" className="text-sm font-medium">
+                    <Label htmlFor="name" className="text-sm font-medium text-foreground">
                       Name *
                     </Label>
                     <Input
@@ -198,12 +204,12 @@ const Contact = () => {
                       required
                       autoComplete="name"
                       inputMode="text"
-                      className="bg-background/60 border-border/60 focus:border-primary/50"
+                      className="bg-secondary/40 border border-border/80 focus:border-primary text-foreground placeholder:text-muted-foreground/60"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-sm font-medium">
+                    <Label htmlFor="email" className="text-sm font-medium text-foreground">
                       Email *
                     </Label>
                     <Input
@@ -216,13 +222,13 @@ const Contact = () => {
                       required
                       autoComplete="email"
                       inputMode="email"
-                      className="bg-background/60 border-border/60 focus:border-primary/50"
+                      className="bg-secondary/40 border border-border/80 focus:border-primary text-foreground placeholder:text-muted-foreground/60"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="text-sm font-medium">
+                  <Label htmlFor="message" className="text-sm font-medium text-foreground">
                     Message *
                   </Label>
                   <Textarea
@@ -234,7 +240,7 @@ const Contact = () => {
                     rows={5}
                     required
                     autoComplete="off"
-                    className="bg-background/60 border-border/60 focus:border-primary/50 resize-none"
+                    className="bg-secondary/40 border border-border/80 focus:border-primary text-foreground placeholder:text-muted-foreground/60 resize-none"
                   />
                 </div>
 
@@ -242,11 +248,11 @@ const Contact = () => {
                   type="submit"
                   size="lg"
                   disabled={isSubmitting}
-                  className="w-full bg-[#3b82f6] hover:bg-[#2563eb] text-white border-0 hover-lift disabled:opacity-50"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium border-0 hover-lift shadow-md shadow-primary/20 py-3 rounded-lg text-sm sm:text-base disabled:opacity-50 transition-all"
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                      <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin mr-2" />
                       Sending...
                     </>
                   ) : (

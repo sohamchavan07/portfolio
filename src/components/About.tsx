@@ -68,18 +68,24 @@ const About = () => {
     <section id="about" className="section-padding">
       <div className="section-container">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <div className="inline-flex items-center gap-3 mb-3">
+            <span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">
+              05 / 06
+            </span>
+            <span className="h-px w-8 bg-border" />
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-foreground">
             About <span className="gradient-text">Me</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-5 sm:gap-6">
           {/* ── Bio Card ──────────────────────────────────────────────────── */}
-          <Card className="xl:col-span-7 p-6 sm:p-8 glass border-primary/10 hover:border-primary/20 transition-all duration-300 hover-lift">
+          <Card className="xl:col-span-7 p-6 sm:p-8 bg-card/75 border border-border/80 hover:border-primary/30 transition-all duration-300 hover-lift shadow-md rounded-2xl backdrop-blur-md">
             {/* Photo + name */}
             <div className="flex items-center gap-5 mb-6">
               <div className="relative shrink-0">
-                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/20">
+                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-border/80 shadow-md">
                   <img
                     src="/assets/icons/profile-photo-new.jpg"
                     alt="Soham Chavan"
@@ -90,84 +96,66 @@ const About = () => {
                   />
                 </div>
                 {/* Online indicator */}
-                <span className="absolute bottom-0.5 right-0.5 w-4 h-4 rounded-full bg-green-500 border-2 border-background" />
+                <span className="absolute bottom-0.5 right-0.5 w-4 h-4 rounded-full bg-emerald-500 border-2 border-background shadow-sm" />
               </div>
               <div>
-                <h3 className="text-2xl font-semibold">Hi! I'm Soham Chavan</h3>
-                <div className="flex items-center gap-1.5 text-sm text-muted-foreground mt-1">
-                  <MapPin className="w-3.5 h-3.5" />
+                <h3 className="text-2xl font-bold text-foreground">Hi! I'm Soham Chavan</h3>
+                <div className="flex items-center gap-1.5 text-sm text-muted-foreground mt-1 font-medium">
+                  <MapPin className="w-3.5 h-3.5 text-primary" />
                   Maharashtra, India
                 </div>
               </div>
             </div>
 
             {/* Narrative */}
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
               <p>
                 I'm a{" "}
-                <span className="text-primary font-semibold">
+                <span className="text-foreground font-semibold">
                   UI/UX-minded full-stack developer
                 </span>{" "}
                 based in{" "}
-                <span className="text-primary font-semibold">
+                <span className="text-foreground font-semibold">
                   Maharashtra, India
                 </span>
-                . I design and build thoughtful, accessible interfaces backed by
-                scalable, maintainable systems.
+                . I design and build thoughtful, accessible interfaces backed by scalable, maintainable systems.
               </p>
               <p>
                 My toolkit spans{" "}
-                <span className="text-accent font-semibold">React</span>,{" "}
-                <span className="text-accent font-semibold">TypeScript</span>,{" "}
-                <span className="text-accent font-semibold">Tailwind CSS</span>,
-                and{" "}
-                <span className="text-accent font-semibold">Ruby on Rails</span>
-                . I obsess over typography, spacing, motion, and
-                micro-interactions — the details that turn a working app into a
-                product people enjoy using.
+                <span className="text-primary font-semibold">React</span>,{" "}
+                <span className="text-primary font-semibold">TypeScript</span>,{" "}
+                <span className="text-primary font-semibold">Tailwind CSS</span>, and{" "}
+                <span className="text-primary font-semibold">Ruby on Rails</span>. I obsess over typography, spacing, motion, and micro-interactions — the details that turn a working app into a product people truly enjoy using.
               </p>
               <p>
-                Recently I've shipped dashboards, e-commerce stores, and
-                multilingual community portals — always with a designer's eye on
-                every commit.
+                Recently I've shipped high-traffic web applications, SaaS dashboards, and modern developer tools — always with a designer's eye on every commit.
               </p>
 
               {/* Current focus */}
-              <div className="mt-4 p-4 rounded-lg border border-primary/15 bg-primary/5">
-                <p className="text-sm font-semibold text-foreground mb-1">
+              <div className="mt-4 p-4 rounded-xl border border-border/80 bg-secondary/40">
+                <p className="text-xs font-mono uppercase tracking-wider text-primary font-semibold mb-1">
                   Currently focused on
                 </p>
-                <p className="text-sm">
-                  Building production-grade SaaS products with Ruby on Rails +
-                  React, integrating AI tooling into developer workflows, and
-                  taking on freelance projects that solve real problems.
+                <p className="text-xs sm:text-sm text-foreground/90 leading-relaxed">
+                  Building production-grade SaaS products with Ruby on Rails + React, integrating AI tooling into developer workflows, and taking on freelance projects that solve real problems.
                 </p>
               </div>
             </div>
-
-            {/* TODO: Spotify widget placeholder */}
-            {/*
-             * ─── SPOTIFY WIDGET ───────────────────────────────────────────
-             * Replace this comment block with the Spotify Now Playing widget
-             * when ready. Suggested implementation:
-             *   <SpotifyNowPlaying />  ← lazy-loaded, polling /api/spotify
-             * ──────────────────────────────────────────────────────────────
-             */}
           </Card>
 
           {/* ── Design Process Card ───────────────────────────────────────── */}
-          <Card className="xl:col-span-5 p-6 sm:p-8 glass border-primary/10 hover:border-primary/20 transition-all duration-300 hover-lift flex flex-col">
-            <h4 className="text-xl font-bold mb-2">My Design Process</h4>
-            <p className="text-sm text-muted-foreground mb-6">
-              How I move from problem to product
+          <Card className="xl:col-span-5 p-6 sm:p-8 bg-card/75 border border-border/80 hover:border-primary/30 transition-all duration-300 hover-lift flex flex-col shadow-md rounded-2xl backdrop-blur-md">
+            <h4 className="text-xl font-bold mb-1 text-foreground">My Design Process</h4>
+            <p className="text-xs sm:text-sm text-muted-foreground mb-6">
+              How I move from problem discovery to production code
             </p>
             <div className="grid grid-cols-1 gap-3 flex-1">
               {process.map((step, i) => (
                 <div
                   key={step.title}
-                  className="flex items-start gap-3 p-3 rounded-lg border border-white/5 bg-white/[0.02] hover:border-primary/30 transition-colors"
+                  className="flex items-start gap-3.5 p-3 rounded-xl border border-border/60 bg-secondary/30 hover:border-primary/30 hover:bg-secondary/60 transition-colors"
                 >
-                  <div className="w-9 h-9 shrink-0 rounded-full bg-primary/15 flex items-center justify-center">
+                  <div className="w-9 h-9 shrink-0 rounded-lg bg-primary/15 flex items-center justify-center">
                     <step.icon className="w-4 h-4 text-primary" />
                   </div>
                   <div>
@@ -175,7 +163,7 @@ const About = () => {
                       <span className="text-[10px] font-mono text-muted-foreground">
                         0{i + 1}
                       </span>
-                      <span className="font-semibold text-sm">{step.title}</span>
+                      <span className="font-semibold text-sm text-foreground">{step.title}</span>
                     </div>
                     <p className="text-xs text-muted-foreground leading-relaxed mt-0.5">
                       {step.desc}
@@ -190,60 +178,60 @@ const About = () => {
           {stats.map((stat, index) => (
             <Card
               key={stat.label}
-              className="md:col-span-1 xl:col-span-3 p-6 text-center glass border-primary/10 hover:border-primary/20 transition-all duration-300 hover-lift group"
+              className="md:col-span-1 xl:col-span-3 p-6 text-center bg-card/75 border border-border/80 hover:border-primary/30 transition-all duration-300 hover-lift group shadow-sm rounded-2xl backdrop-blur-md"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <stat.icon className="w-8 h-8 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
-              <div className="text-3xl font-bold gradient-text mb-2">
+              <stat.icon className="w-7 h-7 text-primary mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" />
+              <div className="text-3xl font-bold gradient-text mb-1">
                 {stat.number}
               </div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground font-medium">{stat.label}</div>
             </Card>
           ))}
 
           {/* ── Design Principles Card ────────────────────────────────────── */}
-          <Card className="col-span-1 md:col-span-2 xl:col-span-6 p-6 sm:p-8 border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 flex flex-col justify-center bg-[#0a0a0a] text-white overflow-hidden group relative">
+          <Card className="col-span-1 md:col-span-2 xl:col-span-6 p-6 sm:p-8 border border-border/80 hover:border-primary/30 transition-all duration-500 hover:shadow-xl flex flex-col justify-center bg-card/85 rounded-2xl shadow-md overflow-hidden group relative">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <h4 className="text-xl font-bold mb-6 flex items-center gap-2 relative z-10">
+            <h4 className="text-xl font-bold mb-6 flex items-center gap-2 relative z-10 text-foreground">
               <Sparkles className="w-5 h-5 text-primary" />
               Design Principles
             </h4>
 
-            <div className="font-mono text-sm sm:text-base p-5 rounded-2xl bg-black/60 border border-white/10 shadow-inner overflow-hidden relative z-10">
+            <div className="font-mono text-xs sm:text-sm p-5 rounded-xl bg-secondary/60 border border-border/80 shadow-inner overflow-hidden relative z-10">
               <div className="flex gap-2 mb-4">
-                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
               </div>
-              <div className="text-red-400 mt-2">{"<principles>"}</div>
-              <div className="pl-4 sm:pl-8 py-2 flex flex-col gap-2">
+              <div className="text-primary font-semibold mt-1">{"<principles>"}</div>
+              <div className="pl-4 sm:pl-6 py-2 flex flex-col gap-2">
                 {[
-                  "Mobile-first responsive layouts.",
-                  "Accessible color & contrast.",
-                  "Motion that guides, not distracts.",
-                  "Performance as a feature.",
+                  "Mobile-first, responsive layouts.",
+                  "Accessible color & WCAG contrast.",
+                  "Motion that guides, never distracts.",
+                  "Performance as an essential feature.",
                 ].map((principle) => (
-                  <div key={principle}>
-                    <span className="text-red-400">{"<li>"}</span>
-                    <span className="text-gray-200">{principle}</span>
-                    <span className="text-red-400">{"</li>"}</span>
+                  <div key={principle} className="flex items-center gap-2">
+                    <span className="text-accent">{"<li>"}</span>
+                    <span className="text-foreground/90 font-sans text-xs sm:text-sm">{principle}</span>
+                    <span className="text-accent">{"</li>"}</span>
                   </div>
                 ))}
               </div>
-              <div className="text-red-400">{"</principles>"}</div>
+              <div className="text-primary font-semibold">{"</principles>"}</div>
             </div>
           </Card>
 
           {/* ── Performance Card ──────────────────────────────────────────── */}
-          <Card className="col-span-1 md:col-span-2 xl:col-span-6 p-6 sm:p-8 border-primary/10 hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 flex flex-col items-center justify-center bg-[#0a0a0a] text-white overflow-hidden group relative">
-            <div className="absolute inset-0 bg-gradient-to-bl from-[#0ecc67]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <Card className="col-span-1 md:col-span-2 xl:col-span-6 p-6 sm:p-8 border border-border/80 hover:border-primary/30 transition-all duration-500 hover:shadow-xl flex flex-col items-center justify-center bg-card/85 rounded-2xl shadow-md overflow-hidden group relative">
+            <div className="absolute inset-0 bg-gradient-to-bl from-emerald-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="w-full text-left mb-8 relative z-10">
-              <h4 className="text-xl font-bold text-white mb-1">
+              <h4 className="text-xl font-bold text-foreground mb-1">
                 Performance Optimization
               </h4>
-              <p className="text-sm text-gray-400">via Google Lighthouse</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Audited via Google Lighthouse</p>
             </div>
 
             <div className="flex flex-wrap justify-between w-full gap-4 sm:gap-2 relative z-10">
@@ -255,22 +243,22 @@ const About = () => {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="flex flex-col items-center gap-4 flex-1 min-w-[70px]"
+                  className="flex flex-col items-center gap-3 flex-1 min-w-[70px]"
                 >
-                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                     <svg
                       className="w-full h-full transform -rotate-90"
                       viewBox="0 0 36 36"
                     >
                       <path
-                        className="text-white/10"
+                        className="text-border"
                         strokeWidth="3"
                         stroke="currentColor"
                         fill="none"
                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                       />
                       <path
-                        className="text-[#0ecc67] drop-shadow-[0_0_8px_rgba(14,204,103,0.5)]"
+                        className="text-emerald-500 drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]"
                         strokeDasharray={`${item.score}, 100`}
                         strokeWidth="3"
                         strokeLinecap="round"
@@ -279,11 +267,11 @@ const About = () => {
                         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                       />
                     </svg>
-                    <span className="absolute text-[#0ecc67] font-bold text-lg sm:text-xl">
+                    <span className="absolute text-emerald-500 font-bold text-lg sm:text-xl font-mono">
                       {item.score}
                     </span>
                   </div>
-                  <span className="text-xs sm:text-sm text-gray-300 font-medium text-center">
+                  <span className="text-xs sm:text-sm text-foreground/90 font-medium text-center">
                     {item.label}
                   </span>
                 </div>

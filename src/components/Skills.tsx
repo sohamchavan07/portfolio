@@ -73,12 +73,12 @@ const categories = [
 const SkillBadge = ({ skill }: { skill: (typeof skills)[0] }) => {
   const Icon = skill.icon;
   return (
-    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-800 transition-all duration-200 group">
+    <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-lg bg-card/80 border border-border/80 hover:border-primary/40 hover:bg-secondary/60 transition-all duration-200 group shadow-sm">
       <Icon
-        className="w-5 h-5 flex-shrink-0"
+        className="w-4 h-4 flex-shrink-0 transition-transform duration-200 group-hover:scale-110"
         style={{ color: skill.color }}
       />
-      <span className="text-sm text-zinc-300 group-hover:text-white transition-colors whitespace-nowrap">
+      <span className="text-sm text-foreground/90 group-hover:text-foreground transition-colors whitespace-nowrap font-medium">
         {skill.name}
       </span>
     </div>
@@ -87,19 +87,19 @@ const SkillBadge = ({ skill }: { skill: (typeof skills)[0] }) => {
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 px-4 md:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section id="skills" className="section-padding">
+      <div className="section-container">
         {/* Section Header */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-3">
-            <span className="font-mono text-xs text-zinc-500 tracking-widest uppercase">03 / 06</span>
-            <span className="h-px w-8 bg-zinc-700" />
+            <span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">01 / 06</span>
+            <span className="h-px w-8 bg-border" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Skills & <span className="text-lime-400">Technologies</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+            Skills & <span className="gradient-text">Technologies</span>
           </h2>
-          <p className="mt-3 text-zinc-400 text-base max-w-xl">
-            Stack I work with daily — from full-stack Rails to modern AI tooling.
+          <p className="mt-3 text-muted-foreground text-base max-w-xl">
+            Stack I work with daily — from full-stack Rails & React to cloud architecture and modern AI tooling.
           </p>
         </div>
 
@@ -113,20 +113,20 @@ const Skills = () => {
                 {/* Category Header */}
                 <div className="flex items-center gap-3 mb-4">
                   <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center"
+                    className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
                     style={{ backgroundColor: `${cat.accent}15`, border: `1px solid ${cat.accent}30` }}
                   >
                     <catIcon className="w-4 h-4" style={{ color: cat.accent }} />
                   </div>
-                  <h3 className="text-sm font-semibold text-zinc-300 tracking-wide uppercase text-xs">
+                  <h3 className="text-xs font-semibold text-foreground/90 tracking-wider uppercase font-mono">
                     {cat.label}
                   </h3>
-                  <span className="h-px flex-1 bg-zinc-800" />
-                  <span className="text-xs text-zinc-600 font-mono">{catSkills.length}</span>
+                  <span className="h-px flex-1 bg-border/60" />
+                  <span className="text-xs text-muted-foreground font-mono">{catSkills.length}</span>
                 </div>
 
                 {/* Skill Badges */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2.5">
                   {catSkills.map((skill) => (
                     <SkillBadge key={skill.name} skill={skill} />
                   ))}
@@ -137,9 +137,9 @@ const Skills = () => {
         </div>
 
         {/* Bottom tagline */}
-        <div className="mt-16 flex items-center gap-3 text-zinc-500 text-sm">
-          <Zap className="w-4 h-4 text-lime-400" />
-          <span>Always learning, always shipping.</span>
+        <div className="mt-14 flex items-center gap-2.5 text-muted-foreground text-sm font-mono">
+          <Sparkles className="w-4 h-4 text-primary" />
+          <span>Always learning, building, and shipping clean software.</span>
         </div>
       </div>
     </section>

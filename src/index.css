@@ -2,34 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Editorial Brutalist Tech Design System */
+/* Clean, Modern Professional Portfolio Design System */
 
 @layer base {
   :root {
-    --font-display: 'Instrument Serif', Georgia, serif;
+    --font-display: 'Inter', system-ui, -apple-system, sans-serif;
     --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-    --background: 240 10% 4%; /* #09090b Ink Dark */
+    --background: 240 10% 4%; /* #09090b Deep Ink Dark */
     --foreground: 0 0% 98%;
-    --card: 240 8% 7%;
+    --card: 240 8% 7%; /* #111114 */
     --card-foreground: 0 0% 98%;
     --popover: 240 8% 7%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 10% 4%;
-    --accent: 84 100% 50%; /* Acid Green #ccff00 */
-    --accent-foreground: 240 10% 4%;
-    --secondary: 240 6% 12%;
+    --primary: 238 82% 67%; /* Indigo #818cf8 */
+    --primary-foreground: 0 0% 100%;
+    --accent: 199 89% 48%; /* Cyan #0ea5e9 */
+    --accent-foreground: 0 0% 100%;
+    --secondary: 240 6% 12%; /* #1e1e24 */
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 6% 14%;
-    --muted-foreground: 240 5% 65%;
-    --border: 240 6% 16%;
-    --input: 240 6% 16%;
-    --ring: 84 100% 50%;
-    --radius: 0.25rem;
+    --muted: 240 6% 14%; /* #22222a */
+    --muted-foreground: 240 5% 65%; /* #a1a1aa */
+    --border: 240 6% 18%; /* #27272f */
+    --input: 240 6% 18%;
+    --ring: 238 82% 67%;
+    --radius: 0.5rem;
+    --glass: rgba(255, 255, 255, 0.03);
   }
 
   .dark {
-    --font-display: 'Instrument Serif', Georgia, serif;
+    --font-display: 'Inter', system-ui, -apple-system, sans-serif;
     --font-body: 'Inter', system-ui, -apple-system, sans-serif;
     --background: 240 10% 4%;
     --foreground: 0 0% 98%;
@@ -37,17 +38,41 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 8% 7%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 10% 4%;
-    --accent: 84 100% 50%;
-    --accent-foreground: 240 10% 4%;
+    --primary: 238 82% 67%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
     --secondary: 240 6% 12%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 6% 14%;
     --muted-foreground: 240 5% 65%;
-    --border: 240 6% 16%;
-    --input: 240 6% 16%;
-    --ring: 84 100% 50%;
+    --border: 240 6% 18%;
+    --input: 240 6% 18%;
+    --ring: 238 82% 67%;
+    --glass: rgba(255, 255, 255, 0.03);
+  }
+
+  .light {
+    --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --background: 0 0% 100%; /* #ffffff */
+    --foreground: 240 10% 4%; /* #09090b */
+    --card: 0 0% 98%; /* #fafafa */
+    --card-foreground: 240 10% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 4%;
+    --primary: 238 82% 59%; /* #4f46e5 */
+    --primary-foreground: 0 0% 100%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+    --secondary: 240 5% 95%; /* #f3f3f6 */
+    --secondary-foreground: 240 10% 4%;
+    --muted: 240 5% 92%; /* #e9e9ee */
+    --muted-foreground: 240 4% 46%; /* #71717a */
+    --border: 240 6% 88%; /* #dfdfdf */
+    --input: 240 6% 88%;
+    --ring: 238 82% 59%;
+    --glass: rgba(0, 0, 0, 0.02);
   }
 
   * {
@@ -56,20 +81,16 @@
 
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
   }
 
   body {
-    @apply bg-zinc-950 text-zinc-100 antialiased selection:bg-lime-400 selection:text-black;
+    @apply bg-background text-foreground antialiased selection:bg-indigo-500/20 selection:text-indigo-400;
     font-family: var(--font-body);
-    background-color: #09090b;
-    color: #f4f4f5;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
-  h1, h2 {
-    font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.01em;
+  h1, h2, h3, h4 {
+    letter-spacing: -0.025em;
   }
 
   /* Custom scrollbar */
@@ -78,16 +99,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #09090b;
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #27272a;
+    background: rgba(120, 120, 130, 0.25);
     border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #a3e635;
+    background: rgba(99, 102, 241, 0.6);
   }
 }
 
@@ -95,7 +116,14 @@
   body.has-custom-cursor,
   body.has-custom-cursor a,
   body.has-custom-cursor button,
-  body.has-custom-cursor [role="button"] {
+  body.has-custom-cursor [role="button"],
+  body.has-custom-cursor [role="tab"] {
     cursor: none !important;
+  }
+
+  body.has-custom-cursor input,
+  body.has-custom-cursor textarea,
+  body.has-custom-cursor [contenteditable="true"] {
+    cursor: text !important;
   }
 }

@@ -12,24 +12,24 @@ const TestimonialCard = ({
   index: number;
 }) => (
   <Card
-    className="p-8 md:p-10 glass border-border/60 hover:border-primary/20 bg-card/40 backdrop-blur-sm rounded-xl transition-all duration-300 flex flex-col justify-between hover-lift hover:shadow-xl hover:shadow-black/20 group"
+    className="p-7 sm:p-8 bg-card/70 border border-border/80 hover:border-primary/40 backdrop-blur-md rounded-2xl transition-all duration-300 flex flex-col justify-between hover-lift shadow-sm hover:shadow-xl group"
     style={{ animationDelay: `${index * 0.1}s` }}
   >
     <div>
-      <Quote className="w-8 h-8 text-primary/30 mb-6 group-hover:text-primary/50 transition-colors" />
-      <p className="text-lg md:text-xl font-light text-foreground/90 leading-relaxed">
+      <Quote className="w-8 h-8 text-primary/40 mb-5 group-hover:text-primary transition-colors" />
+      <p className="text-base sm:text-lg font-normal text-foreground/90 leading-relaxed italic">
         "{testimonial.quote}"
       </p>
     </div>
 
     <div>
-      <div className="my-6 border-t border-border/40" />
-      <div className="flex items-center gap-4">
+      <div className="my-6 border-t border-border/60" />
+      <div className="flex items-center gap-3.5">
         {testimonial.photo ? (
           <img
             src={testimonial.photo}
             alt={testimonial.name}
-            className="w-11 h-11 rounded-full object-cover shrink-0 border border-primary/20"
+            className="w-11 h-11 rounded-full object-cover shrink-0 border border-border/80 shadow-sm"
             loading="lazy"
             width={44}
             height={44}
@@ -40,7 +40,7 @@ const TestimonialCard = ({
           </div>
         )}
         <div className="min-w-0">
-          <h4 className="font-medium text-foreground text-base truncate">
+          <h4 className="font-semibold text-foreground text-sm sm:text-base truncate">
             {testimonial.name}
           </h4>
           <p className="text-xs text-muted-foreground truncate">
@@ -62,12 +62,17 @@ const Testimonials = () => {
     <section id="testimonials" className="section-padding">
       <div className="section-container">
         <div className="text-center mb-14 md:mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <div className="inline-flex items-center gap-3 mb-3">
+            <span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">
+              04 / 06
+            </span>
+            <span className="h-px w-8 bg-border" />
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-foreground">
             Client <span className="gradient-text">Testimonials</span>
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Kind words from clients and collaborators I've had the pleasure of
-            working with.
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Kind words from clients, founders, and engineering teams I've had the pleasure of collaborating with.
           </p>
         </div>
 

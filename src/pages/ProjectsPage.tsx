@@ -64,13 +64,13 @@ const ProjectsPage = () => {
     <div className="min-h-screen">
       <Navigation />
 
-      <main className="pt-36 pb-20">
+      <main className="pt-28 md:pt-32 pb-20">
         <div className="section-container">
           {/* Back button */}
           <Button
             variant="ghost"
             onClick={() => navigate("/")}
-            className="mb-8 hover:bg-primary/10 group transition-colors"
+            className="mb-8 hover:bg-secondary text-muted-foreground hover:text-foreground group transition-colors"
           >
             <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
             Back to Home
@@ -78,12 +78,11 @@ const ProjectsPage = () => {
 
           {/* Header */}
           <div className="mb-10">
-            <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3 text-foreground">
               All <span className="gradient-text">Projects</span>
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              Every project I've shipped — filter by technology to find what's
-              relevant to you.
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl">
+              Every project I've shipped — filter by technology to explore architecture, demos, and code.
             </p>
           </div>
 
@@ -96,7 +95,7 @@ const ProjectsPage = () => {
               {selectedTags.size > 0 && (
                 <button
                   onClick={clearFilters}
-                  className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors"
+                  className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors font-medium"
                 >
                   <X className="w-3 h-3" />
                   Clear ({selectedTags.size})
@@ -112,8 +111,8 @@ const ProjectsPage = () => {
                     onClick={() => toggleTag(tag)}
                     className={`px-3 py-1 rounded-full text-xs font-mono border transition-all duration-200 ${
                       active
-                        ? "bg-primary text-primary-foreground border-primary"
-                        : "border-white/10 bg-white/5 text-muted-foreground hover:border-white/20 hover:text-foreground"
+                        ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                        : "border-border/80 bg-secondary/40 text-muted-foreground hover:border-primary/40 hover:text-foreground hover:bg-secondary/70"
                     }`}
                   >
                     {tag}
@@ -143,7 +142,7 @@ const ProjectsPage = () => {
 
           {/* Projects Grid */}
           {filteredProjects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {filteredProjects.map((project, index) => (
                 <ProjectCard
                   key={project.id}
