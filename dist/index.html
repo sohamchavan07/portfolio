@@ -125,11 +125,11 @@
         }
       }
     </script>
-    <script type="module" crossorigin src="/assets/index-CbXLb9wr.js"></script>
+    <script type="module" crossorigin src="/assets/index-BgvDxO_K.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/react-vendor-CeDe9sep.js">
     <link rel="modulepreload" crossorigin href="/assets/ui-vendor-BxTsXPIe.js">
     <link rel="modulepreload" crossorigin href="/assets/query-vendor-StgvOTKY.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-Qr8mmUl7.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-CTadAhhR.css">
   </head>
 
   <body>
@@ -186,6 +186,49 @@
           setTimeout(loadDeferred, 4000);
         }
       });
+    </script>
+    
+    <!-- Visitor Location Detection -->
+    <script>
+      (function() {
+        const API_KEY = 'ce9503f8426f28878fc22de87f6ffef5';
+        let locationText = '';
+
+        function setLocationText(text) {
+          locationText = text;
+          const el = document.getElementById('visitor-location');
+          if (el) {
+            el.textContent = text;
+          }
+        }
+
+        // Observer in case footer is lazy loaded or re-rendered
+        const observer = new MutationObserver(function() {
+          const el = document.getElementById('visitor-location');
+          if (el && locationText && el.textContent !== locationText) {
+            el.textContent = locationText;
+          }
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        fetch(`https://ipapi.com/json?access_key=${API_KEY}`)
+          .then(res => res.json())
+          .then(data => {
+            const city = data.city || '';
+            const region = data.region || data.region_name || '';
+            const country = data.country_name || '';
+
+            const parts = [city, region, country].filter(Boolean);
+            const text = parts.length
+              ? `You are viewing this from ${parts.join(', ')}`
+              : 'Location could not be detected';
+
+            setLocationText(text);
+          })
+          .catch(() => {
+            setLocationText('Location could not be detected');
+          });
+      })();
     </script>
   </body>
 </html>

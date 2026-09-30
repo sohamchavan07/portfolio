@@ -114,12 +114,13 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="mt-16 pt-8 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center text-sm text-muted-foreground">
-            <div className="w-full flex justify-center items-center text-sm text-muted-foreground">
-              <p className="text-center">
-                &copy; {currentYear} {siteConfig.name}.
-              </p>
-            </div>
+          <div className="flex flex-col items-center md:items-start text-sm text-muted-foreground">
+            <p className="text-center md:text-left">
+              &copy; {currentYear} {siteConfig.name}.
+            </p>
+            <p id="visitor-location" className="text-xs text-muted-foreground/80 mt-1 text-center md:text-left">
+              Loading your location…
+            </p>
           </div>
           <div className="flex items-center text-sm">
             <Button
