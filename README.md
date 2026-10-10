@@ -1,223 +1,160 @@
-🚀 Soham Chavan — Portfolio
+# Soham Chavan — Portfolio
 
-Modern personal portfolio built with React, TypeScript, Vite, Tailwind CSS, and shadcn/ui components. Showcasing work, services, and contact details with delightful micro-interactions and responsive design.
+Personal developer portfolio built with React, TypeScript, Vite, Tailwind CSS and shadcn/ui. Statically built, deployed on Vercel.
 
-• [React](https://react.dev/)
-• [TypeScript](https://www.typescriptlang.org/)
-• [Vite](https://vitejs.dev/)
-• [Tailwind CSS](https://tailwindcss.com/)
-• [shadcn/ui](https://ui.shadcn.com/)
-• [Framer Motion](https://www.framer.com/motion/)
-• [Live Demo](https://sohamcode.online/)
-• [Portfolio](https://sohamcode.online/)
+[![Live](https://img.shields.io/badge/live-sohamcode.online-0a0a0a?style=flat-square)](https://sohamcode.online/)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 
----
-
-📌 Table of Contents
-• [About](#-about)
-• [Features](#-features)
-• [Tech Stack](#-tech-stack)
-• [Getting Started](#-getting-started)
-• [Usage](#-usage)
-• [Project Structure](#-project-structure)
-• [Customization](#-customization)
-• [Deployment](#-deployment)
-• [Contributing](#-contributing)
-• [Author](#-author)
+**Live:** https://sohamcode.online
 
 ---
 
-📖 About
+## Overview
 
-**Soham Chavan — Portfolio** is a modern personal portfolio website built with cutting-edge web technologies. It's designed to showcase professional work, services, and skills with focus on visual appeal, smooth animations, and excellent user experience. Perfect for developers, designers, and creative professionals.
+A single-page portfolio covering projects, case studies, services and contact. It ships as a static bundle (`dist/`) with no backend of its own; the contact form posts to Formspree.
 
----
+**Goals**
 
-✨ Features
+- Fast first load: static build, code-split by Vite, no runtime server
+- Accessible by default: Radix primitives via shadcn/ui
+- Easy to maintain: content lives in typed data structures, not scattered JSX
 
-• ✅ **Animated Hero Section** — Typewriter titles, CTA buttons, and social media links with smooth animations
-• ✅ **About & Services** — Glassmorphism-styled cards showcasing skills and professional services
-• ✅ **Project Gallery** — Filterable projects with feature chips and quick GitHub/live demo CTAs
-• ✅ **Case Studies** — Detailed project showcases with imagery and achievement badges
-• ✅ **Contact Form** — Powered by Formspree with toast notifications and real-time feedback
-• ✅ **Dark/Light Theme** — Seamless theme toggle with persistent preferences
-• ✅ **Fully Responsive** — Optimized for mobile, tablet, and desktop devices
-• ✅ **Accessible Components** — Built with Radix UI for best-in-class accessibility
-• 🔜 **Upcoming**: Blog section, testimonials carousel, advanced filtering
+## Features
 
----
+| Area | Details |
+| --- | --- |
+| Hero | Typewriter titles, CTAs, social links (Framer Motion) |
+| About / Services | Glass-style cards for skills and offerings |
+| Projects | Filterable gallery, feature chips, GitHub / live-demo links, Embla carousel |
+| Case studies | Longer write-ups with imagery and achievement badges |
+| Contact | React Hook Form + Zod validation, Formspree delivery, toast feedback |
+| Theming | Dark / light toggle with persisted preference |
+| Responsive | Mobile, tablet and desktop layouts |
 
-🛠️ Tech Stack
+## Tech stack
 
-**Frontend Framework**
-- React 18 with TypeScript for type-safe development
-- Vite for lightning-fast builds and HMR
+| Layer | Choice |
+| --- | --- |
+| Framework | React 18 + TypeScript |
+| Build | Vite |
+| Styling | Tailwind CSS, `clsx`, `class-variance-authority` |
+| UI primitives | shadcn/ui (Radix UI) |
+| Animation | Framer Motion, Embla Carousel |
+| Forms | React Hook Form + Zod |
+| Icons | Lucide |
+| Hosting | Vercel |
 
-**Styling & Components**
-- Tailwind CSS for utility-first styling
-- shadcn/ui (Radix UI) for accessible component primitives
-- clsx & class-variance-authority for advanced className management
+## Getting started
 
-**Animations & Interactions**
-- Framer Motion for smooth animations
-- Embla Carousel for project gallery carousel
-
-**Forms & Validation**
-- React Hook Form for efficient form state management
-- Zod for schema validation
-
-**Icons & Utilities**
-- Lucide icons for consistent iconography
-
----
-
-🚀 Getting Started
-
-**Prerequisites**
-
-```
-node >= 18.x
-npm >= 9.x (or yarn/pnpm)
-```
-
-**Installation**
+**Requirements:** Node >= 18, npm >= 9 (yarn / pnpm also work)
 
 ```bash
-# 1. Clone the repo
 git clone https://github.com/sohamchavan07/portfolio.git
 cd portfolio
-
-# 2. Install dependencies
 npm install
-
-# 3. Start the dev server
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+App runs at http://localhost:5173.
 
----
+## Scripts
 
-💡 Usage
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Dev server with HMR |
+| `npm run build` | Production build to `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run type-check` | Run the TypeScript compiler without emitting |
+
+Before opening a PR:
 
 ```bash
-# Start development server with HMR
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview the production build locally
-npm run preview
-
-# Type check your TypeScript
-npm run type-check
+npm run type-check && npm run build
 ```
 
----
-
-📁 Project Structure
+## Project structure
 
 ```
 src/
-├── components/           # React components (Hero, About, Projects, Services, Contact, etc.)
-├── components/ui/        # shadcn/ui generated primitives
-├── hooks/                # Custom hooks (theme, toast helpers)
-├── pages/                # Routed views (Index, Portfolio, NotFound)
-├── assets/               # Images, icons, and static media
-├── App.tsx               # Main app component
-├── App.css               # Global styles and animations
-├── index.css             # Tailwind CSS directives
-└── main.tsx              # Entry point
+├── components/        # Feature sections: Hero, About, Services, Projects, Contact
+│   └── ui/            # shadcn/ui primitives (generated, edit sparingly)
+├── hooks/             # Custom hooks (theme, toast)
+├── pages/             # Routed views: Index, Portfolio, NotFound
+├── assets/            # Images, icons, static media
+├── App.tsx            # Root component and routing
+├── App.css            # Global styles and keyframes
+├── index.css          # Tailwind directives and CSS variables
+└── main.tsx           # Entry point
 ```
 
----
+## Architecture notes
 
-⚙️ Customization
+- **Content in code.** Projects, services and links are plain data structures inside their components, so adding a project means adding one object, not new markup.
+- **Theme.** Theme state lives in `src/hooks/useTheme.ts` and persists the user's choice. Colors are driven by Tailwind config and CSS variables, so a palette change is a single-file edit.
+- **Forms.** Zod defines the schema, React Hook Form handles state, Formspree handles delivery. Swapping providers only touches the submit handler.
+- **UI primitives.** `components/ui/` holds shadcn/ui output. Keep app-specific styling in feature components, not in the primitives.
 
-**Profile & Hero Section**
-- Edit profile copy, titles, and social URLs in `src/components/Hero.tsx`
-- Update avatar image in the assets folder
+## Customization
 
-**Projects & Portfolio**
-- Modify project cards (images, links, features) in `src/components/Projects.tsx`
-- Add or remove projects by updating the projects data structure
+| What | Where |
+| --- | --- |
+| Name, titles, social links | `src/components/Hero.tsx` |
+| Projects (images, links, features) | `src/components/Projects.tsx` |
+| Contact details and form endpoint | `src/components/Contact.tsx` |
+| Colors, gradients, theme tokens | `src/index.css`, `src/App.css`, `tailwind.config.ts` |
+| Theme toggle logic | `src/hooks/useTheme.ts` |
+| Favicons, OG images | `public/` |
 
-**Contact Form**
-- Current setup uses [Formspree](https://formspree.io/) for email handling
-- Replace the Formspree endpoint with your own ID in `src/components/Contact.tsx`
-- Alternatively, integrate with Sendgrid, Mailgun, or your backend API
+**Contact form:** replace the Formspree form ID in `src/components/Contact.tsx` with your own. Any HTTP endpoint (SendGrid, Mailgun, your own API) works if you update the submit handler.
 
-**Theme & Colors**
-- Global colors and gradients: `src/App.css`, `src/index.css`, and `tailwind.config.ts`
-- Update Tailwind theme configuration in `tailwind.config.ts`
-- Dark/light mode toggle logic in `src/hooks/useTheme.ts`
+## Deployment
 
-**Social Links & Contact**
-- Update social media URLs throughout components
-- Customize contact information in `src/components/Contact.tsx`
+The build output is static (`dist/`), so any static host works.
 
----
+**Vercel (current)**
 
-🌐 Deployment
-
-The project builds to the `dist` directory. Deploy to any static host:
-
-**Vercel** (Recommended)
 ```bash
 npm install -g vercel
-vercel
+vercel          # preview
+vercel --prod   # production
 ```
 
-**Netlify**
-- Connect your GitHub repo to Netlify
-- Build command: `npm run build`
-- Publish directory: `dist`
+Or import the GitHub repo in the Vercel dashboard. Vercel auto-detects Vite (build `npm run build`, output `dist`).
 
-**GitHub Pages**
-- Set repository visibility to public
-- Configure GitHub Pages in repository settings
-- Point to `gh-pages` branch
+**Netlify:** build command `npm run build`, publish directory `dist`.
 
-**Other Platforms**
-- Ensure environment-specific assets (favicons, OG images) are updated in `public/`
-- Test production build locally with `npm run preview`
+**GitHub Pages:** set Vite's `base` to `/<repo-name>/` in `vite.config.ts` and publish `dist/`.
 
----
+Always verify with `npm run build && npm run preview` before shipping.
 
-🤝 Contributing
+## Roadmap
 
-Contributions, issues, and feature requests are welcome!
+- [ ] Blog section
+- [ ] Testimonials carousel
+- [ ] Advanced project filtering
 
-1. Fork the repo
-2. Create your feature branch: `git checkout -b feature/your-feature`
-3. Commit your changes: `git commit -m 'feat: add your feature'`
-4. Push to the branch: `git push origin feature/your-feature`
-5. Open a Pull Request
+## Contributing
 
-Please ensure your PR includes:
-- A clear description of changes
-- Updated documentation if needed
-- TypeScript types for new code
-- Responsive design considerations
+Issues and PRs are welcome.
 
----
+```bash
+git checkout -b feat/your-feature
+# make changes
+npm run type-check && npm run build
+git commit -m "feat: add your feature"
+git push origin feat/your-feature
+```
 
-👤 Author
+Use [Conventional Commits](https://www.conventionalcommits.org/), keep new code fully typed, and check layouts at mobile and desktop widths.
 
-**Soham Chavan**
+## Author
 
-• [Portfolio](https://sohamcode.online/)
-• [LinkedIn](https://www.linkedin.com/in/sohamchavan07/)
-• [Twitter/X](https://x.com/soham_chavan07)
-• [GitHub](https://github.com/sohamchavan07)
+**Soham Chavan** — [Portfolio](https://sohamcode.online/) · [GitHub](https://github.com/sohamchavan07) · [LinkedIn](https://www.linkedin.com/in/sohamchavan07/) · [X](https://x.com/soham_chavan07)
 
----
+## License
 
-📄 License
-
-This project is licensed under the [MIT License](./LICENSE).
-
----
-
-Made with ❤️ by Soham Chavan
+[MIT](./LICENSE)
