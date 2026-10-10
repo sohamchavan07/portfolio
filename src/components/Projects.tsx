@@ -29,10 +29,19 @@ const orderMap = new Map(allProjectsOrder.map((id, idx) => [id, idx]));
 
 const Projects = () => {
   const navigate = useNavigate();
+  const [showAllProjects, setShowAllProjects] = useState(false);
 
-  const filteredProjects = useMemo(() => {
-    return projects.filter(p => featuredProjectIds.has(p.id));
-  }, []);
+  const visibleProjects = useMemo(() => {
+    if (showAllProjects) {
+      return [...projects].sort((a, b) => {
+        const aIndex = orderMap.get(a.id) ?? Number.MAX_SAFE_INTEGER;
+        const bIndex = orderMap.get(b.id) ?? Number.MAX_SAFE_INTEGER;
+        return aIndex - bIndex;
+      });
+    }
+
+    return projects.filter((project) => featuredProjectIds.has(project.id));
+  }, [showAllProjects]);
 
   const handleProjectClick = useCallback((id: number) => {
     navigate(`/project/${id}`);
@@ -43,7 +52,7 @@ const Projects = () => {
       <div className="section-container">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Featured <span className="gradient-text">Projects</span>
+            {showAllProjects ? "All" : "Featured"} <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             A selection of my recent work showcasing different technologies, design approaches, and problem-solving capabilities.
@@ -52,7 +61,7 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-          {filteredProjects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <div
               key={project.id}
               className="group flex flex-col cursor-pointer animate-slide-up"
@@ -60,23 +69,23 @@ const Projects = () => {
               onClick={() => handleProjectClick(project.id)}
             >
               {/* Project Image */}
-             <div className="relative overflow-hidden mb-5 rounded-md bg-muted/20 aspect-[1.6/1]">
-    <picture className="block w-full h-full">
-    <source
-      srcSet={project.image.replace(/\.(png|jpg|jpeg)$/, '.webp')}
-      type="image/webp"
-    />
-    <img
-      src={project.image}
-      alt={project.title}
-      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-      loading="lazy"
-      decoding="async"
-    />
-  </picture>
+              <div className="relative overflow-hidden mb-5 rounded-md bg-muted/20 aspect-[1.6/1]">
+                <picture className="block w-full h-full">
+                  <source
+                    srcSet={project.image.replace(/\.(png|jpg|jpeg)$/, '.webp')}
+                    type="image/webp"
+                  />
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
 
-  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-</div>
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
               {/* Project Content */}
               <div className="flex flex-col">
                 <h3 className="text-xl font-semibold text-foreground tracking-tight group-hover:text-primary transition-colors">
@@ -98,6 +107,13 @@ const Projects = () => {
               various industries and technologies. Feel free to reach out to see more work samples.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="bg-[#24292e] hover:bg-[#1a1e23] border-0 hover-lift text-white"
+                onClick={() => setShowAllProjects((prev) => !prev)}
+              >
+                {showAllProjects ? "View Featured Projects" : "View All Projects"}
+              </Button>
               <Button
                 size="lg"
                 className="bg-[#24292e] hover:bg-[#1a1e23] border-0 hover-lift text-white"
