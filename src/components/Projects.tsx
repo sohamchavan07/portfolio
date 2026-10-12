@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Github } from "lucide-react";
 import { projects } from "@/data/projects";
 
-// Featured projects to show initially (replace CollegeMatch with Tawade Kitchen)
-const featuredProjectIds = new Set([14, 15, 4, 2, 10, 13]);
+// Featured projects to show initially
+const featuredProjectIds = new Set([14, 15, 2, 10]);
 
 // Custom ordering to use when showing "All Projects" (preferred sequence)
 const allProjectsOrder = [
