@@ -52,7 +52,7 @@ export const projects: Project[] = [
     image: "/assets/projects/tawade_kitchen.png",
     technologies: ["React", "Tailwind CSS", "Vite"],
     features: ["Product Catalog", "Responsive Layout", "Contact Form", "Branding"],
-    githubUrl: "https://github.com/sohamchavan07/tawade_kitchens.git",
+    githubUrl: "https://github.com/sohamchavan07/tawade-kitchens.git",
     liveUrl: "https://tawade-kitchens.onrender.com",
     demoUrl: "https://tawade-kitchens.onrender.com",
     date: "2025",
