@@ -9,15 +9,12 @@ import {
   Zap,
   Terminal,
   ArrowUpRight,
-  Sparkles,
-  GitBranch,
   CreditCard,
   BarChart3,
   CheckCircle2,
   Package,
   Code2,
   Cpu,
-  Lock,
   Workflow,
   type LucideIcon,
 } from "lucide-react";
@@ -32,9 +29,10 @@ interface ServiceModule {
   deliverables: string[];
 }
 
+type DisciplineId = "fullstack" | "ecommerce";
+
 interface ServiceDiscipline {
-  id: string;
-  number: string;
+  id: DisciplineId;
   badge: string;
   title: string;
   subtitle: string;
@@ -46,7 +44,6 @@ interface ServiceDiscipline {
   blueprint: {
     stack: string[];
     timeline: string;
-    focus: string;
     metrics: string;
   };
   modules: ServiceModule[];
@@ -58,7 +55,6 @@ interface ServiceDiscipline {
 const DISCIPLINES: ServiceDiscipline[] = [
   {
     id: "fullstack",
-    number: "01",
     badge: "Core Architecture",
     title: "Full-Stack Web Architecture",
     subtitle: "End-to-end web applications engineered for speed, durability, and scale.",
@@ -71,7 +67,6 @@ const DISCIPLINES: ServiceDiscipline[] = [
     blueprint: {
       stack: ["React 19", "TypeScript", "Ruby on Rails", "PostgreSQL", "Tailwind CSS", "Docker"],
       timeline: "2 to 6 weeks",
-      focus: "High Availability & Clean Architecture",
       metrics: "< 200ms TTFB · Lighthouse 100",
     },
     artifacts: [
@@ -117,7 +112,6 @@ const DISCIPLINES: ServiceDiscipline[] = [
   },
   {
     id: "ecommerce",
-    number: "02",
     badge: "Transactional Systems",
     title: "E-Commerce & Storefront Platforms",
     subtitle: "High-conversion commerce engines with seamless payment infrastructure.",
@@ -130,7 +124,6 @@ const DISCIPLINES: ServiceDiscipline[] = [
     blueprint: {
       stack: ["React", "Rails API", "Stripe / Razorpay", "PostgreSQL", "Tailwind", "Webhooks"],
       timeline: "3 to 6 weeks",
-      focus: "Conversion Rate & Payment Reliability",
       metrics: "99.99% webhook uptime · 0 leak checkouts",
     },
     artifacts: [
@@ -176,7 +169,7 @@ const DISCIPLINES: ServiceDiscipline[] = [
   },
 ];
 
-// ─── Craft Standards (The Artisanal Finishing Touch) ──────────────────────────
+// ─── Craft Standards ───────────────────────────────────────────────────────────
 
 const CRAFT_STANDARDS = [
   {
@@ -199,7 +192,7 @@ const CRAFT_STANDARDS = [
 // ─── Component ────────────────────────────────────────────────────────────────
 
 const Services = () => {
-  const [activeTab, setActiveTab] = useState<string>("fullstack");
+  const [activeTab, setActiveTab] = useState<DisciplineId>("fullstack");
 
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
@@ -208,68 +201,51 @@ const Services = () => {
     }
   };
 
-  const currentDiscipline = DISCIPLINES.find((d) => d.id === activeTab) || DISCIPLINES[0];
+  const currentDiscipline = DISCIPLINES.find((d) => d.id === activeTab) ?? DISCIPLINES[0];
+  const DisciplineIcon = currentDiscipline.icon;
 
   return (
     <section id="services" className="section-padding relative overflow-hidden">
-      {/* Subtle Background Glows */}
       <div className="absolute top-1/3 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="section-container relative z-10">
-        {/* Editorial Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border/80 pb-8 mb-14">
-          <div>
-            <div className="flex items-center gap-3 mb-3">
-              <span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">
-                02 / 06
-              </span>
-              <span className="h-px w-8 bg-border" />
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-              Craft & <span className="gradient-text">Specializations</span>
-            </h2>
-          </div>
-          <p className="max-w-md text-sm text-muted-foreground leading-relaxed font-sans">
-            Bespoke engineering for products that demand technical durability, sub-second performance, and pixel-precise design. No generic templates—every solution is tailored to your business goals.
+        {/* Header */}
+        <div className="mb-14 max-w-2xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+            Craft &amp; Specializations
+          </h2>
+          <p className="mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+            Two systems I build end to end: full-stack web apps and e-commerce platforms —
+            schema, API, UI, and deployment, all handled directly.
           </p>
         </div>
 
-        {/* Artisanal Discipline Switcher */}
-        <div className="flex flex-col sm:flex-row gap-2 mb-10 p-1.5 rounded-xl bg-secondary/40 border border-border/80 max-w-2xl">
+        {/* Discipline switcher */}
+        <div className="flex gap-2 mb-10 p-1.5 rounded-xl bg-secondary/40 border border-border/80 max-w-xl">
           {DISCIPLINES.map((discipline) => {
             const isActive = activeTab === discipline.id;
-            const Icon = discipline.icon;
             return (
               <button
                 key={discipline.id}
                 onClick={() => setActiveTab(discipline.id)}
-                className={`flex-1 flex items-center justify-center sm:justify-start gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 touch-target ${
+                className={`flex-1 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors touch-target ${
                   isActive
                     ? "bg-card text-foreground shadow-sm border border-border/90"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                <span
-                  className="w-6 h-6 rounded flex items-center justify-center text-xs font-mono font-bold"
-                  style={{
-                    backgroundColor: isActive ? discipline.accentBg : "transparent",
-                    color: isActive ? discipline.accentColor : "inherit",
-                  }}
-                >
-                  {discipline.number}
-                </span>
-                <span className="font-semibold tracking-tight">{discipline.title}</span>
+                {discipline.title}
               </button>
             );
           })}
         </div>
 
-        {/* Active Discipline Showcase Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
-          {/* Left Column: Blueprint & Deliverables Meta Card */}
-          <div className="lg:col-span-4 space-y-6">
-            <Card className="p-6 md:p-7 bg-card/80 border border-border/80 shadow-xl backdrop-blur-md relative overflow-hidden">
+        {/* Main grid: one bold anchor card + a quiet module list */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-16">
+          {/* Anchor card — the only bold element in this section */}
+          <div className="lg:col-span-5">
+            <Card className="p-6 md:p-8 bg-card border border-border shadow-xl relative overflow-hidden">
               <div
                 className="absolute top-0 right-0 w-32 h-32 rounded-full blur-2xl pointer-events-none opacity-30"
                 style={{ background: currentDiscipline.accentColor }}
@@ -277,7 +253,16 @@ const Services = () => {
 
               <div className="flex items-center gap-2 mb-4">
                 <span
-                  className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold uppercase tracking-wider"
+                  className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                  style={{
+                    background: currentDiscipline.accentBg,
+                    border: `1px solid ${currentDiscipline.borderColor}`,
+                  }}
+                >
+                  <DisciplineIcon className="w-4 h-4" style={{ color: currentDiscipline.accentColor }} />
+                </span>
+                <span
+                  className="px-2.5 py-0.5 rounded-full text-xs font-medium"
                   style={{
                     background: currentDiscipline.accentBg,
                     color: currentDiscipline.accentColor,
@@ -286,45 +271,38 @@ const Services = () => {
                 >
                   {currentDiscipline.badge}
                 </span>
-                <span className="text-xs font-mono text-muted-foreground">// {currentDiscipline.number}</span>
               </div>
 
-              <h3 className="text-2xl font-bold text-foreground mb-2 leading-tight">
+              <h3 className="text-2xl font-bold text-foreground mb-1 leading-tight">
                 {currentDiscipline.title}
               </h3>
-              <p className="text-xs text-muted-foreground leading-relaxed mb-6">
+              <p className="text-sm text-foreground/80 mb-4">{currentDiscipline.subtitle}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                 {currentDiscipline.description}
               </p>
 
-              {/* Architectural Specs List */}
-              <div className="border-t border-border/60 pt-5 space-y-3 mb-6">
-                <div className="flex items-start justify-between gap-2 text-xs">
-                  <span className="font-mono text-muted-foreground uppercase tracking-wider">Stack</span>
-                  <span className="text-foreground font-medium text-right max-w-[200px]">
-                    {currentDiscipline.blueprint.stack.join(" · ")}
-                  </span>
+              <dl className="border-t border-border/60 pt-5 space-y-3 mb-6 text-sm">
+                <div className="flex items-start justify-between gap-4">
+                  <dt className="text-muted-foreground shrink-0">Stack</dt>
+                  <dd className="text-foreground text-right">
+                    {currentDiscipline.blueprint.stack.join(", ")}
+                  </dd>
                 </div>
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-mono text-muted-foreground uppercase tracking-wider">Delivery</span>
-                  <span className="text-foreground font-mono">{currentDiscipline.blueprint.timeline}</span>
+                <div className="flex items-center justify-between gap-4">
+                  <dt className="text-muted-foreground">Delivery</dt>
+                  <dd className="text-foreground">{currentDiscipline.blueprint.timeline}</dd>
                 </div>
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-mono text-muted-foreground uppercase tracking-wider">Benchmark</span>
-                  <span className="text-emerald-500 font-mono font-semibold">
-                    {currentDiscipline.blueprint.metrics}
-                  </span>
+                <div className="flex items-center justify-between gap-4">
+                  <dt className="text-muted-foreground">Benchmark</dt>
+                  <dd className="text-foreground font-medium">{currentDiscipline.blueprint.metrics}</dd>
                 </div>
-              </div>
+              </dl>
 
-              {/* Verified Deliverables */}
-              <div className="border-t border-border/60 pt-5">
-                <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-3 flex items-center gap-2">
-                  <Sparkles className="w-3.5 h-3.5 text-primary" />
-                  Key Deliverables
-                </p>
-                <ul className="space-y-2.5">
-                  {currentDiscipline.artifacts.map((artifact, i) => (
-                    <li key={i} className="flex items-start gap-2 text-xs text-foreground/90">
+              <div className="border-t border-border/60 pt-5 mb-7">
+                <p className="text-xs font-medium text-muted-foreground mb-3">What you get</p>
+                <ul className="space-y-2">
+                  {currentDiscipline.artifacts.map((artifact) => (
+                    <li key={artifact} className="flex items-start gap-2 text-sm text-foreground/90">
                       <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                       <span className="leading-snug">{artifact}</span>
                     </li>
@@ -335,122 +313,70 @@ const Services = () => {
               <Button
                 onClick={scrollToContact}
                 size="lg"
-                className="w-full mt-7 bg-primary hover:bg-primary/90 text-primary-foreground border-0 font-medium text-sm hover-lift flex items-center justify-center gap-2 shadow-md shadow-primary/20 py-2.5 rounded-lg"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground border-0 font-medium text-sm flex items-center justify-center gap-2 py-2.5 rounded-lg"
               >
-                Inquire About {currentDiscipline.title.split(" ")[0]}
+                Inquire about {currentDiscipline.title.split(" ")[0]}
                 <ArrowUpRight className="w-4 h-4" />
               </Button>
             </Card>
           </div>
 
-          {/* Right Column: Architectural Modules Grid */}
-          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {currentDiscipline.modules.map((module, idx) => {
-              const ModuleIcon = module.icon;
-              return (
-                <div
-                  key={module.title}
-                  className="group relative p-6 rounded-xl border border-border/80 bg-card/60 hover:bg-card/90 hover:border-primary/40 transition-all duration-300 hover-lift flex flex-col justify-between shadow-sm"
-                  style={{ animationDelay: `${idx * 0.1}s` }}
-                >
-                  <div>
-                    {/* Module Icon & Tag */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div
-                        className="w-10 h-10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-                        style={{
-                          background: currentDiscipline.accentBg,
-                          border: `1px solid ${currentDiscipline.borderColor}`,
-                        }}
-                      >
-                        <ModuleIcon
-                          className="w-5 h-5"
-                          style={{ color: currentDiscipline.accentColor }}
-                        />
-                      </div>
-                      <span className="text-[10px] font-mono text-muted-foreground group-hover:text-primary transition-colors">
-                        0{idx + 1} //
-                      </span>
+          {/* Module list — quiet, supporting detail, no card chrome */}
+          <div className="lg:col-span-7">
+            <ul className="divide-y divide-border/70">
+              {currentDiscipline.modules.map((module) => {
+                const ModuleIcon = module.icon;
+                return (
+                  <li key={module.title} className="group py-6 first:pt-0 flex gap-4">
+                    <ModuleIcon className="w-5 h-5 mt-0.5 text-muted-foreground shrink-0" />
+                    <div>
+                      <h4 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
+                        {module.title}
+                      </h4>
+                      <p className="text-xs text-primary/90 mb-2">{module.tagline}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+                        {module.description}
+                      </p>
+                      <p className="text-xs text-muted-foreground/80">
+                        {module.deliverables.join(" · ")}
+                      </p>
                     </div>
-
-                    <h4 className="text-base font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-                      {module.title}
-                    </h4>
-                    <p className="text-xs font-mono text-primary/90 mb-3">
-                      {module.tagline}
-                    </p>
-                    <p className="text-xs text-muted-foreground leading-relaxed mb-4">
-                      {module.description}
-                    </p>
-                  </div>
-
-                  {/* Micro-deliverables tags */}
-                  <div className="pt-3 border-t border-border/60 flex flex-wrap gap-1.5">
-                    {module.deliverables.map((item, dIdx) => (
-                      <span
-                        key={dIdx}
-                        className="px-2 py-0.5 rounded text-[10px] font-mono bg-secondary/60 border border-border/70 text-muted-foreground"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
 
-        {/* ─── The Artist's Finishing Touch: Craft Standards ─── */}
-        <div className="border border-border/80 rounded-2xl bg-card/70 p-8 md:p-10 shadow-xl relative overflow-hidden backdrop-blur-md">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-
-          <div className="max-w-3xl mb-8">
-            <div className="flex items-center gap-2 mb-2">
-              <Lock className="w-3.5 h-3.5 text-primary" />
-              <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
-                Engineering Pledge
-              </span>
+        {/* Working-with-me strip — folded in, no duplicate card chrome or CTA */}
+        <div className="pt-10 border-t border-border/80">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-8">
+            <div className="max-w-md">
+              <h3 className="text-lg font-semibold text-foreground mb-1">Working with me directly</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                No offshore agency layer, no boilerplate factory — you work with the engineer
+                building your software.
+              </p>
             </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
-              The Artisan's Guarantee
-            </h3>
-            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-              When you work with me, you bypass offshore agencies and boilerplate factories. You get direct access to an engineer obsessed with clean systems and enduring code.
-            </p>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground shrink-0">
+              <span className="h-2 w-2 rounded-full bg-emerald-500" />
+              Available for select projects
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             {CRAFT_STANDARDS.map((standard) => {
               const StandardIcon = standard.icon;
               return (
-                <div
-                  key={standard.title}
-                  className="p-5 rounded-xl border border-border/70 bg-secondary/30 hover:border-primary/40 hover:bg-secondary/60 transition-colors"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-secondary border border-border/80 flex items-center justify-center mb-3">
-                    <StandardIcon className="w-4 h-4 text-primary" />
+                <div key={standard.title} className="flex gap-3">
+                  <StandardIcon className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="text-sm font-semibold text-foreground mb-1">{standard.title}</h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{standard.desc}</p>
                   </div>
-                  <h4 className="text-sm font-semibold text-foreground mb-2">{standard.title}</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{standard.desc}</p>
                 </div>
               );
             })}
-          </div>
-
-          {/* Direct CTA action strip */}
-          <div className="mt-8 pt-6 border-t border-border/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Available for select projects & architecture consultations</span>
-            </div>
-            <Button
-              onClick={scrollToContact}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm px-6 py-2.5 font-medium border-0 hover-lift shadow-sm shadow-primary/20"
-            >
-              Start a Project Conversation
-              <ArrowUpRight className="w-4 h-4 ml-1.5" />
-            </Button>
           </div>
         </div>
       </div>
