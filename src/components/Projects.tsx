@@ -1,51 +1,39 @@
-import { useMemo, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import { projects } from "@/data/projects";
+import { Link } from "react-router-dom";
+import { projects, projectPath, hasUrl } from "@/data/projects";
 import type { Project } from "@/data/projects";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, ArrowRight, Sparkles, TrendingUp } from "lucide-react";
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 // Change this Set to control which projects appear on the homepage.
-export const FEATURED_IDS = new Set([15, 14, 10]);
+export const FEATURED_IDS = new Set([17, 15, 14]);
 
-// ─── ProjectCard (exported for reuse in ProjectsPage) ─────────────────────────
+const featuredProjects = projects.filter((p) => FEATURED_IDS.has(p.id));
+
+// ─── ProjectCard (exported for reuse in ProjectsPage and ProjectDetail) ───────
 
 export interface ProjectCardProps {
   project: Project;
   index: number;
-  /** Called when the card body is clicked (navigates to detail page) */
-  onClick: () => void;
-  /** Show the "Featured" badge when true */
+  /**
+   * @deprecated The card is now a real <Link>, so it navigates by itself.
+   * Still accepted so existing callers keep compiling.
+   */
+  onClick?: () => void;
+  /** Show the "Featured" badge. Meaningful on the full list, redundant on the homepage. */
   featured?: boolean;
 }
 
-export const ProjectCard = ({
-  project,
-  index,
-  onClick,
-  featured = false,
-}: ProjectCardProps) => {
-  const hasLiveUrl = Boolean(project.liveUrl && project.liveUrl.trim().length > 0);
-  const hasGithubUrl = Boolean(project.githubUrl && project.githubUrl.trim().length > 0);
+export const ProjectCard = ({ project, index, featured = false }: ProjectCardProps) => {
+  const hasLive = hasUrl(project.liveUrl);
+  const hasGithub = hasUrl(project.githubUrl);
 
   return (
     <article
-      onClick={onClick}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          onClick();
-        }
-      }}
-      role="button"
-      tabIndex={0}
-      aria-label={`View ${project.title} project details`}
-      className="group flex flex-col cursor-pointer animate-slide-up focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xl p-4 sm:p-5 bg-card/60 border border-border/80 hover:border-primary/40 hover:bg-card/90 transition-all duration-300 shadow-sm hover:shadow-xl"
+      className="group relative flex flex-col animate-slide-up rounded-xl p-4 sm:p-5 bg-card/60 border border-border/80 hover:border-primary/40 hover:bg-card/90 transition-colors"
       style={{ animationDelay: `${index * 0.08}s` }}
     >
-      {/* Project Image */}
+      {/* Image */}
       <div className="relative overflow-hidden mb-5 rounded-lg border border-border/60 bg-muted/30">
         <picture>
           <source
@@ -54,8 +42,8 @@ export const ProjectCard = ({
           />
           <img
             src={project.image}
-            alt={project.title}
-            className="w-full aspect-[16/10] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            alt=""
+            className="w-full aspect-[16/10] object-cover transition-transform duration-500 ease-out group-hover:scale-105"
             loading="lazy"
             decoding="async"
             width={800}
@@ -63,99 +51,93 @@ export const ProjectCard = ({
           />
         </picture>
 
-        {/* Hover overlay with actions */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4 sm:p-5">
-          <div className="flex items-center gap-2 text-white text-sm font-medium translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-            <span>View case study</span>
-            <ArrowRight className="w-4 h-4 text-primary" />
-          </div>
-          <div className="flex items-center gap-2 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-            {hasGithubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                aria-label={`View ${project.title} source code on GitHub`}
-                title="View Source Code"
-                className="w-9 h-9 rounded-full bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/30 hover:scale-110 transition-all shadow-md"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-            )}
-            {hasLiveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                aria-label={`Open ${project.title} live demo`}
-                title="Open Live Site"
-                className="w-9 h-9 rounded-full bg-primary/90 backdrop-blur-md border border-primary flex items-center justify-center text-white hover:bg-primary hover:scale-110 transition-all shadow-md"
-              >
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* Featured badge */}
         {featured && (
-          <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-background/80 backdrop-blur-md border border-border/80 text-[11px] font-semibold uppercase tracking-wider text-foreground shadow-sm">
+          <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-background/80 backdrop-blur-md border border-border/80 text-xs font-medium text-foreground">
             <Sparkles className="w-3 h-3 text-primary" />
             Featured
           </div>
         )}
       </div>
 
-      {/* Project Content */}
+      {/* Content */}
       <div className="flex flex-col flex-1">
-        <div className="flex items-center gap-3 text-xs text-muted-foreground mb-2">
-          <span className="font-mono uppercase tracking-wider text-primary font-medium">
-            {project.category}
-          </span>
-          <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />
-          <span className="font-mono">{project.date}</span>
-        </div>
+        <p className="text-xs font-mono text-muted-foreground mb-2">{project.date}</p>
 
-        <h3 className="text-xl font-bold text-foreground tracking-tight group-hover:text-primary transition-colors mb-2">
-          {project.title}
+        {/* Stretched link: the ::after covers the whole card, so the card is one real anchor */}
+        <h3 className="text-xl font-bold text-foreground tracking-tight mb-2 group-hover:text-primary transition-colors">
+          <Link
+            to={projectPath(project)}
+            className="after:absolute after:inset-0 after:rounded-xl focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-primary focus-visible:after:ring-offset-2 focus-visible:after:ring-offset-background"
+          >
+            {project.title}
+          </Link>
         </h3>
 
-        {/* Problem statement (if provided) */}
-        {project.problemStatement && (
-          <p className="text-xs text-muted-foreground/90 italic mb-2 leading-relaxed line-clamp-1">
-            "{project.problemStatement}"
-          </p>
-        )}
-
-        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2 mb-3">
+        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-4">
           {project.description}
         </p>
 
-        {/* Real metric */}
         {project.metric && (
-          <div className="inline-flex items-center gap-1.5 text-xs text-emerald-500 font-mono font-medium mb-3 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-md w-fit">
+          <p className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-500 mb-4">
             <TrendingUp className="w-3.5 h-3.5" />
             {project.metric}
-          </div>
+          </p>
         )}
 
-        {/* Tech stack tags */}
-        <div className="flex flex-wrap gap-1.5 mt-auto pt-2">
+        {/* Tech tags */}
+        <div className="flex flex-wrap gap-1.5 mt-auto">
           {project.technologies.slice(0, 3).map((tech) => (
             <span
               key={tech}
-              className="text-[11px] font-mono px-2 py-0.5 rounded border border-border/70 bg-secondary/50 text-muted-foreground"
+              className="text-xs font-mono px-2 py-0.5 rounded border border-border/70 bg-secondary/50 text-muted-foreground"
             >
               {tech}
             </span>
           ))}
           {project.technologies.length > 3 && (
-            <span className="text-[11px] font-mono px-2 py-0.5 rounded border border-border/70 bg-secondary/50 text-muted-foreground">
+            <span className="text-xs font-mono px-2 py-0.5 rounded border border-border/70 bg-secondary/50 text-muted-foreground">
               +{project.technologies.length - 3}
             </span>
           )}
+        </div>
+
+        {/* Footer: always visible, so it also works on touch screens */}
+        <div className="mt-4 pt-4 border-t border-border/60 flex items-center justify-between">
+          <span
+            aria-hidden="true"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground group-hover:text-primary transition-colors"
+          >
+            View case study
+            <ArrowRight className="w-4 h-4" />
+          </span>
+
+          {/* z-10 lifts these above the stretched link */}
+          <div className="relative z-10 flex items-center gap-1">
+            {hasGithub && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${project.title} source code on GitHub`}
+                title="Source code"
+                className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+            )}
+            {hasLive && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${project.title} live demo`}
+                title="Live demo"
+                className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              >
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </article>
@@ -164,90 +146,44 @@ export const ProjectCard = ({
 
 // ─── Section ──────────────────────────────────────────────────────────────────
 
-const Projects = () => {
-  const navigate = useNavigate();
-
-  const featuredProjects = useMemo(
-    () => projects.filter((p) => FEATURED_IDS.has(p.id)),
-    []
-  );
-
-  const handleProjectClick = useCallback(
-    (id: number) => {
-      navigate(`/project/${id}`);
-    },
-    [navigate]
-  );
-
-  return (
-    <section id="projects" className="section-padding bg-secondary/20">
-      <div className="section-container">
-        {/* Section header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
-          <div>
-            <div className="flex items-center gap-3 mb-3">
-              <span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">
-                03 / 06
-              </span>
-              <span className="h-px w-8 bg-border" />
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-foreground">
-              Featured <span className="gradient-text">Projects</span>
-            </h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl">
-              A selection of my recent work showcasing full-stack development, modern interfaces, and complex problem solving.
-            </p>
-          </div>
+const Projects = () => (
+  <section id="projects" className="section-padding bg-secondary/20">
+    <div className="section-container">
+      <div className="mb-12 md:mb-16 max-w-2xl">
+        <div className="flex items-center gap-3 mb-3">
+          <span className="font-mono text-xs text-muted-foreground tracking-widest">03 / 06</span>
+          <span className="h-px w-8 bg-border" />
         </div>
-
-        {/* Projects Grid — 3 featured */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {featuredProjects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-              featured
-              onClick={() => handleProjectClick(project.id)}
-            />
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="mt-16 md:mt-20 flex flex-col items-center">
-          <Card className="w-full max-w-3xl p-8 md:p-10 bg-card/80 border border-border/80 text-center shadow-xl backdrop-blur-md rounded-2xl">
-            <h3 className="text-2xl md:text-3xl font-bold mb-3 tracking-tight text-foreground">
-              Want to see more?
-            </h3>
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-              These are a curated set of featured projects. I've engineered many more applications across various tech stacks and industries.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3.5 justify-center">
-              <Button
-                size="lg"
-                onClick={() => navigate("/projects")}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground border-0 hover-lift font-medium shadow-md shadow-primary/20"
-              >
-                View All Projects
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() =>
-                  window.open("https://github.com/sohamchavan07", "_blank", "noopener,noreferrer")
-                }
-                className="border-border/80 hover:bg-secondary hover:text-foreground hover-lift"
-              >
-                <Github className="w-4 h-4 mr-2" />
-                View on GitHub
-              </Button>
-            </div>
-          </Card>
-        </div>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-foreground">
+          Featured Projects
+        </h2>
+        <p className="text-base sm:text-lg text-muted-foreground">
+          Three projects to start with. Each one opens into a full write-up with the live site and source code linked.
+        </p>
       </div>
-    </section>
-  );
-};
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {featuredProjects.map((project, index) => (
+          <ProjectCard key={project.id} project={project} index={index} />
+        ))}
+      </div>
+
+      <div className="mt-12 flex flex-col sm:flex-row gap-3">
+        <Button asChild size="lg">
+          <Link to="/projects">
+            View all {projects.length} projects
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </Link>
+        </Button>
+        <Button asChild size="lg" variant="outline">
+          <a href="https://github.com/sohamchavan07" target="_blank" rel="noopener noreferrer">
+            <Github className="w-4 h-4 mr-2" />
+            GitHub profile
+          </a>
+        </Button>
+      </div>
+    </div>
+  </section>
+);
 
 export default Projects;

@@ -111,9 +111,13 @@ const Navigation = () => {
             <img
               src={peaceSymbol}
               alt="Brand symbol"
-              className={`h-9 w-12 object-contain transition-transform duration-300 group-hover:scale-105 ${
-                theme === "light" ? "invert" : ""
-              }`}
+              className={`h-9 w-12 object-contain transition-transform duration-300 group-hover:scale-105`}
+              style={{
+                filter:
+                  theme === "light"
+                    ? "brightness(0) saturate(100%)"
+                    : "brightness(0) invert(1)",
+              }}
               loading="lazy"
             />
             <span className="font-bold text-lg tracking-tight text-foreground hidden sm:inline-block">

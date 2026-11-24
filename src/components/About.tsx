@@ -112,7 +112,7 @@ const About = () => {
               <p>
                 I'm a{" "}
                 <span className="text-foreground font-semibold">
-                  UI/UX-minded full-stack developer
+                  Full-stack developer
                 </span>{" "}
                 based in{" "}
                 <span className="text-foreground font-semibold">

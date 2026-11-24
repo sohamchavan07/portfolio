@@ -9,6 +9,9 @@ export default function CustomCursor() {
   const [isOverInput, setIsOverInput] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(() =>
+    document.documentElement.classList.contains("light")
+  );
 
   // Target and interpolated coordinates
   const target = useRef({ x: -100, y: -100 });
@@ -31,6 +34,21 @@ export default function CustomCursor() {
     return () => {
       mediaQuery.removeEventListener?.("change", checkTouch);
     };
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+
+    const syncTheme = () => {
+      setIsLightMode(root.classList.contains("light") || !root.classList.contains("dark"));
+    };
+
+    syncTheme();
+
+    const observer = new MutationObserver(syncTheme);
+    observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -137,12 +155,12 @@ export default function CustomCursor() {
         <div
           className={`rounded-full transition-all duration-300 ease-out flex items-center justify-center text-center select-none ${
             showViewText
-              ? "w-16 h-16 bg-white text-zinc-950 font-semibold text-[11px] tracking-wider uppercase shadow-2xl scale-100 border border-white"
+              ? `w-16 h-16 ${isLightMode ? "bg-zinc-950 text-white border-zinc-950" : "bg-white text-zinc-950 border-white"} font-semibold text-[11px] tracking-wider uppercase shadow-2xl scale-100 border`
               : isHoveringInteractive
-              ? "w-11 h-11 border border-white/80 bg-white/10 backdrop-blur-[1px] scale-110 shadow-lg"
+              ? `w-11 h-11 ${isLightMode ? "border-zinc-950/80 bg-white/60" : "border-white/80 bg-white/10"} backdrop-blur-[1px] scale-110 shadow-lg border`
               : isMouseDown
-              ? "w-8 h-8 border border-white/90 bg-white/15 scale-90"
-              : "w-9 h-9 border border-white/50 bg-transparent"
+              ? `w-8 h-8 ${isLightMode ? "border-zinc-950/90 bg-zinc-950/15" : "border-white/90 bg-white/15"} scale-90 border`
+              : `w-9 h-9 ${isLightMode ? "border-zinc-950/70 bg-white/20" : "border-white/50 bg-transparent"} border`
           }`}
         >
           {showViewText && <span>{cursorText}</span>}
@@ -159,7 +177,7 @@ export default function CustomCursor() {
         style={{ willChange: "transform" }}
       >
         <div
-          className={`rounded-full bg-white transition-all duration-200 ease-out ${
+          className={`rounded-full ${isLightMode ? "bg-zinc-950" : "bg-white"} transition-all duration-200 ease-out ${
             showViewText
               ? "opacity-0 scale-0"
               : isHoveringInteractive
