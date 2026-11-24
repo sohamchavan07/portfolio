@@ -35,7 +35,7 @@ const TestimonialCard = ({
             height={44}
           />
         ) : (
-          <div className="w-11 h-11 rounded-full bg-gradient-primary flex items-center justify-center text-white font-semibold text-sm shrink-0 shadow-md">
+          <div className="w-11 h-11 rounded-full bg-secondary border border-border text-foreground flex items-center justify-center font-semibold text-sm shrink-0 shadow-md">
             {testimonial.avatar}
           </div>
         )}

@@ -13,6 +13,7 @@ import {
   Rocket,
 } from "lucide-react";
 import { HERO_STATS } from "@/data/heroStats";
+import profilePhoto from "@/assets/profile/profile-whatsapp-2026-04-25-592.webp";
 
 const About = () => {
   const [isDark, setIsDark] = useState(() => {
@@ -87,7 +88,7 @@ const About = () => {
               <div className="relative shrink-0">
                 <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-border/80 shadow-md">
                   <img
-                    src="/assets/icons/profile-photo-new.jpg"
+                    src={profilePhoto}
                     alt="Soham Chavan"
                     className="w-full h-full object-cover"
                     loading="lazy"

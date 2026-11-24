@@ -11,6 +11,7 @@ import {
 } from "react-icons/si";
 import SocialLinks from "@/components/SocialLinks";
 import { HERO_STATS } from "@/data/heroStats";
+import profilePhoto from "@/assets/profile/profile-whatsapp-2026-04-25-592.webp";
 
 // ─── Typing animation ─────────────────────────────────────────────────────────
 
@@ -201,7 +202,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-primary rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
               <div className="relative w-full aspect-square rounded-full overflow-hidden border-4 border-border/80 shadow-2xl hover-lift">
                 <img
-                  src="/assets/icons/profile-photo-new.jpg"
+                  src={profilePhoto}
                   alt="Soham Chavan"
                   className="w-full h-full object-cover"
                   loading="eager"
