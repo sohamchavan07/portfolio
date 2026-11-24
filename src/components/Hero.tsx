@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Download, ArrowDown, Calendar } from "lucide-react";
 import {
@@ -12,6 +12,7 @@ import {
 import SocialLinks from "@/components/SocialLinks";
 import { HERO_STATS } from "@/data/heroStats";
 import profilePhoto from "@/assets/profile/profile-whatsapp-2026-04-25-592.webp";
+import ClickMenu from "@/components/ClickMenu";
 
 // ─── Typing animation ─────────────────────────────────────────────────────────
 
@@ -68,6 +69,8 @@ const RESUME_PATH = "/assets/docs/Soham_Chavan_FullStack_Developer.pdf";
 // ─── Component ────────────────────────────────────────────────────────────────
 
 const Hero = () => {
+  const profileImageRef = useRef<HTMLImageElement>(null);
+
   const scrollToContact = useCallback(() => {
     const element = document.querySelector("#contact");
     if (element) {
@@ -81,6 +84,9 @@ const Hero = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
+
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const profileRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <section
@@ -202,6 +208,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-primary rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
               <div className="relative w-full aspect-square rounded-full overflow-hidden border-4 border-border/80 shadow-2xl hover-lift">
                 <img
+                  ref={profileImageRef}
                   src={profilePhoto}
                   alt="Soham Chavan"
                   className="w-full h-full object-cover"
@@ -224,6 +231,8 @@ const Hero = () => {
             </div>
           </div>
         </div>
+
+        <ClickMenu triggerRef={profileImageRef} />
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
