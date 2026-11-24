@@ -1,8 +1,12 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type RefObject } from "react";
 import { Code, Github, Linkedin, Mail, Share } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const ClickMenu = () => {
+interface ClickMenuProps {
+  triggerRef?: RefObject<HTMLElement | null>;
+}
+
+const ClickMenu = ({ triggerRef }: ClickMenuProps) => {
   const { toast } = useToast();
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isOpen, setIsOpen] = useState(false);
@@ -15,12 +19,21 @@ const ClickMenu = () => {
       setIsOpen(true);
     };
 
-    document.addEventListener('contextmenu', handleContextMenu);
+    const handleLeftClick = (e: MouseEvent) => {
+      if (triggerRef?.current && e.target instanceof Node && triggerRef.current.contains(e.target)) {
+        setPosition({ x: e.clientX, y: e.clientY });
+        setIsOpen(true);
+      }
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+    triggerRef?.current?.addEventListener("click", handleLeftClick);
 
     return () => {
-      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener("contextmenu", handleContextMenu);
+      triggerRef?.current?.removeEventListener("click", handleLeftClick);
     };
-  }, []);
+  }, [triggerRef]);
 
   useEffect(() => {
     if (!isOpen) return;

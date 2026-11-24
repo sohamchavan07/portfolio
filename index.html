@@ -22,11 +22,15 @@
     <link rel="author" href="https://www.linkedin.com/in/sohamchavan07" />
     
     <!-- Resource Hints - Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.noupe.com" />
-    
-    
+
+    <!-- Google Fonts: Instrument Serif with font-display: swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
     <!-- Preload critical CSS for faster rendering -->
     <link rel="preload" href="/critical.css" as="style" />
     <!-- Critical CSS - Loaded early for theme initialization -->
@@ -34,10 +38,10 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://sohamcode.online/" />
+    <meta property="og:url" content="https://www.sohamcode.online/" />
     <meta property="og:title" content="Soham Chavan - Full Stack Developer in Maharashtra, India" />
     <meta property="og:description" content="Expert web development services based in Maharashtra, India. Specializing in Ruby on Rails, React, and building scalable digital solutions for businesses." />
-    <meta property="og:image" content="https://sohamcode.online/assets/profile/profile-whatsapp-2026-04-25-592.jpg" />
+    <meta property="og:image" content="https://www.sohamcode.online/assets/icons/profile-photo-new.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Soham Chavan - Full Stack Developer" />
@@ -48,10 +52,10 @@
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://sohamcode.online/" />
+    <meta name="twitter:url" content="https://www.sohamcode.online/" />
     <meta name="twitter:title" content="Soham Chavan - Web Developer in Maharashtra, India" />
     <meta name="twitter:description" content="Professional full stack developer based in Maharashtra, India, creating innovative digital solutions with modern technologies." />
-    <meta name="twitter:image" content="https://sohamcode.online/assets/profile/profile-whatsapp-2026-04-25-592.jpg" />
+    <meta name="twitter:image" content="https://www.sohamcode.online/assets/icons/profile-photo-new.jpg" />
     <meta name="twitter:image:alt" content="Soham Chavan - Full Stack Developer" />
     <meta name="twitter:creator" content="@sohamchavan07" />
     <meta name="twitter:site" content="@sohamchavan07" />
@@ -65,7 +69,7 @@
     <meta name="mobile-web-app-capable" content="yes" />
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://sohamcode.online/" />
+    <link rel="canonical" href="https://www.sohamcode.online/" />
     
     <!-- Geo Tags -->
     <meta name="geo.region" content="IN-MH" />
@@ -73,7 +77,7 @@
     
     <!-- Category -->
     <meta name="category" content="Technology, Web Development, Software Development, Portfolio" />
-    <link rel="alternate" type="application/rss+xml" title="Soham Chavan Updates" href="https://sohamcode.online/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Soham Chavan Updates" href="https://www.sohamcode.online/rss.xml" />
     
     <!-- Google Tag Manager -->
     <script>
@@ -105,8 +109,8 @@
         "@type": "Person",
         "name": "Soham Chavan",
         "jobTitle": "Full Stack Developer",
-        "url": "https://sohamcode.online/",
-        "image": "https://sohamcode.online/assets/profile/profile-whatsapp-2026-04-25-592.jpg",
+        "url": "https://www.sohamcode.online/",
+        "image": "https://www.sohamcode.online/assets/icons/profile-photo-new.jpg",
         "sameAs": [
           "https://www.linkedin.com/in/sohamchavan07"
         ],
@@ -125,6 +129,12 @@
         }
       }
     </script>
+    <!-- GoatCounter visitor analytics -->
+    <script
+      data-goatcounter="https://portfoliocode.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
   </head>
 
   <body>
@@ -182,94 +192,6 @@
           setTimeout(loadDeferred, 4000);
         }
       });
-    </script>
-    
-    <!-- Visitor Location Detection -->
-    <script>
-      (function() {
-        let locationText = '';
-
-        function setLocationText(text) {
-          locationText = text;
-          const el = document.getElementById('visitor-location');
-          if (el) {
-            el.textContent = text;
-          }
-        }
-
-        // Observer in case footer is lazy loaded or re-rendered
-        const observer = new MutationObserver(function() {
-          const el = document.getElementById('visitor-location');
-          if (el && locationText && el.textContent !== locationText) {
-            el.textContent = locationText;
-          }
-        });
-        observer.observe(document.body, { childList: true, subtree: true });
-
-        // Provider 1: ipwho.is (Free, HTTPS, CORS, highly reliable)
-        function tryIpWhoIs() {
-          return fetch('https://ipwho.is/')
-            .then(res => res.json())
-            .then(data => {
-              if (data && data.success !== false) {
-                const city = data.city || '';
-                const region = data.region || '';
-                const country = data.country || '';
-                const parts = [city, region, country].filter(Boolean);
-                if (parts.length) {
-                  return `You are viewing this from ${parts.join(', ')}`;
-                }
-              }
-              throw new Error('ipwho.is failed');
-            });
-        }
-
-        // Provider 2: freeipapi.com (Free, HTTPS, CORS, no adblock filters)
-        function tryFreeIpApi() {
-          return fetch('https://freeipapi.com/api/json')
-            .then(res => res.json())
-            .then(data => {
-              if (data) {
-                const city = data.cityName || '';
-                const region = data.regionName || '';
-                const country = data.countryName || '';
-                const parts = [city, region, country].filter(Boolean);
-                if (parts.length) {
-                  return `You are viewing this from ${parts.join(', ')}`;
-                }
-              }
-              throw new Error('freeipapi failed');
-            });
-        }
-
-        // Provider 3: ipapi.co (Free HTTPS fallback)
-        function tryIpApiCo() {
-          return fetch('https://ipapi.co/json/')
-            .then(res => res.json())
-            .then(data => {
-              if (data && !data.error) {
-                const city = data.city || '';
-                const region = data.region || '';
-                const country = data.country_name || '';
-                const parts = [city, region, country].filter(Boolean);
-                if (parts.length) {
-                  return `You are viewing this from ${parts.join(', ')}`;
-                }
-              }
-              throw new Error('ipapi.co failed');
-            });
-        }
-
-        tryIpWhoIs()
-          .catch(() => tryFreeIpApi())
-          .catch(() => tryIpApiCo())
-          .then(text => {
-            setLocationText(text);
-          })
-          .catch(() => {
-            setLocationText('Location could not be detected');
-          });
-      })();
     </script>
   </body>
 </html>

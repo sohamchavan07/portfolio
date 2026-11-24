@@ -1,137 +1,124 @@
-import { Button } from "@/components/ui/button";
-import {
-  Github,
-  Linkedin,
-  Twitter,
-  Mail,
-  Coffee
-} from "lucide-react";
-import { siteConfig, navItems } from "@/config/site";
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Coffee } from "lucide-react";
+import SocialLinks from "@/components/SocialLinks";
+
+interface IpWhoResponse {
+  success: boolean;
+  city?: string;
+  region?: string;
+  country?: string;
+}
+
+const quickLinks = [
+  { label: "Home", href: "#home" },
+  { label: "Skills", href: "#skills" },
+  { label: "Services", href: "#services" },
+  { label: "Projects", href: "#projects" },
+  { label: "Clients", href: "#testimonials" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+] as const;
+
+const LOCATION_CACHE_KEY = "portfolio-viewer-location";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [viewingLocation, setViewingLocation] = useState("Detecting location...");
 
-  const socialLinks = [
-    { icon: Github, href: siteConfig.social.github, label: "GitHub", color: "#6e7681", hoverBg: "rgba(110,118,129,0.15)" },
-    { icon: Linkedin, href: siteConfig.social.linkedin, label: "LinkedIn", color: "#0A66C2", hoverBg: "rgba(10,102,194,0.15)" },
-    { icon: Twitter, href: siteConfig.social.twitter, label: "Twitter", color: "#38bdf8", hoverBg: "rgba(56,189,248,0.15)" },
-    { icon: Mail, href: siteConfig.social.email, label: "Email", color: "#f87171", hoverBg: "rgba(248,113,113,0.15)" },
-  ];
+  useEffect(() => {
+    const cachedLocation = sessionStorage.getItem(LOCATION_CACHE_KEY);
+    if (cachedLocation) {
+      setViewingLocation(cachedLocation);
+      return;
+    }
 
-  const quickLinks = navItems;
+    const controller = new AbortController();
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+    const detectLocation = async () => {
+      try {
+        const response = await fetch("https://ipwho.is/", {
+          signal: controller.signal,
+        });
+
+        if (!response.ok) throw new Error("Location lookup failed");
+
+        const data: IpWhoResponse = await response.json();
+        if (!data.success) throw new Error("Location lookup was unsuccessful");
+
+        const parts = [data.city, data.region, data.country].filter(Boolean);
+        const label = parts.length ? parts.join(", ") : "Unknown location";
+
+        setViewingLocation(label);
+        sessionStorage.setItem(LOCATION_CACHE_KEY, label);
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        setViewingLocation("Location unavailable");
+      }
+    };
+
+    detectLocation();
+    return () => controller.abort();
+  }, []);
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: href } });
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
   return (
-    <footer className="relative bg-muted/10 border-t border-primary/10">
-      {/* Background Pattern */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
-      </div>
-
-      <div className="section-container relative z-10 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Brand & Description */}
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-2xl font-bold gradient-text mb-3">
-                Soham Chavan
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                FULLSTACK Developer passionate about creating innovative web applications
-                that make a difference. Let's build something amazing together.
-              </p>
-            </div>
-
-            <div className="flex space-x-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="touch-target w-11 h-11 rounded-full border border-white/10 flex items-center justify-center transition-all duration-300 hover-lift hover:scale-110"
-                  style={{
-                    animationDelay: `${index * 0.1}s`,
-                    background: "rgba(255,255,255,0.05)",
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.background = social.hoverBg)}
-                  onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.05)")}
-                >
-                  <social.icon className="w-4 h-4" style={{ color: social.color }} />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-semibold">Quick Links</h4>
-            <div className="grid grid-cols-2 gap-3">
-              {quickLinks.map((link, index) => (
-                <button
-                  key={link.label}
-                  onClick={() => scrollToSection(link.href)}
-                  className="touch-target text-left text-muted-foreground hover:text-primary transition-colors duration-300 text-sm px-1"
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <h4 className="text-lg font-semibold">Get In Touch</h4>
-            <div className="space-y-3 text-sm text-muted-foreground">
-              <p>{siteConfig.location}</p>
-              <p>{siteConfig.email}</p>
-              <p>{siteConfig.phone}</p>
-            </div>
-
-            <Button
-              size="lg"
-              onClick={() => scrollToSection("#contact")}
-              className="bg-[#3b82f6] hover:bg-[#2563eb] border-0 hover-lift text-white"
+    <footer className="border-t border-border/80 py-8 bg-card/50 backdrop-blur-md">
+      <div className="section-container flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* Quick Links */}
+        <nav
+          className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground"
+          aria-label="Footer navigation"
+        >
+          {quickLinks.map((link) => (
+            <button
+              key={link.label}
+              onClick={() => scrollToSection(link.href)}
+              className="hover:text-foreground transition-colors duration-200 font-medium"
             >
-              <Mail className="w-4 h-4 mr-2" />
-              Start a Project
-            </Button>
-          </div>
+              {link.label}
+            </button>
+          ))}
+        </nav>
+
+        {/* Social Icons */}
+        <div className="flex items-center">
+          <SocialLinks size="sm" />
         </div>
 
-        {/* Bottom Section */}
-        <div className="mt-16 pt-8 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex flex-col items-center md:items-start text-sm text-muted-foreground">
-            <p className="text-center md:text-left">
-              &copy; {currentYear} {siteConfig.name}.
-            </p>
-            <p id="visitor-location" className="text-xs text-muted-foreground/80 mt-1 text-center md:text-left">
-              Loading your location…
-            </p>
-          </div>
-          <div className="flex items-center text-sm">
-            <Button
-              size="sm"
-              onClick={() => window.open(siteConfig.buyMeACoffeeUrl, "_blank", "noopener,noreferrer")}
-              className="bg-[#FF813F] hover:bg-[#FFC179] border-0 hover-lift text-white"
-            >
-              <Coffee className="w-5 h-5 mr-2" />
-              Support My Work
-            </Button>
-          </div>
+        {/* Location, Support, and Copyright */}
+        <div className="flex flex-col items-center md:items-end gap-2 text-xs text-muted-foreground">
+          <p className="text-center md:text-right">
+            Viewing from:{" "}
+            <span className="font-medium text-foreground">
+              {viewingLocation}
+            </span>
+          </p>
+
+          <a
+            href="https://buymeacoffee.com/soham_chavan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-[#FFDD00] px-4 py-2 text-sm font-bold text-black shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#FFE44D] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFDD00] focus-visible:ring-offset-2"
+          >
+            <Coffee className="h-4 w-4" aria-hidden="true" />
+            Support My Work
+          </a>
+
+          <p className="text-center md:text-right">
+            &copy; {new Date().getFullYear()} Soham Chavan. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

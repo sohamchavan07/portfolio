@@ -1,15 +1,27 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Download, ArrowDown, Twitter, Calendar } from "lucide-react";
-import { siteConfig } from "@/config/site";
-import profileWhatsApp592 from "@/assets/profile/profile-whatsapp-2026-04-25-592.jpg";
-import profileWhatsApp300 from "@/assets/profile/profile-whatsapp-2026-04-25-300.jpg";
-import profileWhatsApp150 from "@/assets/profile/profile-whatsapp-2026-04-25-150.jpg";
-import profileWhatsApp592Webp from "@/assets/profile/profile-whatsapp-2026-04-25-592.webp";
-import profileWhatsApp300Webp from "@/assets/profile/profile-whatsapp-2026-04-25-300.webp";
-import profileWhatsApp150Webp from "@/assets/profile/profile-whatsapp-2026-04-25-150.webp";
+import { Download, ArrowDown, Calendar } from "lucide-react";
+import {
+  SiReact,
+  SiRubyonrails,
+  SiTypescript,
+  SiTailwindcss,
+  SiPostgresql,
+  SiDocker,
+} from "react-icons/si";
+import SocialLinks from "@/components/SocialLinks";
+import { HERO_STATS } from "@/data/heroStats";
+import profilePhoto from "@/assets/profile/profile-whatsapp-2026-04-25-592.webp";
+import ClickMenu from "@/components/ClickMenu";
 
-const titles = ["Full Stack Developer", "Freelancer", "Problem Solver", "Tech Enthusiast"];
+// ─── Typing animation ─────────────────────────────────────────────────────────
+
+const titles = [
+  "Full Stack Developer",
+  "Freelancer",
+  "Problem Solver",
+  "Tech Enthusiast",
+];
 
 const TypingTitle = () => {
   const [displayText, setDisplayText] = useState("");
@@ -17,23 +29,18 @@ const TypingTitle = () => {
 
   useEffect(() => {
     const currentTitle = titles[currentIndex];
-    let pauseTimer: ReturnType<typeof setTimeout> | undefined;
-
     const timer = setTimeout(() => {
       if (displayText.length < currentTitle.length) {
         setDisplayText(currentTitle.slice(0, displayText.length + 1));
       } else {
-        pauseTimer = setTimeout(() => {
+        setTimeout(() => {
           setDisplayText("");
           setCurrentIndex((prev) => (prev + 1) % titles.length);
         }, 2000);
       }
     }, 100);
 
-    return () => {
-      clearTimeout(timer);
-      if (pauseTimer) clearTimeout(pauseTimer);
-    };
+    return () => clearTimeout(timer);
   }, [displayText, currentIndex]);
 
   return (
@@ -44,7 +51,26 @@ const TypingTitle = () => {
   );
 };
 
+// ─── Tech Stack icons ─────────────────────────────────────────────────────────
+
+const techStack = [
+  { icon: SiReact, label: "React", color: "#61DAFB" },
+  { icon: SiRubyonrails, label: "Rails", color: "#CC0000" },
+  { icon: SiTypescript, label: "TypeScript", color: "#3178C6" },
+  { icon: SiTailwindcss, label: "Tailwind", color: "#06B6D4" },
+  { icon: SiPostgresql, label: "PostgreSQL", color: "#4169E1" },
+  { icon: SiDocker, label: "Docker", color: "#2496ED" },
+] as const;
+
+// ─── Constants ────────────────────────────────────────────────────────────────
+
+const RESUME_PATH = "/assets/docs/Soham_Chavan_FullStack_Developer.pdf";
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
 const Hero = () => {
+  const profileImageRef = useRef<HTMLImageElement>(null);
+
   const scrollToContact = useCallback(() => {
     const element = document.querySelector("#contact");
     if (element) {
@@ -52,76 +78,72 @@ const Hero = () => {
     }
   }, []);
 
-  const scrollToAbout = useCallback(() => {
-    const element = document.querySelector("#about");
+  const scrollToSkills = useCallback(() => {
+    const element = document.querySelector("#skills");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
 
-  const socialLinks = useMemo(() => [
-    { icon: Github,   href: siteConfig.social.github,    label: "GitHub",     color: "#6e7681", hoverBg: "rgba(110,118,129,0.15)" },
-    { icon: Linkedin, href: siteConfig.social.linkedin,  label: "LinkedIn",   color: "#0A66C2", hoverBg: "rgba(10,102,194,0.15)"  },
-    { icon: Twitter,  href: siteConfig.social.twitter,   label: "X (Twitter)",color: "#38bdf8", hoverBg: "rgba(56,189,248,0.15)"  },
-    { icon: Mail,     href: siteConfig.social.email,     label: "Email",      color: "#f87171", hoverBg: "rgba(248,113,113,0.15)" },
-  ], []);
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const profileRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <section id="home" className="relative overflow-hidden flex items-center pt-24 pb-16 md:pb-24 min-h-[calc(100vh-4rem)]">
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
-      />
-      <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/95 to-background/90" />
-
-      {/* Soft circular background accents */}
+    <section
+      id="home"
+      className="relative overflow-hidden flex items-center pt-28 pb-16 md:pb-24 min-h-[calc(100vh-4rem)]"
+    >
+      {/* Background accents */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 left-4 w-32 h-32 sm:top-16 sm:left-12 sm:w-48 lg:top-20 lg:left-20 lg:w-72 bg-primary/10 rounded-full blur-2xl" />
-        <div className="absolute bottom-10 right-4 w-40 h-40 sm:bottom-16 sm:right-12 sm:w-64 lg:bottom-20 lg:right-20 lg:w-96 bg-accent/10 rounded-full blur-2xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-40 sm:h-40 lg:w-48 lg:h-48 bg-secondary/15 rounded-full blur-2xl" />
+        <div className="absolute top-10 left-4 w-48 h-48 sm:top-16 sm:left-12 sm:w-72 lg:top-20 lg:left-20 lg:w-96 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-4 w-48 h-48 sm:bottom-16 sm:right-12 sm:w-80 lg:bottom-20 lg:right-20 lg:w-[28rem] bg-accent/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 sm:w-56 sm:h-56 bg-secondary/20 rounded-full blur-3xl" />
       </div>
 
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-500 text-sm font-medium mb-6">
-              <span className="inline-flex rounded-full h-2.5 w-2.5 bg-green-500 shadow-lg shadow-green-500/20" />
-              Hire Me
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-xs font-mono uppercase tracking-wider font-semibold mb-6">
+              <span className="inline-flex rounded-full h-2 w-2 bg-emerald-500 shadow-md shadow-emerald-500/30 animate-pulse" />
+              Available for Freelance & Full-time
             </div>
+
             <div className="mb-6">
-              <p className="text-muted-foreground text-base sm:text-lg mb-2">Hello, my name is</p>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight">
+              <p className="text-muted-foreground text-sm sm:text-base font-mono uppercase tracking-widest mb-2">
+                Hello, my name is
+              </p>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 leading-tight text-foreground">
                 <span className="gradient-text">Soham Chavan</span>
               </h1>
               <TypingTitle />
             </div>
 
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed">
-              FullStack Developer I Create websites and innovative web applications.
-              I specialize in Ruby on Rails, React, and modern web technologies to build scalable digital solutions.
+              Full-Stack Developer crafting high-performance web applications and intuitive digital experiences. I specialize in Ruby on Rails, React, TypeScript, and modern cloud technologies to build scalable digital solutions.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3.5 mb-8">
               <Button
                 onClick={scrollToContact}
                 size="lg"
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-3 sm:px-6 sm:py-3 bg-[#4f46e5] hover:bg-[#4338ca] border-0 hover-lift text-white text-sm sm:text-base transition-colors duration-200"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg hover-lift shadow-md shadow-primary/20 transition-all text-sm sm:text-base"
               >
-                <Mail className="w-5 h-5" />
-                <span className="truncate">Get In Touch</span>
+                Start a Project
               </Button>
               <Button
                 asChild
                 size="lg"
-                className="bg-slate-800 dark:bg-white text-white dark:text-black border border-slate-700 dark:border-0 hover:bg-slate-700 dark:hover:bg-gray-100 hover-lift transition-colors duration-200"
+                variant="outline"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 bg-secondary/80 hover:bg-secondary text-foreground border-border/80 font-medium rounded-lg hover-lift transition-all text-sm sm:text-base"
               >
                 <a
-                  href={siteConfig.calendlyUrl}
+                  href="https://calendly.com/soham777chavan777/new-meeting"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Calendar className="w-5 h-5 mr-2" />
+                  <Calendar className="w-4 h-4 mr-2 text-primary" />
                   Schedule a Call
                 </a>
               </Button>
@@ -129,38 +151,54 @@ const Hero = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-primary/20 hover:bg-primary/10 hover-lift"
+                className="w-full sm:w-auto border-border/80 hover:bg-secondary/60 hover:text-foreground text-muted-foreground font-medium rounded-lg hover-lift transition-all text-sm sm:text-base"
               >
-                <a href={siteConfig.resumeUrl} download aria-label="Download Resume" className="flex items-center justify-center gap-2 w-full">
-                  <Download className="w-5 h-5 mr-2" />
+                <a
+                  href={RESUME_PATH}
+                  download
+                  aria-label="Download Resume"
+                  className="flex items-center justify-center gap-2 w-full"
+                >
+                  <Download className="w-4 h-4 mr-2" />
                   <span className="truncate">Download Resume</span>
                 </a>
               </Button>
             </div>
 
-            {/* Social Links */}
-            <div className="flex gap-4 sm:gap-6 flex-wrap">
-              {socialLinks.map((link, index) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.label}
-                  className="touch-target w-12 h-12 rounded-full border border-white/10 flex items-center justify-center transition-all duration-300 hover-lift hover:scale-110"
-                  style={{
-                    animationDelay: `${index * 0.1}s`,
-                    background: "rgba(255,255,255,0.05)",
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.background = link.hoverBg)}
-                  onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.05)")}
-                >
-                  <link.icon
-                    className="w-5 h-5 transition-transform duration-300 group-hover:scale-110"
-                    style={{ color: link.color }}
-                  />
-                </a>
+            {/* ── Stats Row ──────────────────────────────────────── */}
+            <div className="flex flex-wrap gap-6 sm:gap-8 mb-8 py-5 border-y border-border/60">
+              {HERO_STATS.map((stat) => (
+                <div key={stat.label} className="flex flex-col">
+                  <span className="text-2xl sm:text-3xl font-bold gradient-text">
+                    {stat.value}
+                  </span>
+                  <span className="text-xs text-muted-foreground mt-0.5">
+                    {stat.label}
+                  </span>
+                </div>
               ))}
+            </div>
+
+            {/* Social Links — reuses shared component */}
+            <SocialLinks />
+
+            {/* ── Tech Stack Icons ───────────────────────────────── */}
+            <div className="mt-8">
+              <p className="text-xs text-muted-foreground uppercase tracking-widest font-mono mb-3">
+                Core Technologies
+              </p>
+              <div className="flex flex-wrap gap-2.5">
+                {techStack.map(({ icon: Icon, label, color }) => (
+                  <div
+                    key={label}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border/70 bg-secondary/30 text-xs font-medium text-muted-foreground hover:border-primary/40 hover:text-foreground hover:bg-secondary/60 transition-all shadow-sm"
+                    title={label}
+                  >
+                    <Icon className="w-4 h-4 flex-shrink-0" style={{ color }} />
+                    <span>{label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -168,37 +206,43 @@ const Hero = () => {
           <div className="relative flex justify-center lg:justify-end">
             <div className="relative group w-full max-w-xs sm:max-w-sm md:max-w-md">
               <div className="absolute inset-0 bg-gradient-primary rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
-              <div className="relative w-full aspect-square rounded-full overflow-hidden border-4 border-primary/20 shadow-strong hover-lift">
-                <picture>
-                  <source
-                    type="image/webp"
-                    srcSet={`${profileWhatsApp150Webp} 150w, ${profileWhatsApp300Webp} 300w, ${profileWhatsApp592Webp} 592w`}
-                    sizes="(min-width: 1024px) 24rem, (min-width: 640px) 20rem, 70vw"
-                  />
-                  <source
-                    type="image/jpeg"
-                    srcSet={`${profileWhatsApp150} 150w, ${profileWhatsApp300} 300w, ${profileWhatsApp592} 592w`}
-                    sizes="(min-width: 1024px) 24rem, (min-width: 640px) 20rem, 70vw"
-                  />
-                  <img
-                    src={profileWhatsApp592}
-                    alt="Soham Chavan"
-                    className="w-full h-full object-cover"
-                    loading="eager"
-                    fetchPriority="high"
-                    decoding="async"
-                    width={592}
-                    height={592}
-                  />
-                </picture>
+              <div className="relative w-full aspect-square rounded-full overflow-hidden border-4 border-border/80 shadow-2xl hover-lift">
+                <img
+                  ref={profileImageRef}
+                  src={profilePhoto}
+                  alt="Soham Chavan"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  width={592}
+                  height={592}
+                />
+              </div>
+              <div className="absolute -bottom-3 right-2 sm:right-6 px-3.5 py-1.5 rounded-full bg-card/90 border border-border/80 backdrop-blur-md shadow-xl flex items-center gap-2.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span className="text-[11px] font-mono tracking-wider text-foreground uppercase font-medium">
+                  Available for Hire
+                </span>
               </div>
             </div>
           </div>
         </div>
 
+        <ClickMenu triggerRef={profileImageRef} />
+
         {/* Scroll Indicator */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
-          
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+          <button
+            onClick={scrollToSkills}
+            aria-label="Scroll to skills"
+            className="p-2 rounded-full hover:bg-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+          >
+            <ArrowDown className="w-5 h-5 text-muted-foreground animate-bounce" />
+          </button>
         </div>
       </div>
     </section>

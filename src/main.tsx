@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+import "./App.css";
 
 // Local font imports (replaces Google Fonts CDN)
 import "@fontsource/inter/300.css";

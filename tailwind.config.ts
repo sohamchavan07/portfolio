@@ -15,7 +15,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        inter: ["Inter", "system-ui", "sans-serif"],
+        display: ["var(--font-display)"],
+        body: ["var(--font-body)"],
+        sans: ["var(--font-body)"],
+        inter: ["var(--font-body)"],
         mono: ["JetBrains Mono", "Fira Code", "monospace"],
       },
       colors: {
